@@ -1,0 +1,34 @@
+i18n:
+  babel_input_translations: []
+  babel_output_translations: i18n/translations
+  babel_source_paths:
+  - shared
+  - ui
+  i18next_input_translations: []
+  i18next_output_translations: i18n/semantic-ui/translations
+  i18next_source_paths:
+  - ui
+  languages:
+  - en
+models:
+- api_prefix: experiments
+  base_model: empty
+  features: [relations, custom_fields, requests, drafts, files, vocabularies, tests,
+    communities]
+  model_description: Computational Chemistry Experiments
+  model_name: experiments
+  model_package: experiments
+  pid_type: xprnts
+repository:
+  model_package: models
+  oarepo_version: 12
+  repository_human_name: Repository of Computational Chemistry Experiments
+  repository_package: compchem
+  shared_package: shared
+  ui_package: ui
+uis:
+- api_service: experiments
+  endpoint: /experiments/
+  model: experiments
+  name: experiments
+  ui_serializer_class: experiments.resources.records.ui.ExperimentsUIJSONSerializer

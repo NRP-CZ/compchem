@@ -1,0 +1,405 @@
+{
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        "created": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "id": {
+            "type": "string"
+        },
+        "metadata": {
+            "type": "object",
+            "properties": {
+                "creators": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "affiliations": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "title": {
+                                            "type": "object"
+                                        },
+                                        "ror": {
+                                            "type": "string"
+                                        },
+                                        "hierarchy": {
+                                            "type": "object",
+                                            "properties": {
+                                                "ancestors": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "ancestors_or_self": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "level": {
+                                                    "type": "integer"
+                                                },
+                                                "parent": {
+                                                    "type": "string"
+                                                },
+                                                "title": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "@v": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "authorityIdentifiers": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "identifier": {
+                                            "type": "string"
+                                        },
+                                        "scheme": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "familyName": {
+                                "type": "string"
+                            },
+                            "fullName": {
+                                "type": "string"
+                            },
+                            "givenName": {
+                                "type": "string"
+                            },
+                            "nameType": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "fundingReference": {
+                    "type": "object",
+                    "properties": {
+                        "funder": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "object"
+                                },
+                                "@v": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "fundingProgram": {
+                            "type": "string"
+                        },
+                        "projectID": {
+                            "type": "string"
+                        },
+                        "projectName": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "objectIdentifiers": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "identifier": {
+                                "type": "string"
+                            },
+                            "scheme": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "publisher": {
+                    "type": "string"
+                },
+                "simulations": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "description": {
+                                "type": "string"
+                            },
+                            "detailedInformation": {
+                                "type": "object",
+                                "properties": {
+                                    "barostat": {
+                                        "type": "object",
+                                        "properties": {
+                                            "compressibility": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            },
+                                            "pcoupl": {
+                                                "type": "string"
+                                            },
+                                            "refcoordScaling": {
+                                                "type": "string"
+                                            },
+                                            "tauP": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    },
+                                    "commMode": {
+                                        "type": "string"
+                                    },
+                                    "constraintAlgorithm": {
+                                        "type": "string"
+                                    },
+                                    "electrostaticInteractions": {
+                                        "type": "object",
+                                        "properties": {
+                                            "coulombModifier": {
+                                                "type": "string"
+                                            },
+                                            "epsilonR": {
+                                                "type": "number"
+                                            },
+                                            "epsilonRF": {
+                                                "type": "number"
+                                            },
+                                            "rcoulomb": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    },
+                                    "fourierSpacing": {
+                                        "type": "number"
+                                    },
+                                    "lincsIter": {
+                                        "type": "integer"
+                                    },
+                                    "lincsOrder": {
+                                        "type": "integer"
+                                    },
+                                    "neighbourList": {
+                                        "type": "object",
+                                        "properties": {
+                                            "cutoffScheme": {
+                                                "type": "string"
+                                            },
+                                            "nstlist": {
+                                                "type": "number"
+                                            },
+                                            "pbc": {
+                                                "type": "string"
+                                            },
+                                            "rlist": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    },
+                                    "nstcomm": {
+                                        "type": "number"
+                                    },
+                                    "thermostat": {
+                                        "type": "object",
+                                        "properties": {
+                                            "nsttcouple": {
+                                                "type": "number"
+                                            },
+                                            "tauT": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "tcGrps": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string"
+                                                        },
+                                                        "nr": {
+                                                            "type": "integer"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "tcoupl": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "vanDerWaalsInteractions": {
+                                        "type": "object",
+                                        "properties": {
+                                            "dispcorr": {
+                                                "type": "string"
+                                            },
+                                            "rvdw": {
+                                                "type": "number"
+                                            },
+                                            "rvdwSwitch": {
+                                                "type": "number"
+                                            },
+                                            "vdwModifier": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "key": {
+                                "type": "string"
+                            },
+                            "mainInformation": {
+                                "type": "object",
+                                "properties": {
+                                    "AWHAdaptiveBiasing": {
+                                        "type": "string"
+                                    },
+                                    "boxSizeAndShape": {
+                                        "type": "number"
+                                    },
+                                    "forceField": {
+                                        "type": "string"
+                                    },
+                                    "freeEnergyCalculation": {
+                                        "type": "string"
+                                    },
+                                    "molecules": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "count": {
+                                                    "type": "integer"
+                                                },
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "referencePressure": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    },
+                                    "referenceTemperature": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "simulationLength": {
+                                        "type": "number"
+                                    },
+                                    "simulationTimeStep": {
+                                        "type": "number"
+                                    },
+                                    "simulationType": {
+                                        "type": "string"
+                                    },
+                                    "statisticalEnsemble": {
+                                        "type": "string"
+                                    },
+                                    "umbrellaSampling": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "relatedFiles": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "key": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "simulationYear": {
+                                "type": "integer"
+                            },
+                            "software": {
+                                "type": "object",
+                                "properties": {
+                                    "extractorVersion": {
+                                        "type": "string"
+                                    },
+                                    "gromacsVersion": {
+                                        "type": "string"
+                                    },
+                                    "tpxVersion": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "timestamps": {
+                                "type": "object",
+                                "properties": {
+                                    "metadataExtractionTimestamp": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "tprFileTimestamp": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "updated": {
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}

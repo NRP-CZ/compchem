@@ -1,0 +1,2136 @@
+{
+    "model": {
+        "type": "model",
+        "requests": {
+            "types": {
+                "delete-record": {
+                    "base-classes": [
+                        "oarepo_requests.types.delete_record.DeleteRecordRequestType"
+                    ],
+                    "allowed-receiver-ref-types": [
+                        "user",
+                        "group"
+                    ],
+                    "module": "experiments.records.requests.delete_record.types",
+                    "class": "experiments.records.requests.delete_record.types.DeleteRecordRequestType",
+                    "generate": true,
+                    "id": "experiments_delete_record",
+                    "actions": {}
+                },
+                "edit-record": {
+                    "base-classes": [
+                        "oarepo_requests.types.edit_record.EditRecordRequestType"
+                    ],
+                    "allowed-receiver-ref-types": [
+                        "user",
+                        "group"
+                    ],
+                    "module": "experiments.records.requests.edit_record.types",
+                    "class": "experiments.records.requests.edit_record.types.EditRecordRequestType",
+                    "generate": true,
+                    "id": "experiments_edit_record",
+                    "actions": {}
+                }
+            },
+            "api-blueprint": {
+                "generate": true,
+                "alias": "experiments_requests",
+                "module": "experiments.views.requests.api",
+                "function": "experiments.views.requests.api.create_api_blueprint",
+                "imports": []
+            },
+            "app-blueprint": {
+                "generate": true,
+                "alias": "experiments_requests",
+                "extra_code": "",
+                "module": "experiments.views.requests.app",
+                "function": "experiments.views.requests.app.create_app_blueprint",
+                "imports": []
+            },
+            "resource": {
+                "generate": true,
+                "config-key": "EXPERIMENTS_REQUESTS_RESOURCE_CLASS",
+                "class": "oarepo_requests.resources.draft.resource.DraftRecordRequestsResource",
+                "additional-args": [
+                    "record_requests_config={{oarepo_requests.resources.draft.config.DraftRecordRequestsResourceConfig}}()"
+                ],
+                "skip": false
+            },
+            "service": {
+                "generate": true,
+                "config-key": "EXPERIMENTS_REQUESTS_SERVICE_CLASS",
+                "class": "oarepo_requests.services.draft.service.DraftRecordRequestsService",
+                "additional-args": [
+                    "record_service=self.service_records",
+                    "oarepo_requests_service={{oarepo_requests.proxies.current_oarepo_requests_service}}"
+                ],
+                "skip": false
+            },
+            "additional-resolvers": [
+                "{{oarepo_runtime.records.entity_resolvers.UserResolver}}()",
+                "{{oarepo_runtime.records.entity_resolvers.GroupResolver}}()"
+            ],
+            "additional-ui-resolvers": {
+                "\"user\"": "{{oarepo_requests.resolvers.ui.user_entity_reference_ui_resolver}}"
+            }
+        },
+        "permissions": {
+            "presets": [
+                "authenticated"
+            ],
+            "generate": true,
+            "extra-code": "",
+            "module": "experiments.services.records.permissions",
+            "class": "experiments.services.records.permissions.ExperimentsPermissionPolicy",
+            "base-classes": [
+                "invenio_records_permissions.RecordPermissionPolicy"
+            ],
+            "imports": []
+        },
+        "marshmallow": {
+            "imports": [],
+            "base-classes": [
+                "oarepo_requests.services.schema.RequestsSchemaMixin",
+                "oarepo_runtime.services.schema.marshmallow.BaseRecordSchema"
+            ],
+            "generate": true,
+            "module": "experiments.services.records.schema",
+            "class": "experiments.services.records.schema.ExperimentsSchema",
+            "extra-code": ""
+        },
+        "custom-fields": [],
+        "searchable": true,
+        "ui": {
+            "marshmallow": {
+                "imports": [],
+                "base-classes": [
+                    "oarepo_requests.services.ui_schema.UIRequestsSerializationMixin",
+                    "oarepo_runtime.services.schema.ui.InvenioUISchema"
+                ],
+                "generate": true,
+                "module": "experiments.services.records.ui_schema",
+                "class": "experiments.services.records.ui_schema.ExperimentsUISchema",
+                "extra-code": ""
+            },
+            "module": "experiments.models",
+            "file": "experiments/models/ui.json",
+            "alias": "experiments"
+        },
+        "pid": {
+            "type": "xprnts",
+            "provider-base-classes": [
+                "invenio_drafts_resources.records.api.DraftRecordIdProviderV2"
+            ],
+            "imports": [
+                {
+                    "import": "invenio_records_resources.records.systemfields.pid.PIDField"
+                },
+                {
+                    "import": "invenio_records_resources.records.systemfields.pid.PIDFieldContext"
+                }
+            ],
+            "generate": true,
+            "module": "experiments.records.api",
+            "provider-class": "experiments.records.api.ExperimentsIdProvider",
+            "field-class": "invenio_records_resources.records.systemfields.pid.PIDField",
+            "context-class": "invenio_records_resources.records.systemfields.pid.PIDFieldContext",
+            "field-args": [
+                "create=True"
+            ],
+            "extra-code": ""
+        },
+        "resource-config": {
+            "base-html-url": "/experiments/",
+            "base-classes": [
+                "invenio_drafts_resources.resources.RecordResourceConfig"
+            ],
+            "generate": true,
+            "base-url": "/experiments/",
+            "config-key": "EXPERIMENTS_RECORD_RESOURCE_CONFIG",
+            "module": "experiments.resources.records.config",
+            "class": "experiments.resources.records.config.ExperimentsResourceConfig",
+            "extra-code": "",
+            "imports": [],
+            "additional-args": []
+        },
+        "module": {
+            "qualified": "experiments",
+            "alias": "experiments",
+            "path": "experiments",
+            "base": "experiments",
+            "base-upper": "EXPERIMENTS",
+            "base-title": "Experiments",
+            "kebab-module": "experiments",
+            "prefix": "Experiments",
+            "prefix-upper": "EXPERIMENTS",
+            "prefix-snake": "experiments",
+            "suffix": "experiments",
+            "suffix-upper": "EXPERIMENTS",
+            "suffix-snake": "experiments"
+        },
+        "tests": {
+            "extra-fixtures": [],
+            "extra-code": "",
+            "module": "tests"
+        },
+        "files": {
+            "type": "file",
+            "properties": {
+                "id": {
+                    "type": "keyword",
+                    "marshmallow": {
+                        "read": false,
+                        "write": false
+                    },
+                    "ui": {
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        }
+                    },
+                    "sample": {
+                        "skip": true
+                    }
+                },
+                "created": {
+                    "type": "date",
+                    "ui": {
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        }
+                    },
+                    "marshmallow": {
+                        "read": true,
+                        "write": false
+                    },
+                    "sample": {
+                        "skip": true
+                    }
+                },
+                "updated": {
+                    "type": "date",
+                    "ui": {
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        }
+                    },
+                    "marshmallow": {
+                        "read": true,
+                        "write": false
+                    },
+                    "sample": {
+                        "skip": true
+                    }
+                },
+                "$schema": {
+                    "type": "keyword",
+                    "marshmallow": {
+                        "read": false,
+                        "write": false
+                    },
+                    "ui": {
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        }
+                    },
+                    "sample": {
+                        "skip": true
+                    }
+                },
+                "caption": {
+                    "type": "keyword"
+                }
+            },
+            "marshmallow": {
+                "imports": [
+                    {
+                        "import": "invenio_records_resources.services.files.schema.FileSchema",
+                        "alias": "InvenioFileSchema"
+                    }
+                ],
+                "base-classes": [
+                    "InvenioFileSchema"
+                ]
+            },
+            "searchable": true,
+            "service-config": {
+                "base-classes": [
+                    "shared.services.files.CompChemFilesServiceConfig"
+                ]
+            },
+            "resource": {
+                "base-classes": [
+                    "oarepo_ui.resources.file_resource.S3RedirectFileResource"
+                ]
+            },
+            "tests": {
+                "extra-fixtures": [],
+                "extra-code": "",
+                "module": "tests"
+            }
+        },
+        "draft": {
+            "type": "draft_record",
+            "properties": {},
+            "requests": {
+                "types": {
+                    "publish-draft": {
+                        "base-classes": [
+                            "oarepo_requests.types.publish_draft.PublishDraftRequestType"
+                        ],
+                        "allowed-receiver-ref-types": [
+                            "user",
+                            "group"
+                        ]
+                    }
+                }
+            },
+            "searchable": true,
+            "tests": {
+                "extra-fixtures": [],
+                "extra-code": "",
+                "module": "tests"
+            }
+        },
+        "draft-files": {
+            "type": "draft-file",
+            "properties": {},
+            "searchable": true,
+            "tests": {
+                "extra-fixtures": [],
+                "extra-code": "",
+                "module": "tests"
+            }
+        },
+        "sample": {
+            "file": "data/sample_data.yaml"
+        },
+        "ext-resource": {
+            "generate": true,
+            "skip": false
+        },
+        "model-name": "Experiments",
+        "record": {
+            "base-classes": [
+                "invenio_drafts_resources.records.api.Record{InvenioRecord}"
+            ],
+            "generate": true,
+            "module": "experiments.records.api",
+            "class": "experiments.records.api.ExperimentsRecord",
+            "imports": [],
+            "extra-code": "",
+            "fields": {}
+        },
+        "resource": {
+            "base-classes": [
+                "invenio_drafts_resources.resources.RecordResource"
+            ],
+            "generate": true,
+            "config-key": "EXPERIMENTS_RECORD_RESOURCE_CLASS",
+            "module": "experiments.resources.records.resource",
+            "class": "experiments.resources.records.resource.ExperimentsResource",
+            "proxy": "current_resource",
+            "extra-code": "",
+            "imports": [],
+            "additional-args": []
+        },
+        "search-options": {
+            "generate": true,
+            "module": "experiments.services.records.search",
+            "extra-code": "",
+            "class": "experiments.services.records.search.ExperimentsSearchOptions",
+            "base-classes": [
+                "invenio_records_resources.services.SearchOptions{InvenioSearchOptions}"
+            ],
+            "imports": [],
+            "fields": {},
+            "sort-options-field": "sort_options"
+        },
+        "config": {
+            "generate": true,
+            "module": "experiments.config",
+            "extra_code": "",
+            "imports": []
+        },
+        "ext": {
+            "generate": true,
+            "module": "experiments.ext",
+            "class": "experiments.ext.ExperimentsExt",
+            "base-classes": [],
+            "extra_code": "",
+            "alias": "experiments",
+            "imports": []
+        },
+        "api-blueprint": {
+            "generate": true,
+            "alias": "experiments",
+            "extra_code": "",
+            "module": "experiments.views.records.api",
+            "function": "experiments.views.records.api.create_api_blueprint",
+            "imports": []
+        },
+        "app-blueprint": {
+            "generate": true,
+            "alias": "experiments",
+            "extra_code": "",
+            "module": "experiments.views.records.app",
+            "function": "experiments.views.records.app.create_app_blueprint",
+            "imports": []
+        },
+        "facets": {
+            "generate": true,
+            "module": "experiments.services.records.facets",
+            "extra-code": "",
+            "groups": true
+        },
+        "saved-model": {
+            "file": "experiments/models/records.json",
+            "module": "experiments.models",
+            "alias": "experiments"
+        },
+        "proxy": {
+            "module": "experiments.proxies",
+            "generate": true
+        },
+        "record-metadata": {
+            "generate": true,
+            "module": "experiments.records.models",
+            "class": "experiments.records.models.ExperimentsMetadata",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_records.models.RecordMetadataBase",
+                "invenio_drafts_resources.records.ParentRecordMixin"
+            ],
+            "extra-code": "",
+            "imports": [],
+            "table": "experiments_metadata",
+            "alias": "experiments",
+            "use-versioning": true,
+            "alembic": "experiments.alembic"
+        },
+        "service": {
+            "imports": [],
+            "base-classes": [
+                "invenio_drafts_resources.services.RecordService{InvenioRecordService}"
+            ],
+            "generate": true,
+            "config-key": "EXPERIMENTS_RECORD_SERVICE_CLASS",
+            "proxy": "current_service",
+            "module": "experiments.services.records.service",
+            "class": "experiments.services.records.service.ExperimentsService",
+            "extra-code": "",
+            "additional-args": [
+                "files_service=self.service_files",
+                "draft_files_service=self.service_draft_files"
+            ]
+        },
+        "service-config": {
+            "base-classes": [
+                "oarepo_runtime.services.config.service.PermissionsPresetsConfigMixin",
+                "invenio_drafts_resources.services.RecordServiceConfig{InvenioRecordDraftsServiceConfig}"
+            ],
+            "generate": true,
+            "config-key": "EXPERIMENTS_RECORD_SERVICE_CONFIG",
+            "module": "experiments.services.records.config",
+            "class": "experiments.services.records.config.ExperimentsServiceConfig",
+            "extra-code": "",
+            "service-id": "experiments",
+            "components": [
+                "{{oarepo_runtime.services.components.OwnersComponent}}",
+                "{{invenio_drafts_resources.services.records.components.DraftFilesComponent}}",
+                "{{oarepo_runtime.services.files.FilesComponent}}",
+                "{{invenio_records_resources.services.records.components.DataComponent}}"
+            ],
+            "additional-args": []
+        },
+        "record-dumper": {
+            "generate": true,
+            "module": "experiments.records.dumpers.dumper",
+            "class": "experiments.records.dumpers.dumper.ExperimentsDumper",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.SearchDumper"
+            ],
+            "extra-code": "",
+            "extensions": [
+                "{{oarepo_runtime.records.systemfields.mapping.SystemFieldDumperExt}}()",
+                "{{experiments.records.dumpers.multilingual.MultilingualSearchDumperExt}}()",
+                "{{experiments.records.dumpers.edtf.ExperimentsEDTFIntervalDumperExt}}()"
+            ],
+            "imports": []
+        },
+        "files-field": {
+            "generate": true,
+            "field-class": "invenio_records_resources.records.systemfields.FilesField",
+            "file-class": "experiments.records.api.ExperimentsRecord",
+            "field-args": [
+                "store=False"
+            ],
+            "imports": []
+        },
+        "translations": {
+            "module": "experiments.translations",
+            "alias": "experiments"
+        },
+        "json-schema-settings": {
+            "generate": true,
+            "alias": "experiments",
+            "version": "1.0.0",
+            "module": "experiments.records.jsonschemas",
+            "name": "experiments-1.0.0.json",
+            "file": "experiments/records/jsonschemas/experiments-1.0.0.json"
+        },
+        "json-serializer": {
+            "module": "experiments.resources.records.ui",
+            "class": "experiments.resources.records.ui.ExperimentsUIJSONSerializer",
+            "base-classes": [
+                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
+            ],
+            "imports": [],
+            "extra-code": "",
+            "generate": true,
+            "list_schema_cls": "flask_resources.BaseListSchema",
+            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
+            "schema-context-args": {
+                "\"object_key\"": "\"ui\"",
+                "\"identity\"": "{{ flask.g{g.identity} }}"
+            }
+        },
+        "draft-parent-record": {
+            "class": "experiments.records.api.ExperimentsParentRecord",
+            "base-classes": [
+                "invenio_drafts_resources.records.api.ParentRecord"
+            ],
+            "imports": [],
+            "module": "experiments.records.api",
+            "generate": true
+        },
+        "draft-parent-record-state": {
+            "class": "experiments.records.models.ExperimentsParentState",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_drafts_resources.records.ParentRecordStateMixin"
+            ],
+            "imports": [],
+            "module": "experiments.records.models",
+            "generate": true,
+            "table": "experiments_parent_state_metadata"
+        },
+        "draft-parent-record-metadata": {
+            "class": "experiments.records.models.ExperimentsParentMetadata",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_records.models.RecordMetadataBase"
+            ],
+            "imports": [],
+            "table": "experiments_parent_record_metadata",
+            "module": "experiments.records.models",
+            "generate": true
+        },
+        "draft-parent-record-schema": {
+            "name": "parent-v1.0.0.json",
+            "file": "experiments/records/jsonschemas/parent-v1.0.0.json",
+            "generate": true
+        },
+        "mapping": {
+            "generate": true,
+            "alias": "experiments",
+            "module": "experiments.records.mappings",
+            "index": "experiments-experiments-1.0.0",
+            "file": "experiments/records/mappings/os-v2/experiments/experiments-1.0.0.json",
+            "index-field-args": []
+        },
+        "published-service-config": {
+            "config-key": "EXPERIMENTS_RECORD_PUBLISHED_SERVICE_CONFIG",
+            "module": "experiments.services.records.published.config",
+            "class": "experiments.services.records.published.config.ExperimentsPublishedServiceConfig",
+            "extra-code": "",
+            "service-id": "published_experiments",
+            "base-classes": [
+                "oarepo_published_service.services.config.PublishedServiceConfig",
+                "oarepo_runtime.services.config.service.PermissionsPresetsConfigMixin"
+            ],
+            "components": [
+                "{{oarepo_runtime.services.files.FilesComponent}}",
+                "{{oarepo_published_service.services.records.components.bucket.CreatePublishedBucketComponent}}"
+            ],
+            "generate": true
+        },
+        "published-service": {
+            "generate": true,
+            "config-key": "EXPERIMENTS_RECORD_PUBLISHED_SERVICE_CLASS",
+            "proxy": "current_published_service",
+            "module": "experiments.services.records.published.service",
+            "class": "experiments.services.records.published.service.ExperimentsPublishedService",
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_published_service.services.service.PublishedService"
+            ],
+            "imports": []
+        },
+        "multilingual-dumper": {
+            "generate": true,
+            "module": "experiments.records.dumpers.multilingual",
+            "class": "experiments.records.dumpers.multilingual.MultilingualSearchDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
+            ],
+            "extra-code": "",
+            "extensions": [],
+            "imports": []
+        },
+        "edtf-interval-dumper": {
+            "generate": true,
+            "module": "experiments.records.dumpers.edtf",
+            "class": "experiments.records.dumpers.edtf.ExperimentsEDTFIntervalDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.edtf_interval.EDTFIntervalDumperExt"
+            ],
+            "extra-code": "",
+            "extensions": [],
+            "imports": []
+        },
+        "record-list": {
+            "generate": true,
+            "module": "experiments.services.records.results",
+            "class": "experiments.services.records.results.ExperimentsRecordList",
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.results.RecordList"
+            ],
+            "components": [],
+            "imports": []
+        },
+        "record-item": {
+            "generate": true,
+            "module": "experiments.services.records.results",
+            "class": "experiments.services.records.results.ExperimentsRecordItem",
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.results.RecordItem"
+            ],
+            "components": [
+                "{{oarepo_requests.services.results.RequestsComponent}}()",
+                "{{oarepo_requests.services.results.RequestTypesComponent}}()"
+            ],
+            "imports": []
+        },
+        "parent-record-marshmallow": {
+            "module": "experiments.services.records.schema",
+            "class": "experiments.services.records.schema.GeneratedParentSchema",
+            "generate": true,
+            "base-classes": [
+                "invenio_drafts_resources.services.records.schema.ParentSchema{InvenioParentSchema}"
+            ]
+        },
+        "record-resolver": {
+            "generate": true,
+            "module": "experiments.records.requests.resolvers",
+            "class": "experiments.records.requests.resolvers.ExperimentsResolver",
+            "base-classes": [
+                "oarepo_runtime.records.entity_resolvers.RecordResolver"
+            ],
+            "imports": []
+        },
+        "ui-record-resolver": {
+            "generate": true,
+            "function": "oarepo_requests.resolvers.ui.record_entity_reference_ui_resolver"
+        },
+        "sortable": [],
+        "properties": {
+            "$schema": {
+                "type": "keyword",
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "read": false,
+                        "write": false
+                    }
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "created": {
+                "type": "datetime",
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "read": false,
+                        "write": false
+                    }
+                },
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "id": {
+                "type": "keyword",
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "read": false,
+                        "write": false
+                    }
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "metadata": {
+                "type": "object",
+                "marshmallow": {
+                    "module": "experiments.services.records.schema",
+                    "generate": true,
+                    "class": "experiments.services.records.schema.ExperimentsMetadataSchema",
+                    "extra-code": "",
+                    "base-classes": [
+                        "marshmallow.Schema"
+                    ]
+                },
+                "ui": {
+                    "marshmallow": {
+                        "generate": true,
+                        "module": "experiments.services.records.ui_schema",
+                        "class": "experiments.services.records.ui_schema.ExperimentsMetadataUISchema",
+                        "extra-code": "",
+                        "base-classes": [
+                            "marshmallow.Schema"
+                        ]
+                    }
+                },
+                "properties": {
+                    "creators": {
+                        "type": "array",
+                        "label.en": "Creators",
+                        "items": {
+                            "type": "polymorphic",
+                            "schemas": {
+                                "Personal": {
+                                    "type": "object",
+                                    "properties": {
+                                        "nameType": {
+                                            "type": "keyword",
+                                            "enum": [
+                                                "Personal"
+                                            ],
+                                            "label.cs": "Typ",
+                                            "label.en": "Type"
+                                        },
+                                        "fullName": {
+                                            "type": "keyword",
+                                            "required": true,
+                                            "sample": {
+                                                "faker": "name"
+                                            },
+                                            "label.cs": "Jméno autora",
+                                            "label.en": "Author name"
+                                        },
+                                        "givenName": {
+                                            "type": "keyword"
+                                        },
+                                        "familyName": {
+                                            "type": "keyword"
+                                        },
+                                        "authorityIdentifiers": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "identifier": {
+                                                        "type": "keyword",
+                                                        "required": true,
+                                                        "sample": {
+                                                            "faker": "isbn13"
+                                                        },
+                                                        "label.cs": "Identifikátor",
+                                                        "label.en": "Identifier",
+                                                        "i18n.key": "identifier"
+                                                    },
+                                                    "scheme": {
+                                                        "type": "keyword",
+                                                        "required": true,
+                                                        "enum": [
+                                                            "orcid",
+                                                            "scopusID",
+                                                            "researcherID",
+                                                            "czenasAutID",
+                                                            "vedidk",
+                                                            "institutionalID",
+                                                            "ISNI"
+                                                        ],
+                                                        "label.cs": "Typ identifikátoru",
+                                                        "label.en": "Identifier type",
+                                                        "hint.cs": "Doporučujeme zadat alespoň jeden z typů identifikátorů.\nPokud potřebujete rozšířit nabídku typů identifikátorů, kontaktujte nás na support@narodni-repozitar.cz.\n",
+                                                        "hint.en": "We recommend providing at least one of the identifier types.\nIf you need to expand the range of identifier types, contact us at support@narodni-repozitar.cz.\n",
+                                                        "i18n.key": "identifier_type"
+                                                    }
+                                                },
+                                                "ui": {
+                                                    "marshmallow": {
+                                                        "generate": false,
+                                                        "class": "nr_metadata.ui_schema.identifiers.NRPersonIdentifierUISchema"
+                                                    },
+                                                    "detail": "nr_person_identifier"
+                                                },
+                                                "marshmallow": {
+                                                    "generate": false,
+                                                    "class": "nr_metadata.schema.identifiers.NRPersonIdentifierSchema"
+                                                }
+                                            }
+                                        },
+                                        "affiliations": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "taxonomy",
+                                                "properties": {},
+                                                "keys": [
+                                                    "id",
+                                                    "title",
+                                                    {
+                                                        "key": "props.ror",
+                                                        "model": {
+                                                            "type": "keyword"
+                                                        },
+                                                        "target": "ror"
+                                                    },
+                                                    {
+                                                        "key": "hierarchy",
+                                                        "model": {
+                                                            "type": "object",
+                                                            "marshmallow": {
+                                                                "class": "oarepo_vocabularies.services.schema.HierarchySchema",
+                                                                "generate": false,
+                                                                "imports": [
+                                                                    {
+                                                                        "import": "oarepo_vocabularies.services.schema.HierarchySchema"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "ui": {
+                                                                "marshmallow": {
+                                                                    "class": "oarepo_vocabularies.services.ui_schema.HierarchyUISchema",
+                                                                    "generate": false,
+                                                                    "imports": [
+                                                                        {
+                                                                            "import": "oarepo_vocabularies.services.ui_schema.HierarchyUISchema"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "properties": {
+                                                                "parent": {
+                                                                    "type": "keyword"
+                                                                },
+                                                                "level": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "title": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "propertyNames": {
+                                                                            "pattern": "^[a-z]{2}$"
+                                                                        },
+                                                                        "additionalProperties": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "mapping": {
+                                                                            "dynamic": true
+                                                                        },
+                                                                        "marshmallow": {
+                                                                            "field": "i18n_strings",
+                                                                            "generate": true,
+                                                                            "class": "experiments.services.records.schema.TitleItemSchema"
+                                                                        },
+                                                                        "ui": {
+                                                                            "marshmallow": {
+                                                                                "field": "i18n_strings",
+                                                                                "generate": true,
+                                                                                "class": "experiments.services.records.ui_schema.TitleItemUISchema"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "ancestors": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "keyword"
+                                                                    }
+                                                                },
+                                                                "ancestors_or_self": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "keyword"
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "target": "hierarchy"
+                                                    }
+                                                ],
+                                                "vocabulary-type": "institutions",
+                                                "ui": {
+                                                    "marshmallow": {
+                                                        "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRAffiliationVocabularyUISchema",
+                                                        "unknown": "INCLUDE",
+                                                        "generate": true
+                                                    },
+                                                    "detail": "taxonomy_item",
+                                                    "edit": "taxonomy_item"
+                                                },
+                                                "marshmallow": {
+                                                    "class": "nr_metadata.common.services.records.schema_datatypes.NRAffiliationVocabularySchema",
+                                                    "unknown": "INCLUDE",
+                                                    "generate": true
+                                                },
+                                                "sample": {
+                                                    "faker": "company"
+                                                },
+                                                "label.cs": "Afiliace",
+                                                "label.en": "Affiliation",
+                                                "hint.cs": "Uveďte instituci/instituce, pod jejíž záštitou jste se na tvorbě objektu podíleli.",
+                                                "imports": [
+                                                    {
+                                                        "import": "invenio_vocabularies.records.api.Vocabulary"
+                                                    }
+                                                ],
+                                                "model": "vocabularies",
+                                                "pid-field": "Vocabulary.pid.with_type_ctx(\"institutions\")",
+                                                "facets": {
+                                                    "args": [
+                                                        "vocabulary='institutions'"
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "ui": {
+                                        "marshmallow": {
+                                            "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRPersonUISchema",
+                                            "generate": true
+                                        },
+                                        "detail": "nr_person"
+                                    },
+                                    "marshmallow": {
+                                        "class": "nr_metadata.common.services.records.schema_datatypes.NRPersonSchema",
+                                        "generate": true
+                                    }
+                                },
+                                "Organizational": {
+                                    "type": "object",
+                                    "properties": {
+                                        "nameType": {
+                                            "type": "keyword",
+                                            "enum": [
+                                                "Organizational"
+                                            ],
+                                            "sample": [
+                                                "Organizational"
+                                            ],
+                                            "label.cs": "Typ",
+                                            "label.en": "Type"
+                                        },
+                                        "fullName": {
+                                            "type": "keyword",
+                                            "required": true,
+                                            "sample": {
+                                                "faker": "name"
+                                            },
+                                            "label.cs": "Jméno autora",
+                                            "label.en": "Author name"
+                                        },
+                                        "authorityIdentifiers": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "identifier": {
+                                                        "type": "keyword",
+                                                        "required": true,
+                                                        "sample": {
+                                                            "faker": "isbn13"
+                                                        },
+                                                        "label.cs": "Identifikátor",
+                                                        "label.en": "Identifier",
+                                                        "i18n.key": "identifier"
+                                                    },
+                                                    "scheme": {
+                                                        "type": "keyword",
+                                                        "required": true,
+                                                        "enum": [
+                                                            "ISNI",
+                                                            "ROR",
+                                                            "ICO",
+                                                            "DOI"
+                                                        ],
+                                                        "label.cs": "Typ identifikátoru",
+                                                        "label.en": "Identifier type",
+                                                        "hint.cs": "Doporučujeme zadat alespoň jeden z typů identifikátorů.\nPokud potřebujete rozšířit nabídku typů identifikátorů, kontaktujte nás na support@narodni-repozitar.cz.\n",
+                                                        "hint.en": "We recommend providing at least one of the identifier types.\nIf you need to expand the range of identifier types, contact us at support@narodni-repozitar.cz.\n",
+                                                        "i18n.key": "identifier_type"
+                                                    }
+                                                },
+                                                "ui": {
+                                                    "marshmallow": {
+                                                        "generate": false,
+                                                        "class": "nr_metadata.ui_schema.identifiers.NROrganizationIdentifierUISchema"
+                                                    },
+                                                    "detail": "nr_organization_identifier"
+                                                },
+                                                "marshmallow": {
+                                                    "generate": false,
+                                                    "class": "nr_metadata.schema.identifiers.NROrganizationIdentifierSchema"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "ui": {
+                                        "marshmallow": {
+                                            "class": "nr_metadata.common.services.records.ui_schema_datatypes.NROrganizationUISchema",
+                                            "generate": true
+                                        },
+                                        "detail": "nr_organization"
+                                    },
+                                    "marshmallow": {
+                                        "class": "nr_metadata.common.services.records.schema_datatypes.NROrganizationSchema",
+                                        "generate": true
+                                    }
+                                }
+                            },
+                            "discriminator": "nameType",
+                            "ui": {
+                                "marshmallow": {
+                                    "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRCreatorUISchema",
+                                    "generate": true
+                                },
+                                "detail": "creator"
+                            },
+                            "marshmallow": {
+                                "class": "nr_metadata.common.services.records.schema_datatypes.NRCreatorSchema",
+                                "generate": true
+                            },
+                            "hint.cs": "Jako tvůrce je možné označit osobu nebo instituci.",
+                            "hint.en": "It is possible to designate a person or an institution as the creator/contributor.",
+                            "properties": {
+                                "affiliations": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "taxonomy",
+                                        "keys": [
+                                            "id",
+                                            "title",
+                                            {
+                                                "key": "props.ror",
+                                                "model": {
+                                                    "type": "keyword"
+                                                },
+                                                "target": "ror"
+                                            },
+                                            {
+                                                "key": "hierarchy",
+                                                "model": {
+                                                    "type": "object",
+                                                    "marshmallow": {
+                                                        "class": "oarepo_vocabularies.services.schema.HierarchySchema",
+                                                        "generate": false,
+                                                        "imports": [
+                                                            {
+                                                                "import": "oarepo_vocabularies.services.schema.HierarchySchema"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "ui": {
+                                                        "marshmallow": {
+                                                            "class": "oarepo_vocabularies.services.ui_schema.HierarchyUISchema",
+                                                            "generate": false,
+                                                            "imports": [
+                                                                {
+                                                                    "import": "oarepo_vocabularies.services.ui_schema.HierarchyUISchema"
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    "properties": {
+                                                        "parent": {
+                                                            "type": "keyword"
+                                                        },
+                                                        "level": {
+                                                            "type": "integer"
+                                                        },
+                                                        "title": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "propertyNames": {
+                                                                    "pattern": "^[a-z]{2}$"
+                                                                },
+                                                                "additionalProperties": {
+                                                                    "type": "string"
+                                                                },
+                                                                "mapping": {
+                                                                    "dynamic": true
+                                                                },
+                                                                "marshmallow": {
+                                                                    "field": "i18n_strings",
+                                                                    "generate": true,
+                                                                    "class": "experiments.services.records.schema.TitleItemSchema"
+                                                                },
+                                                                "ui": {
+                                                                    "marshmallow": {
+                                                                        "field": "i18n_strings",
+                                                                        "generate": true,
+                                                                        "class": "experiments.services.records.ui_schema.TitleItemUISchema"
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "ancestors": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "keyword"
+                                                            }
+                                                        },
+                                                        "ancestors_or_self": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "keyword"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "target": "hierarchy"
+                                            }
+                                        ],
+                                        "vocabulary-type": "institutions",
+                                        "ui": {
+                                            "marshmallow": {
+                                                "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRAffiliationVocabularyUISchema",
+                                                "unknown": "INCLUDE",
+                                                "generate": true
+                                            },
+                                            "detail": "taxonomy_item",
+                                            "edit": "taxonomy_item"
+                                        },
+                                        "marshmallow": {
+                                            "class": "nr_metadata.common.services.records.schema_datatypes.NRAffiliationVocabularySchema",
+                                            "unknown": "INCLUDE",
+                                            "generate": true
+                                        },
+                                        "sample": {
+                                            "faker": "company"
+                                        },
+                                        "label.cs": "Afiliace",
+                                        "label.en": "Affiliation",
+                                        "hint.cs": "Uveďte instituci/instituce, pod jejíž záštitou jste se na tvorbě objektu podíleli.",
+                                        "imports": [
+                                            {
+                                                "import": "invenio_vocabularies.records.api.Vocabulary"
+                                            }
+                                        ],
+                                        "model": "vocabularies",
+                                        "pid-field": "Vocabulary.pid.with_type_ctx(\"institutions\")",
+                                        "facets": {
+                                            "args": [
+                                                "vocabulary='institutions'"
+                                            ]
+                                        },
+                                        "properties": {
+                                            "id": {
+                                                "marshmallow": {
+                                                    "field-class": "marshmallow.fields.String",
+                                                    "validators": [],
+                                                    "imports": []
+                                                },
+                                                "ui": {
+                                                    "marshmallow": {
+                                                        "field-class": "marshmallow.fields.String",
+                                                        "validators": [],
+                                                        "imports": []
+                                                    }
+                                                },
+                                                "type": "keyword",
+                                                "mapping": {
+                                                    "fields": {
+                                                        "text": {
+                                                            "type": "search_as_you_type"
+                                                        }
+                                                    }
+                                                },
+                                                "sample": {
+                                                    "skip": true
+                                                }
+                                            },
+                                            "title": {
+                                                "marshmallow": {
+                                                    "generate": false,
+                                                    "field": "{{invenio_vocabularies.services.schema.i18n_strings}}",
+                                                    "field-class": "marshmallow.fields.Nested",
+                                                    "validators": [],
+                                                    "class": "invenio_vocabularies.services.records.schema.TitleSchema"
+                                                },
+                                                "ui": {
+                                                    "marshmallow": {
+                                                        "field": "{{oarepo_vocabularies.services.ui_schema.VocabularyI18nStrUIField}}()",
+                                                        "generate": false
+                                                    }
+                                                },
+                                                "mapping": {
+                                                    "dynamic": true,
+                                                    "properties": {
+                                                        "en": {
+                                                            "type": "search_as_you_type",
+                                                            "copy_to": "title_sort"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "propertyNames": {
+                                                    "pattern": "^[a-z]{2}$"
+                                                },
+                                                "additionalProperties": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "ror": {
+                                                "type": "keyword"
+                                            },
+                                            "hierarchy": {
+                                                "type": "object",
+                                                "marshmallow": {
+                                                    "class": "oarepo_vocabularies.services.schema.HierarchySchema",
+                                                    "generate": false,
+                                                    "imports": [
+                                                        {
+                                                            "import": "oarepo_vocabularies.services.schema.HierarchySchema"
+                                                        }
+                                                    ]
+                                                },
+                                                "ui": {
+                                                    "marshmallow": {
+                                                        "class": "oarepo_vocabularies.services.ui_schema.HierarchyUISchema",
+                                                        "generate": false,
+                                                        "imports": [
+                                                            {
+                                                                "import": "oarepo_vocabularies.services.ui_schema.HierarchyUISchema"
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "properties": {
+                                                    "ancestors": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "keyword"
+                                                        }
+                                                    },
+                                                    "ancestors_or_self": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "keyword"
+                                                        }
+                                                    },
+                                                    "level": {
+                                                        "type": "integer"
+                                                    },
+                                                    "parent": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "title": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "propertyNames": {
+                                                                "pattern": "^[a-z]{2}$"
+                                                            },
+                                                            "additionalProperties": {
+                                                                "type": "string"
+                                                            },
+                                                            "mapping": {
+                                                                "dynamic": true
+                                                            },
+                                                            "marshmallow": {
+                                                                "field": "i18n_strings",
+                                                                "generate": true,
+                                                                "class": "experiments.services.records.schema.TitleItemSchema"
+                                                            },
+                                                            "ui": {
+                                                                "marshmallow": {
+                                                                    "field": "i18n_strings",
+                                                                    "generate": true,
+                                                                    "class": "experiments.services.records.ui_schema.TitleItemUISchema"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "@v": {
+                                                "type": "keyword",
+                                                "marshmallow": {
+                                                    "field-name": "_version",
+                                                    "field-class": "marshmallow.fields.String"
+                                                },
+                                                "ui": {
+                                                    "marshmallow": {
+                                                        "field-name": "_version",
+                                                        "field-class": "marshmallow.fields.String"
+                                                    }
+                                                },
+                                                "facets": {
+                                                    "facet": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "authorityIdentifiers": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "ui": {
+                                            "marshmallow": {
+                                                "generate": false,
+                                                "class": "nr_metadata.ui_schema.identifiers.NROrganizationIdentifierUISchema"
+                                            },
+                                            "detail": "nr_organization_identifier"
+                                        },
+                                        "marshmallow": {
+                                            "generate": false,
+                                            "class": "nr_metadata.schema.identifiers.NROrganizationIdentifierSchema"
+                                        },
+                                        "properties": {
+                                            "identifier": {
+                                                "type": "keyword",
+                                                "required": true,
+                                                "sample": {
+                                                    "faker": "isbn13"
+                                                },
+                                                "label.cs": "Identifikátor",
+                                                "label.en": "Identifier",
+                                                "i18n.key": "identifier"
+                                            },
+                                            "scheme": {
+                                                "type": "keyword",
+                                                "required": true,
+                                                "enum": [
+                                                    "ISNI",
+                                                    "ROR",
+                                                    "ICO",
+                                                    "DOI"
+                                                ],
+                                                "label.cs": "Typ identifikátoru",
+                                                "label.en": "Identifier type",
+                                                "hint.cs": "Doporučujeme zadat alespoň jeden z typů identifikátorů.\nPokud potřebujete rozšířit nabídku typů identifikátorů, kontaktujte nás na support@narodni-repozitar.cz.\n",
+                                                "hint.en": "We recommend providing at least one of the identifier types.\nIf you need to expand the range of identifier types, contact us at support@narodni-repozitar.cz.\n",
+                                                "i18n.key": "identifier_type"
+                                            }
+                                        }
+                                    }
+                                },
+                                "familyName": {
+                                    "type": "keyword"
+                                },
+                                "fullName": {
+                                    "type": "keyword",
+                                    "required": true,
+                                    "sample": {
+                                        "faker": "name"
+                                    },
+                                    "label.cs": "Jméno autora",
+                                    "label.en": "Author name"
+                                },
+                                "givenName": {
+                                    "type": "keyword"
+                                },
+                                "nameType": {
+                                    "type": "keyword",
+                                    "enum": [
+                                        "Organizational"
+                                    ],
+                                    "sample": [
+                                        "Organizational"
+                                    ],
+                                    "label.cs": "Typ",
+                                    "label.en": "Type"
+                                }
+                            }
+                        }
+                    },
+                    "description": {
+                        "type": "fulltext",
+                        "label.en": "Description"
+                    },
+                    "fundingReference": {
+                        "type": "object",
+                        "ui": {
+                            "marshmallow": {
+                                "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRFundingReferenceUISchema",
+                                "generate": true
+                            },
+                            "detail": "funding_reference"
+                        },
+                        "marshmallow": {
+                            "class": "nr_metadata.common.services.records.schema_datatypes.NRFundingReferenceSchema",
+                            "generate": true
+                        },
+                        "label.en": "Funding reference",
+                        "label.cs": "Projekt nebo financování",
+                        "properties": {
+                            "funder": {
+                                "type": "vocabulary",
+                                "vocabulary-type": "funders",
+                                "ui": {
+                                    "marshmallow": {
+                                        "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRFunderVocabularyUISchema",
+                                        "unknown": "INCLUDE",
+                                        "generate": true
+                                    },
+                                    "detail": "vocabulary_item",
+                                    "edit": "vocabulary_item"
+                                },
+                                "marshmallow": {
+                                    "class": "nr_metadata.common.services.records.schema_datatypes.NRFunderVocabularySchema",
+                                    "unknown": "INCLUDE",
+                                    "generate": true
+                                },
+                                "label.cs": "Poskytovatel financí",
+                                "label.en": "Funder",
+                                "imports": [
+                                    {
+                                        "import": "invenio_vocabularies.records.api.Vocabulary"
+                                    }
+                                ],
+                                "model": "vocabularies",
+                                "keys": [
+                                    "id",
+                                    "title"
+                                ],
+                                "pid-field": "Vocabulary.pid.with_type_ctx(\"funders\")",
+                                "facets": {
+                                    "args": [
+                                        "vocabulary='funders'"
+                                    ]
+                                },
+                                "properties": {
+                                    "id": {
+                                        "marshmallow": {
+                                            "field-class": "marshmallow.fields.String",
+                                            "validators": [],
+                                            "imports": []
+                                        },
+                                        "ui": {
+                                            "marshmallow": {
+                                                "field-class": "marshmallow.fields.String",
+                                                "validators": [],
+                                                "imports": []
+                                            }
+                                        },
+                                        "type": "keyword",
+                                        "mapping": {
+                                            "fields": {
+                                                "text": {
+                                                    "type": "search_as_you_type"
+                                                }
+                                            }
+                                        },
+                                        "sample": {
+                                            "skip": true
+                                        }
+                                    },
+                                    "title": {
+                                        "marshmallow": {
+                                            "generate": false,
+                                            "field": "{{invenio_vocabularies.services.schema.i18n_strings}}",
+                                            "field-class": "marshmallow.fields.Nested",
+                                            "validators": [],
+                                            "class": "invenio_vocabularies.services.records.schema.TitleSchema"
+                                        },
+                                        "ui": {
+                                            "marshmallow": {
+                                                "field": "{{oarepo_vocabularies.services.ui_schema.VocabularyI18nStrUIField}}()",
+                                                "generate": false
+                                            }
+                                        },
+                                        "mapping": {
+                                            "dynamic": true,
+                                            "properties": {
+                                                "en": {
+                                                    "type": "search_as_you_type",
+                                                    "copy_to": "title_sort"
+                                                }
+                                            }
+                                        },
+                                        "type": "object",
+                                        "propertyNames": {
+                                            "pattern": "^[a-z]{2}$"
+                                        },
+                                        "additionalProperties": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "@v": {
+                                        "type": "keyword",
+                                        "marshmallow": {
+                                            "field-name": "_version",
+                                            "field-class": "marshmallow.fields.String"
+                                        },
+                                        "ui": {
+                                            "marshmallow": {
+                                                "field-name": "_version",
+                                                "field-class": "marshmallow.fields.String"
+                                            }
+                                        },
+                                        "facets": {
+                                            "facet": false
+                                        }
+                                    }
+                                }
+                            },
+                            "fundingProgram": {
+                                "type": "fulltext",
+                                "label.cs": "Výzkumný program",
+                                "label.en": "Funding program"
+                            },
+                            "projectID": {
+                                "type": "keyword",
+                                "required": true,
+                                "label.cs": "Číslo projektu",
+                                "label.en": "Project double"
+                            },
+                            "projectName": {
+                                "type": "fulltext",
+                                "label.cs": "Název projektu",
+                                "label.en": "Project name"
+                            }
+                        }
+                    },
+                    "name": {
+                        "type": "fulltext+keyword",
+                        "label.en": "Name"
+                    },
+                    "objectIdentifiers": {
+                        "type": "array",
+                        "label.en": "Object identifiers",
+                        "items": {
+                            "type": "object",
+                            "ui": {
+                                "marshmallow": {
+                                    "generate": false,
+                                    "class": "nr_metadata.ui_schema.identifiers.NRObjectIdentifierUISchema"
+                                },
+                                "detail": "nr_object_pid"
+                            },
+                            "marshmallow": {
+                                "generate": false,
+                                "class": "nr_metadata.schema.identifiers.NRObjectIdentifierSchema"
+                            },
+                            "label.cs": "Identifikátor objektu",
+                            "label.en": "Object identifier",
+                            "properties": {
+                                "identifier": {
+                                    "type": "keyword",
+                                    "required": true,
+                                    "sample": {
+                                        "faker": "isbn13"
+                                    },
+                                    "label.cs": "Identifikátor objektu",
+                                    "label.en": "Object identifier"
+                                },
+                                "scheme": {
+                                    "type": "keyword",
+                                    "required": true,
+                                    "enum": [
+                                        "DOI",
+                                        "Handle",
+                                        "ISBN",
+                                        "ISSN",
+                                        "RIV",
+                                        "IGSN"
+                                    ],
+                                    "label.cs": "Typ identifikátoru",
+                                    "label.en": "Identifier type"
+                                }
+                            }
+                        }
+                    },
+                    "publisher": {
+                        "type": "keyword",
+                        "label.en": "Publisher"
+                    },
+                    "simulations": {
+                        "type": "array",
+                        "label.en": "Simulations",
+                        "items": {
+                            "type": "object",
+                            "marshmallow": {
+                                "generate": true,
+                                "class": "experiments.services.records.schema.SimulationsItemSchema"
+                            },
+                            "ui": {
+                                "marshmallow": {
+                                    "generate": true,
+                                    "class": "experiments.services.records.ui_schema.SimulationsItemUISchema"
+                                }
+                            },
+                            "properties": {
+                                "description": {
+                                    "type": "fulltext",
+                                    "label.en": "Description"
+                                },
+                                "detailedInformation": {
+                                    "type": "object",
+                                    "label.en": "Detailed information",
+                                    "marshmallow": {
+                                        "generate": true,
+                                        "class": "experiments.services.records.schema.DetailedInformationSchema"
+                                    },
+                                    "ui": {
+                                        "marshmallow": {
+                                            "generate": true,
+                                            "class": "experiments.services.records.ui_schema.DetailedInformationUISchema"
+                                        }
+                                    },
+                                    "properties": {
+                                        "barostat": {
+                                            "type": "object",
+                                            "label.en": "Barostat",
+                                            "marshmallow": {
+                                                "generate": true,
+                                                "class": "experiments.services.records.schema.BarostatSchema"
+                                            },
+                                            "ui": {
+                                                "marshmallow": {
+                                                    "generate": true,
+                                                    "class": "experiments.services.records.ui_schema.BarostatUISchema"
+                                                }
+                                            },
+                                            "properties": {
+                                                "compressibility": {
+                                                    "type": "array",
+                                                    "hint.en": "The compressibility (NOTE: this is now really in bar-1) \nFor water at 1 atm and 300 K the compressibility is 4.5e-5 bar-1\n",
+                                                    "label.en": "Compressibility",
+                                                    "items": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "float"
+                                                        }
+                                                    }
+                                                },
+                                                "pcoupl": {
+                                                    "type": "keyword",
+                                                    "enum": [
+                                                        "no",
+                                                        "Berendsen",
+                                                        "C-rescale",
+                                                        "Parrinello-Rahman",
+                                                        "MTTK"
+                                                    ],
+                                                    "label.en": "Pressure coupling"
+                                                },
+                                                "refcoordScaling": {
+                                                    "type": "keyword",
+                                                    "enum": [
+                                                        "no",
+                                                        "all",
+                                                        "com"
+                                                    ],
+                                                    "label.en": "Reference coordinate scaling"
+                                                },
+                                                "tauP": {
+                                                    "type": "float",
+                                                    "hint.en": "The time constant for pressure coupling (one value for all directions)",
+                                                    "label.en": "Pressure coupling time constant"
+                                                }
+                                            }
+                                        },
+                                        "commMode": {
+                                            "type": "keyword",
+                                            "enum": [
+                                                "Linear",
+                                                "Angular",
+                                                "Linear-acceleration-correction",
+                                                "None"
+                                            ],
+                                            "label.en": "commMode"
+                                        },
+                                        "constraintAlgorithm": {
+                                            "type": "keyword",
+                                            "enum": [
+                                                "Lincs",
+                                                "Shake"
+                                            ],
+                                            "hint.en": "Chooses which solver satisfies any non-SETTLE holonomic constraints",
+                                            "label.en": "constraintAlgorithm"
+                                        },
+                                        "electrostaticInteractions": {
+                                            "type": "object",
+                                            "label.en": "Electrostatic interactions",
+                                            "marshmallow": {
+                                                "generate": true,
+                                                "class": "experiments.services.records.schema.ElectrostaticInteractionsSchema"
+                                            },
+                                            "ui": {
+                                                "marshmallow": {
+                                                    "generate": true,
+                                                    "class": "experiments.services.records.ui_schema.ElectrostaticInteractionsUISchema"
+                                                }
+                                            },
+                                            "properties": {
+                                                "coulombModifier": {
+                                                    "type": "keyword",
+                                                    "enum": [
+                                                        "Potential-shift",
+                                                        "None"
+                                                    ],
+                                                    "label.en": "Coulomb modifier"
+                                                },
+                                                "epsilonR": {
+                                                    "type": "float",
+                                                    "hint.en": "The relative dielectric constant",
+                                                    "label.en": "Relative dielectric constant"
+                                                },
+                                                "epsilonRF": {
+                                                    "type": "float",
+                                                    "label.en": "Relative dielectric constant for reaction field???"
+                                                },
+                                                "rcoulomb": {
+                                                    "type": "float",
+                                                    "hint.en": "[nm] The distance for the Coulomb cut-off\n",
+                                                    "label.en": "Coulomb cut-off"
+                                                }
+                                            }
+                                        },
+                                        "fourierSpacing": {
+                                            "type": "float",
+                                            "hint.en": "[nm]",
+                                            "label.en": "fourierSpacing"
+                                        },
+                                        "lincsIter": {
+                                            "type": "integer",
+                                            "label.en": "lincsIter"
+                                        },
+                                        "lincsOrder": {
+                                            "type": "integer",
+                                            "label.en": "lincsOrder"
+                                        },
+                                        "neighbourList": {
+                                            "type": "object",
+                                            "label.en": "Neighbour list",
+                                            "marshmallow": {
+                                                "generate": true,
+                                                "class": "experiments.services.records.schema.NeighbourListSchema"
+                                            },
+                                            "ui": {
+                                                "marshmallow": {
+                                                    "generate": true,
+                                                    "class": "experiments.services.records.ui_schema.NeighbourListUISchema"
+                                                }
+                                            },
+                                            "properties": {
+                                                "cutoffScheme": {
+                                                    "type": "keyword",
+                                                    "enum": [
+                                                        "Verlet",
+                                                        "group"
+                                                    ],
+                                                    "label.en": "Cut-off scheme"
+                                                },
+                                                "nstlist": {
+                                                    "type": "float",
+                                                    "label.en": "nstlist??"
+                                                },
+                                                "pbc": {
+                                                    "type": "keyword",
+                                                    "enum": [
+                                                        "xyz",
+                                                        "no",
+                                                        "xy"
+                                                    ],
+                                                    "label.en": "Periodic boundary conditions"
+                                                },
+                                                "rlist": {
+                                                    "type": "float",
+                                                    "hint.en": "[nm] Cut-off distance for the short-range neighbor list\n",
+                                                    "label.en": "Neighbor list cut-off"
+                                                }
+                                            }
+                                        },
+                                        "nstcomm": {
+                                            "type": "float",
+                                            "hint.en": "[step], frequency for center of mass motion removal\n",
+                                            "label.en": "nstcomm"
+                                        },
+                                        "thermostat": {
+                                            "type": "object",
+                                            "label.en": "Thermostat",
+                                            "marshmallow": {
+                                                "generate": true,
+                                                "class": "experiments.services.records.schema.ThermostatSchema"
+                                            },
+                                            "ui": {
+                                                "marshmallow": {
+                                                    "generate": true,
+                                                    "class": "experiments.services.records.ui_schema.ThermostatUISchema"
+                                                }
+                                            },
+                                            "properties": {
+                                                "nsttcouple": {
+                                                    "type": "float",
+                                                    "hint.en": "The frequency for coupling the temperature.",
+                                                    "label.en": "nsttcouple???"
+                                                },
+                                                "tauT": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "float",
+                                                        "hint.en": "time constant for coupling (one for each group in\ntc-grps), -1 means no temperature coupling\n",
+                                                        "label.en": "Temperature coupling time constant"
+                                                    }
+                                                },
+                                                "tcGrps": {
+                                                    "type": "array",
+                                                    "label.en": "Temperature coupling groups",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "marshmallow": {
+                                                            "generate": true,
+                                                            "class": "experiments.services.records.schema.TcGrpsItemSchema"
+                                                        },
+                                                        "ui": {
+                                                            "marshmallow": {
+                                                                "generate": true,
+                                                                "class": "experiments.services.records.ui_schema.TcGrpsItemUISchema"
+                                                            }
+                                                        },
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "keyword",
+                                                                "label.en": "Group name"
+                                                            },
+                                                            "nr": {
+                                                                "type": "integer",
+                                                                "hint.en": "groups to couple to separate temperature baths",
+                                                                "label.en": "Group number"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "tcoupl": {
+                                                    "type": "keyword",
+                                                    "enum": [
+                                                        "no",
+                                                        "berendsen",
+                                                        "nose-hoover",
+                                                        "andersen",
+                                                        "andersen-massive",
+                                                        "v-rescale"
+                                                    ],
+                                                    "label.en": "Temperature coupling"
+                                                }
+                                            }
+                                        },
+                                        "vanDerWaalsInteractions": {
+                                            "type": "object",
+                                            "label.en": "Van der Waals interactions",
+                                            "marshmallow": {
+                                                "generate": true,
+                                                "class": "experiments.services.records.schema.VanDerWaalsInteractionsSchema"
+                                            },
+                                            "ui": {
+                                                "marshmallow": {
+                                                    "generate": true,
+                                                    "class": "experiments.services.records.ui_schema.VanDerWaalsInteractionsUISchema"
+                                                }
+                                            },
+                                            "properties": {
+                                                "dispcorr": {
+                                                    "type": "keyword",
+                                                    "enum": [
+                                                        "No",
+                                                        "EnerPres",
+                                                        "Ener"
+                                                    ],
+                                                    "label.en": "Dispersion correction"
+                                                },
+                                                "rvdw": {
+                                                    "type": "float",
+                                                    "hint.en": "distance for the LJ or Buckingham cut-off",
+                                                    "label.en": "Van der Waals cut-off"
+                                                },
+                                                "rvdwSwitch": {
+                                                    "type": "float",
+                                                    "hint.en": "where to start switching the LJ force and possibly the potential, \nonly relevant when force or potential switching is used\n",
+                                                    "label.en": "Van der Waals switching distance"
+                                                },
+                                                "vdwModifier": {
+                                                    "type": "keyword",
+                                                    "enum": [
+                                                        "None",
+                                                        "Potential-shift",
+                                                        "Force-switch",
+                                                        "Potential-switch"
+                                                    ],
+                                                    "label.en": "Van der Waals modifier"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "key": {
+                                    "type": "keyword",
+                                    "hint.en": "Path to the file. Might be just a file name, if it was uploaded separately,\nor zipname#/path/inside/zip.tpr\n",
+                                    "label.en": "File name"
+                                },
+                                "mainInformation": {
+                                    "type": "object",
+                                    "label.en": "Main information",
+                                    "marshmallow": {
+                                        "generate": true,
+                                        "class": "experiments.services.records.schema.MainInformationSchema"
+                                    },
+                                    "ui": {
+                                        "marshmallow": {
+                                            "generate": true,
+                                            "class": "experiments.services.records.ui_schema.MainInformationUISchema"
+                                        }
+                                    },
+                                    "properties": {
+                                        "AWHAdaptiveBiasing": {
+                                            "type": "keyword",
+                                            "enum": [
+                                                "yes",
+                                                "no"
+                                            ],
+                                            "label.en": "AWH adaptive biasing"
+                                        },
+                                        "boxSizeAndShape": {
+                                            "type": "float",
+                                            "label.en": "Box size and shape"
+                                        },
+                                        "forceField": {
+                                            "type": "keyword",
+                                            "label.en": "Force field"
+                                        },
+                                        "freeEnergyCalculation": {
+                                            "type": "keyword",
+                                            "enum": [
+                                                "yes",
+                                                "no"
+                                            ],
+                                            "label.en": "Free energy calculation"
+                                        },
+                                        "molecules": {
+                                            "type": "array",
+                                            "label.en": "Molecules",
+                                            "items": {
+                                                "type": "object",
+                                                "marshmallow": {
+                                                    "generate": true,
+                                                    "class": "experiments.services.records.schema.MoleculesItemSchema"
+                                                },
+                                                "ui": {
+                                                    "marshmallow": {
+                                                        "generate": true,
+                                                        "class": "experiments.services.records.ui_schema.MoleculesItemUISchema"
+                                                    }
+                                                },
+                                                "properties": {
+                                                    "count": {
+                                                        "type": "integer",
+                                                        "label.en": "count???"
+                                                    },
+                                                    "id": {
+                                                        "type": "keyword",
+                                                        "label.en": "Molecule ID"
+                                                    },
+                                                    "name": {
+                                                        "type": "keyword",
+                                                        "label.en": "Molecule name"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "referencePressure": {
+                                            "type": "array",
+                                            "label.en": "Reference pressure",
+                                            "items": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "float"
+                                                }
+                                            }
+                                        },
+                                        "referenceTemperature": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "float",
+                                                "label.en": "Reference temperature"
+                                            }
+                                        },
+                                        "simulationLength": {
+                                            "type": "float",
+                                            "label.en": "Simulation length"
+                                        },
+                                        "simulationTimeStep": {
+                                            "type": "float",
+                                            "label.en": "Simulation time step"
+                                        },
+                                        "simulationType": {
+                                            "type": "keyword",
+                                            "enum": [
+                                                "free energy simulation",
+                                                "molecular dynamics",
+                                                "energy minimization"
+                                            ],
+                                            "label.en": "Simulation type"
+                                        },
+                                        "statisticalEnsemble": {
+                                            "type": "keyword",
+                                            "enum": [
+                                                "NpT",
+                                                "NVT",
+                                                "NVE"
+                                            ],
+                                            "label.en": "Statistical ensemble"
+                                        },
+                                        "umbrellaSampling": {
+                                            "type": "keyword",
+                                            "enum": [
+                                                "yes",
+                                                "no"
+                                            ],
+                                            "label.en": "Umbrella sampling"
+                                        }
+                                    }
+                                },
+                                "relatedFiles": {
+                                    "type": "array",
+                                    "label.en": "Related files",
+                                    "items": {
+                                        "type": "object",
+                                        "marshmallow": {
+                                            "generate": true,
+                                            "class": "experiments.services.records.schema.RelatedFilesItemSchema"
+                                        },
+                                        "ui": {
+                                            "marshmallow": {
+                                                "generate": true,
+                                                "class": "experiments.services.records.ui_schema.RelatedFilesItemUISchema"
+                                            }
+                                        },
+                                        "properties": {
+                                            "key": {
+                                                "type": "keyword",
+                                                "label.en": "File name"
+                                            }
+                                        }
+                                    }
+                                },
+                                "simulationYear": {
+                                    "type": "integer",
+                                    "hint.en": "Year of creation of simulation",
+                                    "label.en": "Simulation year"
+                                },
+                                "software": {
+                                    "type": "object",
+                                    "label.en": "Software",
+                                    "marshmallow": {
+                                        "generate": true,
+                                        "class": "experiments.services.records.schema.SoftwareSchema"
+                                    },
+                                    "ui": {
+                                        "marshmallow": {
+                                            "generate": true,
+                                            "class": "experiments.services.records.ui_schema.SoftwareUISchema"
+                                        }
+                                    },
+                                    "properties": {
+                                        "extractorVersion": {
+                                            "type": "keyword",
+                                            "label.en": "Extractor version"
+                                        },
+                                        "gromacsVersion": {
+                                            "type": "keyword",
+                                            "label.en": "Gromacs version"
+                                        },
+                                        "tpxVersion": {
+                                            "type": "keyword",
+                                            "label.en": "TPX version"
+                                        }
+                                    }
+                                },
+                                "timestamps": {
+                                    "type": "object",
+                                    "marshmallow": {
+                                        "generate": true,
+                                        "class": "experiments.services.records.schema.TimestampsSchema"
+                                    },
+                                    "ui": {
+                                        "marshmallow": {
+                                            "generate": true,
+                                            "class": "experiments.services.records.ui_schema.TimestampsUISchema"
+                                        }
+                                    },
+                                    "properties": {
+                                        "metadataExtractionTimestamp": {
+                                            "type": "datetime",
+                                            "label.en": "Metadata extraction timestamp"
+                                        },
+                                        "tprFileTimestamp": {
+                                            "type": "datetime",
+                                            "label.en": "TPR file timestamp"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "updated": {
+                "type": "datetime",
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "read": false,
+                        "write": false
+                    }
+                },
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "sample": {
+                    "skip": true
+                }
+            }
+        }
+    }
+}

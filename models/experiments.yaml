@@ -1,0 +1,63 @@
+plugins:
+  builder:
+    disable:
+    - script_sample_data
+    - invenio_record_metadata_alembic_setup_cfg
+  packages:
+  - oarepo-model-builder-ui
+  - oarepo-model-builder-files
+  - oarepo-model-builder-vocabularies
+  - oarepo-model-builder-cf
+  - oarepo-model-builder-drafts-files
+  - oarepo-model-builder-drafts
+  - oarepo-model-builder-relations
+  - oarepo-model-builder-requests
+  - oarepo-model-builder-nr
+  - oarepo-model-builder-polymorphic
+profiles:
+- record
+- draft
+- files
+- draft_files
+record:
+  draft: {}
+  draft-files: {}
+  files:
+    resource:
+      base-classes: [ oarepo_ui.resources.file_resource.S3RedirectFileResource ]
+    service-config:
+      base-classes:
+        - shared.services.files.CompChemFilesServiceConfig
+    properties:
+      use:
+      - ./experiments-files.yaml
+    use:
+    - invenio_files
+
+  module:
+    qualified: experiments
+  permissions:
+    presets:
+    - authenticated
+  pid:
+    type: xprnts
+  properties:
+    metadata:
+      properties:
+        use:
+          - ./experiments-metadata.yaml
+  resource-config:
+    base-html-url: /experiments/
+  use:
+  - invenio
+  - ./experiments-requests.yaml
+  - ./experiments-custom_fields.yaml
+runtime-dependencies:
+  nr-vocabularies: 2.0.0
+  nr-metadata: 2.0.0
+settings:
+  i18n-languages:
+  - en
+  supported-langs:
+    en:
+      text: {}

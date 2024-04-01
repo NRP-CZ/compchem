@@ -1,0 +1,961 @@
+{
+    "module": "experiments.models",
+    "file": "experiments/models/ui.json",
+    "alias": "experiments",
+    "detail": "model",
+    "input": "model",
+    "help": ".help",
+    "label": ".label",
+    "hint": ".hint",
+    "children": {
+        "$schema": {
+            "detail": "keyword",
+            "input": "keyword",
+            "help": "$schema.help",
+            "label": "$schema.label",
+            "hint": "$schema.hint"
+        },
+        "created": {
+            "detail": "datetime",
+            "input": "datetime",
+            "help": "created.help",
+            "label": "created.label",
+            "hint": "created.hint"
+        },
+        "id": {
+            "detail": "keyword",
+            "input": "keyword",
+            "help": "id.help",
+            "label": "id.label",
+            "hint": "id.hint"
+        },
+        "metadata": {
+            "detail": "metadatum",
+            "input": "metadatum",
+            "help": "metadata.help",
+            "label": "metadata.label",
+            "hint": "metadata.hint",
+            "children": {
+                "creators": {
+                    "detail": "array",
+                    "input": "array",
+                    "help": "metadata/creators.help",
+                    "label": "metadata/creators.label",
+                    "hint": "metadata/creators.hint",
+                    "child": {
+                        "detail": "creator",
+                        "input": "polymorphic",
+                        "help": "metadata/creators.help",
+                        "label": "metadata/creators.label",
+                        "hint": "metadata/creators.hint",
+                        "children": {
+                            "affiliations": {
+                                "detail": "array",
+                                "input": "array",
+                                "help": "metadata/creators/affiliations.help",
+                                "label": "metadata/creators/affiliations.label",
+                                "hint": "metadata/creators/affiliations.hint",
+                                "child": {
+                                    "detail": "taxonomy_item",
+                                    "edit": "taxonomy_item",
+                                    "input": "taxonomy",
+                                    "help": "metadata/creators/affiliations.help",
+                                    "label": "metadata/creators/affiliations.label",
+                                    "hint": "metadata/creators/affiliations.hint",
+                                    "facet": "metadata_creators_affiliations",
+                                    "children": {
+                                        "id": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "help": "metadata/creators/affiliations/id.help",
+                                            "label": "metadata/creators/affiliations/id.label",
+                                            "hint": "metadata/creators/affiliations/id.hint"
+                                        },
+                                        "title": {
+                                            "detail": false,
+                                            "input": false,
+                                            "help": "metadata/creators/affiliations/title.help",
+                                            "label": "metadata/creators/affiliations/title.label",
+                                            "hint": "metadata/creators/affiliations/title.hint"
+                                        },
+                                        "ror": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "help": "metadata/creators/affiliations/ror.help",
+                                            "label": "metadata/creators/affiliations/ror.label",
+                                            "hint": "metadata/creators/affiliations/ror.hint"
+                                        },
+                                        "hierarchy": {
+                                            "detail": false,
+                                            "input": false,
+                                            "help": "metadata/creators/affiliations/hierarchy.help",
+                                            "label": "metadata/creators/affiliations/hierarchy.label",
+                                            "hint": "metadata/creators/affiliations/hierarchy.hint",
+                                            "children": {
+                                                "ancestors": {
+                                                    "detail": "array",
+                                                    "input": "array",
+                                                    "help": "metadata/creators/affiliations/hierarchy/ancestors.help",
+                                                    "label": "metadata/creators/affiliations/hierarchy/ancestors.label",
+                                                    "hint": "metadata/creators/affiliations/hierarchy/ancestors.hint",
+                                                    "child": {
+                                                        "detail": "keyword",
+                                                        "input": "keyword",
+                                                        "help": "metadata/creators/affiliations/hierarchy/ancestors.help",
+                                                        "label": "metadata/creators/affiliations/hierarchy/ancestors.label",
+                                                        "hint": "metadata/creators/affiliations/hierarchy/ancestors.hint"
+                                                    }
+                                                },
+                                                "ancestors_or_self": {
+                                                    "detail": "array",
+                                                    "input": "array",
+                                                    "help": "metadata/creators/affiliations/hierarchy/ancestors_or_self.help",
+                                                    "label": "metadata/creators/affiliations/hierarchy/ancestors_or_self.label",
+                                                    "hint": "metadata/creators/affiliations/hierarchy/ancestors_or_self.hint",
+                                                    "child": {
+                                                        "detail": "keyword",
+                                                        "input": "keyword",
+                                                        "help": "metadata/creators/affiliations/hierarchy/ancestors_or_self.help",
+                                                        "label": "metadata/creators/affiliations/hierarchy/ancestors_or_self.label",
+                                                        "hint": "metadata/creators/affiliations/hierarchy/ancestors_or_self.hint"
+                                                    }
+                                                },
+                                                "level": {
+                                                    "detail": "integer",
+                                                    "input": "integer",
+                                                    "help": "metadata/creators/affiliations/hierarchy/level.help",
+                                                    "label": "metadata/creators/affiliations/hierarchy/level.label",
+                                                    "hint": "metadata/creators/affiliations/hierarchy/level.hint"
+                                                },
+                                                "parent": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/creators/affiliations/hierarchy/parent.help",
+                                                    "label": "metadata/creators/affiliations/hierarchy/parent.label",
+                                                    "hint": "metadata/creators/affiliations/hierarchy/parent.hint"
+                                                },
+                                                "title": {
+                                                    "detail": "array",
+                                                    "input": "array",
+                                                    "help": "metadata/creators/affiliations/hierarchy/title.help",
+                                                    "label": "metadata/creators/affiliations/hierarchy/title.label",
+                                                    "hint": "metadata/creators/affiliations/hierarchy/title.hint",
+                                                    "child": {
+                                                        "detail": false,
+                                                        "input": false,
+                                                        "help": "metadata/creators/affiliations/hierarchy/title.help",
+                                                        "label": "metadata/creators/affiliations/hierarchy/title.label",
+                                                        "hint": "metadata/creators/affiliations/hierarchy/title.hint"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "@v": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "help": "metadata/creators/affiliations/@v.help",
+                                            "label": "metadata/creators/affiliations/@v.label",
+                                            "hint": "metadata/creators/affiliations/@v.hint"
+                                        }
+                                    }
+                                }
+                            },
+                            "authorityIdentifiers": {
+                                "detail": "array",
+                                "input": "array",
+                                "help": "metadata/creators/authorityIdentifiers.help",
+                                "label": "metadata/creators/authorityIdentifiers.label",
+                                "hint": "metadata/creators/authorityIdentifiers.hint",
+                                "child": {
+                                    "detail": "nr_organization_identifier",
+                                    "input": "authorityidentifier",
+                                    "help": "metadata/creators/authorityIdentifiers.help",
+                                    "label": "metadata/creators/authorityIdentifiers.label",
+                                    "hint": "metadata/creators/authorityIdentifiers.hint",
+                                    "children": {
+                                        "identifier": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "help": "metadata/creators/authorityIdentifiers/identifier.help",
+                                            "label": "metadata/creators/authorityIdentifiers/identifier.label",
+                                            "hint": "metadata/creators/authorityIdentifiers/identifier.hint",
+                                            "facet": "metadata_creators_authorityIdentifiers_identifier"
+                                        },
+                                        "scheme": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "help": "metadata/creators/authorityIdentifiers/scheme.help",
+                                            "label": "metadata/creators/authorityIdentifiers/scheme.label",
+                                            "hint": "metadata/creators/authorityIdentifiers/scheme.hint",
+                                            "enum": "metadata/creators/authorityIdentifiers/scheme.enum",
+                                            "facet": "metadata_creators_authorityIdentifiers_scheme"
+                                        }
+                                    }
+                                }
+                            },
+                            "familyName": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/creators/familyName.help",
+                                "label": "metadata/creators/familyName.label",
+                                "hint": "metadata/creators/familyName.hint",
+                                "facet": "metadata_creators_familyName"
+                            },
+                            "fullName": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/creators/fullName.help",
+                                "label": "metadata/creators/fullName.label",
+                                "hint": "metadata/creators/fullName.hint",
+                                "facet": "metadata_creators_fullName"
+                            },
+                            "givenName": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/creators/givenName.help",
+                                "label": "metadata/creators/givenName.label",
+                                "hint": "metadata/creators/givenName.hint",
+                                "facet": "metadata_creators_givenName"
+                            },
+                            "nameType": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/creators/nameType.help",
+                                "label": "metadata/creators/nameType.label",
+                                "hint": "metadata/creators/nameType.hint",
+                                "enum": "metadata/creators/nameType.enum",
+                                "facet": "metadata_creators_nameType"
+                            }
+                        }
+                    }
+                },
+                "description": {
+                    "detail": "fulltext",
+                    "input": "fulltext",
+                    "help": "metadata/description.help",
+                    "label": "metadata/description.label",
+                    "hint": "metadata/description.hint"
+                },
+                "fundingReference": {
+                    "detail": "funding_reference",
+                    "input": false,
+                    "help": "metadata/fundingReference.help",
+                    "label": "metadata/fundingReference.label",
+                    "hint": "metadata/fundingReference.hint",
+                    "children": {
+                        "funder": {
+                            "detail": "vocabulary_item",
+                            "edit": "vocabulary_item",
+                            "input": "vocabulary",
+                            "help": "metadata/fundingReference/funder.help",
+                            "label": "metadata/fundingReference/funder.label",
+                            "hint": "metadata/fundingReference/funder.hint",
+                            "facet": "metadata_fundingReference_funder",
+                            "children": {
+                                "id": {
+                                    "detail": "keyword",
+                                    "input": "keyword",
+                                    "help": "metadata/fundingReference/funder/id.help",
+                                    "label": "metadata/fundingReference/funder/id.label",
+                                    "hint": "metadata/fundingReference/funder/id.hint"
+                                },
+                                "title": {
+                                    "detail": false,
+                                    "input": false,
+                                    "help": "metadata/fundingReference/funder/title.help",
+                                    "label": "metadata/fundingReference/funder/title.label",
+                                    "hint": "metadata/fundingReference/funder/title.hint"
+                                },
+                                "@v": {
+                                    "detail": "keyword",
+                                    "input": "keyword",
+                                    "help": "metadata/fundingReference/funder/@v.help",
+                                    "label": "metadata/fundingReference/funder/@v.label",
+                                    "hint": "metadata/fundingReference/funder/@v.hint"
+                                }
+                            }
+                        },
+                        "fundingProgram": {
+                            "detail": "fulltext",
+                            "input": "fulltext",
+                            "help": "metadata/fundingReference/fundingProgram.help",
+                            "label": "metadata/fundingReference/fundingProgram.label",
+                            "hint": "metadata/fundingReference/fundingProgram.hint"
+                        },
+                        "projectID": {
+                            "detail": "keyword",
+                            "input": "keyword",
+                            "help": "metadata/fundingReference/projectID.help",
+                            "label": "metadata/fundingReference/projectID.label",
+                            "hint": "metadata/fundingReference/projectID.hint",
+                            "facet": "metadata_fundingReference_projectID"
+                        },
+                        "projectName": {
+                            "detail": "fulltext",
+                            "input": "fulltext",
+                            "help": "metadata/fundingReference/projectName.help",
+                            "label": "metadata/fundingReference/projectName.label",
+                            "hint": "metadata/fundingReference/projectName.hint"
+                        }
+                    }
+                },
+                "name": {
+                    "detail": "fulltext+keyword",
+                    "input": "fulltext+keyword",
+                    "help": "metadata/name.help",
+                    "label": "metadata/name.label",
+                    "hint": "metadata/name.hint"
+                },
+                "objectIdentifiers": {
+                    "detail": "array",
+                    "input": "array",
+                    "help": "metadata/objectIdentifiers.help",
+                    "label": "metadata/objectIdentifiers.label",
+                    "hint": "metadata/objectIdentifiers.hint",
+                    "child": {
+                        "detail": "nr_object_pid",
+                        "input": "objectidentifier",
+                        "help": "metadata/objectIdentifiers.help",
+                        "label": "metadata/objectIdentifiers.label",
+                        "hint": "metadata/objectIdentifiers.hint",
+                        "children": {
+                            "identifier": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/objectIdentifiers/identifier.help",
+                                "label": "metadata/objectIdentifiers/identifier.label",
+                                "hint": "metadata/objectIdentifiers/identifier.hint",
+                                "facet": "metadata_objectIdentifiers_identifier"
+                            },
+                            "scheme": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/objectIdentifiers/scheme.help",
+                                "label": "metadata/objectIdentifiers/scheme.label",
+                                "hint": "metadata/objectIdentifiers/scheme.hint",
+                                "enum": "metadata/objectIdentifiers/scheme.enum",
+                                "facet": "metadata_objectIdentifiers_scheme"
+                            }
+                        }
+                    }
+                },
+                "publisher": {
+                    "detail": "keyword",
+                    "input": "keyword",
+                    "help": "metadata/publisher.help",
+                    "label": "metadata/publisher.label",
+                    "hint": "metadata/publisher.hint",
+                    "facet": "metadata_publisher"
+                },
+                "simulations": {
+                    "detail": "array",
+                    "input": "array",
+                    "help": "metadata/simulations.help",
+                    "label": "metadata/simulations.label",
+                    "hint": "metadata/simulations.hint",
+                    "child": {
+                        "detail": "simulation",
+                        "input": "simulation",
+                        "help": "metadata/simulations.help",
+                        "label": "metadata/simulations.label",
+                        "hint": "metadata/simulations.hint",
+                        "children": {
+                            "description": {
+                                "detail": "fulltext",
+                                "input": "fulltext",
+                                "help": "metadata/simulations/description.help",
+                                "label": "metadata/simulations/description.label",
+                                "hint": "metadata/simulations/description.hint"
+                            },
+                            "detailedInformation": {
+                                "detail": "detailedinformation",
+                                "input": "detailedinformation",
+                                "help": "metadata/simulations/detailedInformation.help",
+                                "label": "metadata/simulations/detailedInformation.label",
+                                "hint": "metadata/simulations/detailedInformation.hint",
+                                "children": {
+                                    "barostat": {
+                                        "detail": false,
+                                        "input": false,
+                                        "help": "metadata/simulations/detailedInformation/barostat.help",
+                                        "label": "metadata/simulations/detailedInformation/barostat.label",
+                                        "hint": "metadata/simulations/detailedInformation/barostat.hint",
+                                        "children": {
+                                            "compressibility": {
+                                                "detail": "array",
+                                                "input": "array",
+                                                "help": "metadata/simulations/detailedInformation/barostat/compressibility.help",
+                                                "label": "metadata/simulations/detailedInformation/barostat/compressibility.label",
+                                                "hint": "metadata/simulations/detailedInformation/barostat/compressibility.hint",
+                                                "child": {
+                                                    "detail": "array",
+                                                    "input": "array",
+                                                    "help": "metadata/simulations/detailedInformation/barostat/compressibility.help",
+                                                    "label": "metadata/simulations/detailedInformation/barostat/compressibility.label",
+                                                    "hint": "metadata/simulations/detailedInformation/barostat/compressibility.hint",
+                                                    "child": {
+                                                        "detail": "float",
+                                                        "input": "float",
+                                                        "help": "metadata/simulations/detailedInformation/barostat/compressibility.help",
+                                                        "label": "metadata/simulations/detailedInformation/barostat/compressibility.label",
+                                                        "hint": "metadata/simulations/detailedInformation/barostat/compressibility.hint",
+                                                        "facet": "metadata_simulations_detailedInformation_barostat_compressibility"
+                                                    }
+                                                }
+                                            },
+                                            "pcoupl": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/simulations/detailedInformation/barostat/pcoupl.help",
+                                                "label": "metadata/simulations/detailedInformation/barostat/pcoupl.label",
+                                                "hint": "metadata/simulations/detailedInformation/barostat/pcoupl.hint",
+                                                "enum": "metadata/simulations/detailedInformation/barostat/pcoupl.enum",
+                                                "facet": "metadata_simulations_detailedInformation_barostat_pcoupl"
+                                            },
+                                            "refcoordScaling": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/simulations/detailedInformation/barostat/refcoordScaling.help",
+                                                "label": "metadata/simulations/detailedInformation/barostat/refcoordScaling.label",
+                                                "hint": "metadata/simulations/detailedInformation/barostat/refcoordScaling.hint",
+                                                "enum": "metadata/simulations/detailedInformation/barostat/refcoordScaling.enum",
+                                                "facet": "metadata_simulations_detailedInformation_barostat_refcoordScaling"
+                                            },
+                                            "tauP": {
+                                                "detail": "float",
+                                                "input": "float",
+                                                "help": "metadata/simulations/detailedInformation/barostat/tauP.help",
+                                                "label": "metadata/simulations/detailedInformation/barostat/tauP.label",
+                                                "hint": "metadata/simulations/detailedInformation/barostat/tauP.hint",
+                                                "facet": "metadata_simulations_detailedInformation_barostat_tauP"
+                                            }
+                                        }
+                                    },
+                                    "commMode": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/simulations/detailedInformation/commMode.help",
+                                        "label": "metadata/simulations/detailedInformation/commMode.label",
+                                        "hint": "metadata/simulations/detailedInformation/commMode.hint",
+                                        "enum": "metadata/simulations/detailedInformation/commMode.enum",
+                                        "facet": "metadata_simulations_detailedInformation_commMode"
+                                    },
+                                    "constraintAlgorithm": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/simulations/detailedInformation/constraintAlgorithm.help",
+                                        "label": "metadata/simulations/detailedInformation/constraintAlgorithm.label",
+                                        "hint": "metadata/simulations/detailedInformation/constraintAlgorithm.hint",
+                                        "enum": "metadata/simulations/detailedInformation/constraintAlgorithm.enum",
+                                        "facet": "metadata_simulations_detailedInformation_constraintAlgorithm"
+                                    },
+                                    "electrostaticInteractions": {
+                                        "detail": "electrostaticinteraction",
+                                        "input": "electrostaticinteraction",
+                                        "help": "metadata/simulations/detailedInformation/electrostaticInteractions.help",
+                                        "label": "metadata/simulations/detailedInformation/electrostaticInteractions.label",
+                                        "hint": "metadata/simulations/detailedInformation/electrostaticInteractions.hint",
+                                        "children": {
+                                            "coulombModifier": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/simulations/detailedInformation/electrostaticInteractions/coulombModifier.help",
+                                                "label": "metadata/simulations/detailedInformation/electrostaticInteractions/coulombModifier.label",
+                                                "hint": "metadata/simulations/detailedInformation/electrostaticInteractions/coulombModifier.hint",
+                                                "enum": "metadata/simulations/detailedInformation/electrostaticInteractions/coulombModifier.enum",
+                                                "facet": "metadata_simulations_detailedInformation_electrostaticInteractions_coulombModifier"
+                                            },
+                                            "epsilonR": {
+                                                "detail": "float",
+                                                "input": "float",
+                                                "help": "metadata/simulations/detailedInformation/electrostaticInteractions/epsilonR.help",
+                                                "label": "metadata/simulations/detailedInformation/electrostaticInteractions/epsilonR.label",
+                                                "hint": "metadata/simulations/detailedInformation/electrostaticInteractions/epsilonR.hint",
+                                                "facet": "metadata_simulations_detailedInformation_electrostaticInteractions_epsilonR"
+                                            },
+                                            "epsilonRF": {
+                                                "detail": "float",
+                                                "input": "float",
+                                                "help": "metadata/simulations/detailedInformation/electrostaticInteractions/epsilonRF.help",
+                                                "label": "metadata/simulations/detailedInformation/electrostaticInteractions/epsilonRF.label",
+                                                "hint": "metadata/simulations/detailedInformation/electrostaticInteractions/epsilonRF.hint",
+                                                "facet": "metadata_simulations_detailedInformation_electrostaticInteractions_epsilonRF"
+                                            },
+                                            "rcoulomb": {
+                                                "detail": "float",
+                                                "input": "float",
+                                                "help": "metadata/simulations/detailedInformation/electrostaticInteractions/rcoulomb.help",
+                                                "label": "metadata/simulations/detailedInformation/electrostaticInteractions/rcoulomb.label",
+                                                "hint": "metadata/simulations/detailedInformation/electrostaticInteractions/rcoulomb.hint",
+                                                "facet": "metadata_simulations_detailedInformation_electrostaticInteractions_rcoulomb"
+                                            }
+                                        }
+                                    },
+                                    "fourierSpacing": {
+                                        "detail": "float",
+                                        "input": "float",
+                                        "help": "metadata/simulations/detailedInformation/fourierSpacing.help",
+                                        "label": "metadata/simulations/detailedInformation/fourierSpacing.label",
+                                        "hint": "metadata/simulations/detailedInformation/fourierSpacing.hint",
+                                        "facet": "metadata_simulations_detailedInformation_fourierSpacing"
+                                    },
+                                    "lincsIter": {
+                                        "detail": "integer",
+                                        "input": "integer",
+                                        "help": "metadata/simulations/detailedInformation/lincsIter.help",
+                                        "label": "metadata/simulations/detailedInformation/lincsIter.label",
+                                        "hint": "metadata/simulations/detailedInformation/lincsIter.hint",
+                                        "facet": "metadata_simulations_detailedInformation_lincsIter"
+                                    },
+                                    "lincsOrder": {
+                                        "detail": "integer",
+                                        "input": "integer",
+                                        "help": "metadata/simulations/detailedInformation/lincsOrder.help",
+                                        "label": "metadata/simulations/detailedInformation/lincsOrder.label",
+                                        "hint": "metadata/simulations/detailedInformation/lincsOrder.hint",
+                                        "facet": "metadata_simulations_detailedInformation_lincsOrder"
+                                    },
+                                    "neighbourList": {
+                                        "detail": false,
+                                        "input": false,
+                                        "help": "metadata/simulations/detailedInformation/neighbourList.help",
+                                        "label": "metadata/simulations/detailedInformation/neighbourList.label",
+                                        "hint": "metadata/simulations/detailedInformation/neighbourList.hint",
+                                        "children": {
+                                            "cutoffScheme": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/simulations/detailedInformation/neighbourList/cutoffScheme.help",
+                                                "label": "metadata/simulations/detailedInformation/neighbourList/cutoffScheme.label",
+                                                "hint": "metadata/simulations/detailedInformation/neighbourList/cutoffScheme.hint",
+                                                "enum": "metadata/simulations/detailedInformation/neighbourList/cutoffScheme.enum",
+                                                "facet": "metadata_simulations_detailedInformation_neighbourList_cutoffScheme"
+                                            },
+                                            "nstlist": {
+                                                "detail": "float",
+                                                "input": "float",
+                                                "help": "metadata/simulations/detailedInformation/neighbourList/nstlist.help",
+                                                "label": "metadata/simulations/detailedInformation/neighbourList/nstlist.label",
+                                                "hint": "metadata/simulations/detailedInformation/neighbourList/nstlist.hint",
+                                                "facet": "metadata_simulations_detailedInformation_neighbourList_nstlist"
+                                            },
+                                            "pbc": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/simulations/detailedInformation/neighbourList/pbc.help",
+                                                "label": "metadata/simulations/detailedInformation/neighbourList/pbc.label",
+                                                "hint": "metadata/simulations/detailedInformation/neighbourList/pbc.hint",
+                                                "enum": "metadata/simulations/detailedInformation/neighbourList/pbc.enum",
+                                                "facet": "metadata_simulations_detailedInformation_neighbourList_pbc"
+                                            },
+                                            "rlist": {
+                                                "detail": "float",
+                                                "input": "float",
+                                                "help": "metadata/simulations/detailedInformation/neighbourList/rlist.help",
+                                                "label": "metadata/simulations/detailedInformation/neighbourList/rlist.label",
+                                                "hint": "metadata/simulations/detailedInformation/neighbourList/rlist.hint",
+                                                "facet": "metadata_simulations_detailedInformation_neighbourList_rlist"
+                                            }
+                                        }
+                                    },
+                                    "nstcomm": {
+                                        "detail": "float",
+                                        "input": "float",
+                                        "help": "metadata/simulations/detailedInformation/nstcomm.help",
+                                        "label": "metadata/simulations/detailedInformation/nstcomm.label",
+                                        "hint": "metadata/simulations/detailedInformation/nstcomm.hint",
+                                        "facet": "metadata_simulations_detailedInformation_nstcomm"
+                                    },
+                                    "thermostat": {
+                                        "detail": false,
+                                        "input": false,
+                                        "help": "metadata/simulations/detailedInformation/thermostat.help",
+                                        "label": "metadata/simulations/detailedInformation/thermostat.label",
+                                        "hint": "metadata/simulations/detailedInformation/thermostat.hint",
+                                        "children": {
+                                            "nsttcouple": {
+                                                "detail": "float",
+                                                "input": "float",
+                                                "help": "metadata/simulations/detailedInformation/thermostat/nsttcouple.help",
+                                                "label": "metadata/simulations/detailedInformation/thermostat/nsttcouple.label",
+                                                "hint": "metadata/simulations/detailedInformation/thermostat/nsttcouple.hint",
+                                                "facet": "metadata_simulations_detailedInformation_thermostat_nsttcouple"
+                                            },
+                                            "tauT": {
+                                                "detail": "array",
+                                                "input": "array",
+                                                "help": "metadata/simulations/detailedInformation/thermostat/tauT.help",
+                                                "label": "metadata/simulations/detailedInformation/thermostat/tauT.label",
+                                                "hint": "metadata/simulations/detailedInformation/thermostat/tauT.hint",
+                                                "child": {
+                                                    "detail": "float",
+                                                    "input": "float",
+                                                    "help": "metadata/simulations/detailedInformation/thermostat/tauT.help",
+                                                    "label": "metadata/simulations/detailedInformation/thermostat/tauT.label",
+                                                    "hint": "metadata/simulations/detailedInformation/thermostat/tauT.hint",
+                                                    "facet": "metadata_simulations_detailedInformation_thermostat_tauT"
+                                                }
+                                            },
+                                            "tcGrps": {
+                                                "detail": "array",
+                                                "input": "array",
+                                                "help": "metadata/simulations/detailedInformation/thermostat/tcGrps.help",
+                                                "label": "metadata/simulations/detailedInformation/thermostat/tcGrps.label",
+                                                "hint": "metadata/simulations/detailedInformation/thermostat/tcGrps.hint",
+                                                "child": {
+                                                    "detail": "tcgrp",
+                                                    "input": "tcgrp",
+                                                    "help": "metadata/simulations/detailedInformation/thermostat/tcGrps.help",
+                                                    "label": "metadata/simulations/detailedInformation/thermostat/tcGrps.label",
+                                                    "hint": "metadata/simulations/detailedInformation/thermostat/tcGrps.hint",
+                                                    "children": {
+                                                        "name": {
+                                                            "detail": "keyword",
+                                                            "input": "keyword",
+                                                            "help": "metadata/simulations/detailedInformation/thermostat/tcGrps/name.help",
+                                                            "label": "metadata/simulations/detailedInformation/thermostat/tcGrps/name.label",
+                                                            "hint": "metadata/simulations/detailedInformation/thermostat/tcGrps/name.hint",
+                                                            "facet": "metadata_simulations_detailedInformation_thermostat_tcGrps_name"
+                                                        },
+                                                        "nr": {
+                                                            "detail": "integer",
+                                                            "input": "integer",
+                                                            "help": "metadata/simulations/detailedInformation/thermostat/tcGrps/nr.help",
+                                                            "label": "metadata/simulations/detailedInformation/thermostat/tcGrps/nr.label",
+                                                            "hint": "metadata/simulations/detailedInformation/thermostat/tcGrps/nr.hint",
+                                                            "facet": "metadata_simulations_detailedInformation_thermostat_tcGrps_nr"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "tcoupl": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/simulations/detailedInformation/thermostat/tcoupl.help",
+                                                "label": "metadata/simulations/detailedInformation/thermostat/tcoupl.label",
+                                                "hint": "metadata/simulations/detailedInformation/thermostat/tcoupl.hint",
+                                                "enum": "metadata/simulations/detailedInformation/thermostat/tcoupl.enum",
+                                                "facet": "metadata_simulations_detailedInformation_thermostat_tcoupl"
+                                            }
+                                        }
+                                    },
+                                    "vanDerWaalsInteractions": {
+                                        "detail": "vanderwaalsinteraction",
+                                        "input": "vanderwaalsinteraction",
+                                        "help": "metadata/simulations/detailedInformation/vanDerWaalsInteractions.help",
+                                        "label": "metadata/simulations/detailedInformation/vanDerWaalsInteractions.label",
+                                        "hint": "metadata/simulations/detailedInformation/vanDerWaalsInteractions.hint",
+                                        "children": {
+                                            "dispcorr": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/simulations/detailedInformation/vanDerWaalsInteractions/dispcorr.help",
+                                                "label": "metadata/simulations/detailedInformation/vanDerWaalsInteractions/dispcorr.label",
+                                                "hint": "metadata/simulations/detailedInformation/vanDerWaalsInteractions/dispcorr.hint",
+                                                "enum": "metadata/simulations/detailedInformation/vanDerWaalsInteractions/dispcorr.enum",
+                                                "facet": "metadata_simulations_detailedInformation_vanDerWaalsInteractions_dispcorr"
+                                            },
+                                            "rvdw": {
+                                                "detail": "float",
+                                                "input": "float",
+                                                "help": "metadata/simulations/detailedInformation/vanDerWaalsInteractions/rvdw.help",
+                                                "label": "metadata/simulations/detailedInformation/vanDerWaalsInteractions/rvdw.label",
+                                                "hint": "metadata/simulations/detailedInformation/vanDerWaalsInteractions/rvdw.hint",
+                                                "facet": "metadata_simulations_detailedInformation_vanDerWaalsInteractions_rvdw"
+                                            },
+                                            "rvdwSwitch": {
+                                                "detail": "float",
+                                                "input": "float",
+                                                "help": "metadata/simulations/detailedInformation/vanDerWaalsInteractions/rvdwSwitch.help",
+                                                "label": "metadata/simulations/detailedInformation/vanDerWaalsInteractions/rvdwSwitch.label",
+                                                "hint": "metadata/simulations/detailedInformation/vanDerWaalsInteractions/rvdwSwitch.hint",
+                                                "facet": "metadata_simulations_detailedInformation_vanDerWaalsInteractions_rvdwSwitch"
+                                            },
+                                            "vdwModifier": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/simulations/detailedInformation/vanDerWaalsInteractions/vdwModifier.help",
+                                                "label": "metadata/simulations/detailedInformation/vanDerWaalsInteractions/vdwModifier.label",
+                                                "hint": "metadata/simulations/detailedInformation/vanDerWaalsInteractions/vdwModifier.hint",
+                                                "enum": "metadata/simulations/detailedInformation/vanDerWaalsInteractions/vdwModifier.enum",
+                                                "facet": "metadata_simulations_detailedInformation_vanDerWaalsInteractions_vdwModifier"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "key": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/simulations/key.help",
+                                "label": "metadata/simulations/key.label",
+                                "hint": "metadata/simulations/key.hint",
+                                "facet": "metadata_simulations_key"
+                            },
+                            "mainInformation": {
+                                "detail": "maininformation",
+                                "input": "maininformation",
+                                "help": "metadata/simulations/mainInformation.help",
+                                "label": "metadata/simulations/mainInformation.label",
+                                "hint": "metadata/simulations/mainInformation.hint",
+                                "children": {
+                                    "AWHAdaptiveBiasing": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/simulations/mainInformation/AWHAdaptiveBiasing.help",
+                                        "label": "metadata/simulations/mainInformation/AWHAdaptiveBiasing.label",
+                                        "hint": "metadata/simulations/mainInformation/AWHAdaptiveBiasing.hint",
+                                        "enum": "metadata/simulations/mainInformation/AWHAdaptiveBiasing.enum",
+                                        "facet": "metadata_simulations_mainInformation_AWHAdaptiveBiasing"
+                                    },
+                                    "boxSizeAndShape": {
+                                        "detail": "float",
+                                        "input": "float",
+                                        "help": "metadata/simulations/mainInformation/boxSizeAndShape.help",
+                                        "label": "metadata/simulations/mainInformation/boxSizeAndShape.label",
+                                        "hint": "metadata/simulations/mainInformation/boxSizeAndShape.hint",
+                                        "facet": "metadata_simulations_mainInformation_boxSizeAndShape"
+                                    },
+                                    "forceField": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/simulations/mainInformation/forceField.help",
+                                        "label": "metadata/simulations/mainInformation/forceField.label",
+                                        "hint": "metadata/simulations/mainInformation/forceField.hint",
+                                        "facet": "metadata_simulations_mainInformation_forceField"
+                                    },
+                                    "freeEnergyCalculation": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/simulations/mainInformation/freeEnergyCalculation.help",
+                                        "label": "metadata/simulations/mainInformation/freeEnergyCalculation.label",
+                                        "hint": "metadata/simulations/mainInformation/freeEnergyCalculation.hint",
+                                        "enum": "metadata/simulations/mainInformation/freeEnergyCalculation.enum",
+                                        "facet": "metadata_simulations_mainInformation_freeEnergyCalculation"
+                                    },
+                                    "molecules": {
+                                        "detail": "array",
+                                        "input": "array",
+                                        "help": "metadata/simulations/mainInformation/molecules.help",
+                                        "label": "metadata/simulations/mainInformation/molecules.label",
+                                        "hint": "metadata/simulations/mainInformation/molecules.hint",
+                                        "child": {
+                                            "detail": "molecule",
+                                            "input": "molecule",
+                                            "help": "metadata/simulations/mainInformation/molecules.help",
+                                            "label": "metadata/simulations/mainInformation/molecules.label",
+                                            "hint": "metadata/simulations/mainInformation/molecules.hint",
+                                            "children": {
+                                                "count": {
+                                                    "detail": "integer",
+                                                    "input": "integer",
+                                                    "help": "metadata/simulations/mainInformation/molecules/count.help",
+                                                    "label": "metadata/simulations/mainInformation/molecules/count.label",
+                                                    "hint": "metadata/simulations/mainInformation/molecules/count.hint",
+                                                    "facet": "metadata_simulations_mainInformation_molecules_count"
+                                                },
+                                                "id": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/simulations/mainInformation/molecules/id.help",
+                                                    "label": "metadata/simulations/mainInformation/molecules/id.label",
+                                                    "hint": "metadata/simulations/mainInformation/molecules/id.hint",
+                                                    "facet": "metadata_simulations_mainInformation_molecules_id"
+                                                },
+                                                "name": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/simulations/mainInformation/molecules/name.help",
+                                                    "label": "metadata/simulations/mainInformation/molecules/name.label",
+                                                    "hint": "metadata/simulations/mainInformation/molecules/name.hint",
+                                                    "facet": "metadata_simulations_mainInformation_molecules_name"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "referencePressure": {
+                                        "detail": "array",
+                                        "input": "array",
+                                        "help": "metadata/simulations/mainInformation/referencePressure.help",
+                                        "label": "metadata/simulations/mainInformation/referencePressure.label",
+                                        "hint": "metadata/simulations/mainInformation/referencePressure.hint",
+                                        "child": {
+                                            "detail": "array",
+                                            "input": "array",
+                                            "help": "metadata/simulations/mainInformation/referencePressure.help",
+                                            "label": "metadata/simulations/mainInformation/referencePressure.label",
+                                            "hint": "metadata/simulations/mainInformation/referencePressure.hint",
+                                            "child": {
+                                                "detail": "float",
+                                                "input": "float",
+                                                "help": "metadata/simulations/mainInformation/referencePressure.help",
+                                                "label": "metadata/simulations/mainInformation/referencePressure.label",
+                                                "hint": "metadata/simulations/mainInformation/referencePressure.hint",
+                                                "facet": "metadata_simulations_mainInformation_referencePressure"
+                                            }
+                                        }
+                                    },
+                                    "referenceTemperature": {
+                                        "detail": "array",
+                                        "input": "array",
+                                        "help": "metadata/simulations/mainInformation/referenceTemperature.help",
+                                        "label": "metadata/simulations/mainInformation/referenceTemperature.label",
+                                        "hint": "metadata/simulations/mainInformation/referenceTemperature.hint",
+                                        "child": {
+                                            "detail": "float",
+                                            "input": "float",
+                                            "help": "metadata/simulations/mainInformation/referenceTemperature.help",
+                                            "label": "metadata/simulations/mainInformation/referenceTemperature.label",
+                                            "hint": "metadata/simulations/mainInformation/referenceTemperature.hint",
+                                            "facet": "metadata_simulations_mainInformation_referenceTemperature"
+                                        }
+                                    },
+                                    "simulationLength": {
+                                        "detail": "float",
+                                        "input": "float",
+                                        "help": "metadata/simulations/mainInformation/simulationLength.help",
+                                        "label": "metadata/simulations/mainInformation/simulationLength.label",
+                                        "hint": "metadata/simulations/mainInformation/simulationLength.hint",
+                                        "facet": "metadata_simulations_mainInformation_simulationLength"
+                                    },
+                                    "simulationTimeStep": {
+                                        "detail": "float",
+                                        "input": "float",
+                                        "help": "metadata/simulations/mainInformation/simulationTimeStep.help",
+                                        "label": "metadata/simulations/mainInformation/simulationTimeStep.label",
+                                        "hint": "metadata/simulations/mainInformation/simulationTimeStep.hint",
+                                        "facet": "metadata_simulations_mainInformation_simulationTimeStep"
+                                    },
+                                    "simulationType": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/simulations/mainInformation/simulationType.help",
+                                        "label": "metadata/simulations/mainInformation/simulationType.label",
+                                        "hint": "metadata/simulations/mainInformation/simulationType.hint",
+                                        "enum": "metadata/simulations/mainInformation/simulationType.enum",
+                                        "facet": "metadata_simulations_mainInformation_simulationType"
+                                    },
+                                    "statisticalEnsemble": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/simulations/mainInformation/statisticalEnsemble.help",
+                                        "label": "metadata/simulations/mainInformation/statisticalEnsemble.label",
+                                        "hint": "metadata/simulations/mainInformation/statisticalEnsemble.hint",
+                                        "enum": "metadata/simulations/mainInformation/statisticalEnsemble.enum",
+                                        "facet": "metadata_simulations_mainInformation_statisticalEnsemble"
+                                    },
+                                    "umbrellaSampling": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/simulations/mainInformation/umbrellaSampling.help",
+                                        "label": "metadata/simulations/mainInformation/umbrellaSampling.label",
+                                        "hint": "metadata/simulations/mainInformation/umbrellaSampling.hint",
+                                        "enum": "metadata/simulations/mainInformation/umbrellaSampling.enum",
+                                        "facet": "metadata_simulations_mainInformation_umbrellaSampling"
+                                    }
+                                }
+                            },
+                            "relatedFiles": {
+                                "detail": "array",
+                                "input": "array",
+                                "help": "metadata/simulations/relatedFiles.help",
+                                "label": "metadata/simulations/relatedFiles.label",
+                                "hint": "metadata/simulations/relatedFiles.hint",
+                                "child": {
+                                    "detail": "relatedfile",
+                                    "input": "relatedfile",
+                                    "help": "metadata/simulations/relatedFiles.help",
+                                    "label": "metadata/simulations/relatedFiles.label",
+                                    "hint": "metadata/simulations/relatedFiles.hint",
+                                    "children": {
+                                        "key": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "help": "metadata/simulations/relatedFiles/key.help",
+                                            "label": "metadata/simulations/relatedFiles/key.label",
+                                            "hint": "metadata/simulations/relatedFiles/key.hint",
+                                            "facet": "metadata_simulations_relatedFiles_key"
+                                        }
+                                    }
+                                }
+                            },
+                            "simulationYear": {
+                                "detail": "integer",
+                                "input": "integer",
+                                "help": "metadata/simulations/simulationYear.help",
+                                "label": "metadata/simulations/simulationYear.label",
+                                "hint": "metadata/simulations/simulationYear.hint",
+                                "facet": "metadata_simulations_simulationYear"
+                            },
+                            "software": {
+                                "detail": false,
+                                "input": false,
+                                "help": "metadata/simulations/software.help",
+                                "label": "metadata/simulations/software.label",
+                                "hint": "metadata/simulations/software.hint",
+                                "children": {
+                                    "extractorVersion": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/simulations/software/extractorVersion.help",
+                                        "label": "metadata/simulations/software/extractorVersion.label",
+                                        "hint": "metadata/simulations/software/extractorVersion.hint",
+                                        "facet": "metadata_simulations_software_extractorVersion"
+                                    },
+                                    "gromacsVersion": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/simulations/software/gromacsVersion.help",
+                                        "label": "metadata/simulations/software/gromacsVersion.label",
+                                        "hint": "metadata/simulations/software/gromacsVersion.hint",
+                                        "facet": "metadata_simulations_software_gromacsVersion"
+                                    },
+                                    "tpxVersion": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/simulations/software/tpxVersion.help",
+                                        "label": "metadata/simulations/software/tpxVersion.label",
+                                        "hint": "metadata/simulations/software/tpxVersion.hint",
+                                        "facet": "metadata_simulations_software_tpxVersion"
+                                    }
+                                }
+                            },
+                            "timestamps": {
+                                "detail": "timestamp",
+                                "input": "timestamp",
+                                "help": "metadata/simulations/timestamps.help",
+                                "label": "metadata/simulations/timestamps.label",
+                                "hint": "metadata/simulations/timestamps.hint",
+                                "children": {
+                                    "metadataExtractionTimestamp": {
+                                        "detail": "datetime",
+                                        "input": "datetime",
+                                        "help": "metadata/simulations/timestamps/metadataExtractionTimestamp.help",
+                                        "label": "metadata/simulations/timestamps/metadataExtractionTimestamp.label",
+                                        "hint": "metadata/simulations/timestamps/metadataExtractionTimestamp.hint",
+                                        "facet": "metadata_simulations_timestamps_metadataExtractionTimestamp"
+                                    },
+                                    "tprFileTimestamp": {
+                                        "detail": "datetime",
+                                        "input": "datetime",
+                                        "help": "metadata/simulations/timestamps/tprFileTimestamp.help",
+                                        "label": "metadata/simulations/timestamps/tprFileTimestamp.label",
+                                        "hint": "metadata/simulations/timestamps/tprFileTimestamp.hint",
+                                        "facet": "metadata_simulations_timestamps_tprFileTimestamp"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "updated": {
+            "detail": "datetime",
+            "input": "datetime",
+            "help": "updated.help",
+            "label": "updated.label",
+            "hint": "updated.hint"
+        }
+    }
+}

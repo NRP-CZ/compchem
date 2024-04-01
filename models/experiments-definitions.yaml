@@ -1,0 +1,126 @@
+Matrix:
+  type: array
+  items:
+    type: array
+    items:
+      type: float
+
+Molecule:
+  properties:
+    id:
+      type: keyword
+      label.en: Molecule ID
+    name:
+      type: keyword
+      label.en: Molecule name
+    count:
+      type: integer
+      label.en: count???
+
+VanDerWaalsInteractions:
+  properties:
+    rvdw:
+      type: float
+      hint.en: distance for the LJ or Buckingham cut-off
+      label.en: Van der Waals cut-off
+    dispcorr:
+      type: keyword
+      enum: ["No", "EnerPres", "Ener"]
+      label.en: Dispersion correction
+    rvdwSwitch:
+      type: float
+      hint.en: |
+        where to start switching the LJ force and possibly the potential, 
+        only relevant when force or potential switching is used
+      label.en: Van der Waals switching distance
+    vdwModifier:
+      type: keyword
+      enum: ["None", "Potential-shift", "Force-switch", "Potential-switch"]
+      label.en: Van der Waals modifier
+
+Barostat:
+  properties:
+    pcoupl:
+      type: keyword
+      enum: ["no", "Berendsen",  "C-rescale",  "Parrinello-Rahman", "MTTK"]
+      label.en: Pressure coupling
+    tauP:
+      type: float
+      hint.en: The time constant for pressure coupling (one value for all directions)
+      label.en: Pressure coupling time constant
+    compressibility:
+      use: ./experiments-definitions.yaml#/Matrix
+      hint.en: |
+        The compressibility (NOTE: this is now really in bar-1) 
+        For water at 1 atm and 300 K the compressibility is 4.5e-5 bar-1
+      label.en: Compressibility
+    refcoordScaling:
+      type: keyword
+      enum: ["no", "all", "com"]
+      label.en: Reference coordinate scaling
+
+Thermostat:
+  properties:
+    tcoupl:
+      type: keyword
+      enum: ["no", "berendsen", "nose-hoover", "andersen", "andersen-massive", "v-rescale"]
+      label.en: Temperature coupling
+    tauT[]:
+      type: float
+      hint.en: |
+        time constant for coupling (one for each group in
+        tc-grps), -1 means no temperature coupling
+      label.en: Temperature coupling time constant
+    tcGrps[]:
+      ^label.en: Temperature coupling groups
+      properties:
+        nr:
+          type: integer
+          hint.en: groups to couple to separate temperature baths
+          label.en: Group number
+        name:
+          type: keyword
+          label.en: Group name
+    nsttcouple:
+      type: float
+      hint.en: The frequency for coupling the temperature.
+      label.en: nsttcouple???
+
+NeighbourList:
+  properties:
+    pbc:
+      type: keyword
+      enum: ["xyz", "no", "xy"]
+      label.en: Periodic boundary conditions
+    rlist:
+      type: float
+      hint.en: |
+        [nm] Cut-off distance for the short-range neighbor list
+      label.en: Neighbor list cut-off
+    nstlist:
+      type: float
+      label.en: nstlist??
+    cutoffScheme:
+      type: keyword
+      enum: ["Verlet", "group"]
+      label.en: Cut-off scheme
+
+ElectrostaticInteractions:
+  properties:
+    rcoulomb:
+      hint.en: |
+        [nm] The distance for the Coulomb cut-off
+      type: float
+      label.en: Coulomb cut-off
+    epsilonR:
+      hint.en: The relative dielectric constant
+      type: float
+      label.en: Relative dielectric constant
+    epsilonRF:
+      type: float
+      label.en: Relative dielectric constant for reaction field???
+    coulombModifier:
+      type: keyword
+      enum: ["Potential-shift", "None"]
+      label.en: Coulomb modifier
+

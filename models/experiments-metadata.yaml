@@ -1,0 +1,162 @@
+name:
+  type: fulltext+keyword
+  label.en: Name
+
+description:
+  type: fulltext
+  label.en: Description
+
+creators[]:
+  use: nr-datatypes#NRCreator
+  ^label.en: Creators
+
+publisher:
+  type: keyword
+  label.en: Publisher
+
+fundingReference:
+  use: nr-datatypes#NRFundingReference
+  label.en: Funding reference
+
+objectIdentifiers[]:
+  use: 'nr-datatypes#NRObjectPID'
+  ^label.en: Object identifiers
+
+simulations[]:
+  # This section of the schema is created automatically after a TPR/zip file
+  # is uploaded. It is not meant to be filled in manually nor to be modified
+  # via the API.
+  ^label.en: Simulations
+  properties:
+    key:
+      type: keyword
+      hint.en: |
+        Path to the file. Might be just a file name, if it was uploaded separately,
+        or zipname#/path/inside/zip.tpr
+      label.en: File name
+    description:
+      type: fulltext
+      label.en: Description
+    simulationYear:
+      hint.en: Year of creation of simulation
+      type: integer
+      label.en: Simulation year
+    relatedFiles[]:
+      ^label.en: Related files
+      properties:
+        key:
+          type: keyword
+          label.en: File name
+    mainInformation:
+      label.en: Main information
+      properties:
+        simulationType:
+          type: keyword
+          enum: ["free energy simulation", "molecular dynamics", "energy minimization"]
+          label.en: Simulation type
+        forceField:
+          type: keyword
+          label.en: Force field
+        simulationLength:
+          type: float
+          label.en: Simulation length
+        simulationTimeStep:
+          type: float
+          label.en: Simulation time step
+        statisticalEnsemble:
+          type: keyword
+          enum: ["NpT", "NVT", "NVE"]
+          label.en: Statistical ensemble
+        referenceTemperature[]:
+          type: float
+          label.en: Reference temperature
+        referencePressure:
+          use: ./experiments-definitions.yaml#/Matrix
+          label.en: Reference pressure
+        boxSizeAndShape:
+          # TODO: tohle asi neni spravne
+          type: float
+          label.en: Box size and shape
+        molecules[]:
+          use: ./experiments-definitions.yaml#/Molecule
+          ^label.en: Molecules
+        freeEnergyCalculation:
+          type: keyword
+          enum: ["yes", "no"]
+          label.en: Free energy calculation
+
+        umbrellaSampling:
+          type: keyword
+          enum: ["yes", "no"]
+          label.en: Umbrella sampling
+
+        AWHAdaptiveBiasing:
+          type: keyword
+          enum: ["yes", "no"]
+          label.en: AWH adaptive biasing
+
+    detailedInformation:
+      label.en: Detailed information
+      properties:
+        nstcomm:
+          hint.en: |
+            [step], frequency for center of mass motion removal
+          type: float
+          label.en: nstcomm
+        commMode:
+          type: keyword
+          enum: [ "Linear", "Angular", "Linear-acceleration-correction", "None" ]
+          label.en: commMode
+        lincsIter:
+          type: integer
+          label.en: lincsIter
+        lincsOrder:
+          type: integer
+          label.en: lincsOrder
+        fourierSpacing:
+          hint.en: "[nm]"
+          type: float
+          label.en: fourierSpacing
+        constraintAlgorithm:
+          type: keyword
+          enum: ["Lincs", "Shake"]
+          hint.en: Chooses which solver satisfies any non-SETTLE holonomic constraints
+          label.en: constraintAlgorithm
+
+        vanDerWaalsInteractions:
+          use: ./experiments-definitions.yaml#/VanDerWaalsInteractions
+          label.en: Van der Waals interactions
+        barostat:
+          use: ./experiments-definitions.yaml#/Barostat
+          label.en: Barostat
+        thermostat:
+          use: ./experiments-definitions.yaml#/Thermostat
+          label.en: Thermostat
+        neighbourList:
+          use: ./experiments-definitions.yaml#/NeighbourList
+          label.en: Neighbour list
+        electrostaticInteractions:
+          use: ./experiments-definitions.yaml#/ElectrostaticInteractions
+          label.en: Electrostatic interactions
+
+    software:
+      label.en: Software
+      properties:
+        gromacsVersion:
+          type: keyword
+          label.en: Gromacs version
+        extractorVersion:
+          type: keyword
+          label.en: Extractor version
+        tpxVersion:
+          type: keyword
+          label.en: TPX version
+
+    timestamps:
+      properties:
+        metadataExtractionTimestamp:
+          type: datetime
+          label.en: Metadata extraction timestamp
+        tprFileTimestamp:
+          type: datetime
+          label.en: TPR file timestamp

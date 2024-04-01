@@ -1,0 +1,86 @@
+[project]
+name = "repo"
+version = "1.0.0"
+description = ""
+packages = []
+authors = []
+dependencies = [
+    "deepmerge>=1.1.0",
+    "json5",
+    "nr-metadata>=2.0.0",
+    "nr-vocabularies>=2.0.0",
+    "oarepo-published-service>=1.0.0",
+    "oarepo-requests>=1.0.2",
+    "oarepo-runtime",
+    "oarepo-ui",
+    "oarepo-vocabularies",
+    "oarepo==12.*",
+    "python-dotenv",
+]
+requires-python = ">=3.9,<3.12"
+
+[project.entry-points."invenio_assets.webpack"]
+branding = "ui.branding.webpack:theme"
+i18n = "i18n.webpack:theme"
+components = "ui.components.webpack:theme"
+ui_experiments = "ui.experiments.webpack:theme"
+
+[project.entry-points."invenio_base.blueprints"]
+branding = "ui.branding:create_blueprint"
+titlepage = "ui.titlepage:create_blueprint"
+components = "ui.components:create_blueprint"
+experiments = "experiments.views.records.app:create_app_blueprint"
+experiments_requests = "experiments.views.requests.api:create_api_blueprint"
+experiments_file = "experiments.views.files.app:create_app_blueprint"
+experiments_file_draft = "experiments.views.draft_files.app:create_app_blueprint"
+ui_experiments = "ui.experiments:create_blueprint"
+
+[project.entry-points."invenio_i18n.translations"]
+translations = "i18n"
+experiments = "experiments"
+
+[project.entry-points."invenio_db.alembic"]
+repo = "shared:alembic"
+
+[project.entry-points."invenio_base.api_apps"]
+experiments = "experiments.ext:ExperimentsExt"
+
+[project.entry-points."invenio_base.apps"]
+experiments = "experiments.ext:ExperimentsExt"
+
+[project.entry-points."invenio_db.models"]
+experiments = "experiments.records.models"
+experiments_file = "experiments.files.models"
+experiments_file_draft = "experiments.files.models"
+
+[project.entry-points."invenio_base.api_blueprints"]
+experiments = "experiments.views.records.api:create_api_blueprint"
+experiments_requests = "experiments.views.requests.api:create_api_blueprint"
+experiments_file = "experiments.views.files.api:create_api_blueprint"
+experiments_file_draft = "experiments.views.draft_files.api:create_api_blueprint"
+
+[project.entry-points."invenio_search.mappings"]
+experiments = "experiments.records.mappings"
+
+[project.entry-points."invenio_jsonschemas.schemas"]
+experiments = "experiments.records.jsonschemas"
+
+[project.entry-points."oarepo.models"]
+experiments = "experiments.models:records.json"
+
+[project.entry-points."oarepo.ui"]
+experiments = "experiments.models:ui.json"
+
+[project.entry-points."oarepo.fixtures"]
+compchem = "fixtures"
+
+[project.optional-dependencies]
+tests = [
+    "pytest-invenio>=1.4.11",
+]
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"

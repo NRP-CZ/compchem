@@ -1,0 +1,4 @@
+experiments:
+  - writer: service
+    service: published_experiments
+  - source: data.yaml

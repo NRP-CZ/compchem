@@ -1,0 +1,16 @@
+#
+msgid ""
+msgstr ""
+
+#: /Users/m/w/nrp/compchem/ui/experiments/templates/semantic-ui/experiments/Search.jinja:3
+msgid "Search results"
+msgstr "Search results"
+
+#: /Users/m/w/nrp/compchem/ui/experiments/templates/semantic-ui/experiments/Search.jinja:3
+msgid "experiments"
+msgstr "Experiments"
+
+#: /Users/m/w/nrp/compchem/ui/titlepage/templates/TitlePage.jinja:56
+#: /Users/m/w/nrp/compchem/ui/titlepage/templates/TitlePage.jinja:58
+msgid "Search"
+msgstr "Search"

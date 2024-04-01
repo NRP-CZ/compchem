@@ -1,0 +1,9 @@
+metadata:
+  name: Measurement 1
+  description: Description of the first measurement
+  creators:
+    - type: Personal
+      fullName: John Doe
+      identifiers:
+      - scheme: ORCID
+        identifier: 0000-0002-1825-0097

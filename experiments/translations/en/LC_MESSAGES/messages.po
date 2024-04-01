@@ -1,0 +1,1191 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"POT-Creation-Date: 2024-04-01T09:18:12.276601\n"
+"PO-Revision-Date: 2024-04-01T09:18:12.276609\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "$schema.help"
+msgstr ""
+
+msgid "$schema.label"
+msgstr ""
+
+msgid "$schema.hint"
+msgstr ""
+
+msgid "created.help"
+msgstr ""
+
+msgid "created.label"
+msgstr ""
+
+msgid "created.hint"
+msgstr ""
+
+msgid "id.help"
+msgstr ""
+
+msgid "id.label"
+msgstr ""
+
+msgid "id.hint"
+msgstr ""
+
+msgid "metadata.help"
+msgstr ""
+
+msgid "metadata.label"
+msgstr ""
+
+msgid "metadata.hint"
+msgstr ""
+
+msgid "metadata/creators.label"
+msgstr "Creators"
+
+msgid "metadata/creators.help"
+msgstr ""
+
+msgid "metadata/creators.hint"
+msgstr ""
+"It is possible to designate a person or an institution as the "
+"creator/contributor."
+
+msgid "metadata/creators/affiliations.help"
+msgstr ""
+
+msgid "metadata/creators/affiliations.label"
+msgstr "Affiliation"
+
+msgid "metadata/creators/affiliations.hint"
+msgstr ""
+
+msgid "metadata/creators/affiliations/id.help"
+msgstr ""
+
+msgid "metadata/creators/affiliations/id.label"
+msgstr ""
+
+msgid "metadata/creators/affiliations/id.hint"
+msgstr ""
+
+msgid "metadata/creators/affiliations/title.help"
+msgstr ""
+
+msgid "metadata/creators/affiliations/title.label"
+msgstr ""
+
+msgid "metadata/creators/affiliations/title.hint"
+msgstr ""
+
+msgid "metadata/creators/affiliations/ror.help"
+msgstr ""
+
+msgid "metadata/creators/affiliations/ror.label"
+msgstr ""
+
+msgid "metadata/creators/affiliations/ror.hint"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy.help"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy.label"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy.hint"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy/ancestors.help"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy/ancestors.label"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy/ancestors.hint"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy/ancestors_or_self.help"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy/ancestors_or_self.label"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy/ancestors_or_self.hint"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy/level.help"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy/level.label"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy/level.hint"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy/parent.help"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy/parent.label"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy/parent.hint"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy/title.help"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy/title.label"
+msgstr ""
+
+msgid "metadata/creators/affiliations/hierarchy/title.hint"
+msgstr ""
+
+msgid "metadata/creators/affiliations/@v.help"
+msgstr ""
+
+msgid "metadata/creators/affiliations/@v.label"
+msgstr ""
+
+msgid "metadata/creators/affiliations/@v.hint"
+msgstr ""
+
+msgid "metadata/creators/authorityIdentifiers.help"
+msgstr ""
+
+msgid "metadata/creators/authorityIdentifiers.label"
+msgstr ""
+
+msgid "metadata/creators/authorityIdentifiers.hint"
+msgstr ""
+
+msgid "identifier.label"
+msgstr "Identifier"
+
+msgid "identifier.help"
+msgstr ""
+
+msgid "identifier.hint"
+msgstr ""
+
+msgid "identifier_type.label"
+msgstr "Identifier type"
+
+msgid "identifier_type.hint"
+msgstr ""
+"We recommend providing at least one of the identifier types.\n"
+"If you need to expand the range of identifier types, contact us at support@narodni-repozitar.cz.\n"
+
+msgid "identifier_type.help"
+msgstr ""
+
+msgid "identifier_type.enum.orcid"
+msgstr ""
+
+msgid "identifier_type.enum.scopusID"
+msgstr ""
+
+msgid "identifier_type.enum.researcherID"
+msgstr ""
+
+msgid "identifier_type.enum.czenasAutID"
+msgstr ""
+
+msgid "identifier_type.enum.vedidk"
+msgstr ""
+
+msgid "identifier_type.enum.institutionalID"
+msgstr ""
+
+msgid "identifier_type.enum.ISNI"
+msgstr ""
+
+msgid "metadata/creators/familyName.help"
+msgstr ""
+
+msgid "metadata/creators/familyName.label"
+msgstr ""
+
+msgid "metadata/creators/familyName.hint"
+msgstr ""
+
+msgid "metadata/creators/fullName.label"
+msgstr "Author name"
+
+msgid "metadata/creators/fullName.help"
+msgstr ""
+
+msgid "metadata/creators/fullName.hint"
+msgstr ""
+
+msgid "metadata/creators/givenName.help"
+msgstr ""
+
+msgid "metadata/creators/givenName.label"
+msgstr ""
+
+msgid "metadata/creators/givenName.hint"
+msgstr ""
+
+msgid "metadata/creators/nameType.label"
+msgstr "Type"
+
+msgid "metadata/creators/nameType.help"
+msgstr ""
+
+msgid "metadata/creators/nameType.hint"
+msgstr ""
+
+msgid "metadata/creators/nameType.enum.Personal"
+msgstr ""
+
+msgid "identifier_type.enum.ROR"
+msgstr ""
+
+msgid "identifier_type.enum.ICO"
+msgstr ""
+
+msgid "identifier_type.enum.DOI"
+msgstr ""
+
+msgid "metadata/creators/nameType.enum.Organizational"
+msgstr ""
+
+msgid "metadata/description.label"
+msgstr "Description"
+
+msgid "metadata/description.help"
+msgstr ""
+
+msgid "metadata/description.hint"
+msgstr ""
+
+msgid "metadata/fundingReference.label"
+msgstr "Funding reference"
+
+msgid "metadata/fundingReference.help"
+msgstr ""
+
+msgid "metadata/fundingReference.hint"
+msgstr ""
+
+msgid "metadata/fundingReference/funder.label"
+msgstr "Funder"
+
+msgid "metadata/fundingReference/funder.help"
+msgstr ""
+
+msgid "metadata/fundingReference/funder.hint"
+msgstr ""
+
+msgid "metadata/fundingReference/funder/id.help"
+msgstr ""
+
+msgid "metadata/fundingReference/funder/id.label"
+msgstr ""
+
+msgid "metadata/fundingReference/funder/id.hint"
+msgstr ""
+
+msgid "metadata/fundingReference/funder/title.help"
+msgstr ""
+
+msgid "metadata/fundingReference/funder/title.label"
+msgstr ""
+
+msgid "metadata/fundingReference/funder/title.hint"
+msgstr ""
+
+msgid "metadata/fundingReference/funder/@v.help"
+msgstr ""
+
+msgid "metadata/fundingReference/funder/@v.label"
+msgstr ""
+
+msgid "metadata/fundingReference/funder/@v.hint"
+msgstr ""
+
+msgid "metadata/fundingReference/fundingProgram.label"
+msgstr "Funding program"
+
+msgid "metadata/fundingReference/fundingProgram.help"
+msgstr ""
+
+msgid "metadata/fundingReference/fundingProgram.hint"
+msgstr ""
+
+msgid "metadata/fundingReference/projectID.label"
+msgstr "Project double"
+
+msgid "metadata/fundingReference/projectID.help"
+msgstr ""
+
+msgid "metadata/fundingReference/projectID.hint"
+msgstr ""
+
+msgid "metadata/fundingReference/projectName.label"
+msgstr "Project name"
+
+msgid "metadata/fundingReference/projectName.help"
+msgstr ""
+
+msgid "metadata/fundingReference/projectName.hint"
+msgstr ""
+
+msgid "metadata/name.label"
+msgstr "Name"
+
+msgid "metadata/name.help"
+msgstr ""
+
+msgid "metadata/name.hint"
+msgstr ""
+
+msgid "metadata/objectIdentifiers.label"
+msgstr "Object identifiers"
+
+msgid "metadata/objectIdentifiers.help"
+msgstr ""
+
+msgid "metadata/objectIdentifiers.hint"
+msgstr ""
+
+msgid "metadata/objectIdentifiers/identifier.label"
+msgstr "Object identifier"
+
+msgid "metadata/objectIdentifiers/identifier.help"
+msgstr ""
+
+msgid "metadata/objectIdentifiers/identifier.hint"
+msgstr ""
+
+msgid "metadata/objectIdentifiers/scheme.label"
+msgstr "Identifier type"
+
+msgid "metadata/objectIdentifiers/scheme.help"
+msgstr ""
+
+msgid "metadata/objectIdentifiers/scheme.hint"
+msgstr ""
+
+msgid "metadata/objectIdentifiers/scheme.enum.DOI"
+msgstr ""
+
+msgid "metadata/objectIdentifiers/scheme.enum.Handle"
+msgstr ""
+
+msgid "metadata/objectIdentifiers/scheme.enum.ISBN"
+msgstr ""
+
+msgid "metadata/objectIdentifiers/scheme.enum.ISSN"
+msgstr ""
+
+msgid "metadata/objectIdentifiers/scheme.enum.RIV"
+msgstr ""
+
+msgid "metadata/objectIdentifiers/scheme.enum.IGSN"
+msgstr ""
+
+msgid "metadata/publisher.label"
+msgstr "Publisher"
+
+msgid "metadata/publisher.help"
+msgstr ""
+
+msgid "metadata/publisher.hint"
+msgstr ""
+
+msgid "metadata/simulations.label"
+msgstr "Simulations"
+
+msgid "metadata/simulations.help"
+msgstr ""
+
+msgid "metadata/simulations.hint"
+msgstr ""
+
+msgid "metadata/simulations/description.label"
+msgstr "Description"
+
+msgid "metadata/simulations/description.help"
+msgstr ""
+
+msgid "metadata/simulations/description.hint"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation.label"
+msgstr "Detailed information"
+
+msgid "metadata/simulations/detailedInformation.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation.hint"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/barostat.label"
+msgstr "Barostat"
+
+msgid "metadata/simulations/detailedInformation/barostat.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/barostat.hint"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/barostat/compressibility.hint"
+msgstr ""
+"The compressibility (NOTE: this is now really in bar-1) \n"
+"For water at 1 atm and 300 K the compressibility is 4.5e-5 bar-1\n"
+
+msgid ""
+"metadata/simulations/detailedInformation/barostat/compressibility.label"
+msgstr "Compressibility"
+
+msgid "metadata/simulations/detailedInformation/barostat/compressibility.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/barostat/pcoupl.label"
+msgstr "Pressure coupling"
+
+msgid "metadata/simulations/detailedInformation/barostat/pcoupl.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/barostat/pcoupl.hint"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/barostat/pcoupl.enum.no"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/barostat/pcoupl.enum.Berendsen"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/barostat/pcoupl.enum.C-rescale"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/barostat/pcoupl.enum.Parrinello-"
+"Rahman"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/barostat/pcoupl.enum.MTTK"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/barostat/refcoordScaling.label"
+msgstr "Reference coordinate scaling"
+
+msgid "metadata/simulations/detailedInformation/barostat/refcoordScaling.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/barostat/refcoordScaling.hint"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/barostat/refcoordScaling.enum.no"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/barostat/refcoordScaling.enum.all"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/barostat/refcoordScaling.enum.com"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/barostat/tauP.hint"
+msgstr ""
+"The time constant for pressure coupling (one value for all directions)"
+
+msgid "metadata/simulations/detailedInformation/barostat/tauP.label"
+msgstr "Pressure coupling time constant"
+
+msgid "metadata/simulations/detailedInformation/barostat/tauP.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/commMode.label"
+msgstr "commMode"
+
+msgid "metadata/simulations/detailedInformation/commMode.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/commMode.hint"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/commMode.enum.Linear"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/commMode.enum.Angular"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/commMode.enum.Linear-acceleration-"
+"correction"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/commMode.enum.None"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/constraintAlgorithm.hint"
+msgstr "Chooses which solver satisfies any non-SETTLE holonomic constraints"
+
+msgid "metadata/simulations/detailedInformation/constraintAlgorithm.label"
+msgstr "constraintAlgorithm"
+
+msgid "metadata/simulations/detailedInformation/constraintAlgorithm.help"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/constraintAlgorithm.enum.Lincs"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/constraintAlgorithm.enum.Shake"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions.label"
+msgstr "Electrostatic interactions"
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions.help"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions.hint"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions/coulombModifier.label"
+msgstr "Coulomb modifier"
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions/coulombModifier.help"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions/coulombModifier.hint"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions/coulombModifier.enum.Potential-"
+"shift"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions/coulombModifier.enum.None"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions/epsilonR.hint"
+msgstr "The relative dielectric constant"
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions/epsilonR.label"
+msgstr "Relative dielectric constant"
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions/epsilonR.help"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions/epsilonRF.label"
+msgstr "Relative dielectric constant for reaction field???"
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions/epsilonRF.help"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions/epsilonRF.hint"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions/rcoulomb.hint"
+msgstr "[nm] The distance for the Coulomb cut-off\n"
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions/rcoulomb.label"
+msgstr "Coulomb cut-off"
+
+msgid ""
+"metadata/simulations/detailedInformation/electrostaticInteractions/rcoulomb.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/fourierSpacing.hint"
+msgstr "[nm]"
+
+msgid "metadata/simulations/detailedInformation/fourierSpacing.label"
+msgstr "fourierSpacing"
+
+msgid "metadata/simulations/detailedInformation/fourierSpacing.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/lincsIter.label"
+msgstr "lincsIter"
+
+msgid "metadata/simulations/detailedInformation/lincsIter.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/lincsIter.hint"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/lincsOrder.label"
+msgstr "lincsOrder"
+
+msgid "metadata/simulations/detailedInformation/lincsOrder.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/lincsOrder.hint"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/neighbourList.label"
+msgstr "Neighbour list"
+
+msgid "metadata/simulations/detailedInformation/neighbourList.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/neighbourList.hint"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/neighbourList/cutoffScheme.label"
+msgstr "Cut-off scheme"
+
+msgid ""
+"metadata/simulations/detailedInformation/neighbourList/cutoffScheme.help"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/neighbourList/cutoffScheme.hint"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/neighbourList/cutoffScheme.enum.Verlet"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/neighbourList/cutoffScheme.enum.group"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/neighbourList/nstlist.label"
+msgstr "nstlist??"
+
+msgid "metadata/simulations/detailedInformation/neighbourList/nstlist.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/neighbourList/nstlist.hint"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/neighbourList/pbc.label"
+msgstr "Periodic boundary conditions"
+
+msgid "metadata/simulations/detailedInformation/neighbourList/pbc.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/neighbourList/pbc.hint"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/neighbourList/pbc.enum.xyz"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/neighbourList/pbc.enum.no"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/neighbourList/pbc.enum.xy"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/neighbourList/rlist.hint"
+msgstr "[nm] Cut-off distance for the short-range neighbor list\n"
+
+msgid "metadata/simulations/detailedInformation/neighbourList/rlist.label"
+msgstr "Neighbor list cut-off"
+
+msgid "metadata/simulations/detailedInformation/neighbourList/rlist.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/nstcomm.hint"
+msgstr "[step], frequency for center of mass motion removal\n"
+
+msgid "metadata/simulations/detailedInformation/nstcomm.label"
+msgstr "nstcomm"
+
+msgid "metadata/simulations/detailedInformation/nstcomm.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/thermostat.label"
+msgstr "Thermostat"
+
+msgid "metadata/simulations/detailedInformation/thermostat.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/thermostat.hint"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/thermostat/nsttcouple.hint"
+msgstr "The frequency for coupling the temperature."
+
+msgid "metadata/simulations/detailedInformation/thermostat/nsttcouple.label"
+msgstr "nsttcouple???"
+
+msgid "metadata/simulations/detailedInformation/thermostat/nsttcouple.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/thermostat/tauT.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/thermostat/tauT.label"
+msgstr "Temperature coupling time constant"
+
+msgid "metadata/simulations/detailedInformation/thermostat/tauT.hint"
+msgstr ""
+"time constant for coupling (one for each group in\n"
+"tc-grps), -1 means no temperature coupling\n"
+
+msgid "metadata/simulations/detailedInformation/thermostat/tcGrps.label"
+msgstr "Temperature coupling groups"
+
+msgid "metadata/simulations/detailedInformation/thermostat/tcGrps.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/thermostat/tcGrps.hint"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/thermostat/tcGrps/name.label"
+msgstr "Group name"
+
+msgid "metadata/simulations/detailedInformation/thermostat/tcGrps/name.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/thermostat/tcGrps/name.hint"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/thermostat/tcGrps/nr.hint"
+msgstr "groups to couple to separate temperature baths"
+
+msgid "metadata/simulations/detailedInformation/thermostat/tcGrps/nr.label"
+msgstr "Group number"
+
+msgid "metadata/simulations/detailedInformation/thermostat/tcGrps/nr.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/thermostat/tcoupl.label"
+msgstr "Temperature coupling"
+
+msgid "metadata/simulations/detailedInformation/thermostat/tcoupl.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/thermostat/tcoupl.hint"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/thermostat/tcoupl.enum.no"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/thermostat/tcoupl.enum.berendsen"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/thermostat/tcoupl.enum.nose-hoover"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/thermostat/tcoupl.enum.andersen"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/thermostat/tcoupl.enum.andersen-"
+"massive"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/thermostat/tcoupl.enum.v-rescale"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/vanDerWaalsInteractions.label"
+msgstr "Van der Waals interactions"
+
+msgid "metadata/simulations/detailedInformation/vanDerWaalsInteractions.help"
+msgstr ""
+
+msgid "metadata/simulations/detailedInformation/vanDerWaalsInteractions.hint"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/dispcorr.label"
+msgstr "Dispersion correction"
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/dispcorr.help"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/dispcorr.hint"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/dispcorr.enum.No"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/dispcorr.enum.EnerPres"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/dispcorr.enum.Ener"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/rvdw.hint"
+msgstr "distance for the LJ or Buckingham cut-off"
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/rvdw.label"
+msgstr "Van der Waals cut-off"
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/rvdw.help"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/rvdwSwitch.hint"
+msgstr ""
+"where to start switching the LJ force and possibly the potential, \n"
+"only relevant when force or potential switching is used\n"
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/rvdwSwitch.label"
+msgstr "Van der Waals switching distance"
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/rvdwSwitch.help"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/vdwModifier.label"
+msgstr "Van der Waals modifier"
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/vdwModifier.help"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/vdwModifier.hint"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/vdwModifier.enum.None"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/vdwModifier.enum.Potential-"
+"shift"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/vdwModifier.enum.Force-"
+"switch"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailedInformation/vanDerWaalsInteractions/vdwModifier.enum.Potential-"
+"switch"
+msgstr ""
+
+msgid "metadata/simulations/key.hint"
+msgstr ""
+"Path to the file. Might be just a file name, if it was uploaded separately,\n"
+"or zipname#/path/inside/zip.tpr\n"
+
+msgid "metadata/simulations/key.label"
+msgstr "File name"
+
+msgid "metadata/simulations/key.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation.label"
+msgstr "Main information"
+
+msgid "metadata/simulations/mainInformation.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation.hint"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/AWHAdaptiveBiasing.label"
+msgstr "AWH adaptive biasing"
+
+msgid "metadata/simulations/mainInformation/AWHAdaptiveBiasing.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/AWHAdaptiveBiasing.hint"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/AWHAdaptiveBiasing.enum.yes"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/AWHAdaptiveBiasing.enum.no"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/boxSizeAndShape.label"
+msgstr "Box size and shape"
+
+msgid "metadata/simulations/mainInformation/boxSizeAndShape.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/boxSizeAndShape.hint"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/forceField.label"
+msgstr "Force field"
+
+msgid "metadata/simulations/mainInformation/forceField.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/forceField.hint"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/freeEnergyCalculation.label"
+msgstr "Free energy calculation"
+
+msgid "metadata/simulations/mainInformation/freeEnergyCalculation.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/freeEnergyCalculation.hint"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/freeEnergyCalculation.enum.yes"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/freeEnergyCalculation.enum.no"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/molecules.label"
+msgstr "Molecules"
+
+msgid "metadata/simulations/mainInformation/molecules.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/molecules.hint"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/molecules/count.label"
+msgstr "count???"
+
+msgid "metadata/simulations/mainInformation/molecules/count.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/molecules/count.hint"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/molecules/id.label"
+msgstr "Molecule ID"
+
+msgid "metadata/simulations/mainInformation/molecules/id.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/molecules/id.hint"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/molecules/name.label"
+msgstr "Molecule name"
+
+msgid "metadata/simulations/mainInformation/molecules/name.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/molecules/name.hint"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/referencePressure.label"
+msgstr "Reference pressure"
+
+msgid "metadata/simulations/mainInformation/referencePressure.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/referencePressure.hint"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/referenceTemperature.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/referenceTemperature.label"
+msgstr "Reference temperature"
+
+msgid "metadata/simulations/mainInformation/referenceTemperature.hint"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/simulationLength.label"
+msgstr "Simulation length"
+
+msgid "metadata/simulations/mainInformation/simulationLength.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/simulationLength.hint"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/simulationTimeStep.label"
+msgstr "Simulation time step"
+
+msgid "metadata/simulations/mainInformation/simulationTimeStep.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/simulationTimeStep.hint"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/simulationType.label"
+msgstr "Simulation type"
+
+msgid "metadata/simulations/mainInformation/simulationType.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/simulationType.hint"
+msgstr ""
+
+msgid ""
+"metadata/simulations/mainInformation/simulationType.enum.free energy "
+"simulation"
+msgstr ""
+
+msgid ""
+"metadata/simulations/mainInformation/simulationType.enum.molecular dynamics"
+msgstr ""
+
+msgid ""
+"metadata/simulations/mainInformation/simulationType.enum.energy minimization"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/statisticalEnsemble.label"
+msgstr "Statistical ensemble"
+
+msgid "metadata/simulations/mainInformation/statisticalEnsemble.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/statisticalEnsemble.hint"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/statisticalEnsemble.enum.NpT"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/statisticalEnsemble.enum.NVT"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/statisticalEnsemble.enum.NVE"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/umbrellaSampling.label"
+msgstr "Umbrella sampling"
+
+msgid "metadata/simulations/mainInformation/umbrellaSampling.help"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/umbrellaSampling.hint"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/umbrellaSampling.enum.yes"
+msgstr ""
+
+msgid "metadata/simulations/mainInformation/umbrellaSampling.enum.no"
+msgstr ""
+
+msgid "metadata/simulations/relatedFiles.label"
+msgstr "Related files"
+
+msgid "metadata/simulations/relatedFiles.help"
+msgstr ""
+
+msgid "metadata/simulations/relatedFiles.hint"
+msgstr ""
+
+msgid "metadata/simulations/relatedFiles/key.label"
+msgstr "File name"
+
+msgid "metadata/simulations/relatedFiles/key.help"
+msgstr ""
+
+msgid "metadata/simulations/relatedFiles/key.hint"
+msgstr ""
+
+msgid "metadata/simulations/simulationYear.hint"
+msgstr "Year of creation of simulation"
+
+msgid "metadata/simulations/simulationYear.label"
+msgstr "Simulation year"
+
+msgid "metadata/simulations/simulationYear.help"
+msgstr ""
+
+msgid "metadata/simulations/software.label"
+msgstr "Software"
+
+msgid "metadata/simulations/software.help"
+msgstr ""
+
+msgid "metadata/simulations/software.hint"
+msgstr ""
+
+msgid "metadata/simulations/software/extractorVersion.label"
+msgstr "Extractor version"
+
+msgid "metadata/simulations/software/extractorVersion.help"
+msgstr ""
+
+msgid "metadata/simulations/software/extractorVersion.hint"
+msgstr ""
+
+msgid "metadata/simulations/software/gromacsVersion.label"
+msgstr "Gromacs version"
+
+msgid "metadata/simulations/software/gromacsVersion.help"
+msgstr ""
+
+msgid "metadata/simulations/software/gromacsVersion.hint"
+msgstr ""
+
+msgid "metadata/simulations/software/tpxVersion.label"
+msgstr "TPX version"
+
+msgid "metadata/simulations/software/tpxVersion.help"
+msgstr ""
+
+msgid "metadata/simulations/software/tpxVersion.hint"
+msgstr ""
+
+msgid "metadata/simulations/timestamps.help"
+msgstr ""
+
+msgid "metadata/simulations/timestamps.label"
+msgstr ""
+
+msgid "metadata/simulations/timestamps.hint"
+msgstr ""
+
+msgid "metadata/simulations/timestamps/metadataExtractionTimestamp.label"
+msgstr "Metadata extraction timestamp"
+
+msgid "metadata/simulations/timestamps/metadataExtractionTimestamp.help"
+msgstr ""
+
+msgid "metadata/simulations/timestamps/metadataExtractionTimestamp.hint"
+msgstr ""
+
+msgid "metadata/simulations/timestamps/tprFileTimestamp.label"
+msgstr "TPR file timestamp"
+
+msgid "metadata/simulations/timestamps/tprFileTimestamp.help"
+msgstr ""
+
+msgid "metadata/simulations/timestamps/tprFileTimestamp.hint"
+msgstr ""
+
+msgid "updated.help"
+msgstr ""
+
+msgid "updated.label"
+msgstr ""
+
+msgid "updated.hint"
+msgstr ""

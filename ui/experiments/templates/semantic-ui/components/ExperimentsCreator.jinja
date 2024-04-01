@@ -1,0 +1,16 @@
+{# def d, level=0 #}
+<ITableField d={d.familyName} level={level}/>
+<ITableField d={d.fullName} level={level}/>
+<ITableField d={d.givenName} level={level}/>
+<ITableField d={d.nameType} level={level}/>
+{% for aff in array(d.affiliations) %}
+<ITableField d={aff} level={level}>
+    <ITaxonomyItem d={aff} level={level+1} />
+</ITableField>
+{% endfor %}
+
+<ITableField d={d.authorityIdentifiers} level={level}>
+{% for aid in array(d.authorityIdentifiers) %}
+    <ExperimentsNrOrganizationIdentifier d={aid} level={level+1} />
+{% endfor %}
+</ITableField>
