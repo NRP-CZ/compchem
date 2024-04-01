@@ -13,8 +13,8 @@ i18n:
 models:
 - api_prefix: experiments
   base_model: empty
-  features: [relations, custom_fields, requests, drafts, files, vocabularies, tests,
-    communities]
+  features: [custom_fields, vocabularies, files, communities, drafts, requests, relations,
+    tests]
   model_description: Computational Chemistry Experiments
   model_name: experiments
   model_package: experiments

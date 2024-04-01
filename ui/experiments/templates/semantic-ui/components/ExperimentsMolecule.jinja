@@ -1,5 +1,6 @@
 {# def d, level=0 #}
-
-<ITableField d={d.count} level={level}/>
-<ITableField d={d.id} level={level}/>
-<ITableField d={d.name} level={level}/>
+<ITableSection level={level} title={d._ui_label} >
+  <ITableField d={d.count} level={level} />
+  <ITableField d={d.id} level={level} />
+  <ITableField d={d.name} level={level} />
+</ITableSection>

@@ -41,7 +41,7 @@ export const ResultsListItemComponent = ({
 }) => {
   const searchAppConfig = useContext(SearchConfigurationContext);
 
-  const title = _get(result, "metadata.name", "<no title>");
+  const title = _get(result, "metadata.title", "<no title>");
 
   return (
     <Overridable
