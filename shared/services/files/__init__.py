@@ -8,3 +8,7 @@ class CompChemFilesServiceConfig(PermissionsPresetsConfigMixin, FileServiceConfi
     file_processors = [
         ExtractTPRParametersProcessor(),
     ]
+    components = [
+        *PermissionsPresetsConfigMixin.components,
+        *FileServiceConfig.components
+    ]

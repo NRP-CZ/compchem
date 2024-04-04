@@ -1,3 +1,5 @@
+files:
+  enabled: true
 metadata:
   name: Measurement 1
   description: |
