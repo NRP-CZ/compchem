@@ -1,4 +1,4 @@
-from oarepo_ui.resources import BabelComponent
+from oarepo_ui.resources.components import BabelComponent, FilesComponent
 from oarepo_ui.resources.config import RecordsUIResourceConfig
 from oarepo_ui.resources.resource import RecordsUIResource
 
@@ -10,7 +10,7 @@ class ExperimentsResourceConfig(RecordsUIResourceConfig):
     ui_serializer_class = "experiments.resources.records.ui.ExperimentsUIJSONSerializer"
     api_service = "experiments"
 
-    components = [BabelComponent]
+    components = [BabelComponent, FilesComponent]
     try:
         from oarepo_vocabularies.ui.resources.components import (
             DepositVocabularyOptionsComponent,

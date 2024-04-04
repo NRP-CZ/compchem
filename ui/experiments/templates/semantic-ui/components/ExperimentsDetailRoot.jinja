@@ -1,6 +1,7 @@
 {# def d, level=0 #}
 {% set md=d.metadata %}
 
+<div class="ui segment basic padded">
 <ITable>
   <ITableField d={md.description} />
   <ITableField d={md.name} />
@@ -16,3 +17,4 @@
       <ExperimentsSimulation d={item} level={level+1}/>
   {% endfor %}
 </ITable>
+</div>

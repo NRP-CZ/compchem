@@ -6,7 +6,7 @@
   <ITableField d={d.nameType} level={level} />
   {% for it in array(d.affiliations) %}
     <ITableField d={it} level={level} >
-      <ITaxonomyItem d={it} level={level+1} />
+      <ITaxonomyItem item={it} level={level+1} />
     </ITableField>
   {% endfor %}
   {% for it in array(d.authorityIdentifiers) %}

@@ -1,4 +1,4 @@
-{# def d #}
+{# def d, files #}
 
 {% extends "oarepo_ui/detail.html" %}
 
@@ -11,5 +11,5 @@
 {% endblock %}
 
 {% block record_sidebar %}
-    Add your sidebar content here
+    <ExperimentsSideBar d={d} files={files} />
 {% endblock record_sidebar %}
