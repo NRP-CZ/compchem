@@ -1,7 +1,9 @@
+files:
+  enabled: true
 metadata:
-  name: Measurement 1
+  name: Experiment 1
   description: |
-    Description of the first measurement
+    Description of the first experiment
 
   creators:
     - nameType: Personal

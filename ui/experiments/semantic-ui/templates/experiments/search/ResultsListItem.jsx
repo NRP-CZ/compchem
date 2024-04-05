@@ -42,6 +42,7 @@ export const ResultsListItemComponent = ({
   const searchAppConfig = useContext(SearchConfigurationContext);
 
   const title = _get(result, "metadata.name", "<no title>");
+  const description = _get(result, "metadata.description", "");
 
   return (
     <Overridable
@@ -60,7 +61,9 @@ export const ResultsListItemComponent = ({
                   viewLink={result.links.self_html}
                 />
                 <ItemSubheader />
-                <Item.Description />
+                <Item.Description >
+                  {description}
+                </Item.Description>
               </Grid.Column>
             </Grid.Row>
           </Grid>

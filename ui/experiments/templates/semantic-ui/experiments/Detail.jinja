@@ -1,4 +1,4 @@
-{# def d #}
+{# def d, files #}
 
 {% extends "oarepo_ui/detail.html" %}
 
@@ -6,10 +6,20 @@
 {{ super() }}
 {%- endblock %}
 
+{% block record_header %}
+    <h1 class="ui header" style="padding-top: 2em; padding-left: 2em;">
+        <i class="flask icon"></i>
+        <div class="content">
+            {{ d.metadata.name }}
+            <div class="sub header">{{ d.metadata.description }}</div>
+        </div>
+    </h1>
+{% endblock %}
+
 {% block record_main_content %}
     <ExperimentsDetailRoot d={d} />
 {% endblock %}
 
 {% block record_sidebar %}
-    Add your sidebar content here
+    <ExperimentsSideBar d={d} files={files} />
 {% endblock record_sidebar %}

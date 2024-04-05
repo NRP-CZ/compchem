@@ -9,41 +9,35 @@ can take a long time, depending on the speed of your connection and CPU power.
 
 Later on, you might call `./nrp develop --skip-checks` for a faster start up time.
 
-## Removing all the data and starting from scratch
+## Initial setup
 
-To remove all the data and start from scratch, run:
+### Creating a test user
+
+After the server has been started at least once, create a test user (orcid integration later):
 
 ```bash
 source .venv/bin/activate
 
-invenio db destroy --yes-i-know || true
-invenio db init create
-invenio index destroy --force --yes-i-know || true
-invenio index init
-invenio oarepo cf init
-invenio files location create --default default s3://default
-```
-
-## Changing the model
-
-After changing the model inside `models` folder, run:
-
-```bash
-./nrp model compile experiments
-```
-
-Then follow the "starting from scratch" section above to clean the repository
-and start using your updated model.
-
-## Using nrp client
-
-### Creating a test user
-
-At first create a test user (orcid integration later):
-
-```bash
 invenio users create -a -c test@test.com
 ```
+
+### Importing vocabularies
+
+```bash
+source .venv/bin/activate
+
+invenio oarepo fixtures load --verbose
+```
+
+### Importing sample data
+
+```bash
+source .venv/bin/activate
+
+invenio oarepo fixtures load --no-system-fixtures sample_data --identity test@test.com --verbose
+```
+
+## Using nrp client
 
 ### Install the client
 
@@ -71,16 +65,69 @@ nrp-cmd describe models
 ### Create a sample record
 
 ```bash
-nrp-cmd create record experiments '{"metadata": {"name": "blah"}}'
+nrp-cmd create record experiments '{"metadata": {"name": "blah"}}' @rec
 ```
 
 From file (you can use yaml or json file):
 
 ```bash
-nrp-cmd create record experiments ./sample_data/starter.yaml
+nrp-cmd create record experiments ./sample_data/starter.yaml @rec
 ```
 
+The `@rec` is a name of a variable where the id record will be saved.
+This can be used later for getting the record, updating it, uploading
+files etc.
 
 ### Upload tpr file
 
+Run the following command to upload a file to the record:
+
+```bash
+nrp-cmd upload file @rec ~/Downloads/7.tpr '{"caption": "blah"}'
+```
+
+The first parameter is the record to which the file should be uploaded.
+The second parameter is the path to the file on your local machine and 
+an optional last one are file metadata.
+
+
 ### Check the status of the record to see, if the metadata have been filled
+
+```bash
+nrp-cmd get record @rec
+
+nrp-cmd list files @rec
+```
+
+
+## Troubleshooting & model development
+
+
+### Removing all the data and starting from scratch
+
+To remove all the data and start from scratch, run:
+
+```bash
+source .venv/bin/activate
+
+invenio db destroy --yes-i-know || true
+invenio db init create
+invenio index destroy --force --yes-i-know || true
+invenio index init
+invenio oarepo cf init
+invenio files location create --default default s3://default
+invenio users create -a -c test@test.com
+invenio oarepo fixtures load --verbose
+```
+
+### Changing the model
+
+After changing the model inside `models` folder, run:
+
+```bash
+./nrp model compile experiments
+```
+
+Then follow the "starting from scratch" section above to clean the repository
+and start using your updated model.
+

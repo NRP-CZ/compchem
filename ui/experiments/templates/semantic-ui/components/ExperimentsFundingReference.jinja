@@ -1,8 +1,9 @@
 {# def d, level=0 #}
-
-<ITableField d={d.fundingProgram} level={level}/>
-<ITableField d={d.projectID} level={level}/>
-<ITableField d={d.projectName} level={level}/>
-<ITableField d={d.funder} level={level} >
-    <IVocabularyItem d={d.funder} level={level+1} />
-</ITableField>
+<ITableSection level={level} title={d._ui_label} >
+  <ITableField d={d.fundingProgram} level={level} />
+  <ITableField d={d.projectID} level={level} />
+  <ITableField d={d.projectName} level={level} />
+  <ITableField d={d.funder} >
+    <IVocabularyItem item={d.funder} level={level+1} />
+  </ITableField>
+</ITableSection>

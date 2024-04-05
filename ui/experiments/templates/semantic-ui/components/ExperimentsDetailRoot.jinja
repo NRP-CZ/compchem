@@ -1,26 +1,18 @@
-{#def d #}
+{# def d, level=0 #}
 {% set md=d.metadata %}
 
-<h1 class="ui header">
-    {{ md.name }}
-</h1>
+<div class="ui segment basic padded">
 <ITable>
-  <ITableField d={md.description} />
   <ITableField d={md.publisher} />
   {% for item in array(md.creators) %}
-    <ITableSection d={item} title={item.fullName}>
-      <ExperimentsCreator d={item} level={1}/>
-    </ITableSection>
+      <ExperimentsCreator d={item} level={level+1}/>
   {% endfor %}
-  <ITableSection d={md.fundingReference} title={md.fundingReference._ui_label}>
-    <ExperimentsFundingReference d={md.fundingReference} level={1}/>
-  </ITableSection>
+  <ExperimentsFundingReference d={md.fundingReference} level={level+1}/>
   {% for item in array(md.objectIdentifiers) %}
-    <ITableSection d={item}  title={md.objectIdentifiers._ui_label}>
-      <ExperimentsNrObjectPid d={item} level={1}/>
-    </ITableSection>
+      <ExperimentsNrObjectPid d={item} level={level+1}/>
   {% endfor %}
   {% for item in array(md.simulations) %}
-    <ExperimentsSimulation d={item} title={md.simulations._ui_label} level={1}/>
+      <ExperimentsSimulation d={item} level={level+1}/>
   {% endfor %}
 </ITable>
+</div>

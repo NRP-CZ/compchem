@@ -1,11 +1,12 @@
 {# def d, level=0 #}
-
-<ITableSection level={level} title={d._ui_label} />
-
-<ITableField d={d.description} level={level}/>
-<ITableField d={d.key} level={level}/>
-<ITableField d={d.simulationYear} level={level}/>
-<ExperimentsMaininformation d={d.mainInformation} level={level+1}/>
-<ExperimentsDetailedinformation d={d.detailedInformation} level={level+1}/>
-<ExperimentsRelatedfile d={d.relatedFiles} level={level+1}/>
-<ExperimentsTimestamp d={d.timestamps} level={level+1}/>
+<ITableSection level={level} title={d._ui_label} >
+  <ITableField d={d.description} level={level} />
+  <ITableField d={d.key} level={level} />
+  <ITableField d={d.simulationYear} level={level} />
+  <ExperimentsDetailedinformation d={d.detailedInformation} level={level+1} />
+  <ExperimentsMaininformation d={d.mainInformation} level={level+1} />
+  {% for it in array(d.relatedFiles) %}
+    <ExperimentsRelatedfile d={it} level={level+1} />
+  {% endfor %}
+  <ExperimentsTimestamp d={d.timestamps} level={level+1} />
+</ITableSection>

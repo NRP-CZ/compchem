@@ -10,11 +10,13 @@ tpr_log = logging.getLogger("extract-tpr-parameters-processor")
 class ExtractTPRParametersProcessor(FileProcessor):
 
     def can_process(self, file_record):
+        print(f"Checking if can process file {file_record.key}")
         return self.file_extension(file_record) == '.tpr'
 
     def process(self, file_record):
         """Process a file."""
         try:
+            print(f"Extracting TPR parameters from file {file_record.key}")
             tpr_log.info(f"Extracting text from PDF file {file_record.key}")
             with file_record.open_stream("rb") as fp:
                 data = fp.read()
