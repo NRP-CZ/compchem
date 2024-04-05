@@ -59,8 +59,7 @@ class ExperimentsFileDraftServiceConfig(
     service_id = "experiments_file_draft"
 
     components = [
-        *PermissionsPresetsConfigMixin.components,
-        *FileServiceConfig.components,
+        *CompChemFilesServiceConfig.components,
         DataComponent,
     ]
 
