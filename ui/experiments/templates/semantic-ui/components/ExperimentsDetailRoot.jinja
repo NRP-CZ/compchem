@@ -3,8 +3,6 @@
 
 <div class="ui segment basic padded">
 <ITable>
-  <ITableField d={md.description} />
-  <ITableField d={md.name} />
   <ITableField d={md.publisher} />
   {% for item in array(md.creators) %}
       <ExperimentsCreator d={item} level={level+1}/>

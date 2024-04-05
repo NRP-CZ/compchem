@@ -11,7 +11,7 @@ from shared.services.files import CompChemFilesServiceConfig
 class ExperimentsFileServiceConfig(CompChemFilesServiceConfig):
     """ExperimentsRecord service config."""
 
-    PERMISSIONS_PRESETS = ["everyone"]
+    PERMISSIONS_PRESETS = ["authenticated"]
 
     url_prefix = "/experiments/<pid_value>"
 
@@ -44,11 +44,11 @@ class ExperimentsFileServiceConfig(CompChemFilesServiceConfig):
 
 
 class ExperimentsFileDraftServiceConfig(
-    PermissionsPresetsConfigMixin, FileServiceConfig
+    CompChemFilesServiceConfig
 ):
     """ExperimentsDraft service config."""
 
-    PERMISSIONS_PRESETS = ["everyone"]
+    PERMISSIONS_PRESETS = ["authenticated"]
 
     url_prefix = "/experiments/<pid_value>/draft"
 

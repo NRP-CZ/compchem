@@ -28,6 +28,10 @@ class ExperimentsResourceConfig(RecordsUIResourceConfig):
         "create":"experiments.Deposit",
     }
 
+    def search_endpoint_url(self, identity, api_config, overrides={}, **kwargs):
+        return f"/api/user{api_config.url_prefix}"
+
+
 
 class ExperimentsResource(RecordsUIResource):
     pass

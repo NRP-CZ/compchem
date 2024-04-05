@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-04-01 08:02+0200\n"
+"POT-Creation-Date: 2024-04-04 16:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,22 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
+
+#: /Users/m/w/nrp/compchem/shared/just_for_translations.py:3
+msgid "metadata/creators/authorityIdentifiers.label"
+msgstr ""
+
+#: /Users/m/w/nrp/compchem/shared/just_for_translations.py:4
+msgid "metadata/creators/authorityIdentifiers/identifier.label"
+msgstr ""
+
+#: /Users/m/w/nrp/compchem/shared/just_for_translations.py:5
+msgid "metadata/creators/authorityIdentifiers/scheme.label"
+msgstr ""
+
+#: /Users/m/w/nrp/compchem/shared/just_for_translations.py:6
+msgid "metadata/simulations/timestamps.label"
+msgstr ""
 
 #: /Users/m/w/nrp/compchem/ui/experiments/templates/semantic-ui/experiments/Search.jinja:3
 msgid "Search results"
@@ -25,7 +41,7 @@ msgstr ""
 msgid "experiments"
 msgstr ""
 
-#: /Users/m/w/nrp/compchem/ui/titlepage/templates/TitlePage.jinja:56
-#: /Users/m/w/nrp/compchem/ui/titlepage/templates/TitlePage.jinja:58
+#: /Users/m/w/nrp/compchem/ui/titlepage/templates/TitlePage.jinja:21
+#: /Users/m/w/nrp/compchem/ui/titlepage/templates/TitlePage.jinja:23
 msgid "Search"
 msgstr ""
