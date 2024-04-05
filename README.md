@@ -1,6 +1,31 @@
 # Repository of Computational Chemistry Experiments
 
-## Starting up in development mode
+## Developing with Invenio
+
+Note: At least 32GB of RAM is recommended for running the repository in development mode.
+
+### Prerequisites
+
+Make sure that you have the following software installed:
+
+* python 3.9 or 3.10
+* node version 16 (this is quite old, use for example nvm to install it)
+* npm version 7
+* libcairo2-dev on ubuntu systems
+* imagemagick
+
+### Correct python version
+
+Export the correct python in the PYTHON environment variable:
+
+```bash
+export PYTHON=/usr/bin/python3.10
+```
+
+Always use the absolute path here. The supported versions 
+are 3.9, 3.10, 3.11 might work as well. Version 3.12 does not work atm.
+
+### Running in development mode
 
 Run `./nrp develop` to start the development server. If the server does not start with
 message such as "opensearch could not be contacted", wait for a couple of minutes and 
@@ -13,7 +38,8 @@ Later on, you might call `./nrp develop --skip-checks` for a faster start up tim
 
 ### Creating a test user
 
-After the server has been started at least once, create a test user (orcid integration later):
+After the server has been started at least once (and thus infrastructure services initialized), 
+create a test user (orcid integration later):
 
 ```bash
 source .venv/bin/activate
@@ -90,6 +116,15 @@ The first parameter is the record to which the file should be uploaded.
 The second parameter is the path to the file on your local machine and 
 an optional last one are file metadata.
 
+### List records
+
+```python
+# published
+nrp-cmd list records --model experiments
+
+# drafts
+nrp-cmd list records --model experiments --drafts
+```
 
 ### Check the status of the record to see, if the metadata have been filled
 
