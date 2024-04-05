@@ -3330,7 +3330,7 @@ files = [
 
 [[package]]
 name = "oarepo-runtime"
-version = "1.5.27"
+version = "1.5.29"
 summary = "A set of runtime extensions of Invenio repository"
 groups = ["default"]
 dependencies = [
@@ -3343,13 +3343,13 @@ dependencies = [
     "tqdm",
 ]
 files = [
-    {file = "oarepo-runtime-1.5.27.tar.gz", hash = "sha256:3fc8ebf7daa2c26f76abf0d37c28924c180ba093fa9675d4e25364f82721f9ac"},
-    {file = "oarepo_runtime-1.5.27-py3-none-any.whl", hash = "sha256:595c83508b6096d9fe6a1b5ebf5437242c69c19b19e106b247494bb6c1566e0e"},
+    {file = "oarepo-runtime-1.5.29.tar.gz", hash = "sha256:ea7bbf354586984abe31023bba8aeaeb6298c7c3e78db58e634cd0f5b2dcc7f9"},
+    {file = "oarepo_runtime-1.5.29-py3-none-any.whl", hash = "sha256:8024727a38ae11ee05c415ed3263f63644330070c7e7c5a622c26a45eadb6fa9"},
 ]
 
 [[package]]
 name = "oarepo-ui"
-version = "5.1.16"
+version = "5.1.19"
 requires_python = ">=3.6"
 summary = "UI module for invenio 3.5+"
 groups = ["default"]
@@ -3361,13 +3361,13 @@ dependencies = [
     "oarepo-runtime",
 ]
 files = [
-    {file = "oarepo-ui-5.1.16.tar.gz", hash = "sha256:6d5e05b260819ed8a587af75a5de83d8f270c8af95b00bc3446ebd7265e52b41"},
-    {file = "oarepo_ui-5.1.16-py2.py3-none-any.whl", hash = "sha256:2abc79846f486b130b418009fc890dfe882b0a2bda109c845c6842df044734b3"},
+    {file = "oarepo-ui-5.1.19.tar.gz", hash = "sha256:e312390ec6f56e16159dac04d7c5b5e52b2e6c154fd03f19efa9f6aa9c8006c2"},
+    {file = "oarepo_ui-5.1.19-py2.py3-none-any.whl", hash = "sha256:5bc67332d98aa2d5443fc11e576ead68b111a8363cadf0401c8b0b6584c7d9f8"},
 ]
 
 [[package]]
 name = "oarepo-vocabularies"
-version = "2.0.82"
+version = "2.0.83"
 summary = "Support for custom fields and hierarchy on Invenio vocabularies"
 groups = ["default"]
 dependencies = [
@@ -3378,8 +3378,8 @@ dependencies = [
     "openpyxl",
 ]
 files = [
-    {file = "oarepo-vocabularies-2.0.82.tar.gz", hash = "sha256:14bbbc8b3b2535a41ede1a88f99da328d0752952f901aa77f4af1a87d0eff736"},
-    {file = "oarepo_vocabularies-2.0.82-py3-none-any.whl", hash = "sha256:dc6ccdbcc3b5cea5234e722519c8b494ce23f26d047f7e3d2420ac4bd57892f0"},
+    {file = "oarepo-vocabularies-2.0.83.tar.gz", hash = "sha256:d0cf60b87c4615bda4d7291a2ba892734b5c306cd9416484261424f55b7294c3"},
+    {file = "oarepo_vocabularies-2.0.83-py3-none-any.whl", hash = "sha256:02aadd5b69566258b0a14cca133952da09864274cf80d0c7eeb7b810441cd5f6"},
 ]
 
 [[package]]

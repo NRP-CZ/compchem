@@ -12,9 +12,9 @@ nr-metadata==2.0.21
 nr-vocabularies==2.0.11
 oarepo-published-service==1.0.3
 oarepo-requests==1.1.13
-oarepo-runtime==1.5.27
-oarepo-ui==5.1.16
-oarepo-vocabularies==2.0.82
+oarepo-runtime==1.5.29
+oarepo-ui==5.1.19
+oarepo-vocabularies==2.0.83
 openpyxl==3.1.2
 python-dotenv==1.0.1
 tqdm==4.66.2

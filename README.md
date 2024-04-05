@@ -1,4 +1,4 @@
-# Repository of Computational Chemistry Experiments
+# Repository of Biomolecular Simulations
 
 ## Developing with Invenio
 
