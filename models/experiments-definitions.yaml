@@ -5,6 +5,7 @@ Matrix:
     items:
       type: float
 
+
 Molecule:
   properties:
     id:
@@ -15,112 +16,138 @@ Molecule:
       label.en: Molecule name
     count:
       type: integer
-      label.en: count???
+      label.en: Molecule count
 
-VanDerWaalsInteractions:
+
+WanDerWaalsInteractions:
   properties:
     rvdw:
-      type: float
+      label.en: rvdw [nm]
       hint.en: distance for the LJ or Buckingham cut-off
-      label.en: Van der Waals cut-off
-    dispcorr:
-      type: keyword
-      enum: ["No", "EnerPres", "Ener"]
-      label.en: Dispersion correction
-    rvdwSwitch:
       type: float
-      hint.en: |
-        where to start switching the LJ force and possibly the potential, 
-        only relevant when force or potential switching is used
-      label.en: Van der Waals switching distance
-    vdwModifier:
+    dispcorr:
+      label.en: dispcorr
       type: keyword
-      enum: ["None", "Potential-shift", "Force-switch", "Potential-switch"]
-      label.en: Van der Waals modifier
+      enum:
+        - no
+        - enerpres
+        - eber
+    rvdw-switch:
+      label.en: rvdw-switch [nm]
+      hint.en: where to start switching the LJ force and possibly the potential, only relevant when force or potential switching is used
+      type: float
+    vdw-modifier:
+      label.en: vdw-modifier
+      type: keyword
+      enum:
+        - potential-shift
+        - none
+        - force-switch
+        - potential-switch
+
 
 Barostat:
   properties:
     pcoupl:
+      label.en: pcoupl
       type: keyword
-      enum: ["no", "Berendsen",  "C-rescale",  "Parrinello-Rahman", "MTTK"]
-      label.en: Pressure coupling
-    tauP:
-      type: float
+      enum:
+        - no
+        - berendsen
+        - c-rescale
+        - parrinello-rahman
+        - mttk
+    tau-p:
+      label.en: tau-p [ps]
       hint.en: The time constant for pressure coupling (one value for all directions)
-      label.en: Pressure coupling time constant
+      type: float
     compressibility:
-      use: ./experiments-definitions.yaml#/Matrix
-      hint.en: |
-        The compressibility (NOTE: this is now really in bar-1) 
-        For water at 1 atm and 300 K the compressibility is 4.5e-5 bar-1
-      label.en: Compressibility
-    refcoordScaling:
+      use: ./metadump-definitions.yaml#/Matrix
+      label.en: compressibility [bar^-1]
+      hint.en: The compressibility (NOTE: this is now really in bar-1) For water at 1 atm and 300 K the compressibility is 4.5e-5 bar-1
+      type: float
+    refcoord-scaling:
+      label.en: refcoord-scaling
       type: keyword
-      enum: ["no", "all", "com"]
-      label.en: Reference coordinate scaling
+      enum:
+        - no
+        - all
+        - com
+
 
 Thermostat:
   properties:
     tcoupl:
+      label.en: tcoupl
       type: keyword
-      enum: ["no", "berendsen", "nose-hoover", "andersen", "andersen-massive", "v-rescale"]
-      label.en: Temperature coupling
-    tauT[]:
+      enum:
+        - no
+        - berendsen
+        - nose-hoover
+        - andersen
+        - andersen-massive
+        - v-rescale
+    tau-t[]:
+      label.en: tau-t [ps]
+      hint.en: The time constant for temperature coupling (one value for all groups)
       type: float
-      hint.en: |
-        time constant for coupling (one for each group in
-        tc-grps), -1 means no temperature coupling
-      label.en: Temperature coupling time constant
-    tcGrps[]:
-      ^label.en: Temperature coupling groups
+    # should this be an array?
+    tc-grps:
+      label.en: tc-grps
       properties:
         nr:
-          type: integer
-          hint.en: groups to couple to separate temperature baths
           label.en: Group number
+          hint.en: groups to couple to separate temperature baths
+          type: integer
         name:
+          label.en: name
           type: keyword
-          label.en: Group name
     nsttcouple:
-      type: float
+      label.en: nsttcouple
       hint.en: The frequency for coupling the temperature.
-      label.en: nsttcouple???
+      type: integer
+
 
 NeighbourList:
   properties:
     pbc:
+      label.en: pbc
       type: keyword
-      enum: ["xyz", "no", "xy"]
-      label.en: Periodic boundary conditions
+      enum:
+        - xyz
+        - no
+        - xy
     rlist:
+      label.en: rlist [nm]
+      hint.en: Cut-off distance for the short-range neighbor list
       type: float
-      hint.en: |
-        [nm] Cut-off distance for the short-range neighbor list
-      label.en: Neighbor list cut-off
     nstlist:
-      type: float
-      label.en: nstlist??
-    cutoffScheme:
+      label.en: nstlist
+      type: integer
+    cutoff-scheme:
+      label.en: cutoff-scheme
       type: keyword
-      enum: ["Verlet", "group"]
-      label.en: Cut-off scheme
+      enum:
+        - verlet
+        - group
+
 
 ElectrostaticInteractions:
   properties:
     rcoulomb:
-      hint.en: |
-        [nm] The distance for the Coulomb cut-off
+      label.en: rcoulomb [nm]
+      hint.en: The distance for the Coulomb cut-off
       type: float
-      label.en: Coulomb cut-off
-    epsilonR:
+    epsilon-r:
+      label.en: epsilon-r
       hint.en: The relative dielectric constant
       type: float
-      label.en: Relative dielectric constant
-    epsilonRF:
+    epsilon-rf:
+      label.en: epsilon-rf
       type: float
-      label.en: Relative dielectric constant for reaction field???
-    coulombModifier:
+    coulomb-modifier:
+      label.en: coulomb-modifier
       type: keyword
-      enum: ["Potential-shift", "None"]
-      label.en: Coulomb modifier
-
+      enum:
+        - potential-shift
+        - none

@@ -28,135 +28,159 @@ simulations[]:
   # via the API.
   ^label.en: Simulations
   properties:
-    key:
-      type: keyword
-      hint.en: |
-        Path to the file. Might be just a file name, if it was uploaded separately,
-        or zipname#/path/inside/zip.tpr
-      label.en: File name
-    description:
-      type: fulltext
-      label.en: Description
-    simulationYear:
-      hint.en: Year of creation of simulation
-      type: integer
-      label.en: Simulation year
-    relatedFiles[]:
-      ^label.en: Related files
+    file_identification:
+      label.en: File identification
       properties:
-        key:
-          type: keyword
+        name:
           label.en: File name
-    mainInformation:
-      label.en: Main information
+          hint.en: User specified name of file
+          type: keyword
+        description:
+          label.en: Description
+          hint.en: User specified description of file
+          type: fulltext
+        authors[]:
+          label.en: Authors
+          hint.en: ORCIDs
+          type: keyword
+        simulation_year:
+          label.en: Simulation year
+          hint.en: Year of simulation
+          type: keyword
+        doi:
+          label.en: DOI
+          hint.en: DOI of the dataset
+          type: keyword
+        related_files[]:
+          label.en: Related files [gro, pdb, trr, xtc]
+          hint.en: Related configuration/trajectory files
+          type: keyword
+    main_information:
+      label.en: Main information about dataset
       properties:
-        simulationType:
+        simulation_type:
+          label.en: Type of the simulation
           type: keyword
-          enum: ["free energy simulation", "molecular dynamics", "energy minimization"]
-          label.en: Simulation type
-        forceField:
+          enum:
+            - free energy simulation
+            - molecular dynamics
+            - energy minimization
+        force_field:
+          label.en: Force Field
           type: keyword
-          label.en: Force field
-        simulationLength:
+        simulation_length:
+          label.en: Simulation length [ns]
           type: float
-          label.en: Simulation length
-        simulationTimeStep:
+        simulation_time_step:
+          label.en: Simulation Time Step [ps]
           type: float
-          label.en: Simulation time step
-        statisticalEnsemble:
+        statistical_ensamble:
+          label.en: Statistical Ensemble
           type: keyword
-          enum: ["NpT", "NVT", "NVE"]
-          label.en: Statistical ensemble
-        referenceTemperature[]:
+          enum: 
+            - NVE (microcanonical)
+            - NVT (canonical)
+            - NpT (isothermal-isobaric)
+        reference_temperature[]:
+          label.en: Reference Temperature [K]
           type: float
-          label.en: Reference temperature
-        referencePressure:
+        reference_pressure[]:
           use: ./experiments-definitions.yaml#/Matrix
-          label.en: Reference pressure
-        boxSizeAndShape:
-          # TODO: tohle asi neni spravne
+          label.en: Reference Pressure [bar]
+        box_size_and_shape:
+          label.en: Size and Shape of simulation box [nm degree]
+          hint.en: last line of a coordinate file
           type: float
-          label.en: Box size and shape
         molecules[]:
           use: ./experiments-definitions.yaml#/Molecule
-          ^label.en: Molecules
-        freeEnergyCalculation:
+          label.en: List of molecules
+        free_energy_calculation:
+          label.en: Free Energy Calculation
           type: keyword
-          enum: ["yes", "no"]
-          label.en: Free energy calculation
-
-        umbrellaSampling:
-          type: keyword
-          enum: ["yes", "no"]
-          label.en: Umbrella sampling
-
-        AWHAdaptiveBiasing:
-          type: keyword
-          enum: ["yes", "no"]
-          label.en: AWH adaptive biasing
-
-    detailedInformation:
+          enum: 
+            - yes
+            - no
+        umbrella_sampling:
+          label.en: Umbrella Sampling
+          type: boolean
+        AWH_adaptive_biasing:
+          label.en: AWH Adaptive Biasing
+          type: boolean
+    detailed_information:
       label.en: Detailed information
       properties:
         nstcomm:
-          hint.en: |
-            [step], frequency for center of mass motion removal
-          type: float
-          label.en: nstcomm
-        commMode:
-          type: keyword
-          enum: [ "Linear", "Angular", "Linear-acceleration-correction", "None" ]
-          label.en: commMode
-        lincsIter:
+          label.en: nstcomm [step]
+          hint.en: frequency for center of mass motion removal
           type: integer
-          label.en: lincsIter
-        lincsOrder:
-          type: integer
-          label.en: lincsOrder
-        fourierSpacing:
-          hint.en: "[nm]"
-          type: float
-          label.en: fourierSpacing
-        constraintAlgorithm:
+        comm-mode:
+          label.en: comm-mode
           type: keyword
-          enum: ["Lincs", "Shake"]
+          enum: 
+            - linear
+            - angular
+            - linear-acceleration-correction
+            - none
+        lincs-iter:
+          label.en: lincs-iter
+          type: integer
+        lincs-order:
+          label.en: lincs-order
+          type: integer
+        fourierspacing:
+          label.en: fourierspacing [nm]
+          type: float
+        constraint-algorithm:
+          label.en: constraint-algorithm
           hint.en: Chooses which solver satisfies any non-SETTLE holonomic constraints
-          label.en: constraintAlgorithm
-
-        vanDerWaalsInteractions:
+          type: keyword
+          enum: 
+            - lincs
+            - shake
+        van_der_Waals_interactions:
           use: ./experiments-definitions.yaml#/VanDerWaalsInteractions
-          label.en: Van der Waals interactions
+          label.en: van der Waals interactions
         barostat:
           use: ./experiments-definitions.yaml#/Barostat
           label.en: Barostat
         thermostat:
           use: ./experiments-definitions.yaml#/Thermostat
           label.en: Thermostat
-        neighbourList:
+        neighbour_list:
           use: ./experiments-definitions.yaml#/NeighbourList
           label.en: Neighbour list
-        electrostaticInteractions:
+        electrostatic_interactions:
           use: ./experiments-definitions.yaml#/ElectrostaticInteractions
           label.en: Electrostatic interactions
-
-    software:
-      label.en: Software
-      properties:
-        gromacsVersion:
-          type: keyword
-          label.en: Gromacs version
-        extractorVersion:
-          type: keyword
-          label.en: Extractor version
-        tpxVersion:
-          type: keyword
-          label.en: TPX version
-
-    timestamps:
-      properties:
-        metadataExtractionTimestamp:
-          type: datetime
-          label.en: Metadata extraction timestamp
-        tprFileTimestamp:
-          type: datetime
-          label.en: TPR file timestamp
+    _uniprot_id:
+      label.en: Uniprot ID
+      hint.en: Uniprot ID of the protein
+      type: keyword
+    _record_url:
+      label.en: Dataset URL
+      hint.en: URL to file if uploaded to data repository
+      type: keyword
+    _record_file:
+      label.en: Dataset Record File
+      hint.en: ID of TPR file (if has ID e.g. from Zenodo or other data repository)
+      type: keyword
+    _gromacs_version:
+      label.en: Gromacs software version
+      hint.en: Version of Gromacs (dump) used to extract metadata
+      type: keyword
+    _dump_sw_version:
+      label.en: Metadata description creation software version
+      hint.en: Version of the extraction script at the time of processing metadata
+      type: keyword
+    _tpx_version:
+      label.en: TPX file version
+      hint.en: Version of TPR file
+      type: keyword
+    _metadata_date:
+      label.en: Metadata creation date
+      hint.en: Timestamp of when metadata were extracted
+      type: datetime
+    _tpr_date:
+      label.en: TPR file creation date
+      hint.en: Timestamp of TPR file
+      type: datetime
