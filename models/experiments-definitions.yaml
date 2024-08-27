@@ -64,7 +64,7 @@ Barostat:
     compressibility:
       use: ./metadump-definitions.yaml#/Matrix
       label.en: compressibility [bar^-1]
-      hint.en: The compressibility (NOTE: this is now really in bar-1) For water at 1 atm and 300 K the compressibility is 4.5e-5 bar-1
+      hint.en: "The compressibility (NOTE: this is now really in bar-1) For water at 1 atm and 300 K the compressibility is 4.5e-5 bar-1"
       type: float
     refcoord-scaling:
       label.en: refcoord-scaling
