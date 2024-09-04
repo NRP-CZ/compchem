@@ -1,21 +1,18 @@
 {# def d, level=0 #}
-<ITableSection level={level} title={d._ui_label} >
-  <ITableField d={d.AWHAdaptiveBiasing} level={level} />
-  <ITableField d={d.boxSizeAndShape} level={level} />
-  <ITableField d={d.forceField} level={level} />
-  <ITableField d={d.freeEnergyCalculation} level={level} />
-  <ITableField d={d.referencePressure} level={level} >
-    <ITableArrayValue value={d.referencePressure} />
-  </ITableField>
-  <ITableField d={d.referenceTemperature} level={level} >
-    <ITableArrayValue value={d.referenceTemperature} />
-  </ITableField>
-  <ITableField d={d.simulationLength} level={level} />
-  <ITableField d={d.simulationTimeStep} level={level} />
-  <ITableField d={d.simulationType} level={level} />
-  <ITableField d={d.statisticalEnsemble} level={level} />
-  <ITableField d={d.umbrellaSampling} level={level} />
-  {% for it in array(d.molecules) %}
-    <ExperimentsMolecule d={it} level={level+1} />
-  {% endfor %}
-</ITableSection>
+
+<ITableField d={md.AWH_adaptive_biasing} level={level}/>
+<ITableField d={md.box_size_and_shape} level={level}/>
+<ITableField d={md.force_field} level={level}/>
+<ITableField d={md.free_energy_calculation} level={level}/>
+<ITableField d={md.reference_pressure} level={level}
+  <ITableArrayValue d={md.reference_pressure} />
+</ITableField>
+<ITableField d={md.reference_temperature} level={level}
+  <ITableArrayValue d={md.reference_temperature} />
+</ITableField>
+<ITableField d={md.simulation_length} level={level}/>
+<ITableField d={md.simulation_time_step} level={level}/>
+<ITableField d={md.simulation_type} level={level}/>
+<ITableField d={md.statistical_ensamble} level={level}/>
+<ITableField d={md.umbrella_sampling} level={level}/>
+<ExperimentsMolecule d={md.molecules} level={level+1}/>

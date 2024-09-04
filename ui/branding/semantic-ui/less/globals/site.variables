@@ -1,0 +1,38 @@
+@fontName: "Roboto";
+@importGoogleFonts: false;
+@baseFontSize: 1rem;
+@fontSize: 1rem;
+
+/*-------------------
+      Site Colors
+--------------------*/
+@brandColor: rgb(0, 134, 145);
+@positiveColor: @brandColor;
+@blue: #0478f0;
+@green: @blue;
+@grey: darken(@lightGrey, 50);
+@lightGrey: #e8e6e6;
+@accentColor: #9c27b0;
+@black: rgb(0, 17, 18);
+@lightAccentColor: lighten(@accentColor, 10);
+
+@navbar_background_image: linear-gradient(165deg, #008691, #008691, #00848e, #007e88, #00737d, #006971, #00636b, #006169, #006169);
+@navbar_background_color: @brandColor;
+
+@borderColor: rgb(13, 137, 147);
+
+/*-------------------
+    Brand Colors
+--------------------*/
+
+@primaryColor: @brandColor;
+@secondaryColor: #ff5b7f;
+
+@lightPrimaryColor: lighten(@blue, 50);
+@lightSecondaryColor: lighten(@purple, 50);
+
+@selectionBackground: @lightGrey;
+@celledBorderColor: @blue;
+
+@linkHoverUnderline: underline;
+@highlightHeaderColor: #ededed;

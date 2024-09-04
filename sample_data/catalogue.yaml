@@ -1,6 +1,0 @@
-experiments:
-  - writer: service
-    service: experiments
-  - writer: attachments_service
-    service: experiments
-  - source: data.yaml

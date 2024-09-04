@@ -181,10 +181,39 @@
                     "simulations": {
                         "type": "object",
                         "properties": {
-                            "description": {
-                                "type": "text"
+                            "_dump_sw_version": {
+                                "type": "keyword",
+                                "ignore_above": 1024
                             },
-                            "detailedInformation": {
+                            "_gromacs_version": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            },
+                            "_metadata_date": {
+                                "type": "date",
+                                "format": "strict_date_time||strict_date_time_no_millis||basic_date_time||basic_date_time_no_millis||basic_date||strict_date||strict_date_hour_minute_second||strict_date_hour_minute_second_fraction"
+                            },
+                            "_record_file": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            },
+                            "_record_url": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            },
+                            "_tpr_date": {
+                                "type": "date",
+                                "format": "strict_date_time||strict_date_time_no_millis||basic_date_time||basic_date_time_no_millis||basic_date||strict_date||strict_date_hour_minute_second||strict_date_hour_minute_second_fraction"
+                            },
+                            "_tpx_version": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            },
+                            "_uniprot_id": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            },
+                            "detailed_information": {
                                 "type": "object",
                                 "properties": {
                                     "barostat": {
@@ -197,34 +226,34 @@
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             },
-                                            "refcoordScaling": {
+                                            "refcoord-scaling": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             },
-                                            "tauP": {
+                                            "tau-p": {
                                                 "type": "float"
                                             }
                                         }
                                     },
-                                    "commMode": {
+                                    "comm-mode": {
                                         "type": "keyword",
                                         "ignore_above": 1024
                                     },
-                                    "constraintAlgorithm": {
+                                    "constraint-algorithm": {
                                         "type": "keyword",
                                         "ignore_above": 1024
                                     },
-                                    "electrostaticInteractions": {
+                                    "electrostatic_interactions": {
                                         "type": "object",
                                         "properties": {
-                                            "coulombModifier": {
+                                            "coulomb-modifier": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             },
-                                            "epsilonR": {
+                                            "epsilon-r": {
                                                 "type": "float"
                                             },
-                                            "epsilonRF": {
+                                            "epsilon-rf": {
                                                 "type": "float"
                                             },
                                             "rcoulomb": {
@@ -232,24 +261,24 @@
                                             }
                                         }
                                     },
-                                    "fourierSpacing": {
+                                    "fourierspacing": {
                                         "type": "float"
                                     },
-                                    "lincsIter": {
+                                    "lincs-iter": {
                                         "type": "integer"
                                     },
-                                    "lincsOrder": {
+                                    "lincs-order": {
                                         "type": "integer"
                                     },
-                                    "neighbourList": {
+                                    "neighbour_list": {
                                         "type": "object",
                                         "properties": {
-                                            "cutoffScheme": {
+                                            "cutoff-scheme": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             },
                                             "nstlist": {
-                                                "type": "float"
+                                                "type": "integer"
                                             },
                                             "pbc": {
                                                 "type": "keyword",
@@ -261,18 +290,18 @@
                                         }
                                     },
                                     "nstcomm": {
-                                        "type": "float"
+                                        "type": "integer"
                                     },
                                     "thermostat": {
                                         "type": "object",
                                         "properties": {
                                             "nsttcouple": {
+                                                "type": "integer"
+                                            },
+                                            "tau-t": {
                                                 "type": "float"
                                             },
-                                            "tauT": {
-                                                "type": "float"
-                                            },
-                                            "tcGrps": {
+                                            "tc-grps": {
                                                 "type": "object",
                                                 "properties": {
                                                     "name": {
@@ -290,7 +319,7 @@
                                             }
                                         }
                                     },
-                                    "vanDerWaalsInteractions": {
+                                    "van_der_Waals_interactions": {
                                         "type": "object",
                                         "properties": {
                                             "dispcorr": {
@@ -300,10 +329,10 @@
                                             "rvdw": {
                                                 "type": "float"
                                             },
-                                            "rvdwSwitch": {
+                                            "rvdw-switch": {
                                                 "type": "float"
                                             },
-                                            "vdwModifier": {
+                                            "vdw-modifier": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             }
@@ -311,25 +340,48 @@
                                     }
                                 }
                             },
-                            "key": {
-                                "type": "keyword",
-                                "ignore_above": 1024
-                            },
-                            "mainInformation": {
+                            "file_identification": {
                                 "type": "object",
                                 "properties": {
-                                    "AWHAdaptiveBiasing": {
+                                    "authors": {
                                         "type": "keyword",
                                         "ignore_above": 1024
                                     },
-                                    "boxSizeAndShape": {
+                                    "description": {
+                                        "type": "text"
+                                    },
+                                    "doi": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    },
+                                    "name": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    },
+                                    "related_files": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    },
+                                    "simulation_year": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "main_information": {
+                                "type": "object",
+                                "properties": {
+                                    "AWH_adaptive_biasing": {
+                                        "type": "boolean"
+                                    },
+                                    "box_size_and_shape": {
                                         "type": "float"
                                     },
-                                    "forceField": {
+                                    "force_field": {
                                         "type": "keyword",
                                         "ignore_above": 1024
                                     },
-                                    "freeEnergyCalculation": {
+                                    "free_energy_calculation": {
                                         "type": "keyword",
                                         "ignore_above": 1024
                                     },
@@ -349,75 +401,52 @@
                                             }
                                         }
                                     },
-                                    "referencePressure": {
+                                    "reference_pressure": {
                                         "type": "float"
                                     },
-                                    "referenceTemperature": {
+                                    "reference_temperature": {
                                         "type": "float"
                                     },
-                                    "simulationLength": {
+                                    "simulation_length": {
                                         "type": "float"
                                     },
-                                    "simulationTimeStep": {
+                                    "simulation_time_step": {
                                         "type": "float"
                                     },
-                                    "simulationType": {
+                                    "simulation_type": {
                                         "type": "keyword",
                                         "ignore_above": 1024
                                     },
-                                    "statisticalEnsemble": {
+                                    "statistical_ensamble": {
                                         "type": "keyword",
                                         "ignore_above": 1024
                                     },
-                                    "umbrellaSampling": {
-                                        "type": "keyword",
-                                        "ignore_above": 1024
-                                    }
-                                }
-                            },
-                            "relatedFiles": {
-                                "type": "object",
-                                "properties": {
-                                    "key": {
-                                        "type": "keyword",
-                                        "ignore_above": 1024
-                                    }
-                                }
-                            },
-                            "simulationYear": {
-                                "type": "integer"
-                            },
-                            "software": {
-                                "type": "object",
-                                "properties": {
-                                    "extractorVersion": {
-                                        "type": "keyword",
-                                        "ignore_above": 1024
-                                    },
-                                    "gromacsVersion": {
-                                        "type": "keyword",
-                                        "ignore_above": 1024
-                                    },
-                                    "tpxVersion": {
-                                        "type": "keyword",
-                                        "ignore_above": 1024
-                                    }
-                                }
-                            },
-                            "timestamps": {
-                                "type": "object",
-                                "properties": {
-                                    "metadataExtractionTimestamp": {
-                                        "type": "date",
-                                        "format": "strict_date_time||strict_date_time_no_millis||basic_date_time||basic_date_time_no_millis||basic_date||strict_date||strict_date_hour_minute_second||strict_date_hour_minute_second_fraction"
-                                    },
-                                    "tprFileTimestamp": {
-                                        "type": "date",
-                                        "format": "strict_date_time||strict_date_time_no_millis||basic_date_time||basic_date_time_no_millis||basic_date||strict_date||strict_date_hour_minute_second||strict_date_hour_minute_second_fraction"
+                                    "umbrella_sampling": {
+                                        "type": "boolean"
                                     }
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "pid": {
+                "type": "object",
+                "properties": {
+                    "obj_type": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    },
+                    "pid_type": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    },
+                    "pk": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "keyword",
+                        "ignore_above": 1024
                     }
                 }
             },

@@ -1,15 +1,8 @@
 {# def d, level=0 #}
-<ITableSection level={level} title={d._ui_label} >
-  <ITableField d={d.familyName} level={level} />
-  <ITableField d={d.fullName} level={level} />
-  <ITableField d={d.givenName} level={level} />
-  <ITableField d={d.nameType} level={level} />
-  {% for it in array(d.affiliations) %}
-    <ITableField d={it} level={level} >
-      <ITaxonomyItem item={it} level={level+1} />
-    </ITableField>
-  {% endfor %}
-  {% for it in array(d.authorityIdentifiers) %}
-    <ExperimentsNrOrganizationIdentifier d={it} level={level+1} />
-  {% endfor %}
-</ITableSection>
+
+<ITableField d={md.familyName} level={level}/>
+<ITableField d={md.fullName} level={level}/>
+<ITableField d={md.givenName} level={level}/>
+<ITableField d={md.nameType} level={level}/>
+<ITaxonomyItem d={md.affiliations} level={level+1}/>
+<ExperimentsNrOrganizationIdentifier d={md.authorityIdentifiers} level={level+1}/>

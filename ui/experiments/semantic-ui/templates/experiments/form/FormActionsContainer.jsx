@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Grid } from "semantic-ui-react";
-import { SaveButton, PublishButton, PreviewButton, ValidateButton, DeleteButton } from "@js/oarepo_ui";
+import { SaveButton, PublishButton, PreviewButton, DeleteButton } from "@js/oarepo_ui";
 
 
 export const FormActionsContainer = ({ record }) => {
@@ -16,9 +16,6 @@ export const FormActionsContainer = ({ record }) => {
           </Grid.Column>
           <Grid.Column width={16} className="pt-10">
             <PublishButton />
-          </Grid.Column>
-          <Grid.Column width={16} className="pt-10">
-            <ValidateButton />
           </Grid.Column>
           <Grid.Column width={16} className="pt-10">
           <DeleteButton redirectUrl="/experiments/" />

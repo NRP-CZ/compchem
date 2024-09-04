@@ -7,17 +7,19 @@ authors = []
 dependencies = [
     "deepmerge>=1.1.0",
     "json5",
+    "marshmallow-i18n-messages",
     "nr-metadata>=2.0.0",
     "nr-vocabularies>=2.0.0",
+    "oarepo-global-search",
     "oarepo-published-service>=1.0.0",
     "oarepo-requests>=1.0.2",
     "oarepo-runtime",
     "oarepo-ui",
     "oarepo-vocabularies",
-    "oarepo[s3]==12.*",
+    "oarepo[s3,rdm]==12.1.*",
     "python-dotenv",
 ]
-requires-python = ">=3.9,<3.12"
+requires-python = ">=3.12,<3.13"
 
 [project.entry-points."invenio_assets.webpack"]
 branding = "ui.branding.webpack:theme"
@@ -70,9 +72,6 @@ experiments = "experiments.models:records.json"
 
 [project.entry-points."oarepo.ui"]
 experiments = "experiments.models:ui.json"
-
-[project.entry-points."oarepo.fixtures"]
-compchem = "fixtures"
 
 [project.optional-dependencies]
 tests = [

@@ -1,9 +1,8 @@
+from experiments.services.records.ui_schema import ExperimentsUISchema
 from flask import g
 from flask_resources import BaseListSchema
 from flask_resources.serializers import JSONSerializer
 from oarepo_runtime.resources import LocalizedUIJSONSerializer
-
-from experiments.services.records.ui_schema import ExperimentsUISchema
 
 
 class ExperimentsUIJSONSerializer(LocalizedUIJSONSerializer):

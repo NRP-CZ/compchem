@@ -1,12 +1,12 @@
 {# def d, level=0 #}
-<ITableSection level={level} title={d._ui_label} >
-  <ITableField d={d.description} level={level} />
-  <ITableField d={d.key} level={level} />
-  <ITableField d={d.simulationYear} level={level} />
-  <ExperimentsDetailedinformation d={d.detailedInformation} level={level+1} />
-  <ExperimentsMaininformation d={d.mainInformation} level={level+1} />
-  {% for it in array(d.relatedFiles) %}
-    <ExperimentsRelatedfile d={it} level={level+1} />
-  {% endfor %}
-  <ExperimentsTimestamp d={d.timestamps} level={level+1} />
-</ITableSection>
+
+<ITableField d={md._dump_sw_version} level={level}/>
+<ITableField d={md._gromacs_version} level={level}/>
+<ITableField d={md._metadata_date} level={level}/>
+<ITableField d={md._record_file} level={level}/>
+<ITableField d={md._record_url} level={level}/>
+<ITableField d={md._tpr_date} level={level}/>
+<ITableField d={md._tpx_version} level={level}/>
+<ITableField d={md._uniprot_id} level={level}/>
+<ExperimentsDetailedInformation d={md.detailed_information} level={level+1}/>
+<ExperimentsMainInformation d={md.main_information} level={level+1}/>

@@ -1,17 +1,17 @@
-from invenio_records_resources.services import FileLink, FileServiceConfig, RecordLink
-from invenio_records_resources.services.records.components import DataComponent
-from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
-
 from experiments.records.api import ExperimentsDraft, ExperimentsRecord
 from experiments.services.files.schema import ExperimentsFileSchema
 from experiments.services.records.permissions import ExperimentsPermissionPolicy
+from invenio_records_resources.services import FileLink, FileServiceConfig, RecordLink
+from oarepo_runtime.services.components import CustomFieldsComponent
+from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
+
 from shared.services.files import CompChemFilesServiceConfig
 
 
 class ExperimentsFileServiceConfig(CompChemFilesServiceConfig):
     """ExperimentsRecord service config."""
 
-    PERMISSIONS_PRESETS = ["authenticated"]
+    PERMISSIONS_PRESETS = ["everyone"]
 
     url_prefix = "/experiments/<pid_value>"
 
@@ -23,9 +23,11 @@ class ExperimentsFileServiceConfig(CompChemFilesServiceConfig):
 
     service_id = "experiments_file"
 
-    components = [*CompChemFilesServiceConfig.components, DataComponent]
+    components = [*CompChemFilesServiceConfig.components, CustomFieldsComponent]
 
     model = "experiments"
+    allowed_mimetypes = []
+    allowed_extensions = []
     allow_upload = False
 
     @property
@@ -39,16 +41,17 @@ class ExperimentsFileServiceConfig(CompChemFilesServiceConfig):
         return {
             "commit": FileLink("{+api}/experiments/{id}/files/{key}/commit"),
             "content": FileLink("{+api}/experiments/{id}/files/{key}/content"),
+            "preview": FileLink("{+ui}/experiments/{id}/files/{key}/preview"),
             "self": FileLink("{+api}/experiments/{id}/files/{key}"),
         }
 
 
 class ExperimentsFileDraftServiceConfig(
-    CompChemFilesServiceConfig
+    PermissionsPresetsConfigMixin, FileServiceConfig
 ):
     """ExperimentsDraft service config."""
 
-    PERMISSIONS_PRESETS = ["authenticated"]
+    PERMISSIONS_PRESETS = ["everyone"]
 
     url_prefix = "/experiments/<pid_value>/draft"
 
@@ -59,8 +62,9 @@ class ExperimentsFileDraftServiceConfig(
     service_id = "experiments_file_draft"
 
     components = [
-        *CompChemFilesServiceConfig.components,
-        DataComponent,
+        *PermissionsPresetsConfigMixin.components,
+        *FileServiceConfig.components,
+        CustomFieldsComponent,
     ]
 
     model = "experiments"
@@ -76,5 +80,6 @@ class ExperimentsFileDraftServiceConfig(
         return {
             "commit": FileLink("{+api}/experiments/{id}/draft/files/{key}/commit"),
             "content": FileLink("{+api}/experiments/{id}/draft/files/{key}/content"),
+            "preview": FileLink("{+ui}/experiments/{id}/files/{key}/preview"),
             "self": FileLink("{+api}/experiments/{id}/draft/files/{key}"),
         }

@@ -45,10 +45,7 @@ def init_addons_experiments_requests(state):
 
     from experiments import config
 
-    for rt in getattr(config, "REQUESTS_REGISTERED_TYPES", []):
-        requests.request_type_registry.register_type(rt)
-
-    for er in getattr(config, "REQUESTS_ENTITY_RESOLVERS", []):
+    for er in getattr(config, "EXPERIMENTS_ENTITY_RESOLVERS", []):
         requests.entity_resolvers_registry.register_type(er)
 
 

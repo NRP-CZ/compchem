@@ -1,8 +1,7 @@
+from experiments.records.models import ExperimentsDraftMetadata, ExperimentsMetadata
 from invenio_db import db
 from invenio_records.models import RecordMetadataBase
 from invenio_records_resources.records import FileRecordModelMixin
-
-from experiments.records.models import ExperimentsDraftMetadata, ExperimentsMetadata
 
 
 class ExperimentsFileMetadata(db.Model, RecordMetadataBase, FileRecordModelMixin):

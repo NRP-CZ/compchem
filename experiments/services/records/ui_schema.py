@@ -44,21 +44,27 @@ class SimulationsItemUISchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
 
-    description = ma_fields.String()
+    _dump_sw_version = ma_fields.String()
 
-    detailedInformation = ma_fields.Nested(lambda: DetailedInformationUISchema())
+    _gromacs_version = ma_fields.String()
 
-    key = ma_fields.String()
+    _metadata_date = LocalizedDateTime()
 
-    mainInformation = ma_fields.Nested(lambda: MainInformationUISchema())
+    _record_file = ma_fields.String()
 
-    relatedFiles = ma_fields.List(ma_fields.Nested(lambda: RelatedFilesItemUISchema()))
+    _record_url = ma_fields.String()
 
-    simulationYear = ma_fields.Integer()
+    _tpr_date = LocalizedDateTime()
 
-    software = ma_fields.Nested(lambda: SoftwareUISchema())
+    _tpx_version = ma_fields.String()
 
-    timestamps = ma_fields.Nested(lambda: TimestampsUISchema())
+    _uniprot_id = ma_fields.String()
+
+    detailed_information = ma_fields.Nested(lambda: DetailedInformationUISchema())
+
+    file_identification = ma_fields.Nested(lambda: FileIdentificationUISchema())
+
+    main_information = ma_fields.Nested(lambda: MainInformationUISchema())
 
 
 class DetailedInformationUISchema(DictOnlySchema):
@@ -67,31 +73,37 @@ class DetailedInformationUISchema(DictOnlySchema):
 
     barostat = ma_fields.Nested(lambda: BarostatUISchema())
 
-    commMode = ma_fields.String(
+    comm_mode = ma_fields.String(
+        data_key="comm-mode",
+        attribute="comm-mode",
         validate=[
-            OneOf(["Linear", "Angular", "Linear-acceleration-correction", "None"])
-        ]
+            OneOf(["linear", "angular", "linear-acceleration-correction", "none"])
+        ],
     )
 
-    constraintAlgorithm = ma_fields.String(validate=[OneOf(["Lincs", "Shake"])])
+    constraint_algorithm = ma_fields.String(
+        data_key="constraint-algorithm",
+        attribute="constraint-algorithm",
+        validate=[OneOf(["lincs", "shake"])],
+    )
 
-    electrostaticInteractions = ma_fields.Nested(
+    electrostatic_interactions = ma_fields.Nested(
         lambda: ElectrostaticInteractionsUISchema()
     )
 
-    fourierSpacing = ma_fields.Float()
+    fourierspacing = ma_fields.Float()
 
-    lincsIter = ma_fields.Integer()
+    lincs_iter = ma_fields.Integer(data_key="lincs-iter", attribute="lincs-iter")
 
-    lincsOrder = ma_fields.Integer()
+    lincs_order = ma_fields.Integer(data_key="lincs-order", attribute="lincs-order")
 
-    neighbourList = ma_fields.Nested(lambda: NeighbourListUISchema())
+    neighbour_list = ma_fields.Nested(lambda: NeighbourListUISchema())
 
-    nstcomm = ma_fields.Float()
+    nstcomm = ma_fields.Integer()
 
     thermostat = ma_fields.Nested(lambda: ThermostatUISchema())
 
-    vanDerWaalsInteractions = ma_fields.Nested(
+    van_der_Waals_interactions = ma_fields.Nested(
         lambda: VanDerWaalsInteractionsUISchema()
     )
 
@@ -100,25 +112,27 @@ class MainInformationUISchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
 
-    AWHAdaptiveBiasing = ma_fields.String(validate=[OneOf(["yes", "no"])])
+    AWH_adaptive_biasing = ma_fields.Boolean()
 
-    boxSizeAndShape = ma_fields.Float()
+    box_size_and_shape = ma_fields.Float()
 
-    forceField = ma_fields.String()
+    force_field = ma_fields.String()
 
-    freeEnergyCalculation = ma_fields.String(validate=[OneOf(["yes", "no"])])
+    free_energy_calculation = ma_fields.String(validate=[OneOf([True, False])])
 
     molecules = ma_fields.List(ma_fields.Nested(lambda: MoleculesItemUISchema()))
 
-    referencePressure = ma_fields.List(ma_fields.List(ma_fields.Float()))
+    reference_pressure = ma_fields.List(
+        ma_fields.List(ma_fields.List(ma_fields.Float()))
+    )
 
-    referenceTemperature = ma_fields.List(ma_fields.Float())
+    reference_temperature = ma_fields.List(ma_fields.Float())
 
-    simulationLength = ma_fields.Float()
+    simulation_length = ma_fields.Float()
 
-    simulationTimeStep = ma_fields.Float()
+    simulation_time_step = ma_fields.Float()
 
-    simulationType = ma_fields.String(
+    simulation_type = ma_fields.String(
         validate=[
             OneOf(
                 ["free energy simulation", "molecular dynamics", "energy minimization"]
@@ -126,26 +140,34 @@ class MainInformationUISchema(DictOnlySchema):
         ]
     )
 
-    statisticalEnsemble = ma_fields.String(validate=[OneOf(["NpT", "NVT", "NVE"])])
+    statistical_ensamble = ma_fields.String(
+        validate=[
+            OneOf(
+                ["NVE (microcanonical)", "NVT (canonical)", "NpT (isothermal-isobaric)"]
+            )
+        ]
+    )
 
-    umbrellaSampling = ma_fields.String(validate=[OneOf(["yes", "no"])])
+    umbrella_sampling = ma_fields.Boolean()
 
 
 class ThermostatUISchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
 
-    nsttcouple = ma_fields.Float()
+    nsttcouple = ma_fields.Integer()
 
-    tauT = ma_fields.List(ma_fields.Float())
+    tau_t = ma_fields.List(ma_fields.Float(), data_key="tau-t", attribute="tau-t")
 
-    tcGrps = ma_fields.List(ma_fields.Nested(lambda: TcGrpsItemUISchema()))
+    tc_grps = ma_fields.Nested(
+        lambda: TcGrpsUISchema(), data_key="tc-grps", attribute="tc-grps"
+    )
 
     tcoupl = ma_fields.String(
         validate=[
             OneOf(
                 [
-                    "no",
+                    False,
                     "berendsen",
                     "nose-hoover",
                     "andersen",
@@ -164,25 +186,50 @@ class BarostatUISchema(DictOnlySchema):
     compressibility = ma_fields.List(ma_fields.List(ma_fields.Float()))
 
     pcoupl = ma_fields.String(
-        validate=[OneOf(["no", "Berendsen", "C-rescale", "Parrinello-Rahman", "MTTK"])]
+        validate=[OneOf([False, "berendsen", "c-rescale", "parrinello-rahman", "mttk"])]
     )
 
-    refcoordScaling = ma_fields.String(validate=[OneOf(["no", "all", "com"])])
+    refcoord_scaling = ma_fields.String(
+        data_key="refcoord-scaling",
+        attribute="refcoord-scaling",
+        validate=[OneOf([False, "all", "com"])],
+    )
 
-    tauP = ma_fields.Float()
+    tau_p = ma_fields.Float(data_key="tau-p", attribute="tau-p")
 
 
 class ElectrostaticInteractionsUISchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
 
-    coulombModifier = ma_fields.String(validate=[OneOf(["Potential-shift", "None"])])
+    coulomb_modifier = ma_fields.String(
+        data_key="coulomb-modifier",
+        attribute="coulomb-modifier",
+        validate=[OneOf(["potential-shift", "none"])],
+    )
 
-    epsilonR = ma_fields.Float()
+    epsilon_r = ma_fields.Float(data_key="epsilon-r", attribute="epsilon-r")
 
-    epsilonRF = ma_fields.Float()
+    epsilon_rf = ma_fields.Float(data_key="epsilon-rf", attribute="epsilon-rf")
 
     rcoulomb = ma_fields.Float()
+
+
+class FileIdentificationUISchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    authors = ma_fields.List(ma_fields.String())
+
+    description = ma_fields.String()
+
+    doi = ma_fields.String()
+
+    name = ma_fields.String()
+
+    related_files = ma_fields.List(ma_fields.String())
+
+    simulation_year = ma_fields.String()
 
 
 class MoleculesItemUISchema(DictOnlySchema):
@@ -200,34 +247,20 @@ class NeighbourListUISchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
 
-    cutoffScheme = ma_fields.String(validate=[OneOf(["Verlet", "group"])])
+    cutoff_scheme = ma_fields.String(
+        data_key="cutoff-scheme",
+        attribute="cutoff-scheme",
+        validate=[OneOf(["verlet", "group"])],
+    )
 
-    nstlist = ma_fields.Float()
+    nstlist = ma_fields.Integer()
 
-    pbc = ma_fields.String(validate=[OneOf(["xyz", "no", "xy"])])
+    pbc = ma_fields.String(validate=[OneOf(["xyz", False, "xy"])])
 
     rlist = ma_fields.Float()
 
 
-class RelatedFilesItemUISchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    key = ma_fields.String()
-
-
-class SoftwareUISchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    extractorVersion = ma_fields.String()
-
-    gromacsVersion = ma_fields.String()
-
-    tpxVersion = ma_fields.String()
-
-
-class TcGrpsItemUISchema(DictOnlySchema):
+class TcGrpsUISchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
 
@@ -236,27 +269,20 @@ class TcGrpsItemUISchema(DictOnlySchema):
     nr = ma_fields.Integer()
 
 
-class TimestampsUISchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    metadataExtractionTimestamp = LocalizedDateTime()
-
-    tprFileTimestamp = LocalizedDateTime()
-
-
 class VanDerWaalsInteractionsUISchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
 
-    dispcorr = ma_fields.String(validate=[OneOf(["No", "EnerPres", "Ener"])])
+    dispcorr = ma_fields.String(validate=[OneOf([False, "enerpres", "eber"])])
 
     rvdw = ma_fields.Float()
 
-    rvdwSwitch = ma_fields.Float()
+    rvdw_switch = ma_fields.Float(data_key="rvdw-switch", attribute="rvdw-switch")
 
-    vdwModifier = ma_fields.String(
+    vdw_modifier = ma_fields.String(
+        data_key="vdw-modifier",
+        attribute="vdw-modifier",
         validate=[
-            OneOf(["None", "Potential-shift", "Force-switch", "Potential-switch"])
-        ]
+            OneOf(["potential-shift", "none", "force-switch", "potential-switch"])
+        ],
     )

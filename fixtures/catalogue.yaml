@@ -1,8 +1,0 @@
-vocabulary-institutions:
-  - writer: vocabulary
-    vocabulary: institutions
-    pid_type: v-i
-    title:
-      cs: Instituce
-      en: Institutions
-  - source: institutions.yaml

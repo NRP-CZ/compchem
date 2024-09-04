@@ -1,8 +1,7 @@
 import importlib_metadata
+from experiments.resources.records.ui import ExperimentsUIJSONSerializer
 from flask_resources import ResponseHandler
 from invenio_drafts_resources.resources import RecordResourceConfig
-
-from experiments.resources.records.ui import ExperimentsUIJSONSerializer
 
 
 class ExperimentsResourceConfig(RecordResourceConfig):

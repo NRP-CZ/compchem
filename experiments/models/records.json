@@ -1,79 +1,7 @@
 {
     "model": {
         "type": "model",
-        "requests": {
-            "types": {
-                "delete-record": {
-                    "base-classes": [
-                        "oarepo_requests.types.delete_record.DeleteRecordRequestType"
-                    ],
-                    "allowed-receiver-ref-types": [
-                        "user",
-                        "group"
-                    ],
-                    "module": "experiments.records.requests.delete_record.types",
-                    "class": "experiments.records.requests.delete_record.types.DeleteRecordRequestType",
-                    "generate": true,
-                    "id": "experiments_delete_record",
-                    "actions": {}
-                },
-                "edit-record": {
-                    "base-classes": [
-                        "oarepo_requests.types.edit_record.EditRecordRequestType"
-                    ],
-                    "allowed-receiver-ref-types": [
-                        "user",
-                        "group"
-                    ],
-                    "module": "experiments.records.requests.edit_record.types",
-                    "class": "experiments.records.requests.edit_record.types.EditRecordRequestType",
-                    "generate": true,
-                    "id": "experiments_edit_record",
-                    "actions": {}
-                }
-            },
-            "api-blueprint": {
-                "generate": true,
-                "alias": "experiments_requests",
-                "module": "experiments.views.requests.api",
-                "function": "experiments.views.requests.api.create_api_blueprint",
-                "imports": []
-            },
-            "app-blueprint": {
-                "generate": true,
-                "alias": "experiments_requests",
-                "extra_code": "",
-                "module": "experiments.views.requests.app",
-                "function": "experiments.views.requests.app.create_app_blueprint",
-                "imports": []
-            },
-            "resource": {
-                "generate": true,
-                "config-key": "EXPERIMENTS_REQUESTS_RESOURCE_CLASS",
-                "class": "oarepo_requests.resources.draft.resource.DraftRecordRequestsResource",
-                "additional-args": [
-                    "record_requests_config={{oarepo_requests.resources.draft.config.DraftRecordRequestsResourceConfig}}()"
-                ],
-                "skip": false
-            },
-            "service": {
-                "generate": true,
-                "config-key": "EXPERIMENTS_REQUESTS_SERVICE_CLASS",
-                "class": "oarepo_requests.services.draft.service.DraftRecordRequestsService",
-                "additional-args": [
-                    "record_service=self.service_records",
-                    "oarepo_requests_service={{oarepo_requests.proxies.current_oarepo_requests_service}}"
-                ],
-                "skip": false
-            },
-            "additional-resolvers": [
-                "{{oarepo_runtime.records.entity_resolvers.UserResolver}}()",
-                "{{oarepo_runtime.records.entity_resolvers.GroupResolver}}()"
-            ],
-            "additional-ui-resolvers": {
-                "\"user\"": "{{oarepo_requests.resolvers.ui.user_entity_reference_ui_resolver}}"
-            }
-        },
+        "searchable": true,
         "permissions": {
             "presets": [
                 "authenticated"
@@ -90,7 +18,6 @@
         "marshmallow": {
             "imports": [],
             "base-classes": [
-                "oarepo_requests.services.schema.RequestsSchemaMixin",
                 "oarepo_runtime.services.schema.marshmallow.BaseRecordSchema"
             ],
             "generate": true,
@@ -99,23 +26,6 @@
             "extra-code": ""
         },
         "custom-fields": [],
-        "searchable": true,
-        "ui": {
-            "marshmallow": {
-                "imports": [],
-                "base-classes": [
-                    "oarepo_requests.services.ui_schema.UIRequestsSerializationMixin",
-                    "oarepo_runtime.services.schema.ui.InvenioUISchema"
-                ],
-                "generate": true,
-                "module": "experiments.services.records.ui_schema",
-                "class": "experiments.services.records.ui_schema.ExperimentsUISchema",
-                "extra-code": ""
-            },
-            "module": "experiments.models",
-            "file": "experiments/models/ui.json",
-            "alias": "experiments"
-        },
         "pid": {
             "type": "xprnts",
             "provider-base-classes": [
@@ -138,6 +48,22 @@
                 "create=True"
             ],
             "extra-code": ""
+        },
+        "ui": {
+            "marshmallow": {
+                "imports": [],
+                "base-classes": [
+                    "oarepo_requests.services.ui_schema.UIRequestsSerializationMixin",
+                    "oarepo_runtime.services.schema.ui.InvenioUISchema"
+                ],
+                "generate": true,
+                "module": "experiments.services.records.ui_schema",
+                "class": "experiments.services.records.ui_schema.ExperimentsUISchema",
+                "extra-code": ""
+            },
+            "module": "experiments.models",
+            "file": "experiments/models/ui.json",
+            "alias": "experiments"
         },
         "resource-config": {
             "base-html-url": "/experiments/",
@@ -167,6 +93,26 @@
             "suffix": "experiments",
             "suffix-upper": "EXPERIMENTS",
             "suffix-snake": "experiments"
+        },
+        "draft": {
+            "type": "draft_record",
+            "properties": {},
+            "searchable": true,
+            "tests": {
+                "extra-fixtures": [],
+                "extra-code": "",
+                "module": "tests"
+            }
+        },
+        "draft-files": {
+            "type": "draft-file",
+            "properties": {},
+            "searchable": true,
+            "tests": {
+                "extra-fixtures": [],
+                "extra-code": "",
+                "module": "tests"
+            }
         },
         "tests": {
             "extra-fixtures": [],
@@ -244,6 +190,7 @@
                     "type": "keyword"
                 }
             },
+            "searchable": true,
             "marshmallow": {
                 "imports": [
                     {
@@ -255,7 +202,6 @@
                     "InvenioFileSchema"
                 ]
             },
-            "searchable": true,
             "service-config": {
                 "base-classes": [
                     "shared.services.files.CompChemFilesServiceConfig"
@@ -272,39 +218,6 @@
                 "module": "tests"
             }
         },
-        "draft": {
-            "type": "draft_record",
-            "properties": {},
-            "requests": {
-                "types": {
-                    "publish-draft": {
-                        "base-classes": [
-                            "oarepo_requests.types.publish_draft.PublishDraftRequestType"
-                        ],
-                        "allowed-receiver-ref-types": [
-                            "user",
-                            "group"
-                        ]
-                    }
-                }
-            },
-            "searchable": true,
-            "tests": {
-                "extra-fixtures": [],
-                "extra-code": "",
-                "module": "tests"
-            }
-        },
-        "draft-files": {
-            "type": "draft-file",
-            "properties": {},
-            "searchable": true,
-            "tests": {
-                "extra-fixtures": [],
-                "extra-code": "",
-                "module": "tests"
-            }
-        },
         "sample": {
             "file": "data/sample_data.yaml"
         },
@@ -313,42 +226,6 @@
             "skip": false
         },
         "model-name": "Experiments",
-        "record": {
-            "base-classes": [
-                "invenio_drafts_resources.records.api.Record{InvenioRecord}"
-            ],
-            "generate": true,
-            "module": "experiments.records.api",
-            "class": "experiments.records.api.ExperimentsRecord",
-            "imports": [],
-            "extra-code": "",
-            "fields": {}
-        },
-        "resource": {
-            "base-classes": [
-                "invenio_drafts_resources.resources.RecordResource"
-            ],
-            "generate": true,
-            "config-key": "EXPERIMENTS_RECORD_RESOURCE_CLASS",
-            "module": "experiments.resources.records.resource",
-            "class": "experiments.resources.records.resource.ExperimentsResource",
-            "proxy": "current_resource",
-            "extra-code": "",
-            "imports": [],
-            "additional-args": []
-        },
-        "search-options": {
-            "generate": true,
-            "module": "experiments.services.records.search",
-            "extra-code": "",
-            "class": "experiments.services.records.search.ExperimentsSearchOptions",
-            "base-classes": [
-                "invenio_records_resources.services.SearchOptions{InvenioSearchOptions}"
-            ],
-            "imports": [],
-            "fields": {},
-            "sort-options-field": "sort_options"
-        },
         "config": {
             "generate": true,
             "module": "experiments.config",
@@ -395,6 +272,93 @@
             "module": "experiments.proxies",
             "generate": true
         },
+        "record": {
+            "base-classes": [
+                "invenio_drafts_resources.records.api.Record{InvenioRecord}"
+            ],
+            "generate": true,
+            "module": "experiments.records.api",
+            "class": "experiments.records.api.ExperimentsRecord",
+            "imports": [],
+            "extra-code": "",
+            "fields": {}
+        },
+        "resource": {
+            "base-classes": [
+                "invenio_drafts_resources.resources.RecordResource"
+            ],
+            "generate": true,
+            "config-key": "EXPERIMENTS_RECORD_RESOURCE_CLASS",
+            "module": "experiments.resources.records.resource",
+            "class": "experiments.resources.records.resource.ExperimentsResource",
+            "proxy": "current_resource",
+            "extra-code": "",
+            "imports": [],
+            "additional-args": []
+        },
+        "search-options": {
+            "module": "experiments.services.records.search",
+            "class": "experiments.services.records.search.ExperimentsSearchOptions",
+            "generate": true,
+            "extra-code": "",
+            "base-classes": [
+                "invenio_records_resources.services.SearchOptions{InvenioSearchOptions}"
+            ],
+            "imports": [],
+            "fields": {},
+            "sort-options-field": "sort_options"
+        },
+        "record-resolver": {
+            "generate": true,
+            "module": "experiments.records.requests.resolvers",
+            "class": "experiments.records.requests.resolvers.ExperimentsResolver",
+            "base-classes": [
+                "oarepo_runtime.records.entity_resolvers.RecordResolver"
+            ],
+            "imports": [],
+            "custom-proxy-class": "oarepo_runtime.records.entity_resolvers.RecordProxy"
+        },
+        "ui-record-resolver": {
+            "generate": true,
+            "class": "oarepo_requests.resolvers.ui.RecordEntityReferenceUIResolver"
+        },
+        "files-field": {
+            "generate": true,
+            "field-class": "invenio_records_resources.records.systemfields.FilesField",
+            "file-class": "experiments.records.api.ExperimentsRecord",
+            "field-args": [
+                "store=False"
+            ],
+            "imports": []
+        },
+        "json-schema-settings": {
+            "generate": true,
+            "alias": "experiments",
+            "version": "1.0.0",
+            "module": "experiments.records.jsonschemas",
+            "name": "experiments-1.0.0.json",
+            "file": "experiments/records/jsonschemas/experiments-1.0.0.json"
+        },
+        "json-serializer": {
+            "module": "experiments.resources.records.ui",
+            "class": "experiments.resources.records.ui.ExperimentsUIJSONSerializer",
+            "base-classes": [
+                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
+            ],
+            "imports": [],
+            "extra-code": "",
+            "generate": true,
+            "list_schema_cls": "flask_resources.BaseListSchema",
+            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
+            "schema-context-args": {
+                "\"object_key\"": "\"ui\"",
+                "\"identity\"": "{{ flask.g{g.identity} }}"
+            }
+        },
+        "translations": {
+            "module": "experiments.translations",
+            "alias": "experiments"
+        },
         "record-metadata": {
             "generate": true,
             "module": "experiments.records.models",
@@ -440,9 +404,9 @@
             "service-id": "experiments",
             "components": [
                 "{{oarepo_runtime.services.components.OwnersComponent}}",
-                "{{invenio_drafts_resources.services.records.components.DraftFilesComponent}}",
                 "{{oarepo_runtime.services.files.FilesComponent}}",
-                "{{invenio_records_resources.services.records.components.DataComponent}}"
+                "{{oarepo_runtime.services.components.CustomFieldsComponent}}",
+                "{{invenio_drafts_resources.services.records.components.DraftFilesComponent}}"
             ],
             "additional-args": []
         },
@@ -461,42 +425,52 @@
             ],
             "imports": []
         },
-        "files-field": {
+        "multilingual-dumper": {
             "generate": true,
-            "field-class": "invenio_records_resources.records.systemfields.FilesField",
-            "file-class": "experiments.records.api.ExperimentsRecord",
-            "field-args": [
-                "store=False"
+            "module": "experiments.records.dumpers.multilingual",
+            "class": "experiments.records.dumpers.multilingual.MultilingualSearchDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
             ],
+            "extra-code": "",
+            "extensions": [],
             "imports": []
         },
-        "translations": {
-            "module": "experiments.translations",
-            "alias": "experiments"
-        },
-        "json-schema-settings": {
+        "edtf-interval-dumper": {
             "generate": true,
-            "alias": "experiments",
-            "version": "1.0.0",
-            "module": "experiments.records.jsonschemas",
-            "name": "experiments-1.0.0.json",
-            "file": "experiments/records/jsonschemas/experiments-1.0.0.json"
-        },
-        "json-serializer": {
-            "module": "experiments.resources.records.ui",
-            "class": "experiments.resources.records.ui.ExperimentsUIJSONSerializer",
+            "module": "experiments.records.dumpers.edtf",
+            "class": "experiments.records.dumpers.edtf.ExperimentsEDTFIntervalDumperExt",
             "base-classes": [
-                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
+                "oarepo_runtime.records.dumpers.edtf_interval.EDTFIntervalDumperExt"
             ],
-            "imports": [],
             "extra-code": "",
+            "extensions": [],
+            "imports": []
+        },
+        "record-list": {
             "generate": true,
-            "list_schema_cls": "flask_resources.BaseListSchema",
-            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
-            "schema-context-args": {
-                "\"object_key\"": "\"ui\"",
-                "\"identity\"": "{{ flask.g{g.identity} }}"
-            }
+            "module": "experiments.services.records.results",
+            "class": "experiments.services.records.results.ExperimentsRecordList",
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.results.RecordList"
+            ],
+            "components": [],
+            "imports": []
+        },
+        "record-item": {
+            "generate": true,
+            "module": "experiments.services.records.results",
+            "class": "experiments.services.records.results.ExperimentsRecordItem",
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.results.RecordItem"
+            ],
+            "components": [
+                "{{oarepo_requests.services.results.RequestsComponent}}()",
+                "{{oarepo_requests.services.results.RequestTypesComponent}}()"
+            ],
+            "imports": []
         },
         "draft-parent-record": {
             "class": "experiments.records.api.ExperimentsParentRecord",
@@ -504,6 +478,7 @@
                 "invenio_drafts_resources.records.api.ParentRecord"
             ],
             "imports": [],
+            "fields": {},
             "module": "experiments.records.api",
             "generate": true
         },
@@ -570,53 +545,6 @@
             ],
             "imports": []
         },
-        "multilingual-dumper": {
-            "generate": true,
-            "module": "experiments.records.dumpers.multilingual",
-            "class": "experiments.records.dumpers.multilingual.MultilingualSearchDumperExt",
-            "base-classes": [
-                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
-            ],
-            "extra-code": "",
-            "extensions": [],
-            "imports": []
-        },
-        "edtf-interval-dumper": {
-            "generate": true,
-            "module": "experiments.records.dumpers.edtf",
-            "class": "experiments.records.dumpers.edtf.ExperimentsEDTFIntervalDumperExt",
-            "base-classes": [
-                "oarepo_runtime.records.dumpers.edtf_interval.EDTFIntervalDumperExt"
-            ],
-            "extra-code": "",
-            "extensions": [],
-            "imports": []
-        },
-        "record-list": {
-            "generate": true,
-            "module": "experiments.services.records.results",
-            "class": "experiments.services.records.results.ExperimentsRecordList",
-            "extra-code": "",
-            "base-classes": [
-                "oarepo_runtime.services.results.RecordList"
-            ],
-            "components": [],
-            "imports": []
-        },
-        "record-item": {
-            "generate": true,
-            "module": "experiments.services.records.results",
-            "class": "experiments.services.records.results.ExperimentsRecordItem",
-            "extra-code": "",
-            "base-classes": [
-                "oarepo_runtime.services.results.RecordItem"
-            ],
-            "components": [
-                "{{oarepo_requests.services.results.RequestsComponent}}()",
-                "{{oarepo_requests.services.results.RequestTypesComponent}}()"
-            ],
-            "imports": []
-        },
         "parent-record-marshmallow": {
             "module": "experiments.services.records.schema",
             "class": "experiments.services.records.schema.GeneratedParentSchema",
@@ -625,18 +553,45 @@
                 "invenio_drafts_resources.services.records.schema.ParentSchema{InvenioParentSchema}"
             ]
         },
-        "record-resolver": {
-            "generate": true,
-            "module": "experiments.records.requests.resolvers",
-            "class": "experiments.records.requests.resolvers.ExperimentsResolver",
-            "base-classes": [
-                "oarepo_runtime.records.entity_resolvers.RecordResolver"
-            ],
-            "imports": []
-        },
-        "ui-record-resolver": {
-            "generate": true,
-            "function": "oarepo_requests.resolvers.ui.record_entity_reference_ui_resolver"
+        "requests": {
+            "types": {},
+            "api-blueprint": {
+                "generate": true,
+                "alias": "experiments_requests",
+                "module": "experiments.views.requests.api",
+                "function": "experiments.views.requests.api.create_api_blueprint",
+                "imports": []
+            },
+            "app-blueprint": {
+                "generate": true,
+                "alias": "experiments_requests",
+                "extra_code": "",
+                "module": "experiments.views.requests.app",
+                "function": "experiments.views.requests.app.create_app_blueprint",
+                "imports": []
+            },
+            "resource": {
+                "generate": true,
+                "config-key": "EXPERIMENTS_REQUESTS_RESOURCE_CLASS",
+                "class": "oarepo_requests.resources.draft.resource.DraftRecordRequestsResource",
+                "additional-args": [
+                    "record_requests_config={{oarepo_requests.resources.draft.config.DraftRecordRequestsResourceConfig}}()"
+                ],
+                "skip": false
+            },
+            "service": {
+                "generate": true,
+                "config-key": "EXPERIMENTS_REQUESTS_SERVICE_CLASS",
+                "class": "oarepo_requests.services.draft.service.DraftRecordRequestsService",
+                "additional-args": [
+                    "record_service=self.service_records",
+                    "oarepo_requests_service={{oarepo_requests.proxies.current_oarepo_requests_service}}"
+                ],
+                "skip": false
+            },
+            "additional-resolvers": [],
+            "additional-ui-resolvers": {},
+            "ui-serialization-referenced-fields": []
         },
         "sortable": [],
         "properties": {
@@ -747,13 +702,23 @@
                                                 "faker": "name"
                                             },
                                             "label.cs": "Jméno autora",
-                                            "label.en": "Author name"
+                                            "label.en": "Author's name"
                                         },
                                         "givenName": {
-                                            "type": "keyword"
+                                            "type": "keyword",
+                                            "required": true,
+                                            "label.cs": "Jméno",
+                                            "label.en": "Name",
+                                            "hint.cs": "Napište jméno autora.",
+                                            "hint.en": "Write the author's name."
                                         },
                                         "familyName": {
-                                            "type": "keyword"
+                                            "type": "keyword",
+                                            "required": true,
+                                            "label.cs": "Příjmení",
+                                            "label.en": "Last name",
+                                            "hint.cs": "Napište příjmení autora.",
+                                            "hint.en": "Write the author's last name."
                                         },
                                         "authorityIdentifiers": {
                                             "type": "array",
@@ -768,7 +733,8 @@
                                                         },
                                                         "label.cs": "Identifikátor",
                                                         "label.en": "Identifier",
-                                                        "i18n.key": "identifier"
+                                                        "hint.cs": "např https://orcid.org/0009-0004-8646-7185 pro ORCID.",
+                                                        "hint.en": "e.g. https://orcid.org/0009-0004-8646-7185 for ORCID."
                                                     },
                                                     "scheme": {
                                                         "type": "keyword",
@@ -784,9 +750,8 @@
                                                         ],
                                                         "label.cs": "Typ identifikátoru",
                                                         "label.en": "Identifier type",
-                                                        "hint.cs": "Doporučujeme zadat alespoň jeden z typů identifikátorů.\nPokud potřebujete rozšířit nabídku typů identifikátorů, kontaktujte nás na support@narodni-repozitar.cz.\n",
-                                                        "hint.en": "We recommend providing at least one of the identifier types.\nIf you need to expand the range of identifier types, contact us at support@narodni-repozitar.cz.\n",
-                                                        "i18n.key": "identifier_type"
+                                                        "hint.cs": "např ORCID, scopusID",
+                                                        "hint.en": "e.g. ORCID, scopusID"
                                                     }
                                                 },
                                                 "ui": {
@@ -800,7 +765,11 @@
                                                     "generate": false,
                                                     "class": "nr_metadata.schema.identifiers.NRPersonIdentifierSchema"
                                                 }
-                                            }
+                                            },
+                                            "label.cs": "Identifikátor osoby",
+                                            "label.en": "Person identifier",
+                                            "help.cs": "Vyberte z nabídky typ identifikátoru. Napište identifikátor bez předpony (tj. https://orcid.org/0009-0004-8646-7185 nebo jk01051816). \nDoporučujeme zadat alespoň jeden z typů identifikátorů. \nPokud potřebujete rozšířit nabídku typů identifikátorů, kontaktujte nás na support@narodni-repozitar.cz.\n",
+                                            "help.en": "Choose the identifier type from the menu. Write the identifier without a prefix (e.g. https://orcid.org/0009-0004-8646-7185 or jk01051816). \nWe recommend providing at least one of the identifier types.\nIf you need to expand the range of identifier types, contact us at support@narodni-repozitar.cz.\n"
                                         },
                                         "affiliations": {
                                             "type": "array",
@@ -912,10 +881,11 @@
                                                 },
                                                 "label.cs": "Afiliace",
                                                 "label.en": "Affiliation",
-                                                "hint.cs": "Uveďte instituci/instituce, pod jejíž záštitou jste se na tvorbě objektu podíleli.",
+                                                "hint.cs": "Začněte zapisovat název instituce, následně zvolte instituci z nabídky našeptavače.",
+                                                "hint.en": "Start typing the name of the institution, then select the institution from the menu.",
                                                 "imports": [
                                                     {
-                                                        "import": "invenio_vocabularies.records.api.Vocabulary"
+                                                        "import": "oarepo_vocabularies.records.api.Vocabulary"
                                                     }
                                                 ],
                                                 "model": "vocabularies",
@@ -960,8 +930,10 @@
                                             "sample": {
                                                 "faker": "name"
                                             },
-                                            "label.cs": "Jméno autora",
-                                            "label.en": "Author name"
+                                            "label.cs": "Organizace",
+                                            "label.en": "Organization",
+                                            "hint.cs": "Začněte zapisovat název instituce, následně zvolte instituci z nabídky našeptavače.",
+                                            "hint.en": "Start typing the name of the institution, then select the institution from the menu."
                                         },
                                         "authorityIdentifiers": {
                                             "type": "array",
@@ -975,8 +947,7 @@
                                                             "faker": "isbn13"
                                                         },
                                                         "label.cs": "Identifikátor",
-                                                        "label.en": "Identifier",
-                                                        "i18n.key": "identifier"
+                                                        "label.en": "Identifier"
                                                     },
                                                     "scheme": {
                                                         "type": "keyword",
@@ -988,10 +959,7 @@
                                                             "DOI"
                                                         ],
                                                         "label.cs": "Typ identifikátoru",
-                                                        "label.en": "Identifier type",
-                                                        "hint.cs": "Doporučujeme zadat alespoň jeden z typů identifikátorů.\nPokud potřebujete rozšířit nabídku typů identifikátorů, kontaktujte nás na support@narodni-repozitar.cz.\n",
-                                                        "hint.en": "We recommend providing at least one of the identifier types.\nIf you need to expand the range of identifier types, contact us at support@narodni-repozitar.cz.\n",
-                                                        "i18n.key": "identifier_type"
+                                                        "label.en": "Identifier type"
                                                     }
                                                 },
                                                 "ui": {
@@ -1145,10 +1113,11 @@
                                         },
                                         "label.cs": "Afiliace",
                                         "label.en": "Affiliation",
-                                        "hint.cs": "Uveďte instituci/instituce, pod jejíž záštitou jste se na tvorbě objektu podíleli.",
+                                        "hint.cs": "Začněte zapisovat název instituce, následně zvolte instituci z nabídky našeptavače.",
+                                        "hint.en": "Start typing the name of the institution, then select the institution from the menu.",
                                         "imports": [
                                             {
-                                                "import": "invenio_vocabularies.records.api.Vocabulary"
+                                                "import": "oarepo_vocabularies.records.api.Vocabulary"
                                             }
                                         ],
                                         "model": "vocabularies",
@@ -1330,8 +1299,7 @@
                                                     "faker": "isbn13"
                                                 },
                                                 "label.cs": "Identifikátor",
-                                                "label.en": "Identifier",
-                                                "i18n.key": "identifier"
+                                                "label.en": "Identifier"
                                             },
                                             "scheme": {
                                                 "type": "keyword",
@@ -1343,16 +1311,18 @@
                                                     "DOI"
                                                 ],
                                                 "label.cs": "Typ identifikátoru",
-                                                "label.en": "Identifier type",
-                                                "hint.cs": "Doporučujeme zadat alespoň jeden z typů identifikátorů.\nPokud potřebujete rozšířit nabídku typů identifikátorů, kontaktujte nás na support@narodni-repozitar.cz.\n",
-                                                "hint.en": "We recommend providing at least one of the identifier types.\nIf you need to expand the range of identifier types, contact us at support@narodni-repozitar.cz.\n",
-                                                "i18n.key": "identifier_type"
+                                                "label.en": "Identifier type"
                                             }
                                         }
                                     }
                                 },
                                 "familyName": {
-                                    "type": "keyword"
+                                    "type": "keyword",
+                                    "required": true,
+                                    "label.cs": "Příjmení",
+                                    "label.en": "Last name",
+                                    "hint.cs": "Napište příjmení autora.",
+                                    "hint.en": "Write the author's last name."
                                 },
                                 "fullName": {
                                     "type": "keyword",
@@ -1360,11 +1330,18 @@
                                     "sample": {
                                         "faker": "name"
                                     },
-                                    "label.cs": "Jméno autora",
-                                    "label.en": "Author name"
+                                    "label.cs": "Organizace",
+                                    "label.en": "Organization",
+                                    "hint.cs": "Začněte zapisovat název instituce, následně zvolte instituci z nabídky našeptavače.",
+                                    "hint.en": "Start typing the name of the institution, then select the institution from the menu."
                                 },
                                 "givenName": {
-                                    "type": "keyword"
+                                    "type": "keyword",
+                                    "required": true,
+                                    "label.cs": "Jméno",
+                                    "label.en": "Name",
+                                    "hint.cs": "Napište jméno autora.",
+                                    "hint.en": "Write the author's name."
                                 },
                                 "nameType": {
                                     "type": "keyword",
@@ -1419,9 +1396,11 @@
                                 },
                                 "label.cs": "Poskytovatel financí",
                                 "label.en": "Funder",
+                                "hint.cs": "Začněte zapisovat název poskytovatele, následně vyberte z nabídky našeptavače.",
+                                "hint.en": "Start typing the name of the funder, then select the funder from the menu.",
                                 "imports": [
                                     {
-                                        "import": "invenio_vocabularies.records.api.Vocabulary"
+                                        "import": "oarepo_vocabularies.records.api.Vocabulary"
                                     }
                                 ],
                                 "model": "vocabularies",
@@ -1513,18 +1492,24 @@
                             "fundingProgram": {
                                 "type": "fulltext",
                                 "label.cs": "Výzkumný program",
-                                "label.en": "Funding program"
+                                "label.en": "Funding program",
+                                "hint.cs": "Zapište název výzkumného programu, v rámci kterého byl projekt financován.",
+                                "hint.en": "Write the name of the research program under which the project was funded."
                             },
                             "projectID": {
                                 "type": "keyword",
                                 "required": true,
                                 "label.cs": "Číslo projektu",
-                                "label.en": "Project double"
+                                "label.en": "Project identifier",
+                                "hint.cs": "Zapište kód projektu.",
+                                "hint.en": "Write the project code."
                             },
                             "projectName": {
                                 "type": "fulltext",
                                 "label.cs": "Název projektu",
-                                "label.en": "Project name"
+                                "label.en": "Project name",
+                                "hint.cs": "Zapište název projektu.",
+                                "hint.en": "Write the project name."
                             }
                         }
                     },
@@ -1545,8 +1530,16 @@
                                 "detail": "nr_object_pid"
                             },
                             "marshmallow": {
+                                "imports": [
+                                    {
+                                        "import": "oarepo_runtime.services.schema.validation.validate_identifier"
+                                    }
+                                ],
                                 "generate": false,
-                                "class": "nr_metadata.schema.identifiers.NRObjectIdentifierSchema"
+                                "class": "nr_metadata.schema.identifiers.NRObjectIdentifierSchema",
+                                "validators": [
+                                    "lambda value: validate_identifier(value)"
+                                ]
                             },
                             "label.cs": "Identifikátor objektu",
                             "label.en": "Object identifier",
@@ -1558,7 +1551,9 @@
                                         "faker": "isbn13"
                                     },
                                     "label.cs": "Identifikátor objektu",
-                                    "label.en": "Object identifier"
+                                    "label.en": "Object identifier",
+                                    "hint.cs": "např. 10.1086/679716 pro DOI.",
+                                    "hint.en": "e.g. 10.1086/679716 for DOI."
                                 },
                                 "scheme": {
                                     "type": "keyword",
@@ -1572,7 +1567,9 @@
                                         "IGSN"
                                     ],
                                     "label.cs": "Typ identifikátoru",
-                                    "label.en": "Identifier type"
+                                    "label.en": "Identifier type",
+                                    "hint.cs": "např. DOI, HANDLE nebo ISBN.",
+                                    "hint.en": "e.g. DOI, HANDLE or ISBN."
                                 }
                             }
                         }
@@ -1597,11 +1594,47 @@
                                 }
                             },
                             "properties": {
-                                "description": {
-                                    "type": "fulltext",
-                                    "label.en": "Description"
+                                "_dump_sw_version": {
+                                    "type": "keyword",
+                                    "label.en": "Metadata description creation software version",
+                                    "hint.en": "Version of the extraction script at the time of processing metadata"
                                 },
-                                "detailedInformation": {
+                                "_gromacs_version": {
+                                    "type": "keyword",
+                                    "label.en": "Gromacs software version",
+                                    "hint.en": "Version of Gromacs (dump) used to extract metadata"
+                                },
+                                "_metadata_date": {
+                                    "type": "datetime",
+                                    "label.en": "Metadata creation date",
+                                    "hint.en": "Timestamp of when metadata were extracted"
+                                },
+                                "_record_file": {
+                                    "type": "keyword",
+                                    "label.en": "Dataset Record File",
+                                    "hint.en": "ID of TPR file (if has ID e.g. from Zenodo or other data repository)"
+                                },
+                                "_record_url": {
+                                    "type": "keyword",
+                                    "label.en": "Dataset URL",
+                                    "hint.en": "URL to file if uploaded to data repository"
+                                },
+                                "_tpr_date": {
+                                    "type": "datetime",
+                                    "label.en": "TPR file creation date",
+                                    "hint.en": "Timestamp of TPR file"
+                                },
+                                "_tpx_version": {
+                                    "type": "keyword",
+                                    "label.en": "TPX file version",
+                                    "hint.en": "Version of TPR file"
+                                },
+                                "_uniprot_id": {
+                                    "type": "keyword",
+                                    "label.en": "Uniprot ID",
+                                    "hint.en": "Uniprot ID of the protein"
+                                },
+                                "detailed_information": {
                                     "type": "object",
                                     "label.en": "Detailed information",
                                     "marshmallow": {
@@ -1631,8 +1664,8 @@
                                             "properties": {
                                                 "compressibility": {
                                                     "type": "array",
-                                                    "hint.en": "The compressibility (NOTE: this is now really in bar-1) \nFor water at 1 atm and 300 K the compressibility is 4.5e-5 bar-1\n",
-                                                    "label.en": "Compressibility",
+                                                    "label.en": "compressibility [bar^-1]",
+                                                    "hint.en": "The compressibility (NOTE: this is now really in bar-1) For water at 1 atm and 300 K the compressibility is 4.5e-5 bar-1",
                                                     "items": {
                                                         "type": "array",
                                                         "items": {
@@ -1643,50 +1676,50 @@
                                                 "pcoupl": {
                                                     "type": "keyword",
                                                     "enum": [
-                                                        "no",
-                                                        "Berendsen",
-                                                        "C-rescale",
-                                                        "Parrinello-Rahman",
-                                                        "MTTK"
+                                                        false,
+                                                        "berendsen",
+                                                        "c-rescale",
+                                                        "parrinello-rahman",
+                                                        "mttk"
                                                     ],
-                                                    "label.en": "Pressure coupling"
+                                                    "label.en": "pcoupl"
                                                 },
-                                                "refcoordScaling": {
+                                                "refcoord-scaling": {
                                                     "type": "keyword",
                                                     "enum": [
-                                                        "no",
+                                                        false,
                                                         "all",
                                                         "com"
                                                     ],
-                                                    "label.en": "Reference coordinate scaling"
+                                                    "label.en": "refcoord-scaling"
                                                 },
-                                                "tauP": {
+                                                "tau-p": {
                                                     "type": "float",
-                                                    "hint.en": "The time constant for pressure coupling (one value for all directions)",
-                                                    "label.en": "Pressure coupling time constant"
+                                                    "label.en": "tau-p [ps]",
+                                                    "hint.en": "The time constant for pressure coupling (one value for all directions)"
                                                 }
                                             }
                                         },
-                                        "commMode": {
+                                        "comm-mode": {
                                             "type": "keyword",
                                             "enum": [
-                                                "Linear",
-                                                "Angular",
-                                                "Linear-acceleration-correction",
-                                                "None"
+                                                "linear",
+                                                "angular",
+                                                "linear-acceleration-correction",
+                                                "none"
                                             ],
-                                            "label.en": "commMode"
+                                            "label.en": "comm-mode"
                                         },
-                                        "constraintAlgorithm": {
+                                        "constraint-algorithm": {
                                             "type": "keyword",
                                             "enum": [
-                                                "Lincs",
-                                                "Shake"
+                                                "lincs",
+                                                "shake"
                                             ],
-                                            "hint.en": "Chooses which solver satisfies any non-SETTLE holonomic constraints",
-                                            "label.en": "constraintAlgorithm"
+                                            "label.en": "constraint-algorithm",
+                                            "hint.en": "Chooses which solver satisfies any non-SETTLE holonomic constraints"
                                         },
-                                        "electrostaticInteractions": {
+                                        "electrostatic_interactions": {
                                             "type": "object",
                                             "label.en": "Electrostatic interactions",
                                             "marshmallow": {
@@ -1700,44 +1733,43 @@
                                                 }
                                             },
                                             "properties": {
-                                                "coulombModifier": {
+                                                "coulomb-modifier": {
                                                     "type": "keyword",
                                                     "enum": [
-                                                        "Potential-shift",
-                                                        "None"
+                                                        "potential-shift",
+                                                        "none"
                                                     ],
-                                                    "label.en": "Coulomb modifier"
+                                                    "label.en": "coulomb-modifier"
                                                 },
-                                                "epsilonR": {
+                                                "epsilon-r": {
                                                     "type": "float",
-                                                    "hint.en": "The relative dielectric constant",
-                                                    "label.en": "Relative dielectric constant"
+                                                    "label.en": "epsilon-r",
+                                                    "hint.en": "The relative dielectric constant"
                                                 },
-                                                "epsilonRF": {
+                                                "epsilon-rf": {
                                                     "type": "float",
-                                                    "label.en": "Relative dielectric constant for reaction field???"
+                                                    "label.en": "epsilon-rf"
                                                 },
                                                 "rcoulomb": {
                                                     "type": "float",
-                                                    "hint.en": "[nm] The distance for the Coulomb cut-off\n",
-                                                    "label.en": "Coulomb cut-off"
+                                                    "label.en": "rcoulomb [nm]",
+                                                    "hint.en": "The distance for the Coulomb cut-off"
                                                 }
                                             }
                                         },
-                                        "fourierSpacing": {
+                                        "fourierspacing": {
                                             "type": "float",
-                                            "hint.en": "[nm]",
-                                            "label.en": "fourierSpacing"
+                                            "label.en": "fourierspacing [nm]"
                                         },
-                                        "lincsIter": {
+                                        "lincs-iter": {
                                             "type": "integer",
-                                            "label.en": "lincsIter"
+                                            "label.en": "lincs-iter"
                                         },
-                                        "lincsOrder": {
+                                        "lincs-order": {
                                             "type": "integer",
-                                            "label.en": "lincsOrder"
+                                            "label.en": "lincs-order"
                                         },
-                                        "neighbourList": {
+                                        "neighbour_list": {
                                             "type": "object",
                                             "label.en": "Neighbour list",
                                             "marshmallow": {
@@ -1751,38 +1783,38 @@
                                                 }
                                             },
                                             "properties": {
-                                                "cutoffScheme": {
+                                                "cutoff-scheme": {
                                                     "type": "keyword",
                                                     "enum": [
-                                                        "Verlet",
+                                                        "verlet",
                                                         "group"
                                                     ],
-                                                    "label.en": "Cut-off scheme"
+                                                    "label.en": "cutoff-scheme"
                                                 },
                                                 "nstlist": {
-                                                    "type": "float",
-                                                    "label.en": "nstlist??"
+                                                    "type": "integer",
+                                                    "label.en": "nstlist"
                                                 },
                                                 "pbc": {
                                                     "type": "keyword",
                                                     "enum": [
                                                         "xyz",
-                                                        "no",
+                                                        false,
                                                         "xy"
                                                     ],
-                                                    "label.en": "Periodic boundary conditions"
+                                                    "label.en": "pbc"
                                                 },
                                                 "rlist": {
                                                     "type": "float",
-                                                    "hint.en": "[nm] Cut-off distance for the short-range neighbor list\n",
-                                                    "label.en": "Neighbor list cut-off"
+                                                    "label.en": "rlist [nm]",
+                                                    "hint.en": "Cut-off distance for the short-range neighbor list"
                                                 }
                                             }
                                         },
                                         "nstcomm": {
-                                            "type": "float",
-                                            "hint.en": "[step], frequency for center of mass motion removal\n",
-                                            "label.en": "nstcomm"
+                                            "type": "integer",
+                                            "label.en": "nstcomm [step]",
+                                            "hint.en": "frequency for center of mass motion removal"
                                         },
                                         "thermostat": {
                                             "type": "object",
@@ -1799,63 +1831,60 @@
                                             },
                                             "properties": {
                                                 "nsttcouple": {
-                                                    "type": "float",
-                                                    "hint.en": "The frequency for coupling the temperature.",
-                                                    "label.en": "nsttcouple???"
+                                                    "type": "integer",
+                                                    "label.en": "nsttcouple",
+                                                    "hint.en": "The frequency for coupling the temperature."
                                                 },
-                                                "tauT": {
+                                                "tau-t": {
                                                     "type": "array",
                                                     "items": {
                                                         "type": "float",
-                                                        "hint.en": "time constant for coupling (one for each group in\ntc-grps), -1 means no temperature coupling\n",
-                                                        "label.en": "Temperature coupling time constant"
+                                                        "label.en": "tau-t [ps]",
+                                                        "hint.en": "The time constant for temperature coupling (one value for all groups)"
                                                     }
                                                 },
-                                                "tcGrps": {
-                                                    "type": "array",
-                                                    "label.en": "Temperature coupling groups",
-                                                    "items": {
-                                                        "type": "object",
+                                                "tc-grps": {
+                                                    "type": "object",
+                                                    "label.en": "tc-grps",
+                                                    "marshmallow": {
+                                                        "generate": true,
+                                                        "class": "experiments.services.records.schema.TcGrpsSchema"
+                                                    },
+                                                    "ui": {
                                                         "marshmallow": {
                                                             "generate": true,
-                                                            "class": "experiments.services.records.schema.TcGrpsItemSchema"
+                                                            "class": "experiments.services.records.ui_schema.TcGrpsUISchema"
+                                                        }
+                                                    },
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "keyword",
+                                                            "label.en": "name"
                                                         },
-                                                        "ui": {
-                                                            "marshmallow": {
-                                                                "generate": true,
-                                                                "class": "experiments.services.records.ui_schema.TcGrpsItemUISchema"
-                                                            }
-                                                        },
-                                                        "properties": {
-                                                            "name": {
-                                                                "type": "keyword",
-                                                                "label.en": "Group name"
-                                                            },
-                                                            "nr": {
-                                                                "type": "integer",
-                                                                "hint.en": "groups to couple to separate temperature baths",
-                                                                "label.en": "Group number"
-                                                            }
+                                                        "nr": {
+                                                            "type": "integer",
+                                                            "label.en": "Group number",
+                                                            "hint.en": "groups to couple to separate temperature baths"
                                                         }
                                                     }
                                                 },
                                                 "tcoupl": {
                                                     "type": "keyword",
                                                     "enum": [
-                                                        "no",
+                                                        false,
                                                         "berendsen",
                                                         "nose-hoover",
                                                         "andersen",
                                                         "andersen-massive",
                                                         "v-rescale"
                                                     ],
-                                                    "label.en": "Temperature coupling"
+                                                    "label.en": "tcoupl"
                                                 }
                                             }
                                         },
-                                        "vanDerWaalsInteractions": {
+                                        "van_der_Waals_interactions": {
                                             "type": "object",
-                                            "label.en": "Van der Waals interactions",
+                                            "label.en": "van der Waals interactions",
                                             "marshmallow": {
                                                 "generate": true,
                                                 "class": "experiments.services.records.schema.VanDerWaalsInteractionsSchema"
@@ -1870,44 +1899,91 @@
                                                 "dispcorr": {
                                                     "type": "keyword",
                                                     "enum": [
-                                                        "No",
-                                                        "EnerPres",
-                                                        "Ener"
+                                                        false,
+                                                        "enerpres",
+                                                        "eber"
                                                     ],
-                                                    "label.en": "Dispersion correction"
+                                                    "label.en": "dispcorr"
                                                 },
                                                 "rvdw": {
                                                     "type": "float",
-                                                    "hint.en": "distance for the LJ or Buckingham cut-off",
-                                                    "label.en": "Van der Waals cut-off"
+                                                    "label.en": "rvdw [nm]",
+                                                    "hint.en": "distance for the LJ or Buckingham cut-off"
                                                 },
-                                                "rvdwSwitch": {
+                                                "rvdw-switch": {
                                                     "type": "float",
-                                                    "hint.en": "where to start switching the LJ force and possibly the potential, \nonly relevant when force or potential switching is used\n",
-                                                    "label.en": "Van der Waals switching distance"
+                                                    "label.en": "rvdw-switch [nm]",
+                                                    "hint.en": "where to start switching the LJ force and possibly the potential, only relevant when force or potential switching is used"
                                                 },
-                                                "vdwModifier": {
+                                                "vdw-modifier": {
                                                     "type": "keyword",
                                                     "enum": [
-                                                        "None",
-                                                        "Potential-shift",
-                                                        "Force-switch",
-                                                        "Potential-switch"
+                                                        "potential-shift",
+                                                        "none",
+                                                        "force-switch",
+                                                        "potential-switch"
                                                     ],
-                                                    "label.en": "Van der Waals modifier"
+                                                    "label.en": "vdw-modifier"
                                                 }
                                             }
                                         }
                                     }
                                 },
-                                "key": {
-                                    "type": "keyword",
-                                    "hint.en": "Path to the file. Might be just a file name, if it was uploaded separately,\nor zipname#/path/inside/zip.tpr\n",
-                                    "label.en": "File name"
-                                },
-                                "mainInformation": {
+                                "file_identification": {
                                     "type": "object",
-                                    "label.en": "Main information",
+                                    "label.en": "File identification",
+                                    "marshmallow": {
+                                        "generate": true,
+                                        "class": "experiments.services.records.schema.FileIdentificationSchema"
+                                    },
+                                    "ui": {
+                                        "marshmallow": {
+                                            "generate": true,
+                                            "class": "experiments.services.records.ui_schema.FileIdentificationUISchema"
+                                        }
+                                    },
+                                    "properties": {
+                                        "authors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "keyword",
+                                                "label.en": "Authors",
+                                                "hint.en": "ORCIDs"
+                                            }
+                                        },
+                                        "description": {
+                                            "type": "fulltext",
+                                            "label.en": "Description",
+                                            "hint.en": "User specified description of file"
+                                        },
+                                        "doi": {
+                                            "type": "keyword",
+                                            "label.en": "DOI",
+                                            "hint.en": "DOI of the dataset"
+                                        },
+                                        "name": {
+                                            "type": "keyword",
+                                            "label.en": "File name",
+                                            "hint.en": "User specified name of file"
+                                        },
+                                        "related_files": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "keyword",
+                                                "label.en": "Related files [gro, pdb, trr, xtc]",
+                                                "hint.en": "Related configuration/trajectory files"
+                                            }
+                                        },
+                                        "simulation_year": {
+                                            "type": "keyword",
+                                            "label.en": "Simulation year",
+                                            "hint.en": "Year of simulation"
+                                        }
+                                    }
+                                },
+                                "main_information": {
+                                    "type": "object",
+                                    "label.en": "Main information about dataset",
                                     "marshmallow": {
                                         "generate": true,
                                         "class": "experiments.services.records.schema.MainInformationSchema"
@@ -1919,35 +1995,32 @@
                                         }
                                     },
                                     "properties": {
-                                        "AWHAdaptiveBiasing": {
-                                            "type": "keyword",
-                                            "enum": [
-                                                "yes",
-                                                "no"
-                                            ],
-                                            "label.en": "AWH adaptive biasing"
+                                        "AWH_adaptive_biasing": {
+                                            "type": "boolean",
+                                            "label.en": "AWH Adaptive Biasing"
                                         },
-                                        "boxSizeAndShape": {
+                                        "box_size_and_shape": {
                                             "type": "float",
-                                            "label.en": "Box size and shape"
+                                            "label.en": "Size and Shape of simulation box [nm degree]",
+                                            "hint.en": "last line of a coordinate file"
                                         },
-                                        "forceField": {
+                                        "force_field": {
                                             "type": "keyword",
-                                            "label.en": "Force field"
+                                            "label.en": "Force Field"
                                         },
-                                        "freeEnergyCalculation": {
+                                        "free_energy_calculation": {
                                             "type": "keyword",
                                             "enum": [
-                                                "yes",
-                                                "no"
+                                                true,
+                                                false
                                             ],
-                                            "label.en": "Free energy calculation"
+                                            "label.en": "Free Energy Calculation"
                                         },
                                         "molecules": {
                                             "type": "array",
-                                            "label.en": "Molecules",
                                             "items": {
                                                 "type": "object",
+                                                "label.en": "List of molecules",
                                                 "marshmallow": {
                                                     "generate": true,
                                                     "class": "experiments.services.records.schema.MoleculesItemSchema"
@@ -1961,7 +2034,7 @@
                                                 "properties": {
                                                     "count": {
                                                         "type": "integer",
-                                                        "label.en": "count???"
+                                                        "label.en": "Molecule count"
                                                     },
                                                     "id": {
                                                         "type": "keyword",
@@ -1974,139 +2047,115 @@
                                                 }
                                             }
                                         },
-                                        "referencePressure": {
+                                        "reference_pressure": {
                                             "type": "array",
-                                            "label.en": "Reference pressure",
                                             "items": {
                                                 "type": "array",
+                                                "label.en": "Reference Pressure [bar]",
                                                 "items": {
-                                                    "type": "float"
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "float"
+                                                    }
                                                 }
                                             }
                                         },
-                                        "referenceTemperature": {
+                                        "reference_temperature": {
                                             "type": "array",
                                             "items": {
                                                 "type": "float",
-                                                "label.en": "Reference temperature"
+                                                "label.en": "Reference Temperature [K]"
                                             }
                                         },
-                                        "simulationLength": {
+                                        "simulation_length": {
                                             "type": "float",
-                                            "label.en": "Simulation length"
+                                            "label.en": "Simulation length [ns]"
                                         },
-                                        "simulationTimeStep": {
+                                        "simulation_time_step": {
                                             "type": "float",
-                                            "label.en": "Simulation time step"
+                                            "label.en": "Simulation Time Step [ps]"
                                         },
-                                        "simulationType": {
+                                        "simulation_type": {
                                             "type": "keyword",
                                             "enum": [
                                                 "free energy simulation",
                                                 "molecular dynamics",
                                                 "energy minimization"
                                             ],
-                                            "label.en": "Simulation type"
+                                            "label.en": "Type of the simulation"
                                         },
-                                        "statisticalEnsemble": {
+                                        "statistical_ensamble": {
                                             "type": "keyword",
                                             "enum": [
-                                                "NpT",
-                                                "NVT",
-                                                "NVE"
+                                                "NVE (microcanonical)",
+                                                "NVT (canonical)",
+                                                "NpT (isothermal-isobaric)"
                                             ],
-                                            "label.en": "Statistical ensemble"
+                                            "label.en": "Statistical Ensemble"
                                         },
-                                        "umbrellaSampling": {
-                                            "type": "keyword",
-                                            "enum": [
-                                                "yes",
-                                                "no"
-                                            ],
-                                            "label.en": "Umbrella sampling"
-                                        }
-                                    }
-                                },
-                                "relatedFiles": {
-                                    "type": "array",
-                                    "label.en": "Related files",
-                                    "items": {
-                                        "type": "object",
-                                        "marshmallow": {
-                                            "generate": true,
-                                            "class": "experiments.services.records.schema.RelatedFilesItemSchema"
-                                        },
-                                        "ui": {
-                                            "marshmallow": {
-                                                "generate": true,
-                                                "class": "experiments.services.records.ui_schema.RelatedFilesItemUISchema"
-                                            }
-                                        },
-                                        "properties": {
-                                            "key": {
-                                                "type": "keyword",
-                                                "label.en": "File name"
-                                            }
-                                        }
-                                    }
-                                },
-                                "simulationYear": {
-                                    "type": "integer",
-                                    "hint.en": "Year of creation of simulation",
-                                    "label.en": "Simulation year"
-                                },
-                                "software": {
-                                    "type": "object",
-                                    "label.en": "Software",
-                                    "marshmallow": {
-                                        "generate": true,
-                                        "class": "experiments.services.records.schema.SoftwareSchema"
-                                    },
-                                    "ui": {
-                                        "marshmallow": {
-                                            "generate": true,
-                                            "class": "experiments.services.records.ui_schema.SoftwareUISchema"
-                                        }
-                                    },
-                                    "properties": {
-                                        "extractorVersion": {
-                                            "type": "keyword",
-                                            "label.en": "Extractor version"
-                                        },
-                                        "gromacsVersion": {
-                                            "type": "keyword",
-                                            "label.en": "Gromacs version"
-                                        },
-                                        "tpxVersion": {
-                                            "type": "keyword",
-                                            "label.en": "TPX version"
-                                        }
-                                    }
-                                },
-                                "timestamps": {
-                                    "type": "object",
-                                    "marshmallow": {
-                                        "generate": true,
-                                        "class": "experiments.services.records.schema.TimestampsSchema"
-                                    },
-                                    "ui": {
-                                        "marshmallow": {
-                                            "generate": true,
-                                            "class": "experiments.services.records.ui_schema.TimestampsUISchema"
-                                        }
-                                    },
-                                    "properties": {
-                                        "metadataExtractionTimestamp": {
-                                            "type": "datetime",
-                                            "label.en": "Metadata extraction timestamp"
-                                        },
-                                        "tprFileTimestamp": {
-                                            "type": "datetime",
-                                            "label.en": "TPR file timestamp"
+                                        "umbrella_sampling": {
+                                            "type": "boolean",
+                                            "label.en": "Umbrella Sampling"
                                         }
                                     }
                                 }
                             }
+                        }
+                    }
+                }
+            },
+            "pid": {
+                "type": "object",
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "generate": false,
+                        "class": "experiments.services.records.ui_schema.FakeUIPIDSchema",
+                        "skip": true,
+                        "read": false,
+                        "write": false
+                    }
+                },
+                "marshmallow": {
+                    "generate": false,
+                    "class": "experiments.services.records.schema.FakePIDSchema",
+                    "skip": true,
+                    "read": false,
+                    "write": false
+                },
+                "sample": {
+                    "skip": true
+                },
+                "properties": {
+                    "obj_type": {
+                        "type": "keyword",
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        }
+                    },
+                    "pid_type": {
+                        "type": "keyword",
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        }
+                    },
+                    "pk": {
+                        "type": "integer",
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        }
+                    },
+                    "status": {
+                        "type": "keyword",
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
                         }
                     }
                 }

@@ -5,9 +5,7 @@ Contains generated models.
 ## Creating models
 
 ```bash
-nrp model add <model-name> --config <custom config> \
-  --use <custom model>[:<jsonpath>] \
-  --no-input
+nrp model create <model-name>
 ```
 
 Will create a new model. You can provide your own oarepo.yaml

@@ -1,19 +1,3 @@
-from invenio_drafts_resources.services import (
-    RecordServiceConfig as InvenioRecordDraftsServiceConfig,
-)
-from invenio_drafts_resources.services.records.components import DraftFilesComponent
-from invenio_drafts_resources.services.records.config import is_record
-from invenio_records_resources.services import (
-    ConditionalLink,
-    RecordLink,
-    pagination_links,
-)
-from invenio_records_resources.services.records.components import DataComponent
-from oarepo_runtime.records import is_published_record
-from oarepo_runtime.services.components import OwnersComponent
-from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
-from oarepo_runtime.services.files import FilesComponent
-
 from experiments.records.api import ExperimentsDraft, ExperimentsRecord
 from experiments.services.records.permissions import ExperimentsPermissionPolicy
 from experiments.services.records.results import (
@@ -22,6 +6,19 @@ from experiments.services.records.results import (
 )
 from experiments.services.records.schema import ExperimentsSchema
 from experiments.services.records.search import ExperimentsSearchOptions
+from invenio_drafts_resources.services import (
+    RecordServiceConfig as InvenioRecordDraftsServiceConfig,
+)
+from invenio_drafts_resources.services.records.components import DraftFilesComponent
+from invenio_records_resources.services import (
+    ConditionalLink,
+    RecordLink,
+    pagination_links,
+)
+from oarepo_runtime.records import has_draft, is_published_record
+from oarepo_runtime.services.components import CustomFieldsComponent, OwnersComponent
+from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
+from oarepo_runtime.services.files import FilesComponent
 
 
 class ExperimentsServiceConfig(
@@ -33,7 +30,7 @@ class ExperimentsServiceConfig(
 
     result_list_cls = ExperimentsRecordList
 
-    PERMISSIONS_PRESETS = ["authenticated"]
+    PERMISSIONS_PRESETS = ["everyone"]
 
     url_prefix = "/experiments/"
 
@@ -51,9 +48,9 @@ class ExperimentsServiceConfig(
         *PermissionsPresetsConfigMixin.components,
         *InvenioRecordDraftsServiceConfig.components,
         OwnersComponent,
-        DraftFilesComponent,
         FilesComponent,
-        DataComponent,
+        CustomFieldsComponent,
+        DraftFilesComponent,
     ]
 
     model = "experiments"
@@ -63,9 +60,15 @@ class ExperimentsServiceConfig(
     @property
     def links_item(self):
         return {
+            "applicable-requests": ConditionalLink(
+                cond=is_published_record,
+                if_=RecordLink("{+api}/experiments/{id}/requests/applicable"),
+                else_=RecordLink("{+api}/experiments/{id}/draft/requests/applicable"),
+            ),
             "draft": RecordLink("{+api}/experiments/{id}/draft"),
+            "edit_html": RecordLink("{+ui}/experiments/{id}/edit", when=has_draft),
             "files": ConditionalLink(
-                cond=is_record,
+                cond=is_published_record,
                 if_=RecordLink("{+api}/experiments/{id}/files"),
                 else_=RecordLink("{+api}/experiments/{id}/draft/files"),
             ),
@@ -86,7 +89,7 @@ class ExperimentsServiceConfig(
             "self_html": ConditionalLink(
                 cond=is_published_record,
                 if_=RecordLink("{+ui}/experiments/{id}"),
-                else_=RecordLink("{+ui}/experiments/{id}/edit"),
+                else_=RecordLink("{+ui}/experiments/{id}/preview"),
             ),
             "versions": RecordLink("{+api}/experiments/{id}/versions"),
         }

@@ -1,11 +1,10 @@
 {# def d, level=0 #}
-<ITableSection level={level} title={d._ui_label} >
-  <ITableField d={d.commMode} level={level} />
-  <ITableField d={d.constraintAlgorithm} level={level} />
-  <ITableField d={d.fourierSpacing} level={level} />
-  <ITableField d={d.lincsIter} level={level} />
-  <ITableField d={d.lincsOrder} level={level} />
-  <ITableField d={d.nstcomm} level={level} />
-  <ExperimentsElectrostaticinteraction d={d.electrostaticInteractions} level={level+1} />
-  <ExperimentsVanderwaalsinteraction d={d.vanDerWaalsInteractions} level={level+1} />
-</ITableSection>
+
+<ITableField d={md.comm-mode} level={level}/>
+<ITableField d={md.constraint-algorithm} level={level}/>
+<ITableField d={md.fourierspacing} level={level}/>
+<ITableField d={md.lincs-iter} level={level}/>
+<ITableField d={md.lincs-order} level={level}/>
+<ITableField d={md.nstcomm} level={level}/>
+<ExperimentsElectrostaticInteraction d={md.electrostatic_interactions} level={level+1}/>
+<ExperimentsVanDerWaalsInteraction d={md.van_der_Waals_interactions} level={level+1}/>

@@ -1,3 +1,4 @@
+forks: {}
 i18n:
   babel_input_translations: []
   babel_output_translations: i18n/translations
@@ -13,8 +14,8 @@ i18n:
 models:
 - api_prefix: experiments
   base_model: empty
-  features: [custom_fields, vocabularies, files, communities, drafts, requests, relations,
-    tests]
+  features: [drafts, custom_fields, tests, requests, vocabularies, relations, files,
+    communities]
   model_description: Computational Chemistry Experiments
   model_name: experiments
   model_package: experiments

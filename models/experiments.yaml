@@ -14,6 +14,8 @@ plugins:
   - oarepo-model-builder-requests
   - oarepo-model-builder-nr
   - oarepo-model-builder-polymorphic
+  # - oarepo-model-builder-communities
+  # - oarepo-model-builder-workflows
 profiles:
 - record
 - draft
@@ -38,7 +40,7 @@ record:
     qualified: experiments
   permissions:
     presets:
-    - authenticated
+    - everyone
   pid:
     type: xprnts
   properties:
@@ -50,7 +52,6 @@ record:
     base-html-url: /experiments/
   use:
   - invenio
-  - ./experiments-requests.yaml
   - ./experiments-custom_fields.yaml
 runtime-dependencies:
   nr-vocabularies: 2.0.0
