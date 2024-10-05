@@ -1,7 +1,4 @@
 import marshmallow as ma
-from invenio_drafts_resources.services.records.schema import (
-    ParentSchema as InvenioParentSchema,
-)
 from marshmallow import Schema
 from marshmallow import fields as ma_fields
 from marshmallow.utils import get_value
@@ -17,9 +14,10 @@ from oarepo_runtime.services.schema.validation import (
     validate_datetime,
     validate_identifier,
 )
+from oarepo_workflows.services.records.schema import WorkflowParentSchema
 
 
-class GeneratedParentSchema(InvenioParentSchema):
+class GeneratedParentSchema(WorkflowParentSchema):
     """"""
 
     owners = ma.fields.List(ma.fields.Dict(), load_only=True)
@@ -30,6 +28,8 @@ class ExperimentsSchema(BaseRecordSchema):
         unknown = ma.RAISE
 
     metadata = ma_fields.Nested(lambda: ExperimentsMetadataSchema())
+
+    state = ma_fields.String(dump_only=True)
     parent = ma.fields.Nested(GeneratedParentSchema)
     files = ma.fields.Nested(
         lambda: FilesOptionsSchema(), load_default={"enabled": True}
@@ -74,6 +74,8 @@ class ExperimentsMetadataSchema(Schema):
 
     simulations = ma_fields.List(ma_fields.Nested(lambda: SimulationsItemSchema()))
 
+    version = ma_fields.String()
+
 
 class SimulationsItemSchema(DictOnlySchema):
     class Meta:
@@ -81,15 +83,19 @@ class SimulationsItemSchema(DictOnlySchema):
 
     _dump_sw_version = ma_fields.String()
 
+    _exit_code = ma_fields.String()
+
     _gromacs_version = ma_fields.String()
 
     _metadata_date = ma_fields.String(validate=[validate_datetime])
 
+    _metadump_version = ma_fields.String()
+
+    _protein_sequences = ma_fields.List(ma_fields.String())
+
     _record_file = ma_fields.String()
 
     _record_url = ma_fields.String()
-
-    _tpr_date = ma_fields.String(validate=[validate_datetime])
 
     _tpx_version = ma_fields.String()
 
@@ -112,7 +118,7 @@ class DetailedInformationSchema(DictOnlySchema):
         data_key="comm-mode",
         attribute="comm-mode",
         validate=[
-            OneOf(["linear", "angular", "linear-acceleration-correction", "none"])
+            OneOf(["none", "linear", "angular", "linear-acceleration-correction"])
         ],
     )
 
@@ -153,13 +159,11 @@ class MainInformationSchema(DictOnlySchema):
 
     force_field = ma_fields.String()
 
-    free_energy_calculation = ma_fields.String(validate=[OneOf([True, False])])
+    free_energy_calculation = ma_fields.String(validate=[OneOf(["no", "yes"])])
 
     molecules = ma_fields.List(ma_fields.Nested(lambda: MoleculesItemSchema()))
 
-    reference_pressure = ma_fields.List(
-        ma_fields.List(ma_fields.List(ma_fields.Float()))
-    )
+    reference_pressure = ma_fields.List(ma_fields.List(ma_fields.Float()))
 
     reference_temperature = ma_fields.List(ma_fields.Float())
 
@@ -202,7 +206,7 @@ class ThermostatSchema(DictOnlySchema):
         validate=[
             OneOf(
                 [
-                    False,
+                    "no",
                     "berendsen",
                     "nose-hoover",
                     "andersen",
@@ -221,13 +225,19 @@ class BarostatSchema(DictOnlySchema):
     compressibility = ma_fields.List(ma_fields.List(ma_fields.Float()))
 
     pcoupl = ma_fields.String(
-        validate=[OneOf([False, "berendsen", "c-rescale", "parrinello-rahman", "mttk"])]
+        validate=[OneOf(["no", "berendsen", "c-rescale", "parrinello-rahman", "mttk"])]
+    )
+
+    pcoupltype = ma_fields.String(
+        validate=[
+            OneOf(["isotropic", "semiisotropic", "anisotropic", "surface-tension"])
+        ]
     )
 
     refcoord_scaling = ma_fields.String(
         data_key="refcoord-scaling",
         attribute="refcoord-scaling",
-        validate=[OneOf([False, "all", "com"])],
+        validate=[OneOf(["no", "all", "com"])],
     )
 
     tau_p = ma_fields.Float(data_key="tau-p", attribute="tau-p")
@@ -240,7 +250,25 @@ class ElectrostaticInteractionsSchema(DictOnlySchema):
     coulomb_modifier = ma_fields.String(
         data_key="coulomb-modifier",
         attribute="coulomb-modifier",
-        validate=[OneOf(["potential-shift", "none"])],
+        validate=[OneOf(["none", "potential-shift"])],
+    )
+
+    coulombtype = ma_fields.String(
+        validate=[
+            OneOf(
+                [
+                    "cut-off",
+                    "ewald",
+                    "pme",
+                    "p3m-ad",
+                    "reaction-field",
+                    "user",
+                    "pme-shift",
+                    "pme-user",
+                    "pme-user-switch",
+                ]
+            )
+        ]
     )
 
     epsilon_r = ma_fields.Float(data_key="epsilon-r", attribute="epsilon-r")
@@ -262,7 +290,7 @@ class FileIdentificationSchema(DictOnlySchema):
 
     name = ma_fields.String()
 
-    related_files = ma_fields.List(ma_fields.String())
+    related_files = ma_fields.String()
 
     simulation_year = ma_fields.String()
 
@@ -277,6 +305,8 @@ class MoleculesItemSchema(DictOnlySchema):
 
     name = ma_fields.String()
 
+    residues = ma_fields.List(ma_fields.String())
+
 
 class NeighbourListSchema(DictOnlySchema):
     class Meta:
@@ -290,7 +320,7 @@ class NeighbourListSchema(DictOnlySchema):
 
     nstlist = ma_fields.Integer()
 
-    pbc = ma_fields.String(validate=[OneOf(["xyz", False, "xy"])])
+    pbc = ma_fields.String(validate=[OneOf(["no", "xy", "xyz"])])
 
     rlist = ma_fields.Float()
 
@@ -308,7 +338,7 @@ class VanDerWaalsInteractionsSchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
 
-    dispcorr = ma_fields.String(validate=[OneOf([False, "enerpres", "eber"])])
+    dispcorr = ma_fields.String(validate=[OneOf(["no", "enerpres", "eber"])])
 
     rvdw = ma_fields.Float()
 
@@ -320,6 +350,12 @@ class VanDerWaalsInteractionsSchema(DictOnlySchema):
         validate=[
             OneOf(["potential-shift", "none", "force-switch", "potential-switch"])
         ],
+    )
+
+    vdw_type = ma_fields.String(
+        data_key="vdw-type",
+        attribute="vdw-type",
+        validate=[OneOf(["cut-off", "pme", "shift", "switch", "user"])],
     )
 
 

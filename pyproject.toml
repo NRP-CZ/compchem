@@ -16,6 +16,7 @@ dependencies = [
     "oarepo-runtime",
     "oarepo-ui",
     "oarepo-vocabularies",
+    "oarepo-workflows",
     "oarepo[s3,rdm]==12.1.*",
     "python-dotenv",
 ]
@@ -32,10 +33,11 @@ branding = "ui.branding:create_blueprint"
 titlepage = "ui.titlepage:create_blueprint"
 components = "ui.components:create_blueprint"
 experiments = "experiments.views.records.app:create_app_blueprint"
-experiments_requests = "experiments.views.requests.api:create_api_blueprint"
+experiments_requests = "experiments.views.requests.app:create_app_blueprint"
 experiments_file = "experiments.views.files.app:create_app_blueprint"
 experiments_file_draft = "experiments.views.draft_files.app:create_app_blueprint"
 ui_experiments = "ui.experiments:create_blueprint"
+experiments_request_types = "experiments.views.request_types.app:create_app_blueprint"
 
 [project.entry-points."invenio_i18n.translations"]
 translations = "i18n"
@@ -60,6 +62,7 @@ experiments = "experiments.views.records.api:create_api_blueprint"
 experiments_requests = "experiments.views.requests.api:create_api_blueprint"
 experiments_file = "experiments.views.files.api:create_api_blueprint"
 experiments_file_draft = "experiments.views.draft_files.api:create_api_blueprint"
+experiments_request_types = "experiments.views.request_types.api:create_api_blueprint"
 
 [project.entry-points."invenio_search.mappings"]
 experiments = "experiments.records.mappings"

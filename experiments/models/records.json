@@ -1,10 +1,11 @@
 {
     "model": {
         "type": "model",
+        "custom-fields": [],
         "searchable": true,
         "permissions": {
             "presets": [
-                "authenticated"
+                "everyone"
             ],
             "generate": true,
             "extra-code": "",
@@ -25,7 +26,6 @@
             "class": "experiments.services.records.schema.ExperimentsSchema",
             "extra-code": ""
         },
-        "custom-fields": [],
         "pid": {
             "type": "xprnts",
             "provider-base-classes": [
@@ -96,16 +96,6 @@
         },
         "draft": {
             "type": "draft_record",
-            "properties": {},
-            "searchable": true,
-            "tests": {
-                "extra-fixtures": [],
-                "extra-code": "",
-                "module": "tests"
-            }
-        },
-        "draft-files": {
-            "type": "draft-file",
             "properties": {},
             "searchable": true,
             "tests": {
@@ -218,6 +208,16 @@
                 "module": "tests"
             }
         },
+        "draft-files": {
+            "type": "draft-file",
+            "properties": {},
+            "searchable": true,
+            "tests": {
+                "extra-fixtures": [],
+                "extra-code": "",
+                "module": "tests"
+            }
+        },
         "sample": {
             "file": "data/sample_data.yaml"
         },
@@ -281,7 +281,9 @@
             "class": "experiments.records.api.ExperimentsRecord",
             "imports": [],
             "extra-code": "",
-            "fields": {}
+            "fields": {
+                "state": "{{oarepo_workflows.records.systemfields.state.RecordStateField}}(initial='published')"
+            }
         },
         "resource": {
             "base-classes": [
@@ -322,6 +324,26 @@
             "generate": true,
             "class": "oarepo_requests.resolvers.ui.RecordEntityReferenceUIResolver"
         },
+        "draft-parent-record-metadata": {
+            "base-classes": [
+                "oarepo_workflows.records.models.RecordWorkflowParentModelMixin",
+                "invenio_db.db{db.Model}",
+                "invenio_records.models.RecordMetadataBase"
+            ],
+            "class": "experiments.records.models.ExperimentsParentMetadata",
+            "imports": [],
+            "table": "experiments_parent_record_metadata",
+            "module": "experiments.records.models",
+            "generate": true
+        },
+        "parent-record-marshmallow": {
+            "base-classes": [
+                "oarepo_workflows.services.records.schema.WorkflowParentSchema"
+            ],
+            "module": "experiments.services.records.schema",
+            "class": "experiments.services.records.schema.GeneratedParentSchema",
+            "generate": true
+        },
         "files-field": {
             "generate": true,
             "field-class": "invenio_records_resources.records.systemfields.FilesField",
@@ -330,6 +352,10 @@
                 "store=False"
             ],
             "imports": []
+        },
+        "translations": {
+            "module": "experiments.translations",
+            "alias": "experiments"
         },
         "json-schema-settings": {
             "generate": true,
@@ -354,10 +380,6 @@
                 "\"object_key\"": "\"ui\"",
                 "\"identity\"": "{{ flask.g{g.identity} }}"
             }
-        },
-        "translations": {
-            "module": "experiments.translations",
-            "alias": "experiments"
         },
         "record-metadata": {
             "generate": true,
@@ -404,9 +426,10 @@
             "service-id": "experiments",
             "components": [
                 "{{oarepo_runtime.services.components.OwnersComponent}}",
+                "{{invenio_drafts_resources.services.records.components.DraftFilesComponent}}",
                 "{{oarepo_runtime.services.files.FilesComponent}}",
                 "{{oarepo_runtime.services.components.CustomFieldsComponent}}",
-                "{{invenio_drafts_resources.services.records.components.DraftFilesComponent}}"
+                "{{oarepo_workflows.services.components.workflow.WorkflowComponent}}"
             ],
             "additional-args": []
         },
@@ -478,7 +501,9 @@
                 "invenio_drafts_resources.records.api.ParentRecord"
             ],
             "imports": [],
-            "fields": {},
+            "fields": {
+                "workflow": "{{oarepo_workflows.records.systemfields.workflow.WorkflowField}}()"
+            },
             "module": "experiments.records.api",
             "generate": true
         },
@@ -492,17 +517,6 @@
             "module": "experiments.records.models",
             "generate": true,
             "table": "experiments_parent_state_metadata"
-        },
-        "draft-parent-record-metadata": {
-            "class": "experiments.records.models.ExperimentsParentMetadata",
-            "base-classes": [
-                "invenio_db.db{db.Model}",
-                "invenio_records.models.RecordMetadataBase"
-            ],
-            "imports": [],
-            "table": "experiments_parent_record_metadata",
-            "module": "experiments.records.models",
-            "generate": true
         },
         "draft-parent-record-schema": {
             "name": "parent-v1.0.0.json",
@@ -545,16 +559,13 @@
             ],
             "imports": []
         },
-        "parent-record-marshmallow": {
-            "module": "experiments.services.records.schema",
-            "class": "experiments.services.records.schema.GeneratedParentSchema",
-            "generate": true,
-            "base-classes": [
-                "invenio_drafts_resources.services.records.schema.ParentSchema{InvenioParentSchema}"
-            ]
-        },
         "requests": {
             "types": {},
+            "additional-resolvers": [],
+            "additional-ui-resolvers": {},
+            "ui-serialization-referenced-fields": []
+        },
+        "record-requests": {
             "api-blueprint": {
                 "generate": true,
                 "alias": "experiments_requests",
@@ -588,10 +599,43 @@
                     "oarepo_requests_service={{oarepo_requests.proxies.current_oarepo_requests_service}}"
                 ],
                 "skip": false
+            }
+        },
+        "record-request-types": {
+            "api-blueprint": {
+                "generate": true,
+                "alias": "experiments_request_types",
+                "module": "experiments.views.request_types.api",
+                "function": "experiments.views.request_types.api.create_api_blueprint",
+                "imports": []
             },
-            "additional-resolvers": [],
-            "additional-ui-resolvers": {},
-            "ui-serialization-referenced-fields": []
+            "app-blueprint": {
+                "generate": true,
+                "alias": "experiments_request_types",
+                "extra_code": "",
+                "module": "experiments.views.request_types.app",
+                "function": "experiments.views.request_types.app.create_app_blueprint",
+                "imports": []
+            },
+            "resource": {
+                "generate": true,
+                "config-key": "EXPERIMENTS_REQUEST_TYPES_RESOURCE_CLASS",
+                "class": "oarepo_requests.resources.draft.types.resource.DraftRequestTypesResource",
+                "additional-args": [
+                    "record_requests_config={{oarepo_requests.resources.draft.types.config.DraftRequestTypesResourceConfig}}()"
+                ],
+                "skip": false
+            },
+            "service": {
+                "generate": true,
+                "config-key": "EXPERIMENTS_REQUEST_TYPES_SERVICE_CLASS",
+                "class": "oarepo_requests.services.draft.types.service.DraftRecordRequestTypesService",
+                "additional-args": [
+                    "record_service=self.service_records",
+                    "oarepo_requests_service={{oarepo_requests.proxies.current_oarepo_requests_service}}"
+                ],
+                "skip": false
+            }
         },
         "sortable": [],
         "properties": {
@@ -707,18 +751,18 @@
                                         "givenName": {
                                             "type": "keyword",
                                             "required": true,
-                                            "label.cs": "Jméno",
-                                            "label.en": "Name",
-                                            "hint.cs": "Napište jméno autora.",
-                                            "hint.en": "Write the author's name."
+                                            "label.cs": "Křestní jméno",
+                                            "label.en": "Given Name",
+                                            "hint.cs": "Uveďte jméno autora.",
+                                            "hint.en": "Fill in the author's given name."
                                         },
                                         "familyName": {
                                             "type": "keyword",
                                             "required": true,
                                             "label.cs": "Příjmení",
-                                            "label.en": "Last name",
-                                            "hint.cs": "Napište příjmení autora.",
-                                            "hint.en": "Write the author's last name."
+                                            "label.en": "Family Name",
+                                            "hint.cs": "Uveďte příjmení autora.",
+                                            "hint.en": "Fill in the author's family name."
                                         },
                                         "authorityIdentifiers": {
                                             "type": "array",
@@ -750,8 +794,8 @@
                                                         ],
                                                         "label.cs": "Typ identifikátoru",
                                                         "label.en": "Identifier type",
-                                                        "hint.cs": "např ORCID, scopusID",
-                                                        "hint.en": "e.g. ORCID, scopusID"
+                                                        "hint.cs": "Identifikátor osoby",
+                                                        "hint.en": "Person identifier"
                                                     }
                                                 },
                                                 "ui": {
@@ -767,9 +811,9 @@
                                                 }
                                             },
                                             "label.cs": "Identifikátor osoby",
-                                            "label.en": "Person identifier",
-                                            "help.cs": "Vyberte z nabídky typ identifikátoru. Napište identifikátor bez předpony (tj. https://orcid.org/0009-0004-8646-7185 nebo jk01051816). \nDoporučujeme zadat alespoň jeden z typů identifikátorů. \nPokud potřebujete rozšířit nabídku typů identifikátorů, kontaktujte nás na support@narodni-repozitar.cz.\n",
-                                            "help.en": "Choose the identifier type from the menu. Write the identifier without a prefix (e.g. https://orcid.org/0009-0004-8646-7185 or jk01051816). \nWe recommend providing at least one of the identifier types.\nIf you need to expand the range of identifier types, contact us at support@narodni-repozitar.cz.\n"
+                                            "label.en": "Person Identifier",
+                                            "help.cs": "Vyberte z nabídky typ identifikátoru. Uveďte hodnotu identifikátoru (tj. https://orcid.org/0009-0004-8646-7185 nebo jk01051816). \nDoporučujeme zadat alespoň jeden z typů identifikátorů, ideálně ORCID iD. \nPokud potřebujete rozšířit nabídku typů identifikátorů, kontaktujte nás na support@narodni-repozitar.cz.\n",
+                                            "help.en": "Choose the identifier type from the menu. Fill in the identifier value (e.g. https://orcid.org/0009-0004-8646-7185 or jk01051816). \nWe recommend providing at least one of the identifier types, ideally ORCID iD.\nIf you need to expand the range of identifier types, contact us at support@narodni-repozitar.cz.\n"
                                         },
                                         "affiliations": {
                                             "type": "array",
@@ -1320,9 +1364,9 @@
                                     "type": "keyword",
                                     "required": true,
                                     "label.cs": "Příjmení",
-                                    "label.en": "Last name",
-                                    "hint.cs": "Napište příjmení autora.",
-                                    "hint.en": "Write the author's last name."
+                                    "label.en": "Family Name",
+                                    "hint.cs": "Uveďte příjmení autora.",
+                                    "hint.en": "Fill in the author's family name."
                                 },
                                 "fullName": {
                                     "type": "keyword",
@@ -1338,10 +1382,10 @@
                                 "givenName": {
                                     "type": "keyword",
                                     "required": true,
-                                    "label.cs": "Jméno",
-                                    "label.en": "Name",
-                                    "hint.cs": "Napište jméno autora.",
-                                    "hint.en": "Write the author's name."
+                                    "label.cs": "Křestní jméno",
+                                    "label.en": "Given Name",
+                                    "hint.cs": "Uveďte jméno autora.",
+                                    "hint.en": "Fill in the author's given name."
                                 },
                                 "nameType": {
                                     "type": "keyword",
@@ -1375,7 +1419,7 @@
                             "generate": true
                         },
                         "label.en": "Funding reference",
-                        "label.cs": "Projekt nebo financování",
+                        "label.cs": "Grant a financování",
                         "properties": {
                             "funder": {
                                 "type": "vocabulary",
@@ -1493,23 +1537,23 @@
                                 "type": "fulltext",
                                 "label.cs": "Výzkumný program",
                                 "label.en": "Funding program",
-                                "hint.cs": "Zapište název výzkumného programu, v rámci kterého byl projekt financován.",
-                                "hint.en": "Write the name of the research program under which the project was funded."
+                                "hint.cs": "Uveďte název výzkumného programu, v rámci kterého byl projekt financován.",
+                                "hint.en": "Fill in the name of the research program under which the award was funded."
                             },
                             "projectID": {
                                 "type": "keyword",
                                 "required": true,
                                 "label.cs": "Číslo projektu",
-                                "label.en": "Project identifier",
-                                "hint.cs": "Zapište kód projektu.",
-                                "hint.en": "Write the project code."
+                                "label.en": "Award number",
+                                "hint.cs": "Uveďte kód/číslo projektu.",
+                                "hint.en": "Fill in the award number."
                             },
                             "projectName": {
                                 "type": "fulltext",
                                 "label.cs": "Název projektu",
-                                "label.en": "Project name",
-                                "hint.cs": "Zapište název projektu.",
-                                "hint.en": "Write the project name."
+                                "label.en": "Award Title",
+                                "hint.cs": "Uveďte název projektu.",
+                                "hint.en": "Fill in the award title."
                             }
                         }
                     },
@@ -1599,6 +1643,11 @@
                                     "label.en": "Metadata description creation software version",
                                     "hint.en": "Version of the extraction script at the time of processing metadata"
                                 },
+                                "_exit_code": {
+                                    "type": "keyword",
+                                    "label.en": "Exit code",
+                                    "hint.en": "Exit code of the extraction script"
+                                },
                                 "_gromacs_version": {
                                     "type": "keyword",
                                     "label.en": "Gromacs software version",
@@ -1609,6 +1658,18 @@
                                     "label.en": "Metadata creation date",
                                     "hint.en": "Timestamp of when metadata were extracted"
                                 },
+                                "_metadump_version": {
+                                    "type": "keyword",
+                                    "label.en": "Metadump version",
+                                    "hint.en": "Version of the extraction script at the time of processing metadata"
+                                },
+                                "_protein_sequences": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "keyword",
+                                        "label.en^": "Protein sequences"
+                                    }
+                                },
                                 "_record_file": {
                                     "type": "keyword",
                                     "label.en": "Dataset Record File",
@@ -1618,11 +1679,6 @@
                                     "type": "keyword",
                                     "label.en": "Dataset URL",
                                     "hint.en": "URL to file if uploaded to data repository"
-                                },
-                                "_tpr_date": {
-                                    "type": "datetime",
-                                    "label.en": "TPR file creation date",
-                                    "hint.en": "Timestamp of TPR file"
                                 },
                                 "_tpx_version": {
                                     "type": "keyword",
@@ -1676,7 +1732,7 @@
                                                 "pcoupl": {
                                                     "type": "keyword",
                                                     "enum": [
-                                                        false,
+                                                        "no",
                                                         "berendsen",
                                                         "c-rescale",
                                                         "parrinello-rahman",
@@ -1684,10 +1740,20 @@
                                                     ],
                                                     "label.en": "pcoupl"
                                                 },
+                                                "pcoupltype": {
+                                                    "type": "keyword",
+                                                    "enum": [
+                                                        "isotropic",
+                                                        "semiisotropic",
+                                                        "anisotropic",
+                                                        "surface-tension"
+                                                    ],
+                                                    "label.en": "pcoupltype"
+                                                },
                                                 "refcoord-scaling": {
                                                     "type": "keyword",
                                                     "enum": [
-                                                        false,
+                                                        "no",
                                                         "all",
                                                         "com"
                                                     ],
@@ -1703,10 +1769,10 @@
                                         "comm-mode": {
                                             "type": "keyword",
                                             "enum": [
+                                                "none",
                                                 "linear",
                                                 "angular",
-                                                "linear-acceleration-correction",
-                                                "none"
+                                                "linear-acceleration-correction"
                                             ],
                                             "label.en": "comm-mode"
                                         },
@@ -1736,10 +1802,25 @@
                                                 "coulomb-modifier": {
                                                     "type": "keyword",
                                                     "enum": [
-                                                        "potential-shift",
-                                                        "none"
+                                                        "none",
+                                                        "potential-shift"
                                                     ],
                                                     "label.en": "coulomb-modifier"
+                                                },
+                                                "coulombtype": {
+                                                    "type": "keyword",
+                                                    "enum": [
+                                                        "cut-off",
+                                                        "ewald",
+                                                        "pme",
+                                                        "p3m-ad",
+                                                        "reaction-field",
+                                                        "user",
+                                                        "pme-shift",
+                                                        "pme-user",
+                                                        "pme-user-switch"
+                                                    ],
+                                                    "label.en": "coulombtype"
                                                 },
                                                 "epsilon-r": {
                                                     "type": "float",
@@ -1798,9 +1879,9 @@
                                                 "pbc": {
                                                     "type": "keyword",
                                                     "enum": [
-                                                        "xyz",
-                                                        false,
-                                                        "xy"
+                                                        "no",
+                                                        "xy",
+                                                        "xyz"
                                                     ],
                                                     "label.en": "pbc"
                                                 },
@@ -1837,10 +1918,10 @@
                                                 },
                                                 "tau-t": {
                                                     "type": "array",
+                                                    "label.en": "tau-t [ps]",
+                                                    "hint.en": "The time constant for temperature coupling (one value for all groups)",
                                                     "items": {
-                                                        "type": "float",
-                                                        "label.en": "tau-t [ps]",
-                                                        "hint.en": "The time constant for temperature coupling (one value for all groups)"
+                                                        "type": "float"
                                                     }
                                                 },
                                                 "tc-grps": {
@@ -1871,7 +1952,7 @@
                                                 "tcoupl": {
                                                     "type": "keyword",
                                                     "enum": [
-                                                        false,
+                                                        "no",
                                                         "berendsen",
                                                         "nose-hoover",
                                                         "andersen",
@@ -1899,7 +1980,7 @@
                                                 "dispcorr": {
                                                     "type": "keyword",
                                                     "enum": [
-                                                        false,
+                                                        "no",
                                                         "enerpres",
                                                         "eber"
                                                     ],
@@ -1924,6 +2005,17 @@
                                                         "potential-switch"
                                                     ],
                                                     "label.en": "vdw-modifier"
+                                                },
+                                                "vdw-type": {
+                                                    "type": "keyword",
+                                                    "enum": [
+                                                        "cut-off",
+                                                        "pme",
+                                                        "shift",
+                                                        "switch",
+                                                        "user"
+                                                    ],
+                                                    "label.en": "vdw-type"
                                                 }
                                             }
                                         }
@@ -1945,10 +2037,10 @@
                                     "properties": {
                                         "authors": {
                                             "type": "array",
+                                            "label.en": "Authors",
+                                            "hint.en": "ORCIDs",
                                             "items": {
-                                                "type": "keyword",
-                                                "label.en": "Authors",
-                                                "hint.en": "ORCIDs"
+                                                "type": "keyword"
                                             }
                                         },
                                         "description": {
@@ -1967,12 +2059,9 @@
                                             "hint.en": "User specified name of file"
                                         },
                                         "related_files": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "keyword",
-                                                "label.en": "Related files [gro, pdb, trr, xtc]",
-                                                "hint.en": "Related configuration/trajectory files"
-                                            }
+                                            "type": "keyword",
+                                            "label.en": "Related files [gro, pdb, trr, xtc]",
+                                            "hint.en": "Related configuration/trajectory files"
                                         },
                                         "simulation_year": {
                                             "type": "keyword",
@@ -2011,8 +2100,8 @@
                                         "free_energy_calculation": {
                                             "type": "keyword",
                                             "enum": [
-                                                true,
-                                                false
+                                                "no",
+                                                "yes"
                                             ],
                                             "label.en": "Free Energy Calculation"
                                         },
@@ -2043,20 +2132,24 @@
                                                     "name": {
                                                         "type": "keyword",
                                                         "label.en": "Molecule name"
+                                                    },
+                                                    "residues": {
+                                                        "type": "array",
+                                                        "label.en": "List of residues",
+                                                        "items": {
+                                                            "type": "keyword"
+                                                        }
                                                     }
                                                 }
                                             }
                                         },
                                         "reference_pressure": {
                                             "type": "array",
+                                            "label.en": "Reference Pressure [bar]",
                                             "items": {
                                                 "type": "array",
-                                                "label.en": "Reference Pressure [bar]",
                                                 "items": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "float"
-                                                    }
+                                                    "type": "float"
                                                 }
                                             }
                                         },
@@ -2101,6 +2194,20 @@
                                 }
                             }
                         }
+                    },
+                    "version": {
+                        "type": "keyword",
+                        "sample": [
+                            "1.0",
+                            "1.1",
+                            "2.0",
+                            "2.1",
+                            "2.2"
+                        ],
+                        "label.cs": "Verze zdroje",
+                        "label.en": "Resource version",
+                        "hint.cs": "Zapište verzi (první, druhá…).",
+                        "hint.en": "Write down the version (first, second…)."
                     }
                 }
             },
@@ -2157,6 +2264,19 @@
                             "searchable": true,
                             "facet": false
                         }
+                    }
+                }
+            },
+            "state": {
+                "type": "keyword",
+                "marshmallow": {
+                    "read": true,
+                    "write": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "read": true,
+                        "write": false
                     }
                 }
             },

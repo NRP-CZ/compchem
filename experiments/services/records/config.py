@@ -1,11 +1,3 @@
-from experiments.records.api import ExperimentsDraft, ExperimentsRecord
-from experiments.services.records.permissions import ExperimentsPermissionPolicy
-from experiments.services.records.results import (
-    ExperimentsRecordItem,
-    ExperimentsRecordList,
-)
-from experiments.services.records.schema import ExperimentsSchema
-from experiments.services.records.search import ExperimentsSearchOptions
 from invenio_drafts_resources.services import (
     RecordServiceConfig as InvenioRecordDraftsServiceConfig,
 )
@@ -19,6 +11,16 @@ from oarepo_runtime.records import has_draft, is_published_record
 from oarepo_runtime.services.components import CustomFieldsComponent, OwnersComponent
 from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
 from oarepo_runtime.services.files import FilesComponent
+from oarepo_workflows.services.components.workflow import WorkflowComponent
+
+from experiments.records.api import ExperimentsDraft, ExperimentsRecord
+from experiments.services.records.permissions import ExperimentsPermissionPolicy
+from experiments.services.records.results import (
+    ExperimentsRecordItem,
+    ExperimentsRecordList,
+)
+from experiments.services.records.schema import ExperimentsSchema
+from experiments.services.records.search import ExperimentsSearchOptions
 
 
 class ExperimentsServiceConfig(
@@ -48,9 +50,10 @@ class ExperimentsServiceConfig(
         *PermissionsPresetsConfigMixin.components,
         *InvenioRecordDraftsServiceConfig.components,
         OwnersComponent,
+        DraftFilesComponent,
         FilesComponent,
         CustomFieldsComponent,
-        DraftFilesComponent,
+        WorkflowComponent,
     ]
 
     model = "experiments"

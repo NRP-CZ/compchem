@@ -6,10 +6,13 @@ from invenio_drafts_resources.records import (
 )
 from invenio_files_rest.models import Bucket
 from invenio_records.models import RecordMetadataBase
+from oarepo_workflows.records.models import RecordWorkflowParentModelMixin
 from sqlalchemy_utils import UUIDType
 
 
-class ExperimentsParentMetadata(db.Model, RecordMetadataBase):
+class ExperimentsParentMetadata(
+    RecordWorkflowParentModelMixin, db.Model, RecordMetadataBase
+):
 
     __tablename__ = "experiments_parent_record_metadata"
 

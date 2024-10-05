@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2024-09-04T06:44:03.563608\n"
-"PO-Revision-Date: 2024-09-04T06:44:03.563639\n"
+"POT-Creation-Date: 2024-10-05T13:46:13.219014\n"
+"PO-Revision-Date: 2024-10-05T13:46:13.219030\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -157,12 +157,12 @@ msgid "metadata/creators/affiliations/@v.hint"
 msgstr ""
 
 msgid "metadata/creators/authorityIdentifiers.label"
-msgstr "Person identifier"
+msgstr "Person Identifier"
 
 msgid "metadata/creators/authorityIdentifiers.help"
 msgstr ""
-"Choose the identifier type from the menu. Write the identifier without a prefix (e.g. https://orcid.org/0009-0004-8646-7185 or jk01051816). \n"
-"We recommend providing at least one of the identifier types.\n"
+"Choose the identifier type from the menu. Fill in the identifier value (e.g. https://orcid.org/0009-0004-8646-7185 or jk01051816). \n"
+"We recommend providing at least one of the identifier types, ideally ORCID iD.\n"
 "If you need to expand the range of identifier types, contact us at support@narodni-repozitar.cz.\n"
 
 msgid "metadata/creators/authorityIdentifiers.hint"
@@ -181,7 +181,7 @@ msgid "metadata/creators/authorityIdentifiers/scheme.label"
 msgstr "Identifier type"
 
 msgid "metadata/creators/authorityIdentifiers/scheme.hint"
-msgstr "e.g. ORCID, scopusID"
+msgstr "Person identifier"
 
 msgid "metadata/creators/authorityIdentifiers/scheme.help"
 msgstr ""
@@ -208,10 +208,10 @@ msgid "metadata/creators/authorityIdentifiers/scheme.enum.ISNI"
 msgstr ""
 
 msgid "metadata/creators/familyName.label"
-msgstr "Last name"
+msgstr "Family Name"
 
 msgid "metadata/creators/familyName.hint"
-msgstr "Write the author's last name."
+msgstr "Fill in the author's family name."
 
 msgid "metadata/creators/familyName.help"
 msgstr ""
@@ -228,10 +228,10 @@ msgstr ""
 "the menu."
 
 msgid "metadata/creators/givenName.label"
-msgstr "Name"
+msgstr "Given Name"
 
 msgid "metadata/creators/givenName.hint"
-msgstr "Write the author's name."
+msgstr "Fill in the author's given name."
 
 msgid "metadata/creators/givenName.help"
 msgstr ""
@@ -320,25 +320,25 @@ msgstr "Funding program"
 
 msgid "metadata/fundingReference/fundingProgram.hint"
 msgstr ""
-"Write the name of the research program under which the project was funded."
+"Fill in the name of the research program under which the award was funded."
 
 msgid "metadata/fundingReference/fundingProgram.help"
 msgstr ""
 
 msgid "metadata/fundingReference/projectID.label"
-msgstr "Project identifier"
+msgstr "Award number"
 
 msgid "metadata/fundingReference/projectID.hint"
-msgstr "Write the project code."
+msgstr "Fill in the award number."
 
 msgid "metadata/fundingReference/projectID.help"
 msgstr ""
 
 msgid "metadata/fundingReference/projectName.label"
-msgstr "Project name"
+msgstr "Award Title"
 
 msgid "metadata/fundingReference/projectName.hint"
-msgstr "Write the project name."
+msgstr "Fill in the award title."
 
 msgid "metadata/fundingReference/projectName.help"
 msgstr ""
@@ -424,6 +424,15 @@ msgstr "Version of the extraction script at the time of processing metadata"
 msgid "metadata/simulations/_dump_sw_version.help"
 msgstr ""
 
+msgid "metadata/simulations/_exit_code.label"
+msgstr "Exit code"
+
+msgid "metadata/simulations/_exit_code.hint"
+msgstr "Exit code of the extraction script"
+
+msgid "metadata/simulations/_exit_code.help"
+msgstr ""
+
 msgid "metadata/simulations/_gromacs_version.label"
 msgstr "Gromacs software version"
 
@@ -442,6 +451,24 @@ msgstr "Timestamp of when metadata were extracted"
 msgid "metadata/simulations/_metadata_date.help"
 msgstr ""
 
+msgid "metadata/simulations/_metadump_version.label"
+msgstr "Metadump version"
+
+msgid "metadata/simulations/_metadump_version.hint"
+msgstr "Version of the extraction script at the time of processing metadata"
+
+msgid "metadata/simulations/_metadump_version.help"
+msgstr ""
+
+msgid "metadata/simulations/_protein_sequences.help"
+msgstr ""
+
+msgid "metadata/simulations/_protein_sequences.label"
+msgstr ""
+
+msgid "metadata/simulations/_protein_sequences.hint"
+msgstr ""
+
 msgid "metadata/simulations/_record_file.label"
 msgstr "Dataset Record File"
 
@@ -458,15 +485,6 @@ msgid "metadata/simulations/_record_url.hint"
 msgstr "URL to file if uploaded to data repository"
 
 msgid "metadata/simulations/_record_url.help"
-msgstr ""
-
-msgid "metadata/simulations/_tpr_date.label"
-msgstr "TPR file creation date"
-
-msgid "metadata/simulations/_tpr_date.hint"
-msgstr "Timestamp of TPR file"
-
-msgid "metadata/simulations/_tpr_date.help"
 msgstr ""
 
 msgid "metadata/simulations/_tpx_version.label"
@@ -528,7 +546,7 @@ msgstr ""
 msgid "metadata/simulations/detailed_information/barostat/pcoupl.hint"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/barostat/pcoupl.enum.False"
+msgid "metadata/simulations/detailed_information/barostat/pcoupl.enum.no"
 msgstr ""
 
 msgid ""
@@ -547,6 +565,32 @@ msgstr ""
 msgid "metadata/simulations/detailed_information/barostat/pcoupl.enum.mttk"
 msgstr ""
 
+msgid "metadata/simulations/detailed_information/barostat/pcoupltype.label"
+msgstr "pcoupltype"
+
+msgid "metadata/simulations/detailed_information/barostat/pcoupltype.help"
+msgstr ""
+
+msgid "metadata/simulations/detailed_information/barostat/pcoupltype.hint"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/barostat/pcoupltype.enum.isotropic"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/barostat/pcoupltype.enum.semiisotropic"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/barostat/pcoupltype.enum.anisotropic"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/barostat/pcoupltype.enum.surface-"
+"tension"
+msgstr ""
+
 msgid ""
 "metadata/simulations/detailed_information/barostat/refcoord-scaling.label"
 msgstr "refcoord-scaling"
@@ -560,8 +604,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/barostat/refcoord-"
-"scaling.enum.False"
+"metadata/simulations/detailed_information/barostat/refcoord-scaling.enum.no"
 msgstr ""
 
 msgid ""
@@ -591,6 +634,9 @@ msgstr ""
 msgid "metadata/simulations/detailed_information/comm-mode.hint"
 msgstr ""
 
+msgid "metadata/simulations/detailed_information/comm-mode.enum.none"
+msgstr ""
+
 msgid "metadata/simulations/detailed_information/comm-mode.enum.linear"
 msgstr ""
 
@@ -600,9 +646,6 @@ msgstr ""
 msgid ""
 "metadata/simulations/detailed_information/comm-mode.enum.linear-"
 "acceleration-correction"
-msgstr ""
-
-msgid "metadata/simulations/detailed_information/comm-mode.enum.none"
 msgstr ""
 
 msgid "metadata/simulations/detailed_information/constraint-algorithm.label"
@@ -651,12 +694,65 @@ msgstr ""
 
 msgid ""
 "metadata/simulations/detailed_information/electrostatic_interactions/coulomb-"
-"modifier.enum.potential-shift"
+"modifier.enum.none"
 msgstr ""
 
 msgid ""
 "metadata/simulations/detailed_information/electrostatic_interactions/coulomb-"
-"modifier.enum.none"
+"modifier.enum.potential-shift"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.label"
+msgstr "coulombtype"
+
+msgid ""
+"metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.help"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.hint"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.enum.cut-"
+"off"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.enum.ewald"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.enum.pme"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.enum.p3m-ad"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.enum.reaction-"
+"field"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.enum.user"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.enum.pme-"
+"shift"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.enum.pme-"
+"user"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.enum.pme-"
+"user-switch"
 msgstr ""
 
 msgid ""
@@ -774,14 +870,13 @@ msgstr ""
 msgid "metadata/simulations/detailed_information/neighbour_list/pbc.hint"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/neighbour_list/pbc.enum.xyz"
-msgstr ""
-
-msgid ""
-"metadata/simulations/detailed_information/neighbour_list/pbc.enum.False"
+msgid "metadata/simulations/detailed_information/neighbour_list/pbc.enum.no"
 msgstr ""
 
 msgid "metadata/simulations/detailed_information/neighbour_list/pbc.enum.xy"
+msgstr ""
+
+msgid "metadata/simulations/detailed_information/neighbour_list/pbc.enum.xyz"
 msgstr ""
 
 msgid "metadata/simulations/detailed_information/neighbour_list/rlist.label"
@@ -820,14 +915,14 @@ msgstr "The frequency for coupling the temperature."
 msgid "metadata/simulations/detailed_information/thermostat/nsttcouple.help"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/thermostat/tau-t.help"
-msgstr ""
-
 msgid "metadata/simulations/detailed_information/thermostat/tau-t.label"
 msgstr "tau-t [ps]"
 
 msgid "metadata/simulations/detailed_information/thermostat/tau-t.hint"
 msgstr "The time constant for temperature coupling (one value for all groups)"
+
+msgid "metadata/simulations/detailed_information/thermostat/tau-t.help"
+msgstr ""
 
 msgid "metadata/simulations/detailed_information/thermostat/tc-grps.label"
 msgstr "tc-grps"
@@ -866,7 +961,7 @@ msgstr ""
 msgid "metadata/simulations/detailed_information/thermostat/tcoupl.hint"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/thermostat/tcoupl.enum.False"
+msgid "metadata/simulations/detailed_information/thermostat/tcoupl.enum.no"
 msgstr ""
 
 msgid ""
@@ -915,7 +1010,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/dispcorr.enum.False"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/dispcorr.enum.no"
 msgstr ""
 
 msgid ""
@@ -990,6 +1085,46 @@ msgid ""
 "modifier.enum.potential-switch"
 msgstr ""
 
+msgid ""
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
+"type.label"
+msgstr "vdw-type"
+
+msgid ""
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
+"type.help"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
+"type.hint"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
+"type.enum.cut-off"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
+"type.enum.pme"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
+"type.enum.shift"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
+"type.enum.switch"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
+"type.enum.user"
+msgstr ""
+
 msgid "metadata/simulations/file_identification.label"
 msgstr "File identification"
 
@@ -999,14 +1134,14 @@ msgstr ""
 msgid "metadata/simulations/file_identification.hint"
 msgstr ""
 
-msgid "metadata/simulations/file_identification/authors.help"
-msgstr ""
-
 msgid "metadata/simulations/file_identification/authors.label"
 msgstr "Authors"
 
 msgid "metadata/simulations/file_identification/authors.hint"
 msgstr "ORCIDs"
+
+msgid "metadata/simulations/file_identification/authors.help"
+msgstr ""
 
 msgid "metadata/simulations/file_identification/description.label"
 msgstr "Description"
@@ -1035,14 +1170,14 @@ msgstr "User specified name of file"
 msgid "metadata/simulations/file_identification/name.help"
 msgstr ""
 
-msgid "metadata/simulations/file_identification/related_files.help"
-msgstr ""
-
 msgid "metadata/simulations/file_identification/related_files.label"
 msgstr "Related files [gro, pdb, trr, xtc]"
 
 msgid "metadata/simulations/file_identification/related_files.hint"
 msgstr "Related configuration/trajectory files"
+
+msgid "metadata/simulations/file_identification/related_files.help"
+msgstr ""
 
 msgid "metadata/simulations/file_identification/simulation_year.label"
 msgstr "Simulation year"
@@ -1098,12 +1233,10 @@ msgstr ""
 msgid "metadata/simulations/main_information/free_energy_calculation.hint"
 msgstr ""
 
-msgid ""
-"metadata/simulations/main_information/free_energy_calculation.enum.True"
+msgid "metadata/simulations/main_information/free_energy_calculation.enum.no"
 msgstr ""
 
-msgid ""
-"metadata/simulations/main_information/free_energy_calculation.enum.False"
+msgid "metadata/simulations/main_information/free_energy_calculation.enum.yes"
 msgstr ""
 
 msgid "metadata/simulations/main_information/molecules.help"
@@ -1142,11 +1275,20 @@ msgstr ""
 msgid "metadata/simulations/main_information/molecules/name.hint"
 msgstr ""
 
-msgid "metadata/simulations/main_information/reference_pressure.help"
+msgid "metadata/simulations/main_information/molecules/residues.label"
+msgstr "List of residues"
+
+msgid "metadata/simulations/main_information/molecules/residues.help"
+msgstr ""
+
+msgid "metadata/simulations/main_information/molecules/residues.hint"
 msgstr ""
 
 msgid "metadata/simulations/main_information/reference_pressure.label"
 msgstr "Reference Pressure [bar]"
+
+msgid "metadata/simulations/main_information/reference_pressure.help"
+msgstr ""
 
 msgid "metadata/simulations/main_information/reference_pressure.hint"
 msgstr ""
@@ -1235,6 +1377,15 @@ msgstr ""
 msgid "metadata/simulations/main_information/umbrella_sampling.hint"
 msgstr ""
 
+msgid "metadata/version.label"
+msgstr "Resource version"
+
+msgid "metadata/version.hint"
+msgstr "Write down the version (first, second…)."
+
+msgid "metadata/version.help"
+msgstr ""
+
 msgid "pid.help"
 msgstr ""
 
@@ -1278,6 +1429,15 @@ msgid "pid/status.label"
 msgstr ""
 
 msgid "pid/status.hint"
+msgstr ""
+
+msgid "state.help"
+msgstr ""
+
+msgid "state.label"
+msgstr ""
+
+msgid "state.hint"
 msgstr ""
 
 msgid "updated.help"

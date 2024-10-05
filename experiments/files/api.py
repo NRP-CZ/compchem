@@ -1,9 +1,10 @@
+from invenio_records_resources.records.api import FileRecord
+from invenio_records_resources.records.systemfields import IndexField
+
 from experiments.files.models import (
     ExperimentsFileDraftMetadata,
     ExperimentsFileMetadata,
 )
-from invenio_records_resources.records.api import FileRecord
-from invenio_records_resources.records.systemfields import IndexField
 
 
 class ExperimentsFile(FileRecord):

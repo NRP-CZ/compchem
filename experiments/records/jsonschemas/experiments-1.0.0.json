@@ -156,6 +156,9 @@
                             "_dump_sw_version": {
                                 "type": "string"
                             },
+                            "_exit_code": {
+                                "type": "string"
+                            },
                             "_gromacs_version": {
                                 "type": "string"
                             },
@@ -163,15 +166,20 @@
                                 "type": "string",
                                 "format": "date-time"
                             },
+                            "_metadump_version": {
+                                "type": "string"
+                            },
+                            "_protein_sequences": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
                             "_record_file": {
                                 "type": "string"
                             },
                             "_record_url": {
                                 "type": "string"
-                            },
-                            "_tpr_date": {
-                                "type": "string",
-                                "format": "date-time"
                             },
                             "_tpx_version": {
                                 "type": "string"
@@ -197,6 +205,9 @@
                                             "pcoupl": {
                                                 "type": "string"
                                             },
+                                            "pcoupltype": {
+                                                "type": "string"
+                                            },
                                             "refcoord-scaling": {
                                                 "type": "string"
                                             },
@@ -215,6 +226,9 @@
                                         "type": "object",
                                         "properties": {
                                             "coulomb-modifier": {
+                                                "type": "string"
+                                            },
+                                            "coulombtype": {
                                                 "type": "string"
                                             },
                                             "epsilon-r": {
@@ -299,6 +313,9 @@
                                             },
                                             "vdw-modifier": {
                                                 "type": "string"
+                                            },
+                                            "vdw-type": {
+                                                "type": "string"
                                             }
                                         }
                                     }
@@ -323,10 +340,7 @@
                                         "type": "string"
                                     },
                                     "related_files": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "string"
-                                        }
+                                        "type": "string"
                                     },
                                     "simulation_year": {
                                         "type": "string"
@@ -361,6 +375,12 @@
                                                 },
                                                 "name": {
                                                     "type": "string"
+                                                },
+                                                "residues": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
                                                 }
                                             }
                                         }
@@ -370,10 +390,7 @@
                                         "items": {
                                             "type": "array",
                                             "items": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "number"
-                                                }
+                                                "type": "number"
                                             }
                                         }
                                     },
@@ -402,6 +419,9 @@
                             }
                         }
                     }
+                },
+                "version": {
+                    "type": "string"
                 }
             }
         },
@@ -421,6 +441,9 @@
                     "type": "string"
                 }
             }
+        },
+        "state": {
+            "type": "string"
         },
         "updated": {
             "type": "string",

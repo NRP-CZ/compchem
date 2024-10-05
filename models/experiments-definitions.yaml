@@ -17,6 +17,9 @@ Molecule:
     count:
       type: integer
       label.en: Molecule count
+    residues[]:
+      type: keyword
+      ^label.en: List of residues
 
 
 VanDerWaalsInteractions:
@@ -25,13 +28,22 @@ VanDerWaalsInteractions:
       label.en: rvdw [nm]
       hint.en: distance for the LJ or Buckingham cut-off
       type: float
+    vdw-type:
+      label.en: vdw-type
+      type: keyword
+      enum:
+        - "cut-off"
+        - "pme"
+        - "shift"
+        - "switch"
+        - "user"
     dispcorr:
       label.en: dispcorr
       type: keyword
       enum:
-        - no
-        - enerpres
-        - eber
+        - "no"
+        - "enerpres"
+        - "eber"
     rvdw-switch:
       label.en: rvdw-switch [nm]
       hint.en: where to start switching the LJ force and possibly the potential, only relevant when force or potential switching is used
@@ -40,11 +52,10 @@ VanDerWaalsInteractions:
       label.en: vdw-modifier
       type: keyword
       enum:
-        - potential-shift
-        - none
-        - force-switch
-        - potential-switch
-
+        - "potential-shift"
+        - "none"
+        - "force-switch"
+        - "potential-switch"
 
 Barostat:
   properties:
@@ -52,11 +63,19 @@ Barostat:
       label.en: pcoupl
       type: keyword
       enum:
-        - no
-        - berendsen
-        - c-rescale
-        - parrinello-rahman
-        - mttk
+        - "no"
+        - "berendsen"
+        - "c-rescale"
+        - "parrinello-rahman"
+        - "mttk"
+    pcoupltype:
+        label.en: pcoupltype
+        type: keyword
+        enum:
+        - "isotropic"
+        - "semiisotropic"
+        - "anisotropic"
+        - "surface-tension"
     tau-p:
       label.en: tau-p [ps]
       hint.en: The time constant for pressure coupling (one value for all directions)
@@ -69,9 +88,9 @@ Barostat:
       label.en: refcoord-scaling
       type: keyword
       enum:
-        - no
-        - all
-        - com
+        - "no"
+        - "all"
+        - "com"
 
 
 Thermostat:
@@ -80,17 +99,16 @@ Thermostat:
       label.en: tcoupl
       type: keyword
       enum:
-        - no
-        - berendsen
-        - nose-hoover
-        - andersen
-        - andersen-massive
-        - v-rescale
+        - "no"
+        - "berendsen"
+        - "nose-hoover"
+        - "andersen"
+        - "andersen-massive"
+        - "v-rescale"
     tau-t[]:
-      label.en: tau-t [ps]
-      hint.en: The time constant for temperature coupling (one value for all groups)
+      ^label.en: tau-t [ps]
+      ^hint.en: The time constant for temperature coupling (one value for all groups)
       type: float
-    # should this be an array?
     tc-grps:
       label.en: tc-grps
       properties:
@@ -113,9 +131,9 @@ NeighbourList:
       label.en: pbc
       type: keyword
       enum:
-        - xyz
-        - no
-        - xy
+        - "no"
+        - "xy"
+        - "xyz"
     rlist:
       label.en: rlist [nm]
       hint.en: Cut-off distance for the short-range neighbor list
@@ -127,12 +145,25 @@ NeighbourList:
       label.en: cutoff-scheme
       type: keyword
       enum:
-        - verlet
-        - group
+        - "verlet"
+        - "group"
 
 
 ElectrostaticInteractions:
   properties:
+    coulombtype:
+      label.en: coulombtype
+      type: keyword
+      enum:
+      - "cut-off"
+      - "ewald"
+      - "pme"
+      - "p3m-ad"
+      - "reaction-field"
+      - "user"
+      - "pme-shift"
+      - "pme-user"
+      - "pme-user-switch"
     rcoulomb:
       label.en: rcoulomb [nm]
       hint.en: The distance for the Coulomb cut-off
@@ -148,5 +179,5 @@ ElectrostaticInteractions:
       label.en: coulomb-modifier
       type: keyword
       enum:
-        - potential-shift
-        - none
+        - "none"
+        - "potential-shift"

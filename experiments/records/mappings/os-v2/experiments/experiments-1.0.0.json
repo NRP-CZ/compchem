@@ -185,6 +185,10 @@
                                 "type": "keyword",
                                 "ignore_above": 1024
                             },
+                            "_exit_code": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            },
                             "_gromacs_version": {
                                 "type": "keyword",
                                 "ignore_above": 1024
@@ -193,6 +197,14 @@
                                 "type": "date",
                                 "format": "strict_date_time||strict_date_time_no_millis||basic_date_time||basic_date_time_no_millis||basic_date||strict_date||strict_date_hour_minute_second||strict_date_hour_minute_second_fraction"
                             },
+                            "_metadump_version": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            },
+                            "_protein_sequences": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            },
                             "_record_file": {
                                 "type": "keyword",
                                 "ignore_above": 1024
@@ -200,10 +212,6 @@
                             "_record_url": {
                                 "type": "keyword",
                                 "ignore_above": 1024
-                            },
-                            "_tpr_date": {
-                                "type": "date",
-                                "format": "strict_date_time||strict_date_time_no_millis||basic_date_time||basic_date_time_no_millis||basic_date||strict_date||strict_date_hour_minute_second||strict_date_hour_minute_second_fraction"
                             },
                             "_tpx_version": {
                                 "type": "keyword",
@@ -223,6 +231,10 @@
                                                 "type": "float"
                                             },
                                             "pcoupl": {
+                                                "type": "keyword",
+                                                "ignore_above": 1024
+                                            },
+                                            "pcoupltype": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             },
@@ -247,6 +259,10 @@
                                         "type": "object",
                                         "properties": {
                                             "coulomb-modifier": {
+                                                "type": "keyword",
+                                                "ignore_above": 1024
+                                            },
+                                            "coulombtype": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             },
@@ -335,6 +351,10 @@
                                             "vdw-modifier": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
+                                            },
+                                            "vdw-type": {
+                                                "type": "keyword",
+                                                "ignore_above": 1024
                                             }
                                         }
                                     }
@@ -398,6 +418,10 @@
                                             "name": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
+                                            },
+                                            "residues": {
+                                                "type": "keyword",
+                                                "ignore_above": 1024
                                             }
                                         }
                                     },
@@ -427,6 +451,10 @@
                                 }
                             }
                         }
+                    },
+                    "version": {
+                        "type": "keyword",
+                        "ignore_above": 1024
                     }
                 }
             },
@@ -449,6 +477,10 @@
                         "ignore_above": 1024
                     }
                 }
+            },
+            "state": {
+                "type": "keyword",
+                "ignore_above": 1024
             },
             "updated": {
                 "type": "date",

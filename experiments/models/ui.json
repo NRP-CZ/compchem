@@ -376,6 +376,14 @@
                                 "hint": "metadata/simulations/_dump_sw_version.hint",
                                 "facet": "metadata_simulations__dump_sw_version"
                             },
+                            "_exit_code": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/simulations/_exit_code.help",
+                                "label": "metadata/simulations/_exit_code.label",
+                                "hint": "metadata/simulations/_exit_code.hint",
+                                "facet": "metadata_simulations__exit_code"
+                            },
                             "_gromacs_version": {
                                 "detail": "keyword",
                                 "input": "keyword",
@@ -392,6 +400,29 @@
                                 "hint": "metadata/simulations/_metadata_date.hint",
                                 "facet": "metadata_simulations__metadata_date"
                             },
+                            "_metadump_version": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/simulations/_metadump_version.help",
+                                "label": "metadata/simulations/_metadump_version.label",
+                                "hint": "metadata/simulations/_metadump_version.hint",
+                                "facet": "metadata_simulations__metadump_version"
+                            },
+                            "_protein_sequences": {
+                                "detail": "array",
+                                "input": "array",
+                                "help": "metadata/simulations/_protein_sequences.help",
+                                "label": "metadata/simulations/_protein_sequences.label",
+                                "hint": "metadata/simulations/_protein_sequences.hint",
+                                "child": {
+                                    "detail": "keyword",
+                                    "input": "keyword",
+                                    "help": "metadata/simulations/_protein_sequences.help",
+                                    "label": "metadata/simulations/_protein_sequences.label",
+                                    "hint": "metadata/simulations/_protein_sequences.hint",
+                                    "facet": "metadata_simulations__protein_sequences"
+                                }
+                            },
                             "_record_file": {
                                 "detail": "keyword",
                                 "input": "keyword",
@@ -407,14 +438,6 @@
                                 "label": "metadata/simulations/_record_url.label",
                                 "hint": "metadata/simulations/_record_url.hint",
                                 "facet": "metadata_simulations__record_url"
-                            },
-                            "_tpr_date": {
-                                "detail": "datetime",
-                                "input": "datetime",
-                                "help": "metadata/simulations/_tpr_date.help",
-                                "label": "metadata/simulations/_tpr_date.label",
-                                "hint": "metadata/simulations/_tpr_date.hint",
-                                "facet": "metadata_simulations__tpr_date"
                             },
                             "_tpx_version": {
                                 "detail": "keyword",
@@ -477,6 +500,15 @@
                                                 "enum": "metadata/simulations/detailed_information/barostat/pcoupl.enum",
                                                 "facet": "metadata_simulations_detailed_information_barostat_pcoupl"
                                             },
+                                            "pcoupltype": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/simulations/detailed_information/barostat/pcoupltype.help",
+                                                "label": "metadata/simulations/detailed_information/barostat/pcoupltype.label",
+                                                "hint": "metadata/simulations/detailed_information/barostat/pcoupltype.hint",
+                                                "enum": "metadata/simulations/detailed_information/barostat/pcoupltype.enum",
+                                                "facet": "metadata_simulations_detailed_information_barostat_pcoupltype"
+                                            },
                                             "refcoord-scaling": {
                                                 "detail": "keyword",
                                                 "input": "keyword",
@@ -529,6 +561,15 @@
                                                 "hint": "metadata/simulations/detailed_information/electrostatic_interactions/coulomb-modifier.hint",
                                                 "enum": "metadata/simulations/detailed_information/electrostatic_interactions/coulomb-modifier.enum",
                                                 "facet": "metadata_simulations_detailed_information_electrostatic_interactions_coulomb_modifier"
+                                            },
+                                            "coulombtype": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.help",
+                                                "label": "metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.label",
+                                                "hint": "metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.hint",
+                                                "enum": "metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.enum",
+                                                "facet": "metadata_simulations_detailed_information_electrostatic_interactions_coulombtype"
                                             },
                                             "epsilon-r": {
                                                 "detail": "float",
@@ -737,6 +778,15 @@
                                                 "hint": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-modifier.hint",
                                                 "enum": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-modifier.enum",
                                                 "facet": "metadata_simulations_detailed_information_van_der_Waals_interactions_vdw_modifier"
+                                            },
+                                            "vdw-type": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-type.help",
+                                                "label": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-type.label",
+                                                "hint": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-type.hint",
+                                                "enum": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-type.enum",
+                                                "facet": "metadata_simulations_detailed_information_van_der_Waals_interactions_vdw_type"
                                             }
                                         }
                                     }
@@ -788,19 +838,12 @@
                                         "facet": "metadata_simulations_file_identification_name"
                                     },
                                     "related_files": {
-                                        "detail": "array",
-                                        "input": "array",
+                                        "detail": "keyword",
+                                        "input": "keyword",
                                         "help": "metadata/simulations/file_identification/related_files.help",
                                         "label": "metadata/simulations/file_identification/related_files.label",
                                         "hint": "metadata/simulations/file_identification/related_files.hint",
-                                        "child": {
-                                            "detail": "keyword",
-                                            "input": "keyword",
-                                            "help": "metadata/simulations/file_identification/related_files.help",
-                                            "label": "metadata/simulations/file_identification/related_files.label",
-                                            "hint": "metadata/simulations/file_identification/related_files.hint",
-                                            "facet": "metadata_simulations_file_identification_related_files"
-                                        }
+                                        "facet": "metadata_simulations_file_identification_related_files"
                                     },
                                     "simulation_year": {
                                         "detail": "keyword",
@@ -888,6 +931,21 @@
                                                     "label": "metadata/simulations/main_information/molecules/name.label",
                                                     "hint": "metadata/simulations/main_information/molecules/name.hint",
                                                     "facet": "metadata_simulations_main_information_molecules_name"
+                                                },
+                                                "residues": {
+                                                    "detail": "array",
+                                                    "input": "array",
+                                                    "help": "metadata/simulations/main_information/molecules/residues.help",
+                                                    "label": "metadata/simulations/main_information/molecules/residues.label",
+                                                    "hint": "metadata/simulations/main_information/molecules/residues.hint",
+                                                    "child": {
+                                                        "detail": "keyword",
+                                                        "input": "keyword",
+                                                        "help": "metadata/simulations/main_information/molecules/residues.help",
+                                                        "label": "metadata/simulations/main_information/molecules/residues.label",
+                                                        "hint": "metadata/simulations/main_information/molecules/residues.hint",
+                                                        "facet": "metadata_simulations_main_information_molecules_residues"
+                                                    }
                                                 }
                                             }
                                         }
@@ -905,19 +963,12 @@
                                             "label": "metadata/simulations/main_information/reference_pressure.label",
                                             "hint": "metadata/simulations/main_information/reference_pressure.hint",
                                             "child": {
-                                                "detail": "array",
-                                                "input": "array",
+                                                "detail": "float",
+                                                "input": "float",
                                                 "help": "metadata/simulations/main_information/reference_pressure.help",
                                                 "label": "metadata/simulations/main_information/reference_pressure.label",
                                                 "hint": "metadata/simulations/main_information/reference_pressure.hint",
-                                                "child": {
-                                                    "detail": "float",
-                                                    "input": "float",
-                                                    "help": "metadata/simulations/main_information/reference_pressure.help",
-                                                    "label": "metadata/simulations/main_information/reference_pressure.label",
-                                                    "hint": "metadata/simulations/main_information/reference_pressure.hint",
-                                                    "facet": "metadata_simulations_main_information_reference_pressure"
-                                                }
+                                                "facet": "metadata_simulations_main_information_reference_pressure"
                                             }
                                         }
                                     },
@@ -982,6 +1033,14 @@
                             }
                         }
                     }
+                },
+                "version": {
+                    "detail": "keyword",
+                    "input": "keyword",
+                    "help": "metadata/version.help",
+                    "label": "metadata/version.label",
+                    "hint": "metadata/version.hint",
+                    "facet": "metadata_version"
                 }
             }
         },
@@ -1021,6 +1080,14 @@
                     "hint": "pid/status.hint"
                 }
             }
+        },
+        "state": {
+            "detail": "keyword",
+            "input": "keyword",
+            "help": "state.help",
+            "label": "state.label",
+            "hint": "state.hint",
+            "facet": "state"
         },
         "updated": {
             "detail": "datetime",

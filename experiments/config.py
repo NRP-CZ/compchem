@@ -1,3 +1,12 @@
+from oarepo_requests.resolvers.ui import (
+    RecordEntityDraftReferenceUIResolver,
+    RecordEntityReferenceUIResolver,
+)
+from oarepo_requests.resources.draft.resource import DraftRecordRequestsResource
+from oarepo_requests.resources.draft.types.resource import DraftRequestTypesResource
+from oarepo_requests.services.draft.service import DraftRecordRequestsService
+from oarepo_requests.services.draft.types.service import DraftRecordRequestTypesService
+
 from experiments.files.api import ExperimentsFile, ExperimentsFileDraft
 from experiments.files.requests.resolvers import ExperimentsFileDraftResolver
 from experiments.records.api import ExperimentsDraft, ExperimentsRecord
@@ -25,12 +34,6 @@ from experiments.services.files.service import (
 )
 from experiments.services.records.config import ExperimentsServiceConfig
 from experiments.services.records.service import ExperimentsService
-from oarepo_requests.resolvers.ui import (
-    RecordEntityDraftReferenceUIResolver,
-    RecordEntityReferenceUIResolver,
-)
-from oarepo_requests.resources.draft.resource import DraftRecordRequestsResource
-from oarepo_requests.services.draft.service import DraftRecordRequestsService
 
 EXPERIMENTS_RECORD_RESOURCE_CONFIG = ExperimentsResourceConfig
 
@@ -80,6 +83,12 @@ ENTITY_REFERENCE_UI_RESOLVERS = {
     "experiments_draft": RecordEntityDraftReferenceUIResolver("experiments_draft"),
 }
 REQUESTS_UI_SERIALIZATION_REFERENCED_FIELDS = []
+
+
+EXPERIMENTS_REQUEST_TYPES_RESOURCE_CLASS = DraftRequestTypesResource
+
+
+EXPERIMENTS_REQUEST_TYPES_SERVICE_CLASS = DraftRecordRequestTypesService
 
 
 EXPERIMENTS_FILES_RESOURCE_CONFIG = ExperimentsFileResourceConfig

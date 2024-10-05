@@ -70,6 +70,11 @@ metadata_simulations__dump_sw_version = TermsFacet(
     label=_("metadata/simulations/_dump_sw_version.label"),
 )
 
+metadata_simulations__exit_code = TermsFacet(
+    field="metadata.simulations._exit_code",
+    label=_("metadata/simulations/_exit_code.label"),
+)
+
 metadata_simulations__gromacs_version = TermsFacet(
     field="metadata.simulations._gromacs_version",
     label=_("metadata/simulations/_gromacs_version.label"),
@@ -80,6 +85,16 @@ metadata_simulations__metadata_date = DateTimeFacet(
     label=_("metadata/simulations/_metadata_date.label"),
 )
 
+metadata_simulations__metadump_version = TermsFacet(
+    field="metadata.simulations._metadump_version",
+    label=_("metadata/simulations/_metadump_version.label"),
+)
+
+metadata_simulations__protein_sequences = TermsFacet(
+    field="metadata.simulations._protein_sequences",
+    label=_("metadata/simulations/_protein_sequences.label"),
+)
+
 metadata_simulations__record_file = TermsFacet(
     field="metadata.simulations._record_file",
     label=_("metadata/simulations/_record_file.label"),
@@ -88,11 +103,6 @@ metadata_simulations__record_file = TermsFacet(
 metadata_simulations__record_url = TermsFacet(
     field="metadata.simulations._record_url",
     label=_("metadata/simulations/_record_url.label"),
-)
-
-metadata_simulations__tpr_date = DateTimeFacet(
-    field="metadata.simulations._tpr_date",
-    label=_("metadata/simulations/_tpr_date.label"),
 )
 
 metadata_simulations__tpx_version = TermsFacet(
@@ -113,6 +123,11 @@ metadata_simulations_detailed_information_barostat_compressibility = TermsFacet(
 metadata_simulations_detailed_information_barostat_pcoupl = TermsFacet(
     field="metadata.simulations.detailed_information.barostat.pcoupl",
     label=_("metadata/simulations/detailed_information/barostat/pcoupl.label"),
+)
+
+metadata_simulations_detailed_information_barostat_pcoupltype = TermsFacet(
+    field="metadata.simulations.detailed_information.barostat.pcoupltype",
+    label=_("metadata/simulations/detailed_information/barostat/pcoupltype.label"),
 )
 
 metadata_simulations_detailed_information_barostat_refcoord_scaling = TermsFacet(
@@ -141,6 +156,13 @@ metadata_simulations_detailed_information_electrostatic_interactions_coulomb_mod
     field="metadata.simulations.detailed_information.electrostatic_interactions.coulomb-modifier",
     label=_(
         "metadata/simulations/detailed_information/electrostatic_interactions/coulomb-modifier.label"
+    ),
+)
+
+metadata_simulations_detailed_information_electrostatic_interactions_coulombtype = TermsFacet(
+    field="metadata.simulations.detailed_information.electrostatic_interactions.coulombtype",
+    label=_(
+        "metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.label"
     ),
 )
 
@@ -260,6 +282,13 @@ metadata_simulations_detailed_information_van_der_Waals_interactions_vdw_modifie
     ),
 )
 
+metadata_simulations_detailed_information_van_der_Waals_interactions_vdw_type = TermsFacet(
+    field="metadata.simulations.detailed_information.van_der_Waals_interactions.vdw-type",
+    label=_(
+        "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-type.label"
+    ),
+)
+
 metadata_simulations_file_identification_authors = TermsFacet(
     field="metadata.simulations.file_identification.authors",
     label=_("metadata/simulations/file_identification/authors.label"),
@@ -320,6 +349,11 @@ metadata_simulations_main_information_molecules_name = TermsFacet(
     label=_("metadata/simulations/main_information/molecules/name.label"),
 )
 
+metadata_simulations_main_information_molecules_residues = TermsFacet(
+    field="metadata.simulations.main_information.molecules.residues",
+    label=_("metadata/simulations/main_information/molecules/residues.label"),
+)
+
 metadata_simulations_main_information_reference_pressure = TermsFacet(
     field="metadata.simulations.main_information.reference_pressure",
     label=_("metadata/simulations/main_information/reference_pressure.label"),
@@ -354,6 +388,12 @@ metadata_simulations_main_information_umbrella_sampling = TermsFacet(
     field="metadata.simulations.main_information.umbrella_sampling",
     label=_("metadata/simulations/main_information/umbrella_sampling.label"),
 )
+
+metadata_version = TermsFacet(
+    field="metadata.version", label=_("metadata/version.label")
+)
+
+state = TermsFacet(field="state", label=_("state.label"))
 
 
 record_status = TermsFacet(field="record_status", label=_("record_status"))
