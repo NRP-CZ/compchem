@@ -1,4 +1,7 @@
 import marshmallow as ma
+from invenio_drafts_resources.services.records.schema import (
+    ParentSchema as InvenioParentSchema,
+)
 from marshmallow import Schema
 from marshmallow import fields as ma_fields
 from marshmallow.utils import get_value
@@ -14,10 +17,9 @@ from oarepo_runtime.services.schema.validation import (
     validate_datetime,
     validate_identifier,
 )
-from oarepo_workflows.services.records.schema import WorkflowParentSchema
 
 
-class GeneratedParentSchema(WorkflowParentSchema):
+class GeneratedParentSchema(InvenioParentSchema):
     """"""
 
     owners = ma.fields.List(ma.fields.Dict(), load_only=True)
@@ -28,8 +30,6 @@ class ExperimentsSchema(BaseRecordSchema):
         unknown = ma.RAISE
 
     metadata = ma_fields.Nested(lambda: ExperimentsMetadataSchema())
-
-    state = ma_fields.String(dump_only=True)
     parent = ma.fields.Nested(GeneratedParentSchema)
     files = ma.fields.Nested(
         lambda: FilesOptionsSchema(), load_default={"enabled": True}
@@ -83,7 +83,7 @@ class SimulationsItemSchema(DictOnlySchema):
 
     _dump_sw_version = ma_fields.String()
 
-    _exit_code = ma_fields.String()
+    _exit_code = ma_fields.Integer()
 
     _gromacs_version = ma_fields.String()
 

@@ -11,7 +11,6 @@ from oarepo_runtime.records import has_draft, is_published_record
 from oarepo_runtime.services.components import CustomFieldsComponent, OwnersComponent
 from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
 from oarepo_runtime.services.files import FilesComponent
-from oarepo_workflows.services.components.workflow import WorkflowComponent
 
 from experiments.records.api import ExperimentsDraft, ExperimentsRecord
 from experiments.services.records.permissions import ExperimentsPermissionPolicy
@@ -53,7 +52,6 @@ class ExperimentsServiceConfig(
         DraftFilesComponent,
         FilesComponent,
         CustomFieldsComponent,
-        WorkflowComponent,
     ]
 
     model = "experiments"

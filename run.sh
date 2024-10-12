@@ -51,8 +51,6 @@ invenio oarepo fixtures load
 '
 
 : '
-rm -rf .venv
-rm -rf .nrp
-rm -rf .pdm-build/
-find . -type d -name "__pycache__" -exec rm -rf {} +
+rm -rf .nrp .pdm-build .venv
+find . -name "__pycache__" -type d -exec rm -rf {} +
 '

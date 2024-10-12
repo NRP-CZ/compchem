@@ -157,7 +157,7 @@
                                 "type": "string"
                             },
                             "_exit_code": {
-                                "type": "string"
+                                "type": "integer"
                             },
                             "_gromacs_version": {
                                 "type": "string"
@@ -441,9 +441,6 @@
                     "type": "string"
                 }
             }
-        },
-        "state": {
-            "type": "string"
         },
         "updated": {
             "type": "string",

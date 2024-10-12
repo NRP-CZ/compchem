@@ -186,8 +186,7 @@
                                 "ignore_above": 1024
                             },
                             "_exit_code": {
-                                "type": "keyword",
-                                "ignore_above": 1024
+                                "type": "integer"
                             },
                             "_gromacs_version": {
                                 "type": "keyword",
@@ -477,10 +476,6 @@
                         "ignore_above": 1024
                     }
                 }
-            },
-            "state": {
-                "type": "keyword",
-                "ignore_above": 1024
             },
             "updated": {
                 "type": "date",

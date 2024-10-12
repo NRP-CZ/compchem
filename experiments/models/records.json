@@ -281,9 +281,7 @@
             "class": "experiments.records.api.ExperimentsRecord",
             "imports": [],
             "extra-code": "",
-            "fields": {
-                "state": "{{oarepo_workflows.records.systemfields.state.RecordStateField}}(initial='published')"
-            }
+            "fields": {}
         },
         "resource": {
             "base-classes": [
@@ -323,26 +321,6 @@
         "ui-record-resolver": {
             "generate": true,
             "class": "oarepo_requests.resolvers.ui.RecordEntityReferenceUIResolver"
-        },
-        "draft-parent-record-metadata": {
-            "base-classes": [
-                "oarepo_workflows.records.models.RecordWorkflowParentModelMixin",
-                "invenio_db.db{db.Model}",
-                "invenio_records.models.RecordMetadataBase"
-            ],
-            "class": "experiments.records.models.ExperimentsParentMetadata",
-            "imports": [],
-            "table": "experiments_parent_record_metadata",
-            "module": "experiments.records.models",
-            "generate": true
-        },
-        "parent-record-marshmallow": {
-            "base-classes": [
-                "oarepo_workflows.services.records.schema.WorkflowParentSchema"
-            ],
-            "module": "experiments.services.records.schema",
-            "class": "experiments.services.records.schema.GeneratedParentSchema",
-            "generate": true
         },
         "files-field": {
             "generate": true,
@@ -428,8 +406,7 @@
                 "{{oarepo_runtime.services.components.OwnersComponent}}",
                 "{{invenio_drafts_resources.services.records.components.DraftFilesComponent}}",
                 "{{oarepo_runtime.services.files.FilesComponent}}",
-                "{{oarepo_runtime.services.components.CustomFieldsComponent}}",
-                "{{oarepo_workflows.services.components.workflow.WorkflowComponent}}"
+                "{{oarepo_runtime.services.components.CustomFieldsComponent}}"
             ],
             "additional-args": []
         },
@@ -501,9 +478,7 @@
                 "invenio_drafts_resources.records.api.ParentRecord"
             ],
             "imports": [],
-            "fields": {
-                "workflow": "{{oarepo_workflows.records.systemfields.workflow.WorkflowField}}()"
-            },
+            "fields": {},
             "module": "experiments.records.api",
             "generate": true
         },
@@ -517,6 +492,17 @@
             "module": "experiments.records.models",
             "generate": true,
             "table": "experiments_parent_state_metadata"
+        },
+        "draft-parent-record-metadata": {
+            "class": "experiments.records.models.ExperimentsParentMetadata",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_records.models.RecordMetadataBase"
+            ],
+            "imports": [],
+            "table": "experiments_parent_record_metadata",
+            "module": "experiments.records.models",
+            "generate": true
         },
         "draft-parent-record-schema": {
             "name": "parent-v1.0.0.json",
@@ -558,6 +544,14 @@
                 "oarepo_published_service.services.service.PublishedService"
             ],
             "imports": []
+        },
+        "parent-record-marshmallow": {
+            "module": "experiments.services.records.schema",
+            "class": "experiments.services.records.schema.GeneratedParentSchema",
+            "generate": true,
+            "base-classes": [
+                "invenio_drafts_resources.services.records.schema.ParentSchema{InvenioParentSchema}"
+            ]
         },
         "requests": {
             "types": {},
@@ -1644,7 +1638,7 @@
                                     "hint.en": "Version of the extraction script at the time of processing metadata"
                                 },
                                 "_exit_code": {
-                                    "type": "keyword",
+                                    "type": "integer",
                                     "label.en": "Exit code",
                                     "hint.en": "Exit code of the extraction script"
                                 },
@@ -2264,19 +2258,6 @@
                             "searchable": true,
                             "facet": false
                         }
-                    }
-                }
-            },
-            "state": {
-                "type": "keyword",
-                "marshmallow": {
-                    "read": true,
-                    "write": false
-                },
-                "ui": {
-                    "marshmallow": {
-                        "read": true,
-                        "write": false
                     }
                 }
             },

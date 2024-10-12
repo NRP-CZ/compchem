@@ -4,6 +4,7 @@
 ```bash
 #export INVENIO_API_URL="https://inveniordm.web.cern.ch/api"
 export INVENIO_API_URL="https://127.0.0.1:5000/api"
+export INVENIO_API_URL="https://mdrepo.eu/api"
 ```
 
 ## Login
@@ -25,7 +26,7 @@ echo "Session cookie: $session_cookie"
 
 ## Search
 
-- endpoint: `/records`
+- endpoint: `/experiments`
 - method: `GET`
 - params:
   - `q`: query string
@@ -34,13 +35,13 @@ echo "Session cookie: $session_cookie"
   - `prettyprint`: format the json response (default: 0)
 
 ```bash
-curl -X GET "$INVENIO_API_URL/records?q=test&size=5" -k
+curl -X GET "$INVENIO_API_URL/experiments?q=test&size=5" -k
 ```
 
 
 ## Create record
 
-- endpoint: `/records`
+- endpoint: `/experiments`
 - method: `POST`
 - headers:
   - `Referer`: the referer url
@@ -55,34 +56,12 @@ curl -X GET "$INVENIO_API_URL/records?q=test&size=5" -k
 **⚠️User must be [logged in](#login) to create a record**
 
 ```bash
-curl -X POST "$INVENIO_API_URL/records" \
+curl -X POST "$INVENIO_API_URL/experiments" \
     -H "Content-Type: application/json" \
     -H "Referer: $INVENIO_API_URL" \
     -H "X-CSRFToken: $csrf_token" \
     -b "csrftoken=$csrf_token; session=$session_cookie" \
-    -d '{
-        "access": {
-            "record": "public",
-            "files": "public"
-        },
-        "metadata": {
-            "title": "Super Cool Title",
-            "publication_date": "2024-08-16",
-            "publisher": "MUNI",
-            "resource_type": {
-                "id": "dataset"
-            },
-            "creators": [
-                {
-                    "person_or_org": {
-                        "family_name": "Doe",
-                        "given_name": "John",
-                        "type": "personal"
-                    }
-                }
-            ]
-        }
-    }'
+    -d "$(cat example_metadata.json)"
 ```
 
 

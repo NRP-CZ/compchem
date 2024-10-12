@@ -377,8 +377,8 @@
                                 "facet": "metadata_simulations__dump_sw_version"
                             },
                             "_exit_code": {
-                                "detail": "keyword",
-                                "input": "keyword",
+                                "detail": "integer",
+                                "input": "integer",
                                 "help": "metadata/simulations/_exit_code.help",
                                 "label": "metadata/simulations/_exit_code.label",
                                 "hint": "metadata/simulations/_exit_code.hint",
@@ -1080,14 +1080,6 @@
                     "hint": "pid/status.hint"
                 }
             }
-        },
-        "state": {
-            "detail": "keyword",
-            "input": "keyword",
-            "help": "state.help",
-            "label": "state.label",
-            "hint": "state.hint",
-            "facet": "state"
         },
         "updated": {
             "detail": "datetime",

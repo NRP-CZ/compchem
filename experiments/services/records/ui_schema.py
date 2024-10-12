@@ -18,8 +18,6 @@ class ExperimentsUISchema(UIRequestsSerializationMixin, InvenioUISchema):
 
     metadata = ma_fields.Nested(lambda: ExperimentsMetadataUISchema())
 
-    state = ma_fields.String(dump_only=True)
-
 
 class ExperimentsMetadataUISchema(Schema):
     class Meta:
@@ -50,7 +48,7 @@ class SimulationsItemUISchema(DictOnlySchema):
 
     _dump_sw_version = ma_fields.String()
 
-    _exit_code = ma_fields.String()
+    _exit_code = ma_fields.Integer()
 
     _gromacs_version = ma_fields.String()
 

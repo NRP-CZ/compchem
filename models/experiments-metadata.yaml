@@ -190,4 +190,4 @@ simulations[]:
     _exit_code:
       label.en: Exit code
       hint.en: Exit code of the extraction script
-      type: keyword
+      type: integer

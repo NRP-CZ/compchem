@@ -393,8 +393,6 @@ metadata_version = TermsFacet(
     field="metadata.version", label=_("metadata/version.label")
 )
 
-state = TermsFacet(field="state", label=_("state.label"))
-
 
 record_status = TermsFacet(field="record_status", label=_("record_status"))
 
