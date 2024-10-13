@@ -1081,6 +1081,14 @@
                 }
             }
         },
+        "state": {
+            "detail": "keyword",
+            "input": "keyword",
+            "help": "state.help",
+            "label": "state.label",
+            "hint": "state.hint",
+            "facet": "state"
+        },
         "updated": {
             "detail": "datetime",
             "input": "datetime",

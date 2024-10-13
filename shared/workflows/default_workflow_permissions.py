@@ -1,5 +1,3 @@
-## ⚠️ I had to temporairly switch from oarepo_communities to invenio_communities
-
 from oarepo_workflows import (
     WorkflowRequestPolicy,
     IfInState,
@@ -9,22 +7,21 @@ from oarepo_workflows import (
     WorkflowRequestEscalation,
 )
 from oarepo_runtime.services.permissions import UserWithRole, RecordOwners
-## from oarepo_communities.services.permissions.generators import CommunityRole, CommunityMembers
-from invenio_communities.generators import CommunityMembers, CommunityCurators, IfRestricted
+from oarepo_communities.services.permissions.generators import CommunityRole, CommunityMembers
+from invenio_communities.generators import CommunityMembers, IfRestricted
 from oarepo_workflows import DefaultWorkflowPermissions
 from invenio_records_permissions.generators import AnyUser
 
 class DefaultWorkflowPermissions(DefaultWorkflowPermissions):
     can_create = [
-        ## CommunityRole("editor"),
-        CommunityMembers(),
+        UserWithRole("administrator"),
+        CommunityRole("editor"),
     ]
  
     can_read = [
         RecordOwners(),
         # curator can see the record in any state
-        ## CommunityRole("curator"),
-        CommunityCurators(),
+        CommunityRole("curator"),
         # administrator can see everything
         UserWithRole("administrator"),
         # if the record is published and restricted, only members of the community can see it,
@@ -40,8 +37,7 @@ class DefaultWorkflowPermissions(DefaultWorkflowPermissions):
             ],
         ),
  
-        ## IfInState("retracting", then_=[RecordOwners(), CommunityRole("curator")]),
-        IfInState("retracting", then_=[RecordOwners(), CommunityCurators()]),
+        IfInState("retracting", then_=[RecordOwners(), CommunityRole("curator")]),
     ]
  
     can_update = [
@@ -49,8 +45,7 @@ class DefaultWorkflowPermissions(DefaultWorkflowPermissions):
             "draft",
             then_=[
                 RecordOwners(),
-                ## CommunityRole("curator"),
-                CommunityCurators(),
+                CommunityRole("curator"),
                 UserWithRole("administrator"),
             ],
         ),
@@ -63,8 +58,7 @@ class DefaultWorkflowPermissions(DefaultWorkflowPermissions):
             "draft",
             then_=[
                 RecordOwners(),
-                ## ommunityRole("curator"),
-                CommunityCurators(),
+                CommunityRole("curator"),
                 UserWithRole("administrator"),
             ],
         ),

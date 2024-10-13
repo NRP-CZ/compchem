@@ -14,8 +14,8 @@ plugins:
   - oarepo-model-builder-requests
   - oarepo-model-builder-nr
   - oarepo-model-builder-polymorphic
-  # - oarepo-model-builder-communities
-  # - oarepo-model-builder-workflows
+  - oarepo-model-builder-communities
+  - oarepo-model-builder-workflows
 profiles:
 - record
 - draft

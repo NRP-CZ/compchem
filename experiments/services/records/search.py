@@ -82,6 +82,7 @@ class ExperimentsSearchOptions(InvenioSearchOptions):
         "metadata_simulations_main_information_statistical_ensamble": facets.metadata_simulations_main_information_statistical_ensamble,
         "metadata_simulations_main_information_umbrella_sampling": facets.metadata_simulations_main_information_umbrella_sampling,
         "metadata_version": facets.metadata_version,
+        "state": facets.state,
         **getattr(InvenioSearchOptions, "facets", {}),
         "record_status": facets.record_status,
         "has_draft": facets.has_draft,

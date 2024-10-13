@@ -9,25 +9,21 @@ from oarepo_workflows import (
 )
 from oarepo_runtime.services.permissions import UserWithRole, RecordOwners
 from oarepo_requests.services.permissions.generators import IfRequestedBy
-## from oarepo_communities.services.permissions.generators import CommunityRole
-from invenio_communities.generators import CommunityCurators
+from oarepo_communities.services.permissions.generators import CommunityRole
  
  
 class DefaultWorkflowRequests(WorkflowRequestPolicy):
     """Specific requests here"""
     delete_request = WorkflowRequest(
         requesters = [
-            ## IfInState("published", [RecordOwners(), CommunityRole("curator")]),
-            IfInState("published", [RecordOwners(), CommunityCurators()]),
+            IfInState("published", [RecordOwners(), CommunityRole("curator")]),
             
         ],
         recipients = [
             IfRequestedBy(
-                ## CommunityRole("curator"),
-                CommunityCurators(),
+                CommunityRole("curator"),
                 then_=[AutoApprove()],
-                ## else_=[CommunityRole("curator")],
-                else_=[CommunityCurators()],
+                else_=[CommunityRole("curator")],
             )
         ],
         transitions = WorkflowTransitions(

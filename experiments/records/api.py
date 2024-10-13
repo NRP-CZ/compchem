@@ -1,18 +1,25 @@
+from invenio_communities.records.records.systemfields import CommunitiesField
 from invenio_drafts_resources.records.api import Draft as InvenioDraft
 from invenio_drafts_resources.records.api import DraftRecordIdProviderV2, ParentRecord
 from invenio_drafts_resources.records.api import Record as InvenioRecord
 from invenio_records.systemfields import ConstantField, ModelField
 from invenio_records_resources.records.systemfields import FilesField, IndexField
 from invenio_records_resources.records.systemfields.pid import PIDField, PIDFieldContext
+from oarepo_communities.records.systemfields.communities import (
+    OARepoCommunitiesFieldContext,
+)
 from oarepo_runtime.records.relations import PIDRelation, RelationsField
 from oarepo_runtime.records.systemfields.has_draftcheck import HasDraftCheckField
 from oarepo_runtime.records.systemfields.owner import OwnersField
 from oarepo_runtime.records.systemfields.record_status import RecordStatusSystemField
 from oarepo_vocabularies.records.api import Vocabulary
+from oarepo_workflows.records.systemfields.state import RecordStateField
+from oarepo_workflows.records.systemfields.workflow import WorkflowField
 
 from experiments.files.api import ExperimentsFile, ExperimentsFileDraft
 from experiments.records.dumpers.dumper import ExperimentsDraftDumper, ExperimentsDumper
 from experiments.records.models import (
+    ExperimentsCommunitiesMetadata,
     ExperimentsDraftMetadata,
     ExperimentsMetadata,
     ExperimentsParentMetadata,
@@ -22,6 +29,12 @@ from experiments.records.models import (
 
 class ExperimentsParentRecord(ParentRecord):
     model_cls = ExperimentsParentMetadata
+
+    workflow = WorkflowField()
+
+    communities = CommunitiesField(
+        ExperimentsCommunitiesMetadata, context_cls=OARepoCommunitiesFieldContext
+    )
 
     owners = OwnersField()
 
@@ -45,6 +58,8 @@ class ExperimentsRecord(InvenioRecord):
     )
 
     dumper = ExperimentsDumper()
+
+    state = RecordStateField(initial="published")
 
     relations = RelationsField(
         affiliations=PIDRelation(
@@ -93,6 +108,8 @@ class ExperimentsDraft(InvenioDraft):
     )
 
     dumper = ExperimentsDraftDumper()
+
+    state = RecordStateField()
 
     relations = RelationsField(
         affiliations=PIDRelation(

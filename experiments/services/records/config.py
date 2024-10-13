@@ -7,10 +7,16 @@ from invenio_records_resources.services import (
     RecordLink,
     pagination_links,
 )
+from oarepo_communities.services.components.default_workflow import (
+    CommunityDefaultWorkflowComponent,
+)
+from oarepo_communities.services.components.include import CommunityInclusionComponent
+from oarepo_communities.services.links import CommunitiesLinks
 from oarepo_runtime.records import has_draft, is_published_record
 from oarepo_runtime.services.components import CustomFieldsComponent, OwnersComponent
 from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
 from oarepo_runtime.services.files import FilesComponent
+from oarepo_workflows.services.components.workflow import WorkflowComponent
 
 from experiments.records.api import ExperimentsDraft, ExperimentsRecord
 from experiments.services.records.permissions import ExperimentsPermissionPolicy
@@ -48,10 +54,13 @@ class ExperimentsServiceConfig(
     components = [
         *PermissionsPresetsConfigMixin.components,
         *InvenioRecordDraftsServiceConfig.components,
+        CommunityDefaultWorkflowComponent,
+        CommunityInclusionComponent,
         OwnersComponent,
         DraftFilesComponent,
         FilesComponent,
         CustomFieldsComponent,
+        WorkflowComponent,
     ]
 
     model = "experiments"
@@ -65,6 +74,12 @@ class ExperimentsServiceConfig(
                 cond=is_published_record,
                 if_=RecordLink("{+api}/experiments/{id}/requests/applicable"),
                 else_=RecordLink("{+api}/experiments/{id}/draft/requests/applicable"),
+            ),
+            "communities": CommunitiesLinks(
+                {
+                    "self": "{+api}/communities/{id}",
+                    "self_html": "{+ui}/communities/{slug}/records",
+                }
             ),
             "draft": RecordLink("{+api}/experiments/{id}/draft"),
             "edit_html": RecordLink("{+ui}/experiments/{id}/edit", when=has_draft),

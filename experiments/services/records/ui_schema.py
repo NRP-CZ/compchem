@@ -18,6 +18,8 @@ class ExperimentsUISchema(UIRequestsSerializationMixin, InvenioUISchema):
 
     metadata = ma_fields.Nested(lambda: ExperimentsMetadataUISchema())
 
+    state = ma_fields.String(dump_only=True)
+
 
 class ExperimentsMetadataUISchema(Schema):
     class Meta:
