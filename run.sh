@@ -5,15 +5,15 @@
 LOGFILE="run.log"
 
 # Check if the application is already running
-if pgrep -f "invenio run" > /dev/null; then
+if pgrep -f "uwsgi docker/uwsgi.ini" > /dev/null; then
     echo "Already running:"
-    pgrep -fl "invenio run"
+    pgrep -fl "uwsgi docker/uwsgi.ini"
 
     echo
     read -p "Do you want to restart? [y/N] "
 
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        pkill -f "invenio run"
+        pkill -f "uwsgi docker/uwsgi.ini"
         echo -e "Restarting...\n"
     else
         echo "Leaving it running."
