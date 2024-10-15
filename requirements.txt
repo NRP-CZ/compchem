@@ -13,7 +13,8 @@ marisa-trie==1.2.1
 marshmallow-i18n-messages==0.1.0
 nr-metadata==2.0.41
 nr-vocabularies==2.1.0
-oarepo-communities==5.0.12
+oarepo-communities==5.0.17
+oarepo-dashboard==1.0.11
 oarepo-global-search==1.0.26
 oarepo-published-service==1.0.3
 oarepo-requests==2.1.5

@@ -1,8 +1,8 @@
 {# def d, level=0 #}
 
-<ITableField d={md.familyName} level={level}/>
-<ITableField d={md.fullName} level={level}/>
-<ITableField d={md.givenName} level={level}/>
-<ITableField d={md.nameType} level={level}/>
-<ITaxonomyItem d={md.affiliations} level={level+1}/>
-<ExperimentsNrOrganizationIdentifier d={md.authorityIdentifiers} level={level+1}/>
+<ITableField d={d.familyName} level={level}/>
+<ITableField d={d.fullName} level={level}/>
+<ITableField d={d.givenName} level={level}/>
+<ITableField d={d.nameType} level={level}/>
+{# <ITaxonomyItem d={d.affiliations} level={level+1}/> #}
+<ExperimentsNrOrganizationIdentifier d={d.authorityIdentifiers} level={level+1}/>

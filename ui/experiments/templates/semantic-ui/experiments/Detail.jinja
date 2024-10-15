@@ -1,3 +1,5 @@
+{# def metadata, extra_context, record, ui, is_preview=None, d #}
+
 {% extends "oarepo_ui/detail.html" %}
 
 {%- block head_links %}
@@ -5,7 +7,7 @@
 {%- endblock %}
 
 {% block record_main_content %}
-    <ExperimentsDetailRoot d={d} />
+    <ExperimentsDetailRoot md={d.metadata} />
 {% endblock %}
 
 {% block record_sidebar %}

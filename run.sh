@@ -26,7 +26,7 @@ if [ -d ".venv" ]; then
     truncate -s 0 $LOGFILE
     source .venv/bin/activate
     export FLASK_DEBUG=1
-    nohup invenio run -h 127.0.0.1 -p 5000 >>$LOGFILE 2>&1 &
+    nohup uwsgi docker/uwsgi.ini >>$LOGFILE 2>&1 &
     echo "Invenio application started as background job with PID $!"
     disown
 else

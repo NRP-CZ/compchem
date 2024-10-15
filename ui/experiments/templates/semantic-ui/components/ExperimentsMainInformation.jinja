@@ -1,0 +1,18 @@
+{# def d, level=0 #}
+
+<ITableField d={d.AWH_adaptive_biasing} level={level}/>
+<ITableField d={d.box_size_and_shape} level={level}/>
+<ITableField d={d.force_field} level={level}/>
+<ITableField d={d.free_energy_calculation} level={level}/>
+<ITableField d={d.reference_pressure} level={level}
+  <ITableArrayValue d={d.reference_pressure} />
+</ITableField>
+<ITableField d={d.reference_temperature} level={level}
+  <ITableArrayValue d={d.reference_temperature} />
+</ITableField>
+<ITableField d={d.simulation_length} level={level}/>
+<ITableField d={d.simulation_time_step} level={level}/>
+<ITableField d={d.simulation_type} level={level}/>
+<ITableField d={d.statistical_ensamble} level={level}/>
+<ITableField d={d.umbrella_sampling} level={level}/>
+<ExperimentsMolecule d={d.molecules} level={level+1}/>
