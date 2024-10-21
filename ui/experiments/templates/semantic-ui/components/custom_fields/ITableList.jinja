@@ -1,0 +1,13 @@
+{#def d=False, label=None, placeholder="" #}
+
+{%- if array(d) | length > 0 -%}
+    <th rowspan="{{ array(d) | length + 1 }}">{{ label or d._ui_label }}</th>
+    {%- for val in array(d) -%}
+        <tr>
+            <th hidden></th> {# avoid weird css behavior for first column #}
+            <td class="ui field-data">{{ val }}</td>
+        </tr>
+    {%- endfor -%}
+{%- else -%}
+    <ITableField d={d} label={label} placeholder={placeholder} />
+{%- endif -%}

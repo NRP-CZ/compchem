@@ -1,0 +1,14 @@
+{# def d #}
+
+{% if d %}
+
+<h3>{{ d._ui_label }}</h3>
+
+<ITable>
+    <ITableField d={d.pcoupl} />
+    <ITableField d={d.tau_p} />
+    <ITableMatrix d={d.compressibility} />
+    <ITableField d={d.refcoord-scaling} />
+</ITable>
+
+{% endif %}

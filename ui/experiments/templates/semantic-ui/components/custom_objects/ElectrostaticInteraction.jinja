@@ -1,0 +1,15 @@
+{# def d #}
+
+{% if d %}
+
+<h3>{{ d._ui_label }}</h3>
+
+<ITable>
+    <ITableField d={d.coulomb_modifier} />
+    <ITableField d={d.coulombtype} />
+    <ITableField d={d.epsilon_r} />
+    <ITableField d={d.epsilon_rf} />
+    <ITableField d={d.rcoulomb} />
+</ITable>
+
+{% endif %}

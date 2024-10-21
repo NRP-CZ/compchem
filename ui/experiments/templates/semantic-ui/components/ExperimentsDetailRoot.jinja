@@ -1,25 +1,53 @@
 {# def md #}
 
-<table class='ui compact definition table'>
-  <ITableField d={md.description} />
-  <ITableField d={md.name} />
-  <ITableField d={md.publisher} />
-  {% for item in array(md.creators) %}
-    <ITableSection d={item} >
-      <ExperimentsCreator d={item} />
-    </ITableSection>
-  {% endfor %}
-  <ITableSection d={md.fundingReference} >
-    <ExperimentsFundingReference d={md.fundingReference} />
-  </ITableSection>
-  {% for item in array(md.objectIdentifiers) %}
-    <ITableSection d={item} >
-      <ExperimentsNrObjectPid d={item} />
-    </ITableSection>
-  {% endfor %}
-  {% for item in array(md.simulations) %}
-    <ITableSection d={item} >
-      <ExperimentsSimulation d={item} />
-    </ITableSection>
-  {% endfor %}
-</table>
+<div class="ui top attached segment">
+    {% for item in array(md.simulations) %}
+        <div class="ui tab {% if loop.first %} active {% endif %}" data-tab="tab-{{ loop.index }}">
+            <ExperimentsSimulation d={item} />
+        </div>
+    {% endfor %}
+
+    {# DEBUG #}
+    <div class="ui tab" data-tab="tab-{{ array(md.simulations)|length + 1 }}">
+        <h3>Raw data (debug only):</h3>
+        <p>{{ md }}</p>
+    </div>
+</div>
+
+<div class="ui bottom attached tabular menu">
+    {% for item in array(md.simulations) %}
+        <a class="item {% if loop.first %} active {% endif %}" data-tab="tab-{{ loop.index }}">{{item.file_identification.name}}</a>
+    {% endfor %}
+
+    {# DEBUG #}
+    <a class="item" data-tab="tab-{{ array(md.simulations)|length + 1 }}">Raw data</a>
+</div>
+
+
+<script>
+// need to wait for JQuery to be loaded
+document.addEventListener('DOMContentLoaded', () => {
+    $('.tabular.menu .item').tab();
+});
+</script>
+
+<style>
+    /* Simulation selection menu */
+    .top.attached.segment {
+        background-color: #008691;
+    }
+
+    .ui.bottom.tabular.menu .item.active {
+        background: #008691;
+        color: #fff;
+    }
+
+    /* Sumulation details menu */
+    .ui.top.attached.tabular.menu .item {
+        color: #fff;
+    }
+
+    .ui.top.attached.tabular.menu .item.active {
+        color: #000;
+    }
+</style>

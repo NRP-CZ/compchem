@@ -1,0 +1,14 @@
+{# def d #}
+
+{% if d %}
+
+<h3>{{ d._ui_label }}</h3>
+
+<ITable>
+    <ITableField d={d.tcoupl} />
+    <ITableField d={d.tau_t} />
+    <ITableField d={d.tc_grps} />
+    <ITableField d={d.nsttcouple} />
+</ITable>
+
+{% endif %}

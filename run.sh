@@ -3,6 +3,7 @@
 # This is a simple development script to start the Invenio application.
 
 LOGFILE="run.log"
+source .venv/bin/activate
 
 # Check if the application is already running
 if pgrep -f "uwsgi docker/uwsgi.ini" > /dev/null; then
@@ -13,8 +14,10 @@ if pgrep -f "uwsgi docker/uwsgi.ini" > /dev/null; then
     read -p "Do you want to restart? [y/N] "
 
     if [[ $REPLY =~ ^[Yy]$ ]]; then
+        uwsgi --stop docker/.uwsgi.pid
         pkill -f "uwsgi docker/uwsgi.ini"
         echo -e "Restarting...\n"
+        sleep 5
     else
         echo "Leaving it running."
         exit 0
@@ -24,11 +27,10 @@ fi
 # Start the application
 if [ -d ".venv" ]; then
     truncate -s 0 $LOGFILE
-    source .venv/bin/activate
     export FLASK_DEBUG=1
-    nohup uwsgi docker/uwsgi.ini >>$LOGFILE 2>&1 &
-    echo "Invenio application started as background job with PID $!"
-    disown
+    uwsgi docker/uwsgi.ini --daemonize run.log
+    echo "Started Invenio using uWSGI."
+    tail -f run.log
 else
     # initial setup
     export PYTHON=/usr/bin/python3.12

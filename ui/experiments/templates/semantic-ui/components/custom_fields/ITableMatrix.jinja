@@ -1,0 +1,21 @@
+{#def d, label=None, placeholder="", rows=0, cols=0 #}
+
+{%- if d -%}
+
+<th>{{ label or d._ui_label }}</th>
+<td>
+    <ITable>
+        {%- for row in range(rows) -%}
+            <tr>
+                <th hidden></th>
+                {%- for col in range(cols) -%}
+                    <td style="text-align: center;">
+                        {{ array(array(d)[row])[col] if (row < array(d) | length and col < array(array(d)[row]) | length) else placeholder }}
+                    </td>
+                {%- endfor -%}
+            </tr>
+        {%- endfor -%}
+    </ITable>
+</td>
+
+{%- endif -%}

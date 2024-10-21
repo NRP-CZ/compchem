@@ -1,0 +1,18 @@
+{# def d #}
+
+{% if d %}
+
+<h3>{{ d._ui_label }}</h3>
+
+<ITable>
+    {% for molecule in array(d) %}
+        <ITableSection title={molecule.id} />
+        <ITableField d={molecule.name} />
+        <ITableField d={molecule.count} />
+        <ITableField d={molecule.residues} >
+            <ITableArrayValue value={molecule.residues} />
+        </ITableField>
+    {% endfor %}
+</ITable>
+
+{% endif %}

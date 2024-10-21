@@ -1,0 +1,14 @@
+{# def d #}
+
+{% if d %}
+
+<h3>{{ d._ui_label }}</h3>
+
+<ITable>
+    <ITableField d={d.pbc} />
+    <ITableField d={d.rlist} />
+    <ITableField d={d.nstlist} />
+    <ITableField d={d.cutoff_scheme} />
+</ITable>
+
+{% endif %}
