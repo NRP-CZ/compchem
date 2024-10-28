@@ -353,6 +353,30 @@
             ],
             "imports": []
         },
+        "json-schema-settings": {
+            "generate": true,
+            "alias": "experiments",
+            "version": "1.0.0",
+            "module": "experiments.records.jsonschemas",
+            "name": "experiments-1.0.0.json",
+            "file": "experiments/records/jsonschemas/experiments-1.0.0.json"
+        },
+        "json-serializer": {
+            "module": "experiments.resources.records.ui",
+            "class": "experiments.resources.records.ui.ExperimentsUIJSONSerializer",
+            "base-classes": [
+                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
+            ],
+            "imports": [],
+            "extra-code": "",
+            "generate": true,
+            "list_schema_cls": "flask_resources.BaseListSchema",
+            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
+            "schema-context-args": {
+                "\"object_key\"": "\"ui\"",
+                "\"identity\"": "{{ flask.g{g.identity} }}"
+            }
+        },
         "service-config": {
             "components": [
                 "{{oarepo_communities.services.components.default_workflow.CommunityDefaultWorkflowComponent}}",
@@ -378,30 +402,6 @@
         "translations": {
             "module": "experiments.translations",
             "alias": "experiments"
-        },
-        "json-schema-settings": {
-            "generate": true,
-            "alias": "experiments",
-            "version": "1.0.0",
-            "module": "experiments.records.jsonschemas",
-            "name": "experiments-1.0.0.json",
-            "file": "experiments/records/jsonschemas/experiments-1.0.0.json"
-        },
-        "json-serializer": {
-            "module": "experiments.resources.records.ui",
-            "class": "experiments.resources.records.ui.ExperimentsUIJSONSerializer",
-            "base-classes": [
-                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
-            ],
-            "imports": [],
-            "extra-code": "",
-            "generate": true,
-            "list_schema_cls": "flask_resources.BaseListSchema",
-            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
-            "schema-context-args": {
-                "\"object_key\"": "\"ui\"",
-                "\"identity\"": "{{ flask.g{g.identity} }}"
-            }
         },
         "record-metadata": {
             "generate": true,
@@ -1752,7 +1752,7 @@
                                                     ],
                                                     "label.en": "pcoupltype"
                                                 },
-                                                "refcoord-scaling": {
+                                                "refcoord_scaling": {
                                                     "type": "keyword",
                                                     "enum": [
                                                         "no",
@@ -1761,14 +1761,14 @@
                                                     ],
                                                     "label.en": "refcoord-scaling"
                                                 },
-                                                "tau-p": {
+                                                "tau_p": {
                                                     "type": "float",
                                                     "label.en": "tau-p [ps]",
                                                     "hint.en": "The time constant for pressure coupling (one value for all directions)"
                                                 }
                                             }
                                         },
-                                        "comm-mode": {
+                                        "comm_mode": {
                                             "type": "keyword",
                                             "enum": [
                                                 "none",
@@ -1778,7 +1778,7 @@
                                             ],
                                             "label.en": "comm-mode"
                                         },
-                                        "constraint-algorithm": {
+                                        "constraint_algorithm": {
                                             "type": "keyword",
                                             "enum": [
                                                 "lincs",
@@ -1801,7 +1801,7 @@
                                                 }
                                             },
                                             "properties": {
-                                                "coulomb-modifier": {
+                                                "coulomb_modifier": {
                                                     "type": "keyword",
                                                     "enum": [
                                                         "none",
@@ -1824,12 +1824,12 @@
                                                     ],
                                                     "label.en": "coulombtype"
                                                 },
-                                                "epsilon-r": {
+                                                "epsilon_r": {
                                                     "type": "float",
                                                     "label.en": "epsilon-r",
                                                     "hint.en": "The relative dielectric constant"
                                                 },
-                                                "epsilon-rf": {
+                                                "epsilon_rf": {
                                                     "type": "float",
                                                     "label.en": "epsilon-rf"
                                                 },
@@ -1844,11 +1844,11 @@
                                             "type": "float",
                                             "label.en": "fourierspacing [nm]"
                                         },
-                                        "lincs-iter": {
+                                        "lincs_iter": {
                                             "type": "integer",
                                             "label.en": "lincs-iter"
                                         },
-                                        "lincs-order": {
+                                        "lincs_order": {
                                             "type": "integer",
                                             "label.en": "lincs-order"
                                         },
@@ -1866,7 +1866,7 @@
                                                 }
                                             },
                                             "properties": {
-                                                "cutoff-scheme": {
+                                                "cutoff_scheme": {
                                                     "type": "keyword",
                                                     "enum": [
                                                         "verlet",
@@ -1918,7 +1918,7 @@
                                                     "label.en": "nsttcouple",
                                                     "hint.en": "The frequency for coupling the temperature."
                                                 },
-                                                "tau-t": {
+                                                "tau_t": {
                                                     "type": "array",
                                                     "label.en": "tau-t [ps]",
                                                     "hint.en": "The time constant for temperature coupling (one value for all groups)",
@@ -1926,7 +1926,7 @@
                                                         "type": "float"
                                                     }
                                                 },
-                                                "tc-grps": {
+                                                "tc_grps": {
                                                     "type": "object",
                                                     "label.en": "tc-grps",
                                                     "marshmallow": {
@@ -1993,12 +1993,12 @@
                                                     "label.en": "rvdw [nm]",
                                                     "hint.en": "distance for the LJ or Buckingham cut-off"
                                                 },
-                                                "rvdw-switch": {
+                                                "rvdw_switch": {
                                                     "type": "float",
                                                     "label.en": "rvdw-switch [nm]",
                                                     "hint.en": "where to start switching the LJ force and possibly the potential, only relevant when force or potential switching is used"
                                                 },
-                                                "vdw-modifier": {
+                                                "vdw_modifier": {
                                                     "type": "keyword",
                                                     "enum": [
                                                         "potential-shift",
@@ -2008,7 +2008,7 @@
                                                     ],
                                                     "label.en": "vdw-modifier"
                                                 },
-                                                "vdw-type": {
+                                                "vdw_type": {
                                                     "type": "keyword",
                                                     "enum": [
                                                         "cut-off",

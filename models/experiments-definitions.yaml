@@ -28,7 +28,7 @@ VanDerWaalsInteractions:
       label.en: rvdw [nm]
       hint.en: distance for the LJ or Buckingham cut-off
       type: float
-    vdw-type:
+    vdw_type:
       label.en: vdw-type
       type: keyword
       enum:
@@ -44,11 +44,11 @@ VanDerWaalsInteractions:
         - "no"
         - "enerpres"
         - "eber"
-    rvdw-switch:
+    rvdw_switch:
       label.en: rvdw-switch [nm]
       hint.en: where to start switching the LJ force and possibly the potential, only relevant when force or potential switching is used
       type: float
-    vdw-modifier:
+    vdw_modifier:
       label.en: vdw-modifier
       type: keyword
       enum:
@@ -76,7 +76,7 @@ Barostat:
         - "semiisotropic"
         - "anisotropic"
         - "surface-tension"
-    tau-p:
+    tau_p:
       label.en: tau-p [ps]
       hint.en: The time constant for pressure coupling (one value for all directions)
       type: float
@@ -84,7 +84,7 @@ Barostat:
       use: ./experiments-definitions.yaml#/Matrix
       label.en: compressibility [bar^-1]
       hint.en: "The compressibility (NOTE: this is now really in bar-1) For water at 1 atm and 300 K the compressibility is 4.5e-5 bar-1"
-    refcoord-scaling:
+    refcoord_scaling:
       label.en: refcoord-scaling
       type: keyword
       enum:
@@ -105,11 +105,11 @@ Thermostat:
         - "andersen"
         - "andersen-massive"
         - "v-rescale"
-    tau-t[]:
+    tau_t[]:
       ^label.en: tau-t [ps]
       ^hint.en: The time constant for temperature coupling (one value for all groups)
       type: float
-    tc-grps:
+    tc_grps:
       label.en: tc-grps
       properties:
         nr:
@@ -141,7 +141,7 @@ NeighbourList:
     nstlist:
       label.en: nstlist
       type: integer
-    cutoff-scheme:
+    cutoff_scheme:
       label.en: cutoff-scheme
       type: keyword
       enum:
@@ -168,14 +168,14 @@ ElectrostaticInteractions:
       label.en: rcoulomb [nm]
       hint.en: The distance for the Coulomb cut-off
       type: float
-    epsilon-r:
+    epsilon_r:
       label.en: epsilon-r
       hint.en: The relative dielectric constant
       type: float
-    epsilon-rf:
+    epsilon_rf:
       label.en: epsilon-rf
       type: float
-    coulomb-modifier:
+    coulomb_modifier:
       label.en: coulomb-modifier
       type: keyword
       enum:

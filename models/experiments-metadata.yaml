@@ -113,7 +113,7 @@ simulations[]:
           label.en: nstcomm [step]
           hint.en: frequency for center of mass motion removal
           type: integer
-        comm-mode:
+        comm_mode:
           label.en: comm-mode
           type: keyword
           enum: 
@@ -121,16 +121,16 @@ simulations[]:
             - "linear"
             - "angular"
             - "linear-acceleration-correction"
-        lincs-iter:
+        lincs_iter:
           label.en: lincs-iter
           type: integer
-        lincs-order:
+        lincs_order:
           label.en: lincs-order
           type: integer
         fourierspacing:
           label.en: fourierspacing [nm]
           type: float
-        constraint-algorithm:
+        constraint_algorithm:
           label.en: constraint-algorithm
           hint.en: Chooses which solver satisfies any non-SETTLE holonomic constraints
           type: keyword

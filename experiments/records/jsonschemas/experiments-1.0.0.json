@@ -208,33 +208,33 @@
                                             "pcoupltype": {
                                                 "type": "string"
                                             },
-                                            "refcoord-scaling": {
+                                            "refcoord_scaling": {
                                                 "type": "string"
                                             },
-                                            "tau-p": {
+                                            "tau_p": {
                                                 "type": "number"
                                             }
                                         }
                                     },
-                                    "comm-mode": {
+                                    "comm_mode": {
                                         "type": "string"
                                     },
-                                    "constraint-algorithm": {
+                                    "constraint_algorithm": {
                                         "type": "string"
                                     },
                                     "electrostatic_interactions": {
                                         "type": "object",
                                         "properties": {
-                                            "coulomb-modifier": {
+                                            "coulomb_modifier": {
                                                 "type": "string"
                                             },
                                             "coulombtype": {
                                                 "type": "string"
                                             },
-                                            "epsilon-r": {
+                                            "epsilon_r": {
                                                 "type": "number"
                                             },
-                                            "epsilon-rf": {
+                                            "epsilon_rf": {
                                                 "type": "number"
                                             },
                                             "rcoulomb": {
@@ -245,16 +245,16 @@
                                     "fourierspacing": {
                                         "type": "number"
                                     },
-                                    "lincs-iter": {
+                                    "lincs_iter": {
                                         "type": "integer"
                                     },
-                                    "lincs-order": {
+                                    "lincs_order": {
                                         "type": "integer"
                                     },
                                     "neighbour_list": {
                                         "type": "object",
                                         "properties": {
-                                            "cutoff-scheme": {
+                                            "cutoff_scheme": {
                                                 "type": "string"
                                             },
                                             "nstlist": {
@@ -277,13 +277,13 @@
                                             "nsttcouple": {
                                                 "type": "integer"
                                             },
-                                            "tau-t": {
+                                            "tau_t": {
                                                 "type": "array",
                                                 "items": {
                                                     "type": "number"
                                                 }
                                             },
-                                            "tc-grps": {
+                                            "tc_grps": {
                                                 "type": "object",
                                                 "properties": {
                                                     "name": {
@@ -308,13 +308,13 @@
                                             "rvdw": {
                                                 "type": "number"
                                             },
-                                            "rvdw-switch": {
+                                            "rvdw_switch": {
                                                 "type": "number"
                                             },
-                                            "vdw-modifier": {
+                                            "vdw_modifier": {
                                                 "type": "string"
                                             },
-                                            "vdw-type": {
+                                            "vdw_type": {
                                                 "type": "string"
                                             }
                                         }

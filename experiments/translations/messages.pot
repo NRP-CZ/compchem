@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2024-10-13T16:46:13.552092\n"
-"PO-Revision-Date: 2024-10-13T16:46:13.552094\n"
+"POT-Creation-Date: 2024-10-28T20:42:49.512961\n"
+"PO-Revision-Date: 2024-10-28T20:42:49.512963\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -579,76 +579,76 @@ msgid ""
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/barostat/refcoord-scaling.label"
+"metadata/simulations/detailed_information/barostat/refcoord_scaling.label"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/barostat/refcoord-scaling.help"
+"metadata/simulations/detailed_information/barostat/refcoord_scaling.help"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/barostat/refcoord-scaling.hint"
+"metadata/simulations/detailed_information/barostat/refcoord_scaling.hint"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/barostat/refcoord-scaling.enum.no"
+"metadata/simulations/detailed_information/barostat/refcoord_scaling.enum.no"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/barostat/refcoord-scaling.enum.all"
+"metadata/simulations/detailed_information/barostat/refcoord_scaling.enum.all"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/barostat/refcoord-scaling.enum.com"
+"metadata/simulations/detailed_information/barostat/refcoord_scaling.enum.com"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/barostat/tau-p.label"
+msgid "metadata/simulations/detailed_information/barostat/tau_p.label"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/barostat/tau-p.hint"
+msgid "metadata/simulations/detailed_information/barostat/tau_p.hint"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/barostat/tau-p.help"
+msgid "metadata/simulations/detailed_information/barostat/tau_p.help"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/comm-mode.label"
+msgid "metadata/simulations/detailed_information/comm_mode.label"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/comm-mode.help"
+msgid "metadata/simulations/detailed_information/comm_mode.help"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/comm-mode.hint"
+msgid "metadata/simulations/detailed_information/comm_mode.hint"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/comm-mode.enum.none"
+msgid "metadata/simulations/detailed_information/comm_mode.enum.none"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/comm-mode.enum.linear"
+msgid "metadata/simulations/detailed_information/comm_mode.enum.linear"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/comm-mode.enum.angular"
+msgid "metadata/simulations/detailed_information/comm_mode.enum.angular"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/comm-mode.enum.linear-"
+"metadata/simulations/detailed_information/comm_mode.enum.linear-"
 "acceleration-correction"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/constraint-algorithm.label"
+msgid "metadata/simulations/detailed_information/constraint_algorithm.label"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/constraint-algorithm.hint"
+msgid "metadata/simulations/detailed_information/constraint_algorithm.hint"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/constraint-algorithm.help"
-msgstr ""
-
-msgid ""
-"metadata/simulations/detailed_information/constraint-algorithm.enum.lincs"
+msgid "metadata/simulations/detailed_information/constraint_algorithm.help"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/constraint-algorithm.enum.shake"
+"metadata/simulations/detailed_information/constraint_algorithm.enum.lincs"
+msgstr ""
+
+msgid ""
+"metadata/simulations/detailed_information/constraint_algorithm.enum.shake"
 msgstr ""
 
 msgid ""
@@ -664,28 +664,24 @@ msgid ""
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/electrostatic_interactions/coulomb-"
-"modifier.label"
+"metadata/simulations/detailed_information/electrostatic_interactions/coulomb_modifier.label"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/electrostatic_interactions/coulomb-"
-"modifier.help"
+"metadata/simulations/detailed_information/electrostatic_interactions/coulomb_modifier.help"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/electrostatic_interactions/coulomb-"
-"modifier.hint"
+"metadata/simulations/detailed_information/electrostatic_interactions/coulomb_modifier.hint"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/electrostatic_interactions/coulomb-"
-"modifier.enum.none"
+"metadata/simulations/detailed_information/electrostatic_interactions/coulomb_modifier.enum.none"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/electrostatic_interactions/coulomb-"
-"modifier.enum.potential-shift"
+"metadata/simulations/detailed_information/electrostatic_interactions/coulomb_modifier.enum.potential-"
+"shift"
 msgstr ""
 
 msgid ""
@@ -742,30 +738,27 @@ msgid ""
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/electrostatic_interactions/epsilon-r.label"
+"metadata/simulations/detailed_information/electrostatic_interactions/epsilon_r.label"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/electrostatic_interactions/epsilon-r.hint"
+"metadata/simulations/detailed_information/electrostatic_interactions/epsilon_r.hint"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/electrostatic_interactions/epsilon-r.help"
+"metadata/simulations/detailed_information/electrostatic_interactions/epsilon_r.help"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/electrostatic_interactions/epsilon-"
-"rf.label"
+"metadata/simulations/detailed_information/electrostatic_interactions/epsilon_rf.label"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/electrostatic_interactions/epsilon-"
-"rf.help"
+"metadata/simulations/detailed_information/electrostatic_interactions/epsilon_rf.help"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/electrostatic_interactions/epsilon-"
-"rf.hint"
+"metadata/simulations/detailed_information/electrostatic_interactions/epsilon_rf.hint"
 msgstr ""
 
 msgid ""
@@ -789,22 +782,22 @@ msgstr ""
 msgid "metadata/simulations/detailed_information/fourierspacing.hint"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/lincs-iter.label"
+msgid "metadata/simulations/detailed_information/lincs_iter.label"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/lincs-iter.help"
+msgid "metadata/simulations/detailed_information/lincs_iter.help"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/lincs-iter.hint"
+msgid "metadata/simulations/detailed_information/lincs_iter.hint"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/lincs-order.label"
+msgid "metadata/simulations/detailed_information/lincs_order.label"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/lincs-order.help"
+msgid "metadata/simulations/detailed_information/lincs_order.help"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/lincs-order.hint"
+msgid "metadata/simulations/detailed_information/lincs_order.hint"
 msgstr ""
 
 msgid "metadata/simulations/detailed_information/neighbour_list.label"
@@ -817,25 +810,23 @@ msgid "metadata/simulations/detailed_information/neighbour_list.hint"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/neighbour_list/cutoff-scheme.label"
+"metadata/simulations/detailed_information/neighbour_list/cutoff_scheme.label"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/neighbour_list/cutoff-scheme.help"
+"metadata/simulations/detailed_information/neighbour_list/cutoff_scheme.help"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/neighbour_list/cutoff-scheme.hint"
+"metadata/simulations/detailed_information/neighbour_list/cutoff_scheme.hint"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/neighbour_list/cutoff-"
-"scheme.enum.verlet"
+"metadata/simulations/detailed_information/neighbour_list/cutoff_scheme.enum.verlet"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/neighbour_list/cutoff-"
-"scheme.enum.group"
+"metadata/simulations/detailed_information/neighbour_list/cutoff_scheme.enum.group"
 msgstr ""
 
 msgid "metadata/simulations/detailed_information/neighbour_list/nstlist.label"
@@ -901,41 +892,41 @@ msgstr ""
 msgid "metadata/simulations/detailed_information/thermostat/nsttcouple.help"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/thermostat/tau-t.label"
+msgid "metadata/simulations/detailed_information/thermostat/tau_t.label"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/thermostat/tau-t.hint"
+msgid "metadata/simulations/detailed_information/thermostat/tau_t.hint"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/thermostat/tau-t.help"
+msgid "metadata/simulations/detailed_information/thermostat/tau_t.help"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/thermostat/tc-grps.label"
+msgid "metadata/simulations/detailed_information/thermostat/tc_grps.label"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/thermostat/tc-grps.help"
+msgid "metadata/simulations/detailed_information/thermostat/tc_grps.help"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/thermostat/tc-grps.hint"
+msgid "metadata/simulations/detailed_information/thermostat/tc_grps.hint"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/thermostat/tc-grps/name.label"
+"metadata/simulations/detailed_information/thermostat/tc_grps/name.label"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/thermostat/tc-grps/name.help"
+msgid "metadata/simulations/detailed_information/thermostat/tc_grps/name.help"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/thermostat/tc-grps/name.hint"
+msgid "metadata/simulations/detailed_information/thermostat/tc_grps/name.hint"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/thermostat/tc-grps/nr.label"
+msgid "metadata/simulations/detailed_information/thermostat/tc_grps/nr.label"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/thermostat/tc-grps/nr.hint"
+msgid "metadata/simulations/detailed_information/thermostat/tc_grps/nr.hint"
 msgstr ""
 
-msgid "metadata/simulations/detailed_information/thermostat/tc-grps/nr.help"
+msgid "metadata/simulations/detailed_information/thermostat/tc_grps/nr.help"
 msgstr ""
 
 msgid "metadata/simulations/detailed_information/thermostat/tcoupl.label"
@@ -1020,93 +1011,79 @@ msgid ""
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw-"
-"switch.label"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw_switch.label"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw-"
-"switch.hint"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw_switch.hint"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw-"
-"switch.help"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw_switch.help"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
-"modifier.label"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_modifier.label"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
-"modifier.help"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_modifier.help"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
-"modifier.hint"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_modifier.hint"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
-"modifier.enum.potential-shift"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_modifier.enum.potential-"
+"shift"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
-"modifier.enum.none"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_modifier.enum.none"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
-"modifier.enum.force-switch"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_modifier.enum.force-"
+"switch"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
-"modifier.enum.potential-switch"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_modifier.enum.potential-"
+"switch"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
-"type.label"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_type.label"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
-"type.help"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_type.help"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
-"type.hint"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_type.hint"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
-"type.enum.cut-off"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_type.enum.cut-"
+"off"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
-"type.enum.pme"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_type.enum.pme"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
-"type.enum.shift"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_type.enum.shift"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
-"type.enum.switch"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_type.enum.switch"
 msgstr ""
 
 msgid ""
-"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-"
-"type.enum.user"
+"metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_type.enum.user"
 msgstr ""
 
 msgid "metadata/simulations/file_identification.label"

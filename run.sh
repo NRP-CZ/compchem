@@ -3,7 +3,6 @@
 # This is a simple development script to start the Invenio application.
 
 LOGFILE="run.log"
-source .venv/bin/activate
 
 # Check if the application is already running
 if pgrep -f "uwsgi docker/uwsgi.ini" > /dev/null; then
@@ -14,10 +13,13 @@ if pgrep -f "uwsgi docker/uwsgi.ini" > /dev/null; then
     read -p "Do you want to restart? [y/N] "
 
     if [[ $REPLY =~ ^[Yy]$ ]]; then
+        source .venv/bin/activate
         uwsgi --stop docker/.uwsgi.pid
-        pkill -f "uwsgi docker/uwsgi.ini"
-        echo -e "Restarting...\n"
-        sleep 5
+        echo -en "Restarting"
+        while pgrep -f "uwsgi docker/uwsgi.ini" > /dev/null; do
+            echo -n "."
+            sleep 1;
+        done
     else
         echo "Leaving it running."
         exit 0
@@ -26,6 +28,7 @@ fi
 
 # Start the application
 if [ -d ".venv" ]; then
+    source .venv/bin/activate
     truncate -s 0 $LOGFILE
     export FLASK_DEBUG=1
     uwsgi docker/uwsgi.ini --daemonize run.log
@@ -35,6 +38,8 @@ else
     # initial setup
     export PYTHON=/usr/bin/python3.12
     ./nrp upgrade
+    source .venv/bin/activate
+    pip install uwsgi nrp-invenio-client
     ./nrp develop
 fi
 

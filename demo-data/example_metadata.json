@@ -3,12 +3,12 @@
         {
             "file_identification": {
                 "name": "SCP",
-                "description": "a",
-                "doi": "69",
-                "related_files": "no",
+                "description": "Test file.",
                 "simulation_year": "1984",
+                "doi": "69",
+                "related_files": "SCP.pdb",
                 "authors": [
-                    "6969-6969-6969-6969"
+                    "69690-6969-6969-6969"
                 ]
             },
             "main_information": {
@@ -159,20 +159,20 @@
                 "umbrella_sampling": false
             },
             "detailed_information": {
-                "comm-mode": "linear",
-                "constraint-algorithm": "lincs",
+                "comm_mode": "linear",
+                "constraint_algorithm": "lincs",
                 "electrostatic_interactions": {
-                    "coulomb-modifier": "potential-shift",
+                    "coulomb_modifier": "potential-shift",
                     "coulombtype": "pme",
-                    "epsilon-r": 1,
-                    "epsilon-rf": -1,
+                    "epsilon_r": 1,
+                    "epsilon_rf": -1,
                     "rcoulomb": 1.2
                 },
                 "fourierspacing": 0.12,
-                "lincs-iter": 1,
-                "lincs-order": 4,
+                "lincs_iter": 1,
+                "lincs_order": 4,
                 "neighbour_list": {
-                    "cutoff-scheme": "verlet",
+                    "cutoff_scheme": "verlet",
                     "nstlist": 20,
                     "pbc": "xyz",
                     "rlist": 1.2
@@ -180,12 +180,12 @@
                 "nstcomm": 1000,
                 "thermostat": {
                     "nsttcouple": 20,
-                    "tau-t": [
+                    "tau_t": [
                         1,
                         1,
                         1
                     ],
-                    "tc-grps": {
+                    "tc_grps": {
                         "name": "protein_cysp lipids water_and_ions",
                         "nr": 3
                     },
@@ -194,15 +194,15 @@
                 "van_der_Waals_interactions": {
                     "dispcorr": "enerpres",
                     "rvdw": 1.2,
-                    "rvdw-switch": 1,
-                    "vdw-modifier": "force-switch",
-                    "vdw-type": "cut-off"
+                    "rvdw_switch": 1,
+                    "vdw_modifier": "force-switch",
+                    "vdw_type": "cut-off"
                 }
             },
             "_dump_sw_version": "127",
             "_exit_code": 0,
             "_gromacs_version": "5.1.4",
-            "_metadata_date": "2024-10-05T10:06:35.620526",
+            "_metadata_date": "2024-10-24T08:25:13.824043",
             "_metadump_version": "1.0.0",
             "_protein_sequences": [
                 "LRIPCCPVNLKRLLVVVVVVVLVVVVIVGALLMGL",

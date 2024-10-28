@@ -131,31 +131,31 @@ metadata_simulations_detailed_information_barostat_pcoupltype = TermsFacet(
 )
 
 metadata_simulations_detailed_information_barostat_refcoord_scaling = TermsFacet(
-    field="metadata.simulations.detailed_information.barostat.refcoord-scaling",
+    field="metadata.simulations.detailed_information.barostat.refcoord_scaling",
     label=_(
-        "metadata/simulations/detailed_information/barostat/refcoord-scaling.label"
+        "metadata/simulations/detailed_information/barostat/refcoord_scaling.label"
     ),
 )
 
 metadata_simulations_detailed_information_barostat_tau_p = TermsFacet(
-    field="metadata.simulations.detailed_information.barostat.tau-p",
-    label=_("metadata/simulations/detailed_information/barostat/tau-p.label"),
+    field="metadata.simulations.detailed_information.barostat.tau_p",
+    label=_("metadata/simulations/detailed_information/barostat/tau_p.label"),
 )
 
 metadata_simulations_detailed_information_comm_mode = TermsFacet(
-    field="metadata.simulations.detailed_information.comm-mode",
-    label=_("metadata/simulations/detailed_information/comm-mode.label"),
+    field="metadata.simulations.detailed_information.comm_mode",
+    label=_("metadata/simulations/detailed_information/comm_mode.label"),
 )
 
 metadata_simulations_detailed_information_constraint_algorithm = TermsFacet(
-    field="metadata.simulations.detailed_information.constraint-algorithm",
-    label=_("metadata/simulations/detailed_information/constraint-algorithm.label"),
+    field="metadata.simulations.detailed_information.constraint_algorithm",
+    label=_("metadata/simulations/detailed_information/constraint_algorithm.label"),
 )
 
 metadata_simulations_detailed_information_electrostatic_interactions_coulomb_modifier = TermsFacet(
-    field="metadata.simulations.detailed_information.electrostatic_interactions.coulomb-modifier",
+    field="metadata.simulations.detailed_information.electrostatic_interactions.coulomb_modifier",
     label=_(
-        "metadata/simulations/detailed_information/electrostatic_interactions/coulomb-modifier.label"
+        "metadata/simulations/detailed_information/electrostatic_interactions/coulomb_modifier.label"
     ),
 )
 
@@ -167,16 +167,16 @@ metadata_simulations_detailed_information_electrostatic_interactions_coulombtype
 )
 
 metadata_simulations_detailed_information_electrostatic_interactions_epsilon_r = TermsFacet(
-    field="metadata.simulations.detailed_information.electrostatic_interactions.epsilon-r",
+    field="metadata.simulations.detailed_information.electrostatic_interactions.epsilon_r",
     label=_(
-        "metadata/simulations/detailed_information/electrostatic_interactions/epsilon-r.label"
+        "metadata/simulations/detailed_information/electrostatic_interactions/epsilon_r.label"
     ),
 )
 
 metadata_simulations_detailed_information_electrostatic_interactions_epsilon_rf = TermsFacet(
-    field="metadata.simulations.detailed_information.electrostatic_interactions.epsilon-rf",
+    field="metadata.simulations.detailed_information.electrostatic_interactions.epsilon_rf",
     label=_(
-        "metadata/simulations/detailed_information/electrostatic_interactions/epsilon-rf.label"
+        "metadata/simulations/detailed_information/electrostatic_interactions/epsilon_rf.label"
     ),
 )
 
@@ -193,19 +193,19 @@ metadata_simulations_detailed_information_fourierspacing = TermsFacet(
 )
 
 metadata_simulations_detailed_information_lincs_iter = TermsFacet(
-    field="metadata.simulations.detailed_information.lincs-iter",
-    label=_("metadata/simulations/detailed_information/lincs-iter.label"),
+    field="metadata.simulations.detailed_information.lincs_iter",
+    label=_("metadata/simulations/detailed_information/lincs_iter.label"),
 )
 
 metadata_simulations_detailed_information_lincs_order = TermsFacet(
-    field="metadata.simulations.detailed_information.lincs-order",
-    label=_("metadata/simulations/detailed_information/lincs-order.label"),
+    field="metadata.simulations.detailed_information.lincs_order",
+    label=_("metadata/simulations/detailed_information/lincs_order.label"),
 )
 
 metadata_simulations_detailed_information_neighbour_list_cutoff_scheme = TermsFacet(
-    field="metadata.simulations.detailed_information.neighbour_list.cutoff-scheme",
+    field="metadata.simulations.detailed_information.neighbour_list.cutoff_scheme",
     label=_(
-        "metadata/simulations/detailed_information/neighbour_list/cutoff-scheme.label"
+        "metadata/simulations/detailed_information/neighbour_list/cutoff_scheme.label"
     ),
 )
 
@@ -235,18 +235,18 @@ metadata_simulations_detailed_information_thermostat_nsttcouple = TermsFacet(
 )
 
 metadata_simulations_detailed_information_thermostat_tau_t = TermsFacet(
-    field="metadata.simulations.detailed_information.thermostat.tau-t",
-    label=_("metadata/simulations/detailed_information/thermostat/tau-t.label"),
+    field="metadata.simulations.detailed_information.thermostat.tau_t",
+    label=_("metadata/simulations/detailed_information/thermostat/tau_t.label"),
 )
 
 metadata_simulations_detailed_information_thermostat_tc_grps_name = TermsFacet(
-    field="metadata.simulations.detailed_information.thermostat.tc-grps.name",
-    label=_("metadata/simulations/detailed_information/thermostat/tc-grps/name.label"),
+    field="metadata.simulations.detailed_information.thermostat.tc_grps.name",
+    label=_("metadata/simulations/detailed_information/thermostat/tc_grps/name.label"),
 )
 
 metadata_simulations_detailed_information_thermostat_tc_grps_nr = TermsFacet(
-    field="metadata.simulations.detailed_information.thermostat.tc-grps.nr",
-    label=_("metadata/simulations/detailed_information/thermostat/tc-grps/nr.label"),
+    field="metadata.simulations.detailed_information.thermostat.tc_grps.nr",
+    label=_("metadata/simulations/detailed_information/thermostat/tc_grps/nr.label"),
 )
 
 metadata_simulations_detailed_information_thermostat_tcoupl = TermsFacet(
@@ -269,23 +269,23 @@ metadata_simulations_detailed_information_van_der_Waals_interactions_rvdw = Term
 )
 
 metadata_simulations_detailed_information_van_der_Waals_interactions_rvdw_switch = TermsFacet(
-    field="metadata.simulations.detailed_information.van_der_Waals_interactions.rvdw-switch",
+    field="metadata.simulations.detailed_information.van_der_Waals_interactions.rvdw_switch",
     label=_(
-        "metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw-switch.label"
+        "metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw_switch.label"
     ),
 )
 
 metadata_simulations_detailed_information_van_der_Waals_interactions_vdw_modifier = TermsFacet(
-    field="metadata.simulations.detailed_information.van_der_Waals_interactions.vdw-modifier",
+    field="metadata.simulations.detailed_information.van_der_Waals_interactions.vdw_modifier",
     label=_(
-        "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-modifier.label"
+        "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_modifier.label"
     ),
 )
 
 metadata_simulations_detailed_information_van_der_Waals_interactions_vdw_type = TermsFacet(
-    field="metadata.simulations.detailed_information.van_der_Waals_interactions.vdw-type",
+    field="metadata.simulations.detailed_information.van_der_Waals_interactions.vdw_type",
     label=_(
-        "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-type.label"
+        "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_type.label"
     ),
 )
 

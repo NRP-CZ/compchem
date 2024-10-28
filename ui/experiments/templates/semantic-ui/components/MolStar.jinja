@@ -1,0 +1,15 @@
+<script src="https://cdn.jsdelivr.net/npm/molstar@latest/build/viewer/molstar.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/molstar@latest/build/viewer/molstar.css" />
+
+<div id="viewer1" style="position: relative; width: 20vw; height: 20vw;"></div>
+
+<script>
+    // TODO
+    const uniprotID = 'P15785';
+
+    molstar.Viewer
+        .create('viewer1', { layoutIsExpanded: false, layoutShowControls: false })
+        .then(viewer => viewer.loadAlphaFoldDb(uniprotID));
+
+    // viewer.loadStructureFromData(pdbData, 'pdb');
+</script>

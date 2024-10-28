@@ -17,13 +17,13 @@
         <ExperimentsDetailedInformation d={d.detailed_information} />
     </div>
     <div class="ui tab" data-tab="tab-other">
-        <table class='ui compact definition table'>
+        <ITable>
             <ITableField d={d._metadata_date} />
             <ITableField d={d._dump_sw_version} />
             <ITableField d={d._gromacs_version} />
             <ITableField d={d._metadump_version} />
             <ITableField d={d._tpx_version} />
             <ITableField d={d._uniprot_id} />
-        </table>
+        </ITable>
     </div>
 </div>

@@ -237,27 +237,27 @@
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             },
-                                            "refcoord-scaling": {
+                                            "refcoord_scaling": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             },
-                                            "tau-p": {
+                                            "tau_p": {
                                                 "type": "float"
                                             }
                                         }
                                     },
-                                    "comm-mode": {
+                                    "comm_mode": {
                                         "type": "keyword",
                                         "ignore_above": 1024
                                     },
-                                    "constraint-algorithm": {
+                                    "constraint_algorithm": {
                                         "type": "keyword",
                                         "ignore_above": 1024
                                     },
                                     "electrostatic_interactions": {
                                         "type": "object",
                                         "properties": {
-                                            "coulomb-modifier": {
+                                            "coulomb_modifier": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             },
@@ -265,10 +265,10 @@
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             },
-                                            "epsilon-r": {
+                                            "epsilon_r": {
                                                 "type": "float"
                                             },
-                                            "epsilon-rf": {
+                                            "epsilon_rf": {
                                                 "type": "float"
                                             },
                                             "rcoulomb": {
@@ -279,16 +279,16 @@
                                     "fourierspacing": {
                                         "type": "float"
                                     },
-                                    "lincs-iter": {
+                                    "lincs_iter": {
                                         "type": "integer"
                                     },
-                                    "lincs-order": {
+                                    "lincs_order": {
                                         "type": "integer"
                                     },
                                     "neighbour_list": {
                                         "type": "object",
                                         "properties": {
-                                            "cutoff-scheme": {
+                                            "cutoff_scheme": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             },
@@ -313,10 +313,10 @@
                                             "nsttcouple": {
                                                 "type": "integer"
                                             },
-                                            "tau-t": {
+                                            "tau_t": {
                                                 "type": "float"
                                             },
-                                            "tc-grps": {
+                                            "tc_grps": {
                                                 "type": "object",
                                                 "properties": {
                                                     "name": {
@@ -344,14 +344,14 @@
                                             "rvdw": {
                                                 "type": "float"
                                             },
-                                            "rvdw-switch": {
+                                            "rvdw_switch": {
                                                 "type": "float"
                                             },
-                                            "vdw-modifier": {
+                                            "vdw_modifier": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             },
-                                            "vdw-type": {
+                                            "vdw_type": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             }

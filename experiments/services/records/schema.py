@@ -118,18 +118,12 @@ class DetailedInformationSchema(DictOnlySchema):
     barostat = ma_fields.Nested(lambda: BarostatSchema())
 
     comm_mode = ma_fields.String(
-        data_key="comm-mode",
-        attribute="comm-mode",
         validate=[
             OneOf(["none", "linear", "angular", "linear-acceleration-correction"])
-        ],
+        ]
     )
 
-    constraint_algorithm = ma_fields.String(
-        data_key="constraint-algorithm",
-        attribute="constraint-algorithm",
-        validate=[OneOf(["lincs", "shake"])],
-    )
+    constraint_algorithm = ma_fields.String(validate=[OneOf(["lincs", "shake"])])
 
     electrostatic_interactions = ma_fields.Nested(
         lambda: ElectrostaticInteractionsSchema()
@@ -137,9 +131,9 @@ class DetailedInformationSchema(DictOnlySchema):
 
     fourierspacing = ma_fields.Float()
 
-    lincs_iter = ma_fields.Integer(data_key="lincs-iter", attribute="lincs-iter")
+    lincs_iter = ma_fields.Integer()
 
-    lincs_order = ma_fields.Integer(data_key="lincs-order", attribute="lincs-order")
+    lincs_order = ma_fields.Integer()
 
     neighbour_list = ma_fields.Nested(lambda: NeighbourListSchema())
 
@@ -199,11 +193,9 @@ class ThermostatSchema(DictOnlySchema):
 
     nsttcouple = ma_fields.Integer()
 
-    tau_t = ma_fields.List(ma_fields.Float(), data_key="tau-t", attribute="tau-t")
+    tau_t = ma_fields.List(ma_fields.Float())
 
-    tc_grps = ma_fields.Nested(
-        lambda: TcGrpsSchema(), data_key="tc-grps", attribute="tc-grps"
-    )
+    tc_grps = ma_fields.Nested(lambda: TcGrpsSchema())
 
     tcoupl = ma_fields.String(
         validate=[
@@ -237,24 +229,16 @@ class BarostatSchema(DictOnlySchema):
         ]
     )
 
-    refcoord_scaling = ma_fields.String(
-        data_key="refcoord-scaling",
-        attribute="refcoord-scaling",
-        validate=[OneOf(["no", "all", "com"])],
-    )
+    refcoord_scaling = ma_fields.String(validate=[OneOf(["no", "all", "com"])])
 
-    tau_p = ma_fields.Float(data_key="tau-p", attribute="tau-p")
+    tau_p = ma_fields.Float()
 
 
 class ElectrostaticInteractionsSchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
 
-    coulomb_modifier = ma_fields.String(
-        data_key="coulomb-modifier",
-        attribute="coulomb-modifier",
-        validate=[OneOf(["none", "potential-shift"])],
-    )
+    coulomb_modifier = ma_fields.String(validate=[OneOf(["none", "potential-shift"])])
 
     coulombtype = ma_fields.String(
         validate=[
@@ -274,9 +258,9 @@ class ElectrostaticInteractionsSchema(DictOnlySchema):
         ]
     )
 
-    epsilon_r = ma_fields.Float(data_key="epsilon-r", attribute="epsilon-r")
+    epsilon_r = ma_fields.Float()
 
-    epsilon_rf = ma_fields.Float(data_key="epsilon-rf", attribute="epsilon-rf")
+    epsilon_rf = ma_fields.Float()
 
     rcoulomb = ma_fields.Float()
 
@@ -315,11 +299,7 @@ class NeighbourListSchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
 
-    cutoff_scheme = ma_fields.String(
-        data_key="cutoff-scheme",
-        attribute="cutoff-scheme",
-        validate=[OneOf(["verlet", "group"])],
-    )
+    cutoff_scheme = ma_fields.String(validate=[OneOf(["verlet", "group"])])
 
     nstlist = ma_fields.Integer()
 
@@ -345,20 +325,16 @@ class VanDerWaalsInteractionsSchema(DictOnlySchema):
 
     rvdw = ma_fields.Float()
 
-    rvdw_switch = ma_fields.Float(data_key="rvdw-switch", attribute="rvdw-switch")
+    rvdw_switch = ma_fields.Float()
 
     vdw_modifier = ma_fields.String(
-        data_key="vdw-modifier",
-        attribute="vdw-modifier",
         validate=[
             OneOf(["potential-shift", "none", "force-switch", "potential-switch"])
-        ],
+        ]
     )
 
     vdw_type = ma_fields.String(
-        data_key="vdw-type",
-        attribute="vdw-type",
-        validate=[OneOf(["cut-off", "pme", "shift", "switch", "user"])],
+        validate=[OneOf(["cut-off", "pme", "shift", "switch", "user"])]
     )
 
 

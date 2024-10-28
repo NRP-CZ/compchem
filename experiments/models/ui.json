@@ -509,41 +509,41 @@
                                                 "enum": "metadata/simulations/detailed_information/barostat/pcoupltype.enum",
                                                 "facet": "metadata_simulations_detailed_information_barostat_pcoupltype"
                                             },
-                                            "refcoord-scaling": {
+                                            "refcoord_scaling": {
                                                 "detail": "keyword",
                                                 "input": "keyword",
-                                                "help": "metadata/simulations/detailed_information/barostat/refcoord-scaling.help",
-                                                "label": "metadata/simulations/detailed_information/barostat/refcoord-scaling.label",
-                                                "hint": "metadata/simulations/detailed_information/barostat/refcoord-scaling.hint",
-                                                "enum": "metadata/simulations/detailed_information/barostat/refcoord-scaling.enum",
+                                                "help": "metadata/simulations/detailed_information/barostat/refcoord_scaling.help",
+                                                "label": "metadata/simulations/detailed_information/barostat/refcoord_scaling.label",
+                                                "hint": "metadata/simulations/detailed_information/barostat/refcoord_scaling.hint",
+                                                "enum": "metadata/simulations/detailed_information/barostat/refcoord_scaling.enum",
                                                 "facet": "metadata_simulations_detailed_information_barostat_refcoord_scaling"
                                             },
-                                            "tau-p": {
+                                            "tau_p": {
                                                 "detail": "float",
                                                 "input": "float",
-                                                "help": "metadata/simulations/detailed_information/barostat/tau-p.help",
-                                                "label": "metadata/simulations/detailed_information/barostat/tau-p.label",
-                                                "hint": "metadata/simulations/detailed_information/barostat/tau-p.hint",
+                                                "help": "metadata/simulations/detailed_information/barostat/tau_p.help",
+                                                "label": "metadata/simulations/detailed_information/barostat/tau_p.label",
+                                                "hint": "metadata/simulations/detailed_information/barostat/tau_p.hint",
                                                 "facet": "metadata_simulations_detailed_information_barostat_tau_p"
                                             }
                                         }
                                     },
-                                    "comm-mode": {
+                                    "comm_mode": {
                                         "detail": "keyword",
                                         "input": "keyword",
-                                        "help": "metadata/simulations/detailed_information/comm-mode.help",
-                                        "label": "metadata/simulations/detailed_information/comm-mode.label",
-                                        "hint": "metadata/simulations/detailed_information/comm-mode.hint",
-                                        "enum": "metadata/simulations/detailed_information/comm-mode.enum",
+                                        "help": "metadata/simulations/detailed_information/comm_mode.help",
+                                        "label": "metadata/simulations/detailed_information/comm_mode.label",
+                                        "hint": "metadata/simulations/detailed_information/comm_mode.hint",
+                                        "enum": "metadata/simulations/detailed_information/comm_mode.enum",
                                         "facet": "metadata_simulations_detailed_information_comm_mode"
                                     },
-                                    "constraint-algorithm": {
+                                    "constraint_algorithm": {
                                         "detail": "keyword",
                                         "input": "keyword",
-                                        "help": "metadata/simulations/detailed_information/constraint-algorithm.help",
-                                        "label": "metadata/simulations/detailed_information/constraint-algorithm.label",
-                                        "hint": "metadata/simulations/detailed_information/constraint-algorithm.hint",
-                                        "enum": "metadata/simulations/detailed_information/constraint-algorithm.enum",
+                                        "help": "metadata/simulations/detailed_information/constraint_algorithm.help",
+                                        "label": "metadata/simulations/detailed_information/constraint_algorithm.label",
+                                        "hint": "metadata/simulations/detailed_information/constraint_algorithm.hint",
+                                        "enum": "metadata/simulations/detailed_information/constraint_algorithm.enum",
                                         "facet": "metadata_simulations_detailed_information_constraint_algorithm"
                                     },
                                     "electrostatic_interactions": {
@@ -553,13 +553,13 @@
                                         "label": "metadata/simulations/detailed_information/electrostatic_interactions.label",
                                         "hint": "metadata/simulations/detailed_information/electrostatic_interactions.hint",
                                         "children": {
-                                            "coulomb-modifier": {
+                                            "coulomb_modifier": {
                                                 "detail": "keyword",
                                                 "input": "keyword",
-                                                "help": "metadata/simulations/detailed_information/electrostatic_interactions/coulomb-modifier.help",
-                                                "label": "metadata/simulations/detailed_information/electrostatic_interactions/coulomb-modifier.label",
-                                                "hint": "metadata/simulations/detailed_information/electrostatic_interactions/coulomb-modifier.hint",
-                                                "enum": "metadata/simulations/detailed_information/electrostatic_interactions/coulomb-modifier.enum",
+                                                "help": "metadata/simulations/detailed_information/electrostatic_interactions/coulomb_modifier.help",
+                                                "label": "metadata/simulations/detailed_information/electrostatic_interactions/coulomb_modifier.label",
+                                                "hint": "metadata/simulations/detailed_information/electrostatic_interactions/coulomb_modifier.hint",
+                                                "enum": "metadata/simulations/detailed_information/electrostatic_interactions/coulomb_modifier.enum",
                                                 "facet": "metadata_simulations_detailed_information_electrostatic_interactions_coulomb_modifier"
                                             },
                                             "coulombtype": {
@@ -571,20 +571,20 @@
                                                 "enum": "metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.enum",
                                                 "facet": "metadata_simulations_detailed_information_electrostatic_interactions_coulombtype"
                                             },
-                                            "epsilon-r": {
+                                            "epsilon_r": {
                                                 "detail": "float",
                                                 "input": "float",
-                                                "help": "metadata/simulations/detailed_information/electrostatic_interactions/epsilon-r.help",
-                                                "label": "metadata/simulations/detailed_information/electrostatic_interactions/epsilon-r.label",
-                                                "hint": "metadata/simulations/detailed_information/electrostatic_interactions/epsilon-r.hint",
+                                                "help": "metadata/simulations/detailed_information/electrostatic_interactions/epsilon_r.help",
+                                                "label": "metadata/simulations/detailed_information/electrostatic_interactions/epsilon_r.label",
+                                                "hint": "metadata/simulations/detailed_information/electrostatic_interactions/epsilon_r.hint",
                                                 "facet": "metadata_simulations_detailed_information_electrostatic_interactions_epsilon_r"
                                             },
-                                            "epsilon-rf": {
+                                            "epsilon_rf": {
                                                 "detail": "float",
                                                 "input": "float",
-                                                "help": "metadata/simulations/detailed_information/electrostatic_interactions/epsilon-rf.help",
-                                                "label": "metadata/simulations/detailed_information/electrostatic_interactions/epsilon-rf.label",
-                                                "hint": "metadata/simulations/detailed_information/electrostatic_interactions/epsilon-rf.hint",
+                                                "help": "metadata/simulations/detailed_information/electrostatic_interactions/epsilon_rf.help",
+                                                "label": "metadata/simulations/detailed_information/electrostatic_interactions/epsilon_rf.label",
+                                                "hint": "metadata/simulations/detailed_information/electrostatic_interactions/epsilon_rf.hint",
                                                 "facet": "metadata_simulations_detailed_information_electrostatic_interactions_epsilon_rf"
                                             },
                                             "rcoulomb": {
@@ -605,20 +605,20 @@
                                         "hint": "metadata/simulations/detailed_information/fourierspacing.hint",
                                         "facet": "metadata_simulations_detailed_information_fourierspacing"
                                     },
-                                    "lincs-iter": {
+                                    "lincs_iter": {
                                         "detail": "integer",
                                         "input": "integer",
-                                        "help": "metadata/simulations/detailed_information/lincs-iter.help",
-                                        "label": "metadata/simulations/detailed_information/lincs-iter.label",
-                                        "hint": "metadata/simulations/detailed_information/lincs-iter.hint",
+                                        "help": "metadata/simulations/detailed_information/lincs_iter.help",
+                                        "label": "metadata/simulations/detailed_information/lincs_iter.label",
+                                        "hint": "metadata/simulations/detailed_information/lincs_iter.hint",
                                         "facet": "metadata_simulations_detailed_information_lincs_iter"
                                     },
-                                    "lincs-order": {
+                                    "lincs_order": {
                                         "detail": "integer",
                                         "input": "integer",
-                                        "help": "metadata/simulations/detailed_information/lincs-order.help",
-                                        "label": "metadata/simulations/detailed_information/lincs-order.label",
-                                        "hint": "metadata/simulations/detailed_information/lincs-order.hint",
+                                        "help": "metadata/simulations/detailed_information/lincs_order.help",
+                                        "label": "metadata/simulations/detailed_information/lincs_order.label",
+                                        "hint": "metadata/simulations/detailed_information/lincs_order.hint",
                                         "facet": "metadata_simulations_detailed_information_lincs_order"
                                     },
                                     "neighbour_list": {
@@ -628,13 +628,13 @@
                                         "label": "metadata/simulations/detailed_information/neighbour_list.label",
                                         "hint": "metadata/simulations/detailed_information/neighbour_list.hint",
                                         "children": {
-                                            "cutoff-scheme": {
+                                            "cutoff_scheme": {
                                                 "detail": "keyword",
                                                 "input": "keyword",
-                                                "help": "metadata/simulations/detailed_information/neighbour_list/cutoff-scheme.help",
-                                                "label": "metadata/simulations/detailed_information/neighbour_list/cutoff-scheme.label",
-                                                "hint": "metadata/simulations/detailed_information/neighbour_list/cutoff-scheme.hint",
-                                                "enum": "metadata/simulations/detailed_information/neighbour_list/cutoff-scheme.enum",
+                                                "help": "metadata/simulations/detailed_information/neighbour_list/cutoff_scheme.help",
+                                                "label": "metadata/simulations/detailed_information/neighbour_list/cutoff_scheme.label",
+                                                "hint": "metadata/simulations/detailed_information/neighbour_list/cutoff_scheme.hint",
+                                                "enum": "metadata/simulations/detailed_information/neighbour_list/cutoff_scheme.enum",
                                                 "facet": "metadata_simulations_detailed_information_neighbour_list_cutoff_scheme"
                                             },
                                             "nstlist": {
@@ -687,42 +687,42 @@
                                                 "hint": "metadata/simulations/detailed_information/thermostat/nsttcouple.hint",
                                                 "facet": "metadata_simulations_detailed_information_thermostat_nsttcouple"
                                             },
-                                            "tau-t": {
+                                            "tau_t": {
                                                 "detail": "array",
                                                 "input": "array",
-                                                "help": "metadata/simulations/detailed_information/thermostat/tau-t.help",
-                                                "label": "metadata/simulations/detailed_information/thermostat/tau-t.label",
-                                                "hint": "metadata/simulations/detailed_information/thermostat/tau-t.hint",
+                                                "help": "metadata/simulations/detailed_information/thermostat/tau_t.help",
+                                                "label": "metadata/simulations/detailed_information/thermostat/tau_t.label",
+                                                "hint": "metadata/simulations/detailed_information/thermostat/tau_t.hint",
                                                 "child": {
                                                     "detail": "float",
                                                     "input": "float",
-                                                    "help": "metadata/simulations/detailed_information/thermostat/tau-t.help",
-                                                    "label": "metadata/simulations/detailed_information/thermostat/tau-t.label",
-                                                    "hint": "metadata/simulations/detailed_information/thermostat/tau-t.hint",
+                                                    "help": "metadata/simulations/detailed_information/thermostat/tau_t.help",
+                                                    "label": "metadata/simulations/detailed_information/thermostat/tau_t.label",
+                                                    "hint": "metadata/simulations/detailed_information/thermostat/tau_t.hint",
                                                     "facet": "metadata_simulations_detailed_information_thermostat_tau_t"
                                                 }
                                             },
-                                            "tc-grps": {
-                                                "detail": "tc-grp",
-                                                "input": "tc-grp",
-                                                "help": "metadata/simulations/detailed_information/thermostat/tc-grps.help",
-                                                "label": "metadata/simulations/detailed_information/thermostat/tc-grps.label",
-                                                "hint": "metadata/simulations/detailed_information/thermostat/tc-grps.hint",
+                                            "tc_grps": {
+                                                "detail": "tc_grp",
+                                                "input": "tc_grp",
+                                                "help": "metadata/simulations/detailed_information/thermostat/tc_grps.help",
+                                                "label": "metadata/simulations/detailed_information/thermostat/tc_grps.label",
+                                                "hint": "metadata/simulations/detailed_information/thermostat/tc_grps.hint",
                                                 "children": {
                                                     "name": {
                                                         "detail": "keyword",
                                                         "input": "keyword",
-                                                        "help": "metadata/simulations/detailed_information/thermostat/tc-grps/name.help",
-                                                        "label": "metadata/simulations/detailed_information/thermostat/tc-grps/name.label",
-                                                        "hint": "metadata/simulations/detailed_information/thermostat/tc-grps/name.hint",
+                                                        "help": "metadata/simulations/detailed_information/thermostat/tc_grps/name.help",
+                                                        "label": "metadata/simulations/detailed_information/thermostat/tc_grps/name.label",
+                                                        "hint": "metadata/simulations/detailed_information/thermostat/tc_grps/name.hint",
                                                         "facet": "metadata_simulations_detailed_information_thermostat_tc_grps_name"
                                                     },
                                                     "nr": {
                                                         "detail": "integer",
                                                         "input": "integer",
-                                                        "help": "metadata/simulations/detailed_information/thermostat/tc-grps/nr.help",
-                                                        "label": "metadata/simulations/detailed_information/thermostat/tc-grps/nr.label",
-                                                        "hint": "metadata/simulations/detailed_information/thermostat/tc-grps/nr.hint",
+                                                        "help": "metadata/simulations/detailed_information/thermostat/tc_grps/nr.help",
+                                                        "label": "metadata/simulations/detailed_information/thermostat/tc_grps/nr.label",
+                                                        "hint": "metadata/simulations/detailed_information/thermostat/tc_grps/nr.hint",
                                                         "facet": "metadata_simulations_detailed_information_thermostat_tc_grps_nr"
                                                     }
                                                 }
@@ -762,30 +762,30 @@
                                                 "hint": "metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw.hint",
                                                 "facet": "metadata_simulations_detailed_information_van_der_Waals_interactions_rvdw"
                                             },
-                                            "rvdw-switch": {
+                                            "rvdw_switch": {
                                                 "detail": "float",
                                                 "input": "float",
-                                                "help": "metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw-switch.help",
-                                                "label": "metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw-switch.label",
-                                                "hint": "metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw-switch.hint",
+                                                "help": "metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw_switch.help",
+                                                "label": "metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw_switch.label",
+                                                "hint": "metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw_switch.hint",
                                                 "facet": "metadata_simulations_detailed_information_van_der_Waals_interactions_rvdw_switch"
                                             },
-                                            "vdw-modifier": {
+                                            "vdw_modifier": {
                                                 "detail": "keyword",
                                                 "input": "keyword",
-                                                "help": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-modifier.help",
-                                                "label": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-modifier.label",
-                                                "hint": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-modifier.hint",
-                                                "enum": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-modifier.enum",
+                                                "help": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_modifier.help",
+                                                "label": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_modifier.label",
+                                                "hint": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_modifier.hint",
+                                                "enum": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_modifier.enum",
                                                 "facet": "metadata_simulations_detailed_information_van_der_Waals_interactions_vdw_modifier"
                                             },
-                                            "vdw-type": {
+                                            "vdw_type": {
                                                 "detail": "keyword",
                                                 "input": "keyword",
-                                                "help": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-type.help",
-                                                "label": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-type.label",
-                                                "hint": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-type.hint",
-                                                "enum": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw-type.enum",
+                                                "help": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_type.help",
+                                                "label": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_type.label",
+                                                "hint": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_type.hint",
+                                                "enum": "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_type.enum",
                                                 "facet": "metadata_simulations_detailed_information_van_der_Waals_interactions_vdw_type"
                                             }
                                         }
