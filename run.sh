@@ -5,21 +5,23 @@
 LOGFILE="run.log"
 
 # Check if the application is already running
-if pgrep -f "uwsgi docker/uwsgi.ini" > /dev/null; then
+if pgrep -f "uwsgi" > /dev/null; then
     echo "Already running:"
-    pgrep -fl "uwsgi docker/uwsgi.ini"
+    pgrep -fl "uwsgi"
 
     echo
     read -p "Do you want to restart? [y/N] "
 
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         source .venv/bin/activate
-        uwsgi --stop docker/.uwsgi.pid
+        pip install uwsgi
+        pkill uwsgi
         echo -en "Restarting"
-        while pgrep -f "uwsgi docker/uwsgi.ini" > /dev/null; do
+        while pgrep -f "uwsgi" > /dev/null; do
             echo -n "."
             sleep 1;
         done
+        echo
     else
         echo "Leaving it running."
         exit 0
@@ -29,6 +31,7 @@ fi
 # Start the application
 if [ -d ".venv" ]; then
     source .venv/bin/activate
+    pip install uwsgi
     truncate -s 0 $LOGFILE
     export FLASK_DEBUG=1
     uwsgi docker/uwsgi.ini --daemonize run.log
@@ -53,11 +56,24 @@ invenio index init
 invenio oarepo cf init
 invenio files location create --default default s3://default
 
-invenio users create -a -c test@test.com
 invenio oarepo fixtures load
+invenio users create -a -c test@test.com
 '
 
 : '
+# start from scratch
+
 rm -rf .nrp .pdm-build .venv
 find . -name "__pycache__" -type d -exec rm -rf {} +
+'
+
+
+: '
+# rebuild UI
+
+source .venv/bin/activate
+
+invenio webpack clean create
+invenio webpack install --legacy-peer-deps
+invenio webpack build --production
 '

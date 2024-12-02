@@ -1,7 +1,34 @@
 <script src="https://cdn.jsdelivr.net/npm/molstar@latest/build/viewer/molstar.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/molstar@latest/build/viewer/molstar.css" />
 
-<div id="viewer1" style="position: relative; width: 20vw; height: 20vw;"></div>
+<style>
+.molstar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.molstar-viewer {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+}
+
+@media (max-width: 1300px) {
+    .molstar-viewer {
+        width: 50vw;
+        height: 50vh;
+        padding-top: 0;
+    }
+}
+
+</style>
+
+<div class="molstar-wrapper">
+<div id="viewer1" class="molstar-viewer" />
+</div>
 
 <script>
     // TODO
