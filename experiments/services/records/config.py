@@ -4,6 +4,7 @@ from invenio_drafts_resources.services import (
 from invenio_drafts_resources.services.records.components import DraftFilesComponent
 from invenio_records_resources.services import (
     ConditionalLink,
+    LinksTemplate,
     RecordLink,
     pagination_links,
 )
@@ -12,10 +13,21 @@ from oarepo_communities.services.components.default_workflow import (
 )
 from oarepo_communities.services.components.include import CommunityInclusionComponent
 from oarepo_communities.services.links import CommunitiesLinks
-from oarepo_runtime.records import has_draft, is_published_record
-from oarepo_runtime.services.components import CustomFieldsComponent, OwnersComponent
+from oarepo_runtime.services.components import (
+    CustomFieldsComponent,
+    OwnersComponent,
+    process_service_configs,
+)
+from oarepo_runtime.services.config import (
+    has_draft,
+    has_file_permission,
+    has_permission,
+    has_published_record,
+    is_published_record,
+)
 from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
 from oarepo_runtime.services.files import FilesComponent
+from oarepo_runtime.services.records import pagination_links_html
 from oarepo_workflows.services.components.workflow import WorkflowComponent
 
 from experiments.records.api import ExperimentsDraft, ExperimentsRecord
@@ -51,27 +63,40 @@ class ExperimentsServiceConfig(
 
     service_id = "experiments"
 
-    components = [
-        *PermissionsPresetsConfigMixin.components,
-        *InvenioRecordDraftsServiceConfig.components,
-        CommunityDefaultWorkflowComponent,
-        CommunityInclusionComponent,
-        OwnersComponent,
-        DraftFilesComponent,
-        FilesComponent,
-        CustomFieldsComponent,
-        WorkflowComponent,
-    ]
-
-    model = "experiments"
+    search_item_links_template = LinksTemplate
     draft_cls = ExperimentsDraft
     search_drafts = ExperimentsSearchOptions
+
+    @property
+    def components(self):
+        components_list = []
+        components_list.extend(process_service_configs(type(self).mro()[2:]))
+        additional_components = [
+            CommunityDefaultWorkflowComponent,
+            CommunityInclusionComponent,
+            OwnersComponent,
+            DraftFilesComponent,
+            FilesComponent,
+            CustomFieldsComponent,
+            WorkflowComponent,
+        ]
+        components_list.extend(additional_components)
+        seen = set()
+        unique_components = []
+        for component in components_list:
+            if component not in seen:
+                unique_components.append(component)
+                seen.add(component)
+
+        return unique_components
+
+    model = "experiments"
 
     @property
     def links_item(self):
         return {
             "applicable-requests": ConditionalLink(
-                cond=is_published_record,
+                cond=is_published_record(),
                 if_=RecordLink("{+api}/experiments/{id}/requests/applicable"),
                 else_=RecordLink("{+api}/experiments/{id}/draft/requests/applicable"),
             ),
@@ -81,45 +106,95 @@ class ExperimentsServiceConfig(
                     "self_html": "{+ui}/communities/{slug}/records",
                 }
             ),
-            "draft": RecordLink("{+api}/experiments/{id}/draft"),
-            "edit_html": RecordLink("{+ui}/experiments/{id}/edit", when=has_draft),
-            "files": ConditionalLink(
-                cond=is_published_record,
-                if_=RecordLink("{+api}/experiments/{id}/files"),
-                else_=RecordLink("{+api}/experiments/{id}/draft/files"),
+            "draft": RecordLink(
+                "{+api}/experiments/{id}/draft",
+                when=has_draft() & has_permission("read_draft"),
             ),
-            "latest": RecordLink("{+api}/experiments/{id}/versions/latest"),
-            "latest_html": RecordLink("{+ui}/experiments/{id}/latest"),
-            "publish": RecordLink("{+api}/experiments/{id}/draft/actions/publish"),
-            "record": RecordLink("{+api}/experiments/{id}"),
+            "edit_html": RecordLink(
+                "{+ui}/experiments/{id}/edit",
+                when=has_draft() & has_permission("update"),
+            ),
+            "files": ConditionalLink(
+                cond=is_published_record(),
+                if_=RecordLink(
+                    "{+api}/experiments/{id}/files",
+                    when=has_file_permission("list_files"),
+                ),
+                else_=RecordLink(
+                    "{+api}/experiments/{id}/draft/files",
+                    when=has_file_permission("list_files"),
+                ),
+            ),
+            "latest": RecordLink(
+                "{+api}/experiments/{id}/versions/latest", when=has_permission("read")
+            ),
+            "latest_html": RecordLink(
+                "{+ui}/experiments/{id}/latest", when=has_permission("read")
+            ),
+            "publish": RecordLink(
+                "{+api}/experiments/{id}/draft/actions/publish",
+                when=has_permission("publish"),
+            ),
+            "record": RecordLink(
+                "{+api}/experiments/{id}",
+                when=has_published_record() & has_permission("read"),
+            ),
             "requests": ConditionalLink(
-                cond=is_published_record,
+                cond=is_published_record(),
                 if_=RecordLink("{+api}/experiments/{id}/requests"),
                 else_=RecordLink("{+api}/experiments/{id}/draft/requests"),
             ),
             "self": ConditionalLink(
-                cond=is_published_record,
-                if_=RecordLink("{+api}/experiments/{id}"),
-                else_=RecordLink("{+api}/experiments/{id}/draft"),
+                cond=is_published_record(),
+                if_=RecordLink("{+api}/experiments/{id}", when=has_permission("read")),
+                else_=RecordLink(
+                    "{+api}/experiments/{id}/draft", when=has_permission("read_draft")
+                ),
             ),
             "self_html": ConditionalLink(
-                cond=is_published_record,
-                if_=RecordLink("{+ui}/experiments/{id}"),
-                else_=RecordLink("{+ui}/experiments/{id}/preview"),
+                cond=is_published_record(),
+                if_=RecordLink("{+ui}/experiments/{id}", when=has_permission("read")),
+                else_=RecordLink(
+                    "{+ui}/experiments/{id}/preview", when=has_permission("read_draft")
+                ),
             ),
-            "versions": RecordLink("{+api}/experiments/{id}/versions"),
+            "versions": RecordLink(
+                "{+api}/experiments/{id}/versions",
+                when=has_permission("search_versions"),
+            ),
+        }
+
+    @property
+    def links_search_item(self):
+        return {
+            "self": ConditionalLink(
+                cond=is_published_record(),
+                if_=RecordLink("{+api}/experiments/{id}", when=has_permission("read")),
+                else_=RecordLink(
+                    "{+api}/experiments/{id}/draft", when=has_permission("read_draft")
+                ),
+            ),
+            "self_html": ConditionalLink(
+                cond=is_published_record(),
+                if_=RecordLink("{+ui}/experiments/{id}", when=has_permission("read")),
+                else_=RecordLink(
+                    "{+ui}/experiments/{id}/preview", when=has_permission("read_draft")
+                ),
+            ),
         }
 
     @property
     def links_search(self):
         return {
             **pagination_links("{+api}/experiments/{?args*}"),
+            **pagination_links_html("{+ui}/experiments/{?args*}"),
         }
 
     @property
     def links_search_drafts(self):
         return {
             **pagination_links("{+api}/user/experiments/{?args*}"),
+            **pagination_links_html("{+ui}/user/experiments/{?args*}"),
         }
 
     @property

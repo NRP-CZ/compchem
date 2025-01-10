@@ -9,7 +9,7 @@ from oarepo_workflows import (
 from oarepo_runtime.services.permissions import UserWithRole, RecordOwners
 from oarepo_communities.services.permissions.generators import CommunityRole, CommunityMembers
 from invenio_communities.generators import CommunityMembers, IfRestricted
-from oarepo_workflows import DefaultWorkflowPermissions
+from oarepo_workflows.services.permissions import DefaultWorkflowPermissions
 from invenio_records_permissions.generators import AnyUser
 
 class DefaultWorkflowPermissions(DefaultWorkflowPermissions):

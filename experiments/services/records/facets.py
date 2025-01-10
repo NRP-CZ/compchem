@@ -3,52 +3,33 @@
 from invenio_records_resources.services.records.facets import TermsFacet
 from oarepo_runtime.i18n import lazy_gettext as _
 from oarepo_runtime.services.facets.date import DateTimeFacet
-from oarepo_vocabularies.services.facets import (
-    HierarchyVocabularyFacet,
-    VocabularyFacet,
+
+metadata_creators_affiliation = TermsFacet(
+    field="metadata.creators.affiliation",
+    label=_("metadata/creators/affiliation.label"),
 )
 
-metadata_creators_affiliations = HierarchyVocabularyFacet(
-    field="metadata.creators.affiliations",
-    label=_("metadata/creators/affiliations.label"),
-    vocabulary="institutions",
+metadata_creators_name = TermsFacet(
+    field="metadata.creators.name", label=_("metadata/creators/name.label")
 )
 
-metadata_creators_authorityIdentifiers_identifier = TermsFacet(
-    field="metadata.creators.authorityIdentifiers.identifier",
-    label=_("metadata/creators/authorityIdentifiers/identifier.label"),
+metadata_creators_orcid = TermsFacet(
+    field="metadata.creators.orcid", label=_("metadata/creators/orcid.label")
 )
 
-metadata_creators_authorityIdentifiers_scheme = TermsFacet(
-    field="metadata.creators.authorityIdentifiers.scheme",
-    label=_("metadata/creators/authorityIdentifiers/scheme.label"),
+metadata_fundingReference_awardNumber = TermsFacet(
+    field="metadata.fundingReference.awardNumber",
+    label=_("metadata/fundingReference/awardNumber.label"),
 )
 
-metadata_creators_familyName = TermsFacet(
-    field="metadata.creators.familyName", label=_("metadata/creators/familyName.label")
+metadata_fundingReference_funderIdentifier = TermsFacet(
+    field="metadata.fundingReference.funderIdentifier",
+    label=_("metadata/fundingReference/funderIdentifier.label"),
 )
 
-metadata_creators_fullName = TermsFacet(
-    field="metadata.creators.fullName", label=_("metadata/creators/fullName.label")
-)
-
-metadata_creators_givenName = TermsFacet(
-    field="metadata.creators.givenName", label=_("metadata/creators/givenName.label")
-)
-
-metadata_creators_nameType = TermsFacet(
-    field="metadata.creators.nameType", label=_("metadata/creators/nameType.label")
-)
-
-metadata_fundingReference_funder = VocabularyFacet(
-    field="metadata.fundingReference.funder",
-    label=_("metadata/fundingReference/funder.label"),
-    vocabulary="funders",
-)
-
-metadata_fundingReference_projectID = TermsFacet(
-    field="metadata.fundingReference.projectID",
-    label=_("metadata/fundingReference/projectID.label"),
+metadata_fundingReference_funderName = TermsFacet(
+    field="metadata.fundingReference.funderName",
+    label=_("metadata/fundingReference/funderName.label"),
 )
 
 metadata_objectIdentifiers_identifier = TermsFacet(
@@ -56,9 +37,9 @@ metadata_objectIdentifiers_identifier = TermsFacet(
     label=_("metadata/objectIdentifiers/identifier.label"),
 )
 
-metadata_objectIdentifiers_scheme = TermsFacet(
-    field="metadata.objectIdentifiers.scheme",
-    label=_("metadata/objectIdentifiers/scheme.label"),
+metadata_objectIdentifiers_identifierType = TermsFacet(
+    field="metadata.objectIdentifiers.identifierType",
+    label=_("metadata/objectIdentifiers/identifierType.label"),
 )
 
 metadata_publisher = TermsFacet(
@@ -394,6 +375,10 @@ metadata_version = TermsFacet(
 )
 
 state = TermsFacet(field="state", label=_("state.label"))
+
+state_timestamp = DateTimeFacet(
+    field="state_timestamp", label=_("state_timestamp.label")
+)
 
 
 record_status = TermsFacet(field="record_status", label=_("record_status"))

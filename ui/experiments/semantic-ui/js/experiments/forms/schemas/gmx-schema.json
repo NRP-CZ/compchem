@@ -35,9 +35,12 @@
                     "type": "string"
                 },
                 "related_files": {
-                    "title": "Related files [gro, pdb, trr, xtc]",
+                    "title": "Related files",
                     "description": "Related configuration/trajectory files",
-                    "type": "string"
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "required": [
@@ -45,8 +48,7 @@
                 "description",
                 "authors",
                 "simulation_year",
-                "doi",
-                "related_files"
+                "doi"
             ]
         },
         "main_information": {
@@ -134,7 +136,10 @@
                 "free_energy_calculation": {
                     "title": "Free Energy Calculation",
                     "type": "string",
-                    "enum": ["yes", "no"]
+                    "enum": [
+                        "yes",
+                        "no"
+                    ]
                 },
                 "umbrella_sampling": {
                     "title": "Umbrella Sampling",

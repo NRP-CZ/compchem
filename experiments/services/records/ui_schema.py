@@ -2,11 +2,6 @@ import marshmallow as ma
 from marshmallow import Schema
 from marshmallow import fields as ma_fields
 from marshmallow.validate import OneOf
-from nr_metadata.common.services.records.ui_schema_datatypes import (
-    NRCreatorUISchema,
-    NRFundingReferenceUISchema,
-)
-from nr_metadata.ui_schema.identifiers import NRObjectIdentifierUISchema
 from oarepo_requests.services.ui_schema import UIRequestsSerializationMixin
 from oarepo_runtime.services.schema.marshmallow import DictOnlySchema
 from oarepo_runtime.services.schema.ui import InvenioUISchema, LocalizedDateTime
@@ -20,21 +15,25 @@ class ExperimentsUISchema(UIRequestsSerializationMixin, InvenioUISchema):
 
     state = ma_fields.String(dump_only=True)
 
+    state_timestamp = LocalizedDateTime(dump_only=True)
+
 
 class ExperimentsMetadataUISchema(Schema):
     class Meta:
         unknown = ma.RAISE
 
-    creators = ma_fields.List(ma_fields.Nested(lambda: NRCreatorUISchema()))
+    creators = ma_fields.List(ma_fields.Nested(lambda: CreatorsItemUISchema()))
 
     description = ma_fields.String()
 
-    fundingReference = ma_fields.Nested(lambda: NRFundingReferenceUISchema())
+    fundingReference = ma_fields.List(
+        ma_fields.Nested(lambda: FundingReferenceItemUISchema())
+    )
 
     name = ma_fields.String()
 
     objectIdentifiers = ma_fields.List(
-        ma_fields.Nested(lambda: NRObjectIdentifierUISchema())
+        ma_fields.Nested(lambda: ObjectIdentifiersItemUISchema())
     )
 
     publisher = ma_fields.String()
@@ -198,6 +197,17 @@ class BarostatUISchema(DictOnlySchema):
     tau_p = ma_fields.Float()
 
 
+class CreatorsItemUISchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    affiliation = ma_fields.String()
+
+    name = ma_fields.String()
+
+    orcid = ma_fields.String()
+
+
 class ElectrostaticInteractionsUISchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
@@ -241,9 +251,20 @@ class FileIdentificationUISchema(DictOnlySchema):
 
     name = ma_fields.String()
 
-    related_files = ma_fields.String()
+    related_files = ma_fields.List(ma_fields.String())
 
     simulation_year = ma_fields.String()
+
+
+class FundingReferenceItemUISchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    awardNumber = ma_fields.String()
+
+    funderIdentifier = ma_fields.String()
+
+    funderName = ma_fields.String()
 
 
 class MoleculesItemUISchema(DictOnlySchema):
@@ -270,6 +291,15 @@ class NeighbourListUISchema(DictOnlySchema):
     pbc = ma_fields.String(validate=[OneOf(["no", "xy", "xyz"])])
 
     rlist = ma_fields.Float()
+
+
+class ObjectIdentifiersItemUISchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    identifier = ma_fields.String()
+
+    identifierType = ma_fields.String()
 
 
 class TcGrpsUISchema(DictOnlySchema):

@@ -6,21 +6,45 @@ description:
   type: fulltext
   label.en: Description
 
-creators[]:
-  use: nr-datatypes#NRCreator
-  ^label.en: Creators
-
 publisher:
   type: keyword
   label.en: Publisher
 
-fundingReference:
-  use: nr-datatypes#NRFundingReference
-  label.en: Funding reference
+creators[]:
+  type: object
+  properties:
+    name:
+      type: keyword
+      label.en: Creator Name
+    affiliation:
+      type: keyword
+      label.en: Affiliation
+    orcid:
+      type: keyword
+      label.en: ORCID
+
+fundingReference[]:
+  type: object
+  properties:
+    funderName:
+      type: keyword
+      label.en: Funder Name
+    funderIdentifier:
+      type: keyword
+      label.en: Funder Identifier
+    awardNumber:
+      type: keyword
+      label.en: Award Number
 
 objectIdentifiers[]:
-  use: 'nr-datatypes#NRObjectPID'
-  ^label.en: Object identifiers
+  type: object
+  properties:
+    identifier:
+      type: keyword
+      label.en: Identifier
+    identifierType:
+      type: keyword
+      label.en: Identifier Type
 
 simulations[]:
   # This section of the schema is created automatically after a TPR/zip file
@@ -51,7 +75,7 @@ simulations[]:
           label.en: DOI
           hint.en: DOI of the dataset
           type: keyword
-        related_files:
+        related_files[]:
           label.en: Related files [gro, pdb, trr, xtc]
           hint.en: Related configuration/trajectory files
           type: keyword

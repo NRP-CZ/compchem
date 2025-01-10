@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "semantic-ui-react";
 import { BaseFormLayout } from "@js/oarepo_ui";
-import { FormValidationSchema } from "./FormValidationSchema";
+import { FormValidationSchema } from "./_FormValidationSchema";
 
 export const FormAppLayout = () => {
   const formikProps = {

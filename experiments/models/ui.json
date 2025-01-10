@@ -44,192 +44,34 @@
                     "hint": "metadata/creators.hint",
                     "child": {
                         "detail": "creator",
-                        "input": "polymorphic",
+                        "input": "creator",
                         "help": "metadata/creators.help",
                         "label": "metadata/creators.label",
                         "hint": "metadata/creators.hint",
                         "children": {
-                            "affiliations": {
-                                "detail": "array",
-                                "input": "array",
-                                "help": "metadata/creators/affiliations.help",
-                                "label": "metadata/creators/affiliations.label",
-                                "hint": "metadata/creators/affiliations.hint",
-                                "child": {
-                                    "detail": "taxonomy_item",
-                                    "edit": "taxonomy_item",
-                                    "input": "taxonomy",
-                                    "help": "metadata/creators/affiliations.help",
-                                    "label": "metadata/creators/affiliations.label",
-                                    "hint": "metadata/creators/affiliations.hint",
-                                    "facet": "metadata_creators_affiliations",
-                                    "children": {
-                                        "id": {
-                                            "detail": "keyword",
-                                            "input": "keyword",
-                                            "help": "metadata/creators/affiliations/id.help",
-                                            "label": "metadata/creators/affiliations/id.label",
-                                            "hint": "metadata/creators/affiliations/id.hint"
-                                        },
-                                        "title": {
-                                            "detail": false,
-                                            "input": false,
-                                            "help": "metadata/creators/affiliations/title.help",
-                                            "label": "metadata/creators/affiliations/title.label",
-                                            "hint": "metadata/creators/affiliations/title.hint"
-                                        },
-                                        "ror": {
-                                            "detail": "keyword",
-                                            "input": "keyword",
-                                            "help": "metadata/creators/affiliations/ror.help",
-                                            "label": "metadata/creators/affiliations/ror.label",
-                                            "hint": "metadata/creators/affiliations/ror.hint"
-                                        },
-                                        "hierarchy": {
-                                            "detail": false,
-                                            "input": false,
-                                            "help": "metadata/creators/affiliations/hierarchy.help",
-                                            "label": "metadata/creators/affiliations/hierarchy.label",
-                                            "hint": "metadata/creators/affiliations/hierarchy.hint",
-                                            "children": {
-                                                "ancestors": {
-                                                    "detail": "array",
-                                                    "input": "array",
-                                                    "help": "metadata/creators/affiliations/hierarchy/ancestors.help",
-                                                    "label": "metadata/creators/affiliations/hierarchy/ancestors.label",
-                                                    "hint": "metadata/creators/affiliations/hierarchy/ancestors.hint",
-                                                    "child": {
-                                                        "detail": "keyword",
-                                                        "input": "keyword",
-                                                        "help": "metadata/creators/affiliations/hierarchy/ancestors.help",
-                                                        "label": "metadata/creators/affiliations/hierarchy/ancestors.label",
-                                                        "hint": "metadata/creators/affiliations/hierarchy/ancestors.hint"
-                                                    }
-                                                },
-                                                "ancestors_or_self": {
-                                                    "detail": "array",
-                                                    "input": "array",
-                                                    "help": "metadata/creators/affiliations/hierarchy/ancestors_or_self.help",
-                                                    "label": "metadata/creators/affiliations/hierarchy/ancestors_or_self.label",
-                                                    "hint": "metadata/creators/affiliations/hierarchy/ancestors_or_self.hint",
-                                                    "child": {
-                                                        "detail": "keyword",
-                                                        "input": "keyword",
-                                                        "help": "metadata/creators/affiliations/hierarchy/ancestors_or_self.help",
-                                                        "label": "metadata/creators/affiliations/hierarchy/ancestors_or_self.label",
-                                                        "hint": "metadata/creators/affiliations/hierarchy/ancestors_or_self.hint"
-                                                    }
-                                                },
-                                                "level": {
-                                                    "detail": "integer",
-                                                    "input": "integer",
-                                                    "help": "metadata/creators/affiliations/hierarchy/level.help",
-                                                    "label": "metadata/creators/affiliations/hierarchy/level.label",
-                                                    "hint": "metadata/creators/affiliations/hierarchy/level.hint"
-                                                },
-                                                "parent": {
-                                                    "detail": "keyword",
-                                                    "input": "keyword",
-                                                    "help": "metadata/creators/affiliations/hierarchy/parent.help",
-                                                    "label": "metadata/creators/affiliations/hierarchy/parent.label",
-                                                    "hint": "metadata/creators/affiliations/hierarchy/parent.hint"
-                                                },
-                                                "title": {
-                                                    "detail": "array",
-                                                    "input": "array",
-                                                    "help": "metadata/creators/affiliations/hierarchy/title.help",
-                                                    "label": "metadata/creators/affiliations/hierarchy/title.label",
-                                                    "hint": "metadata/creators/affiliations/hierarchy/title.hint",
-                                                    "child": {
-                                                        "detail": false,
-                                                        "input": false,
-                                                        "help": "metadata/creators/affiliations/hierarchy/title.help",
-                                                        "label": "metadata/creators/affiliations/hierarchy/title.label",
-                                                        "hint": "metadata/creators/affiliations/hierarchy/title.hint"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "@v": {
-                                            "detail": "keyword",
-                                            "input": "keyword",
-                                            "help": "metadata/creators/affiliations/@v.help",
-                                            "label": "metadata/creators/affiliations/@v.label",
-                                            "hint": "metadata/creators/affiliations/@v.hint"
-                                        }
-                                    }
-                                }
-                            },
-                            "authorityIdentifiers": {
-                                "detail": "array",
-                                "input": "array",
-                                "help": "metadata/creators/authorityIdentifiers.help",
-                                "label": "metadata/creators/authorityIdentifiers.label",
-                                "hint": "metadata/creators/authorityIdentifiers.hint",
-                                "child": {
-                                    "detail": "nr_organization_identifier",
-                                    "input": "authorityidentifier",
-                                    "help": "metadata/creators/authorityIdentifiers.help",
-                                    "label": "metadata/creators/authorityIdentifiers.label",
-                                    "hint": "metadata/creators/authorityIdentifiers.hint",
-                                    "children": {
-                                        "identifier": {
-                                            "detail": "keyword",
-                                            "input": "keyword",
-                                            "required": true,
-                                            "help": "metadata/creators/authorityIdentifiers/identifier.help",
-                                            "label": "metadata/creators/authorityIdentifiers/identifier.label",
-                                            "hint": "metadata/creators/authorityIdentifiers/identifier.hint",
-                                            "facet": "metadata_creators_authorityIdentifiers_identifier"
-                                        },
-                                        "scheme": {
-                                            "detail": "keyword",
-                                            "input": "keyword",
-                                            "required": true,
-                                            "help": "metadata/creators/authorityIdentifiers/scheme.help",
-                                            "label": "metadata/creators/authorityIdentifiers/scheme.label",
-                                            "hint": "metadata/creators/authorityIdentifiers/scheme.hint",
-                                            "enum": "metadata/creators/authorityIdentifiers/scheme.enum",
-                                            "facet": "metadata_creators_authorityIdentifiers_scheme"
-                                        }
-                                    }
-                                }
-                            },
-                            "familyName": {
+                            "affiliation": {
                                 "detail": "keyword",
                                 "input": "keyword",
-                                "required": true,
-                                "help": "metadata/creators/familyName.help",
-                                "label": "metadata/creators/familyName.label",
-                                "hint": "metadata/creators/familyName.hint",
-                                "facet": "metadata_creators_familyName"
+                                "help": "metadata/creators/affiliation.help",
+                                "label": "metadata/creators/affiliation.label",
+                                "hint": "metadata/creators/affiliation.hint",
+                                "facet": "metadata_creators_affiliation"
                             },
-                            "fullName": {
+                            "name": {
                                 "detail": "keyword",
                                 "input": "keyword",
-                                "required": true,
-                                "help": "metadata/creators/fullName.help",
-                                "label": "metadata/creators/fullName.label",
-                                "hint": "metadata/creators/fullName.hint",
-                                "facet": "metadata_creators_fullName"
+                                "help": "metadata/creators/name.help",
+                                "label": "metadata/creators/name.label",
+                                "hint": "metadata/creators/name.hint",
+                                "facet": "metadata_creators_name"
                             },
-                            "givenName": {
+                            "orcid": {
                                 "detail": "keyword",
                                 "input": "keyword",
-                                "required": true,
-                                "help": "metadata/creators/givenName.help",
-                                "label": "metadata/creators/givenName.label",
-                                "hint": "metadata/creators/givenName.hint",
-                                "facet": "metadata_creators_givenName"
-                            },
-                            "nameType": {
-                                "detail": "keyword",
-                                "input": "keyword",
-                                "help": "metadata/creators/nameType.help",
-                                "label": "metadata/creators/nameType.label",
-                                "hint": "metadata/creators/nameType.hint",
-                                "enum": "metadata/creators/nameType.enum",
-                                "facet": "metadata_creators_nameType"
+                                "help": "metadata/creators/orcid.help",
+                                "label": "metadata/creators/orcid.label",
+                                "hint": "metadata/creators/orcid.hint",
+                                "facet": "metadata_creators_orcid"
                             }
                         }
                     }
@@ -242,66 +84,42 @@
                     "hint": "metadata/description.hint"
                 },
                 "fundingReference": {
-                    "detail": "funding_reference",
-                    "input": false,
+                    "detail": "array",
+                    "input": "array",
                     "help": "metadata/fundingReference.help",
                     "label": "metadata/fundingReference.label",
                     "hint": "metadata/fundingReference.hint",
-                    "children": {
-                        "funder": {
-                            "detail": "vocabulary_item",
-                            "edit": "vocabulary_item",
-                            "input": "vocabulary",
-                            "help": "metadata/fundingReference/funder.help",
-                            "label": "metadata/fundingReference/funder.label",
-                            "hint": "metadata/fundingReference/funder.hint",
-                            "facet": "metadata_fundingReference_funder",
-                            "children": {
-                                "id": {
-                                    "detail": "keyword",
-                                    "input": "keyword",
-                                    "help": "metadata/fundingReference/funder/id.help",
-                                    "label": "metadata/fundingReference/funder/id.label",
-                                    "hint": "metadata/fundingReference/funder/id.hint"
-                                },
-                                "title": {
-                                    "detail": false,
-                                    "input": false,
-                                    "help": "metadata/fundingReference/funder/title.help",
-                                    "label": "metadata/fundingReference/funder/title.label",
-                                    "hint": "metadata/fundingReference/funder/title.hint"
-                                },
-                                "@v": {
-                                    "detail": "keyword",
-                                    "input": "keyword",
-                                    "help": "metadata/fundingReference/funder/@v.help",
-                                    "label": "metadata/fundingReference/funder/@v.label",
-                                    "hint": "metadata/fundingReference/funder/@v.hint"
-                                }
+                    "child": {
+                        "detail": false,
+                        "input": false,
+                        "help": "metadata/fundingReference.help",
+                        "label": "metadata/fundingReference.label",
+                        "hint": "metadata/fundingReference.hint",
+                        "children": {
+                            "awardNumber": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/fundingReference/awardNumber.help",
+                                "label": "metadata/fundingReference/awardNumber.label",
+                                "hint": "metadata/fundingReference/awardNumber.hint",
+                                "facet": "metadata_fundingReference_awardNumber"
+                            },
+                            "funderIdentifier": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/fundingReference/funderIdentifier.help",
+                                "label": "metadata/fundingReference/funderIdentifier.label",
+                                "hint": "metadata/fundingReference/funderIdentifier.hint",
+                                "facet": "metadata_fundingReference_funderIdentifier"
+                            },
+                            "funderName": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/fundingReference/funderName.help",
+                                "label": "metadata/fundingReference/funderName.label",
+                                "hint": "metadata/fundingReference/funderName.hint",
+                                "facet": "metadata_fundingReference_funderName"
                             }
-                        },
-                        "fundingProgram": {
-                            "detail": "fulltext",
-                            "input": "fulltext",
-                            "help": "metadata/fundingReference/fundingProgram.help",
-                            "label": "metadata/fundingReference/fundingProgram.label",
-                            "hint": "metadata/fundingReference/fundingProgram.hint"
-                        },
-                        "projectID": {
-                            "detail": "keyword",
-                            "input": "keyword",
-                            "required": true,
-                            "help": "metadata/fundingReference/projectID.help",
-                            "label": "metadata/fundingReference/projectID.label",
-                            "hint": "metadata/fundingReference/projectID.hint",
-                            "facet": "metadata_fundingReference_projectID"
-                        },
-                        "projectName": {
-                            "detail": "fulltext",
-                            "input": "fulltext",
-                            "help": "metadata/fundingReference/projectName.help",
-                            "label": "metadata/fundingReference/projectName.label",
-                            "hint": "metadata/fundingReference/projectName.hint"
                         }
                     }
                 },
@@ -319,7 +137,7 @@
                     "label": "metadata/objectIdentifiers.label",
                     "hint": "metadata/objectIdentifiers.hint",
                     "child": {
-                        "detail": "nr_object_pid",
+                        "detail": "objectidentifier",
                         "input": "objectidentifier",
                         "help": "metadata/objectIdentifiers.help",
                         "label": "metadata/objectIdentifiers.label",
@@ -328,21 +146,18 @@
                             "identifier": {
                                 "detail": "keyword",
                                 "input": "keyword",
-                                "required": true,
                                 "help": "metadata/objectIdentifiers/identifier.help",
                                 "label": "metadata/objectIdentifiers/identifier.label",
                                 "hint": "metadata/objectIdentifiers/identifier.hint",
                                 "facet": "metadata_objectIdentifiers_identifier"
                             },
-                            "scheme": {
+                            "identifierType": {
                                 "detail": "keyword",
                                 "input": "keyword",
-                                "required": true,
-                                "help": "metadata/objectIdentifiers/scheme.help",
-                                "label": "metadata/objectIdentifiers/scheme.label",
-                                "hint": "metadata/objectIdentifiers/scheme.hint",
-                                "enum": "metadata/objectIdentifiers/scheme.enum",
-                                "facet": "metadata_objectIdentifiers_scheme"
+                                "help": "metadata/objectIdentifiers/identifierType.help",
+                                "label": "metadata/objectIdentifiers/identifierType.label",
+                                "hint": "metadata/objectIdentifiers/identifierType.hint",
+                                "facet": "metadata_objectIdentifiers_identifierType"
                             }
                         }
                     }
@@ -838,12 +653,19 @@
                                         "facet": "metadata_simulations_file_identification_name"
                                     },
                                     "related_files": {
-                                        "detail": "keyword",
-                                        "input": "keyword",
+                                        "detail": "array",
+                                        "input": "array",
                                         "help": "metadata/simulations/file_identification/related_files.help",
                                         "label": "metadata/simulations/file_identification/related_files.label",
                                         "hint": "metadata/simulations/file_identification/related_files.hint",
-                                        "facet": "metadata_simulations_file_identification_related_files"
+                                        "child": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "help": "metadata/simulations/file_identification/related_files.help",
+                                            "label": "metadata/simulations/file_identification/related_files.label",
+                                            "hint": "metadata/simulations/file_identification/related_files.hint",
+                                            "facet": "metadata_simulations_file_identification_related_files"
+                                        }
                                     },
                                     "simulation_year": {
                                         "detail": "keyword",
@@ -1088,6 +910,14 @@
             "label": "state.label",
             "hint": "state.hint",
             "facet": "state"
+        },
+        "state_timestamp": {
+            "detail": "datetime",
+            "input": "datetime",
+            "help": "state_timestamp.help",
+            "label": "state_timestamp.label",
+            "hint": "state_timestamp.hint",
+            "facet": "state_timestamp"
         },
         "updated": {
             "detail": "datetime",

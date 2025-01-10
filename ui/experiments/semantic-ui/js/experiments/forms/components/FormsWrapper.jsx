@@ -5,8 +5,6 @@ import { Typography, Stack } from '@mui/material';
 
 import MatrixRenderer from '../renderers/MatrixRenderer'
 import MatrixTester from '../renderers/MatrixTester'
-import schema from "../schemas/gmx-schema.json"
-import uischema from "../schemas/gmx-uischema.json"
 
 
 const renderers = [
@@ -14,7 +12,9 @@ const renderers = [
   { tester: MatrixTester, renderer: MatrixRenderer },
 ];
 
-const FormsWrapper = ({data, setData, errors, setErrors, ...other}) => {
+const FormsWrapper = ({schema, uischema, data, setData, ...other}) => {
+    const [errors, setErrors] = React.useState([]);
+
     return (
         <>
             <JsonForms

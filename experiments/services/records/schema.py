@@ -4,17 +4,9 @@ from marshmallow import fields as ma_fields
 from marshmallow.utils import get_value
 from marshmallow.validate import OneOf
 from marshmallow_utils.fields import SanitizedUnicode
-from nr_metadata.common.services.records.schema_datatypes import (
-    NRCreatorSchema,
-    NRFundingReferenceSchema,
-)
-from nr_metadata.schema.identifiers import NRObjectIdentifierSchema
 from oarepo_communities.schemas.parent import CommunitiesParentSchema
 from oarepo_runtime.services.schema.marshmallow import BaseRecordSchema, DictOnlySchema
-from oarepo_runtime.services.schema.validation import (
-    validate_datetime,
-    validate_identifier,
-)
+from oarepo_runtime.services.schema.validation import validate_datetime
 from oarepo_workflows.services.records.schema import WorkflowParentSchema
 
 
@@ -33,6 +25,8 @@ class ExperimentsSchema(BaseRecordSchema):
     metadata = ma_fields.Nested(lambda: ExperimentsMetadataSchema())
 
     state = ma_fields.String(dump_only=True)
+
+    state_timestamp = ma_fields.String(dump_only=True, validate=[validate_datetime])
     parent = ma.fields.Nested(GeneratedParentSchema)
     files = ma.fields.Nested(
         lambda: FilesOptionsSchema(), load_default={"enabled": True}
@@ -58,19 +52,18 @@ class ExperimentsMetadataSchema(Schema):
     class Meta:
         unknown = ma.RAISE
 
-    creators = ma_fields.List(ma_fields.Nested(lambda: NRCreatorSchema()))
+    creators = ma_fields.List(ma_fields.Nested(lambda: CreatorsItemSchema()))
 
     description = ma_fields.String()
 
-    fundingReference = ma_fields.Nested(lambda: NRFundingReferenceSchema())
+    fundingReference = ma_fields.List(
+        ma_fields.Nested(lambda: FundingReferenceItemSchema())
+    )
 
     name = ma_fields.String()
 
     objectIdentifiers = ma_fields.List(
-        ma_fields.Nested(
-            lambda: NRObjectIdentifierSchema(),
-            validate=[lambda value: validate_identifier(value)],
-        )
+        ma_fields.Nested(lambda: ObjectIdentifiersItemSchema())
     )
 
     publisher = ma_fields.String()
@@ -234,6 +227,17 @@ class BarostatSchema(DictOnlySchema):
     tau_p = ma_fields.Float()
 
 
+class CreatorsItemSchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    affiliation = ma_fields.String()
+
+    name = ma_fields.String()
+
+    orcid = ma_fields.String()
+
+
 class ElectrostaticInteractionsSchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
@@ -277,9 +281,20 @@ class FileIdentificationSchema(DictOnlySchema):
 
     name = ma_fields.String()
 
-    related_files = ma_fields.String()
+    related_files = ma_fields.List(ma_fields.String())
 
     simulation_year = ma_fields.String()
+
+
+class FundingReferenceItemSchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    awardNumber = ma_fields.String()
+
+    funderIdentifier = ma_fields.String()
+
+    funderName = ma_fields.String()
 
 
 class MoleculesItemSchema(DictOnlySchema):
@@ -306,6 +321,15 @@ class NeighbourListSchema(DictOnlySchema):
     pbc = ma_fields.String(validate=[OneOf(["no", "xy", "xyz"])])
 
     rlist = ma_fields.Float()
+
+
+class ObjectIdentifiersItemSchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    identifier = ma_fields.String()
+
+    identifierType = ma_fields.String()
 
 
 class TcGrpsSchema(DictOnlySchema):

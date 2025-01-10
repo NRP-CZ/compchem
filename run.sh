@@ -47,9 +47,11 @@ else
 fi
 
 : '
+# reset database
+
 source .venv/bin/activate
 
-invenio db destroy --yes-i-know || true                                                                                                                                                                                                       
+invenio db destroy --yes-i-know || true
 invenio db init create
 invenio index destroy --force --yes-i-know || true
 invenio index init

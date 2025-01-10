@@ -26,8 +26,13 @@ theme = WebpackThemeBundle(
                 "@mui/lab": "^5.0.0-alpha.1",
                 "@mui/material": "^5.15",
                 "@mui/x-date-pickers": "",
+                "ajv": "",
             },
-            devDependencies={},
+            devDependencies={
+                "typescript": "^4.4.3",
+                "@types/react": "^18.0.0",
+                "@types/react-dom": "^18.0.0",
+            },
             aliases={},
         )
     },

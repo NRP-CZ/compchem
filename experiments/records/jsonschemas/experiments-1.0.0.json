@@ -19,79 +19,13 @@
                     "items": {
                         "type": "object",
                         "properties": {
-                            "affiliations": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "id": {
-                                            "type": "string"
-                                        },
-                                        "title": {
-                                            "type": "object"
-                                        },
-                                        "ror": {
-                                            "type": "string"
-                                        },
-                                        "hierarchy": {
-                                            "type": "object",
-                                            "properties": {
-                                                "ancestors": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string"
-                                                    }
-                                                },
-                                                "ancestors_or_self": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string"
-                                                    }
-                                                },
-                                                "level": {
-                                                    "type": "integer"
-                                                },
-                                                "parent": {
-                                                    "type": "string"
-                                                },
-                                                "title": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "object"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "@v": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            },
-                            "authorityIdentifiers": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "identifier": {
-                                            "type": "string"
-                                        },
-                                        "scheme": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            },
-                            "familyName": {
+                            "affiliation": {
                                 "type": "string"
                             },
-                            "fullName": {
+                            "name": {
                                 "type": "string"
                             },
-                            "givenName": {
-                                "type": "string"
-                            },
-                            "nameType": {
+                            "orcid": {
                                 "type": "string"
                             }
                         }
@@ -101,30 +35,19 @@
                     "type": "string"
                 },
                 "fundingReference": {
-                    "type": "object",
-                    "properties": {
-                        "funder": {
-                            "type": "object",
-                            "properties": {
-                                "id": {
-                                    "type": "string"
-                                },
-                                "title": {
-                                    "type": "object"
-                                },
-                                "@v": {
-                                    "type": "string"
-                                }
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "awardNumber": {
+                                "type": "string"
+                            },
+                            "funderIdentifier": {
+                                "type": "string"
+                            },
+                            "funderName": {
+                                "type": "string"
                             }
-                        },
-                        "fundingProgram": {
-                            "type": "string"
-                        },
-                        "projectID": {
-                            "type": "string"
-                        },
-                        "projectName": {
-                            "type": "string"
                         }
                     }
                 },
@@ -139,7 +62,7 @@
                             "identifier": {
                                 "type": "string"
                             },
-                            "scheme": {
+                            "identifierType": {
                                 "type": "string"
                             }
                         }
@@ -340,7 +263,10 @@
                                         "type": "string"
                                     },
                                     "related_files": {
-                                        "type": "string"
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
                                     },
                                     "simulation_year": {
                                         "type": "string"
@@ -444,6 +370,10 @@
         },
         "state": {
             "type": "string"
+        },
+        "state_timestamp": {
+            "type": "string",
+            "format": "date-time"
         },
         "updated": {
             "type": "string",

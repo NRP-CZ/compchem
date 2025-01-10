@@ -1,0 +1,76 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "name": {
+            "type": "string",
+            "title": "Name"
+        },
+        "description": {
+            "type": "string",
+            "title": "Description"
+        },
+        "publisher": {
+            "type": "string",
+            "title": "Publisher"
+        },
+        "creators": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Creator Name"
+                    },
+                    "affiliation": {
+                        "type": "string",
+                        "title": "Affiliation"
+                    },
+                    "orcid": {
+                        "type": "string",
+                        "title": "ORCID",
+                        "pattern": "\\d{4}-\\d{4}-\\d{4}-\\d{4}"
+                    }
+                }
+            }
+        },
+        "fundingReference": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "funderName": {
+                        "type": "string",
+                        "title": "Funder Name"
+                    },
+                    "funderIdentifier": {
+                        "type": "string",
+                        "title": "Funder Identifier"
+                    },
+                    "awardNumber": {
+                        "type": "string",
+                        "title": "Award Number"
+                    }
+                }
+            }
+        },
+        "objectIdentifiers": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "identifier": {
+                        "type": "string",
+                        "title": "Identifier"
+                    },
+                    "identifierType": {
+                        "type": "string",
+                        "title": "Identifier Type",
+                        "enum": ["DOI", "ARK", "PURL", "URL"]
+                    }
+                }
+            }
+        }
+    }
+}

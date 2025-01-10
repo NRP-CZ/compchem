@@ -19,88 +19,15 @@
                     "creators": {
                         "type": "object",
                         "properties": {
-                            "affiliations": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "fields": {
-                                            "text": {
-                                                "type": "search_as_you_type"
-                                            }
-                                        },
-                                        "type": "keyword",
-                                        "ignore_above": 1024
-                                    },
-                                    "title": {
-                                        "dynamic": true,
-                                        "properties": {
-                                            "en": {
-                                                "type": "search_as_you_type",
-                                                "copy_to": "title_sort"
-                                            }
-                                        },
-                                        "type": "object"
-                                    },
-                                    "ror": {
-                                        "type": "keyword",
-                                        "ignore_above": 1024
-                                    },
-                                    "hierarchy": {
-                                        "type": "object",
-                                        "properties": {
-                                            "ancestors": {
-                                                "type": "keyword",
-                                                "ignore_above": 1024
-                                            },
-                                            "ancestors_or_self": {
-                                                "type": "keyword",
-                                                "ignore_above": 1024
-                                            },
-                                            "level": {
-                                                "type": "integer"
-                                            },
-                                            "parent": {
-                                                "type": "keyword",
-                                                "ignore_above": 1024
-                                            },
-                                            "title": {
-                                                "dynamic": true,
-                                                "type": "object"
-                                            }
-                                        }
-                                    },
-                                    "@v": {
-                                        "type": "keyword",
-                                        "ignore_above": 1024
-                                    }
-                                }
-                            },
-                            "authorityIdentifiers": {
-                                "type": "object",
-                                "properties": {
-                                    "identifier": {
-                                        "type": "keyword",
-                                        "ignore_above": 1024
-                                    },
-                                    "scheme": {
-                                        "type": "keyword",
-                                        "ignore_above": 1024
-                                    }
-                                }
-                            },
-                            "familyName": {
+                            "affiliation": {
                                 "type": "keyword",
                                 "ignore_above": 1024
                             },
-                            "fullName": {
+                            "name": {
                                 "type": "keyword",
                                 "ignore_above": 1024
                             },
-                            "givenName": {
-                                "type": "keyword",
-                                "ignore_above": 1024
-                            },
-                            "nameType": {
+                            "orcid": {
                                 "type": "keyword",
                                 "ignore_above": 1024
                             }
@@ -112,43 +39,17 @@
                     "fundingReference": {
                         "type": "object",
                         "properties": {
-                            "funder": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "fields": {
-                                            "text": {
-                                                "type": "search_as_you_type"
-                                            }
-                                        },
-                                        "type": "keyword",
-                                        "ignore_above": 1024
-                                    },
-                                    "title": {
-                                        "dynamic": true,
-                                        "properties": {
-                                            "en": {
-                                                "type": "search_as_you_type",
-                                                "copy_to": "title_sort"
-                                            }
-                                        },
-                                        "type": "object"
-                                    },
-                                    "@v": {
-                                        "type": "keyword",
-                                        "ignore_above": 1024
-                                    }
-                                }
-                            },
-                            "fundingProgram": {
-                                "type": "text"
-                            },
-                            "projectID": {
+                            "awardNumber": {
                                 "type": "keyword",
                                 "ignore_above": 1024
                             },
-                            "projectName": {
-                                "type": "text"
+                            "funderIdentifier": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            },
+                            "funderName": {
+                                "type": "keyword",
+                                "ignore_above": 1024
                             }
                         }
                     },
@@ -168,7 +69,7 @@
                                 "type": "keyword",
                                 "ignore_above": 1024
                             },
-                            "scheme": {
+                            "identifierType": {
                                 "type": "keyword",
                                 "ignore_above": 1024
                             }
@@ -480,6 +381,10 @@
             "state": {
                 "type": "keyword",
                 "ignore_above": 1024
+            },
+            "state_timestamp": {
+                "type": "date",
+                "format": "strict_date_time||strict_date_time_no_millis||basic_date_time||basic_date_time_no_millis||basic_date||strict_date||strict_date_hour_minute_second||strict_date_hour_minute_second_fraction"
             },
             "updated": {
                 "type": "date",

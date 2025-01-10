@@ -8,12 +8,13 @@ from invenio_records_resources.records.systemfields.pid import PIDField, PIDFiel
 from oarepo_communities.records.systemfields.communities import (
     OARepoCommunitiesFieldContext,
 )
-from oarepo_runtime.records.relations import PIDRelation, RelationsField
 from oarepo_runtime.records.systemfields.has_draftcheck import HasDraftCheckField
 from oarepo_runtime.records.systemfields.owner import OwnersField
 from oarepo_runtime.records.systemfields.record_status import RecordStatusSystemField
-from oarepo_vocabularies.records.api import Vocabulary
-from oarepo_workflows.records.systemfields.state import RecordStateField
+from oarepo_workflows.records.systemfields.state import (
+    RecordStateField,
+    RecordStateTimestampField,
+)
 from oarepo_workflows.records.systemfields.workflow import WorkflowField
 
 from experiments.files.api import ExperimentsFile, ExperimentsFileDraft
@@ -61,18 +62,7 @@ class ExperimentsRecord(InvenioRecord):
 
     state = RecordStateField(initial="published")
 
-    relations = RelationsField(
-        affiliations=PIDRelation(
-            "metadata.creators.affiliations",
-            keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
-            pid_field=Vocabulary.pid.with_type_ctx("institutions"),
-        ),
-        funder=PIDRelation(
-            "metadata.fundingReference.funder",
-            keys=["id", "title"],
-            pid_field=Vocabulary.pid.with_type_ctx("funders"),
-        ),
-    )
+    state_timestamp = RecordStateTimestampField()
 
     versions_model_cls = ExperimentsParentState
 
@@ -111,18 +101,7 @@ class ExperimentsDraft(InvenioDraft):
 
     state = RecordStateField()
 
-    relations = RelationsField(
-        affiliations=PIDRelation(
-            "metadata.creators.affiliations",
-            keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
-            pid_field=Vocabulary.pid.with_type_ctx("institutions"),
-        ),
-        funder=PIDRelation(
-            "metadata.fundingReference.funder",
-            keys=["id", "title"],
-            pid_field=Vocabulary.pid.with_type_ctx("funders"),
-        ),
-    )
+    state_timestamp = RecordStateTimestampField()
 
     versions_model_cls = ExperimentsParentState
 

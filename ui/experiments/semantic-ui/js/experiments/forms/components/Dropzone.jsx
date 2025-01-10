@@ -1,93 +1,116 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { parse } from 'yaml'
-import { Check, FileUpload, RemoveCircle } from "@mui/icons-material";
-import { Box, Grid, IconButton, Paper, Stack, Typography } from "@mui/material";
+import { ChangeCircle, AddCircle, RemoveCircle, Delete, Cloud, Restore, FileUpload } from "@mui/icons-material";
+import { Grid, IconButton, Paper, Stack, Typography } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 
-const Dropzone = ({fileMetadata, setFileMetadata}) => {
+import { useFormContext } from "../context";
+import { downloadFileFromRecord } from "../../util/apiClient";
+
+const isFileType = (fileName, ...suffixes) => {
+    const extension = fileName.split('.').pop();
+    return suffixes.includes(extension);
+}
+
+const Dropzone = ({ setSimulations }) => {
+
+    const { record, files, remoteFiles, localFiles, setLocalFiles, deletedFiles, setDeletedFiles, simulationFiles, showDialog } = useFormContext();
+
     const {
         getRootProps,
         getInputProps
     } = useDropzone({
-        accept: ['.tpr', '.json', '.yaml'],
-        onDrop: (acceptedFiles) => setAcceptedFiles(acceptedFiles)
-    });
+        accept: ['.tpr', '.json', '.yaml', '.mdb', '.gro', '.pdb', '.xtc', '.ipynb'],
+        onDrop: (acceptedFiles) => { acceptedFiles.forEach((file) => { addFile(file) }) },
+    })
 
-    const [acceptedFiles, setAcceptedFiles] = useState([]);     // list of file objects
-    const [uploaded, setUploaded] = useState(false);
-    const [analyzing, setAnalyzing] = useState({});             // {filename: bool}
-    let pdbData = null;
+    const analyzedFiles = Object.fromEntries(files.map(fileName => [fileName, false]));
+    const [analyzing, setAnalyzing] = useState(analyzedFiles);  // {filename: bool}
 
-    useEffect(() => {
-        if (acceptedFiles.length > 0) {
-            setUploaded(true);
-        } else {
-            setUploaded(false);
+
+    const addFile = (fileBlob) => {
+        const fileName = fileBlob.name;
+
+        // if file is already deleted, restore it
+        if (deletedFiles.includes(fileName));
+            restoreFile(fileName);
+
+        setLocalFiles((prev) => ({ ...prev, [fileName]: fileBlob }));
+        setAnalyzing((prev) => ({ ...prev, [fileName]: false }));
+    }
+
+    const clearFile = (fileName) => {
+        if (simulationFiles.includes(fileName)) {
+            let confirmed = false;
+
+            showDialog(
+                'File related to simulation',
+                'This file is related to a simulation. Are you sure you want to delete it?',
+                () => { confirmed = true; }
+            )
+
+            if (!confirmed)
+                return;
         }
-    }, [acceptedFiles]);
 
-    const clearFile = (index) => {
-        const newAcceptedFiles = [...acceptedFiles];
-        const fileName = newAcceptedFiles[index].name;
-        newAcceptedFiles.splice(index, 1);
-
-        const newAnalyzing = {...analyzing};
-        delete newAnalyzing[fileName];
-
-        if (newAcceptedFiles.length === 0) {
-            setUploaded(false);
+        // if file is only remote, add it to deletedFiles
+        if (remoteFiles.includes(fileName) && !localFiles.hasOwnProperty(fileName)) {
+            setDeletedFiles((prev) => [...prev, fileName]);
+            return;
         }
 
-        setAcceptedFiles(newAcceptedFiles);
-        setAnalyzing(newAnalyzing);
+        const newLocalFiles = {...localFiles};
+        delete newLocalFiles[fileName];
+        setLocalFiles(newLocalFiles);
     };
 
-    const analyzeTPR = async(file) => {
-        const fileName = file.name;
-        setAnalyzing((prev) => ({ ...prev, [fileName]: true }));
-        let requestData = new FormData();
+    const restoreFile = (fileName) => {
+        const newDeletedFiles = [...deletedFiles];
+        newDeletedFiles.splice(newDeletedFiles.indexOf(fileName), 1);
+        setDeletedFiles(newDeletedFiles);
+    }
+
+    const analyzeTPR = async (file) => {
+        const requestData = new FormData();
         requestData.append('file', file);
 
-        const getMetadata = fetch('https://gmxmetadump.biodata.ceitec.cz/api/analyze', { body: requestData, method: 'POST' })
-            .then(response => response.text())
-            .then(text => text.replace('Infinity', '-1'))
-            .then(text => JSON.parse(text));
-        const getPdb = fetch('https://gmxmetadump.biodata.ceitec.cz/api/get_pdb', { body: requestData, method: 'POST' })
-            .then(response => response.blob())
-            .then(blob => blob.text());
+        const response = await fetch('https://gmxmetadump.biodata.ceitec.cz/api/analyze', {
+            method: 'POST',
+            body: requestData,
+        });
 
-        // TODO: upload file to server (how to handle JSON/YAML ?)
+        let text = await response.text();
+        text = text.replace('Infinity', '-1');
+        const metadata = JSON.parse(text);
 
-        let [metadata, pdbString] = await Promise.all([getMetadata, getPdb]);
-        pdbData = pdbString;
-        setAnalyzing((prev) => ({ ...prev, [fileName]: false }));
+        if (!metadata.file_identification)
+            metadata.file_identification = {};
+
+        metadata.file_identification.name = file.name;
+
         return metadata;
     };
 
-    const extractMetadata = async (file) => {
-        const extension = file.name.split('.').pop();
-        let data;
+    const extractMetadata = async (fileName) => {
+        setAnalyzing((prev) => ({ ...prev, [fileName]: true }));
 
-        try {
-            switch (extension) {
-                case "tpr":
-                    data = await analyzeTPR(file);
-                    break;
-                case "json":
-                    data = JSON.parse(await file.text());
-                    break;
-                case "yaml":
-                case "yml":
-                    data = parse(await file.text());
-                    break;
-                default:
-                    throw new Error('Invalid file type.');
-            }
-        } catch (error) {
-            console.error(error);
-            return;
+        let data;
+        let file;
+
+        if (!localFiles.hasOwnProperty(fileName)) {
+            console.log("fetching file from remote");
+            file = await downloadFileFromRecord(record.id, fileName, true);
+        } else {
+            file = localFiles[fileName];
         }
+
+        if (isFileType(fileName, 'tpr'))
+            data = await analyzeTPR(file);
+        else if (isFileType(fileName, 'json'))
+            data = JSON.parse(await file.text());
+        else if (isFileType(fileName, 'yaml', 'yml'))
+            data = parse(await file.text());
 
         const defaultData = {
             file_identification: {},
@@ -98,53 +121,59 @@ const Dropzone = ({fileMetadata, setFileMetadata}) => {
         const metadata = {...defaultData, ...data};
         console.log(metadata);
 
-        setFileMetadata((prev) => ({...prev, [file.name]: metadata}));
+        // we don't want to keep the metadata files
+        if (isFileType(fileName, 'json', 'yaml', 'yml'))
+            clearFile(fileName);
+
+        setSimulations((prev) => ([...prev, metadata]));
+        setAnalyzing((prev) => ({ ...prev, [fileName]: false }));
     };
 
     return (
-        <Stack direction="column" spacing={5}>
-            <Typography variant="h2">Upload Files</Typography>
-            <Box>
-                <Stack direction="column" spacing={1}>
-                    <Paper elevation={0} sx={{ p: 5, textAlign: "center", border: "2.5px dashed", "&:hover": { borderColor: "#008691", cursor: "pointer" } }} variant="outlined" >
-                        <div {...getRootProps({ className: 'dropzone' })}>
-                            <input {...getInputProps()} />
-                            <FileUpload sx={{ fontSize: "7em", color: "#008691" }} />
-                            <Typography variant="h3">Upload files here</Typography>
-                            <Typography variant="subtitle1"><em>(Only [*.tpr *.json *.yaml] are accepted)</em></Typography>
-                        </div>
-                    </Paper>
+        <Stack direction="column" spacing={2}>
+            <Typography variant="h3">Experiment files</Typography>
+            <Paper elevation={0} sx={{ p: 5, textAlign: "center", border: "2.5px dashed", "&:hover": { borderColor: "primary", cursor: "pointer" } }} variant="outlined" >
+                <div {...getRootProps({ className: 'dropzone' })}>
+                    <input {...getInputProps()} />
+                    <FileUpload color="primary" sx={{ fontSize: "7em" }} />
+                    <Typography variant="h3">Upload files here</Typography>
+                    <Typography variant="subtitle1"><em>(Only [*.tpr *.json *.yaml *.mdb, *.gro, *.pdb, *.xtc, *.ipynb] are accepted)</em></Typography>
+                </div>
+            </Paper>
 
-                    {uploaded && (
-                        <Stack direction="column" spacing={1} justifyItems={"center"} sx={{ p: 2 }}>
-                            <Typography variant="h4">Files chosen</Typography>
-                            {acceptedFiles.map((file, index) => (
-                                <Grid
-                                    container
-                                    key={file.name}
-                                    alignItems={"center"}
-                                    sx={{
-                                        border: '1px solid',
-                                        borderColor: 'grey.300',
-                                        borderRadius: 1
-                                    }}
-                                >
-                                    <Grid item xs={2} sx={{ textAlign: "center", p: "0.8em", borderRadius: "50%" }}>
-                                        <Check sx={{ fontSize: "3em", color: "#007d00a1" }} />
-                                    </Grid>
-                                    <Grid item xs={7}>
-                                        <Typography variant="h5">{file.name}</Typography>
-                                    </Grid>
-                                    <Grid item xs={3} justifyItems={"center"} justifyContent={"space-evenly"} direction={"row"}>
-                                        <LoadingButton loading={analyzing[file.name]} variant="contained" size="large" color="primary" disabled={!uploaded} onClick={async () => {await extractMetadata(file); clearFile(index)}}>Analyze</LoadingButton>
-                                        <IconButton color="error" size="large" onClick={() => clearFile(index)}><RemoveCircle /></IconButton>
-                                    </Grid>
-                                </Grid>
-                            ))}
-                        </Stack>
-                    )}
+            {files.length > 0 && (
+                <Stack direction="column" spacing={1} justifyItems={"center"} sx={{ p: 2 }}>
+                    <Typography variant="h4">Uploaded files</Typography>
+                    {files.map((fileName) => (
+                        <Grid container key={fileName} alignItems={"center"} sx={{border: '1px solid', borderColor: 'grey.300', borderRadius: 1, p: 1}}>
+                            <Grid item xs={1}>
+                                {localFiles.hasOwnProperty(fileName) && remoteFiles.includes(fileName) && (
+                                    <ChangeCircle color="warning" sx={{ fontSize: "3em" }} />
+                                ) || deletedFiles.includes(fileName) && (
+                                    <RemoveCircle color="error" sx={{ fontSize: "3em" }} />
+                                ) || localFiles.hasOwnProperty(fileName) && (
+                                    <AddCircle color="success" sx={{ fontSize: "3em" }} />
+                                ) || (
+                                    <Cloud color="info" sx={{ fontSize: "3em" }} />
+                                )}
+                            </Grid>
+                            <Grid item xs={7}>
+                                <Typography variant="h5">{fileName}</Typography>
+                            </Grid>
+                            <Grid item xs={4} container justifyContent="flex-end">
+                                {isFileType(fileName, 'tpr', 'json', 'yaml', 'yml') && !simulationFiles.includes(fileName) && !deletedFiles.includes(fileName) && (
+                                    <LoadingButton loading={analyzing[fileName]} variant="contained" color="primary" onClick={async () => await extractMetadata(fileName)}>Create simulation</LoadingButton>
+                                )}
+                                {deletedFiles.includes(fileName) && (
+                                    <IconButton onClick={() => restoreFile(fileName)}><Restore color="info" /></IconButton>
+                                ) || (
+                                    <IconButton disabled={analyzing[fileName]} onClick={() => clearFile(fileName)}><Delete color="error" /></IconButton>
+                                )}
+                            </Grid>
+                        </Grid>
+                    ))}
                 </Stack>
-            </Box>
+            )}
         </Stack>
     );
 }

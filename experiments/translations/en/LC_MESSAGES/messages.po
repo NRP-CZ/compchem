@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2024-10-28T20:42:49.512910\n"
-"PO-Revision-Date: 2024-10-28T20:42:49.512921\n"
+"POT-Creation-Date: 2025-01-01T18:13:27.896857\n"
+"PO-Revision-Date: 2025-01-01T18:13:27.896878\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -44,220 +44,40 @@ msgstr ""
 msgid "metadata.hint"
 msgstr ""
 
-msgid "metadata/creators.label"
-msgstr "Creators"
-
 msgid "metadata/creators.help"
+msgstr ""
+
+msgid "metadata/creators.label"
 msgstr ""
 
 msgid "metadata/creators.hint"
 msgstr ""
-"It is possible to designate a person or an institution as the "
-"creator/contributor."
 
-msgid "metadata/creators/affiliations.help"
-msgstr ""
-
-msgid "metadata/creators/affiliations.label"
+msgid "metadata/creators/affiliation.label"
 msgstr "Affiliation"
 
-msgid "metadata/creators/affiliations.hint"
-msgstr ""
-"Start typing the name of the institution, then select the institution from "
-"the menu."
-
-msgid "metadata/creators/affiliations/id.help"
+msgid "metadata/creators/affiliation.help"
 msgstr ""
 
-msgid "metadata/creators/affiliations/id.label"
+msgid "metadata/creators/affiliation.hint"
 msgstr ""
 
-msgid "metadata/creators/affiliations/id.hint"
+msgid "metadata/creators/name.label"
+msgstr "Creator Name"
+
+msgid "metadata/creators/name.help"
 msgstr ""
 
-msgid "metadata/creators/affiliations/title.help"
+msgid "metadata/creators/name.hint"
 msgstr ""
 
-msgid "metadata/creators/affiliations/title.label"
+msgid "metadata/creators/orcid.label"
+msgstr "ORCID"
+
+msgid "metadata/creators/orcid.help"
 msgstr ""
 
-msgid "metadata/creators/affiliations/title.hint"
-msgstr ""
-
-msgid "metadata/creators/affiliations/ror.help"
-msgstr ""
-
-msgid "metadata/creators/affiliations/ror.label"
-msgstr ""
-
-msgid "metadata/creators/affiliations/ror.hint"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy.help"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy.label"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy.hint"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy/ancestors.help"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy/ancestors.label"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy/ancestors.hint"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy/ancestors_or_self.help"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy/ancestors_or_self.label"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy/ancestors_or_self.hint"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy/level.help"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy/level.label"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy/level.hint"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy/parent.help"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy/parent.label"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy/parent.hint"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy/title.help"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy/title.label"
-msgstr ""
-
-msgid "metadata/creators/affiliations/hierarchy/title.hint"
-msgstr ""
-
-msgid "metadata/creators/affiliations/@v.help"
-msgstr ""
-
-msgid "metadata/creators/affiliations/@v.label"
-msgstr ""
-
-msgid "metadata/creators/affiliations/@v.hint"
-msgstr ""
-
-msgid "metadata/creators/authorityIdentifiers.label"
-msgstr "Person Identifier"
-
-msgid "metadata/creators/authorityIdentifiers.help"
-msgstr ""
-"Choose the identifier type from the menu. Fill in the identifier value (e.g. https://orcid.org/0009-0004-8646-7185 or jk01051816). \n"
-"We recommend providing at least one of the identifier types, ideally ORCID iD.\n"
-"If you need to expand the range of identifier types, contact us at support@narodni-repozitar.cz.\n"
-
-msgid "metadata/creators/authorityIdentifiers.hint"
-msgstr ""
-
-msgid "metadata/creators/authorityIdentifiers/identifier.label"
-msgstr "Identifier"
-
-msgid "metadata/creators/authorityIdentifiers/identifier.hint"
-msgstr "e.g. https://orcid.org/0009-0004-8646-7185 for ORCID."
-
-msgid "metadata/creators/authorityIdentifiers/identifier.help"
-msgstr ""
-
-msgid "metadata/creators/authorityIdentifiers/scheme.label"
-msgstr "Identifier type"
-
-msgid "metadata/creators/authorityIdentifiers/scheme.hint"
-msgstr "Person identifier"
-
-msgid "metadata/creators/authorityIdentifiers/scheme.help"
-msgstr ""
-
-msgid "metadata/creators/authorityIdentifiers/scheme.enum.orcid"
-msgstr ""
-
-msgid "metadata/creators/authorityIdentifiers/scheme.enum.scopusID"
-msgstr ""
-
-msgid "metadata/creators/authorityIdentifiers/scheme.enum.researcherID"
-msgstr ""
-
-msgid "metadata/creators/authorityIdentifiers/scheme.enum.czenasAutID"
-msgstr ""
-
-msgid "metadata/creators/authorityIdentifiers/scheme.enum.vedidk"
-msgstr ""
-
-msgid "metadata/creators/authorityIdentifiers/scheme.enum.institutionalID"
-msgstr ""
-
-msgid "metadata/creators/authorityIdentifiers/scheme.enum.ISNI"
-msgstr ""
-
-msgid "metadata/creators/familyName.label"
-msgstr "Family Name"
-
-msgid "metadata/creators/familyName.hint"
-msgstr "Fill in the author's family name."
-
-msgid "metadata/creators/familyName.help"
-msgstr ""
-
-msgid "metadata/creators/fullName.label"
-msgstr "Author's name"
-
-msgid "metadata/creators/fullName.help"
-msgstr ""
-
-msgid "metadata/creators/fullName.hint"
-msgstr ""
-"Start typing the name of the institution, then select the institution from "
-"the menu."
-
-msgid "metadata/creators/givenName.label"
-msgstr "Given Name"
-
-msgid "metadata/creators/givenName.hint"
-msgstr "Fill in the author's given name."
-
-msgid "metadata/creators/givenName.help"
-msgstr ""
-
-msgid "metadata/creators/nameType.label"
-msgstr "Type"
-
-msgid "metadata/creators/nameType.help"
-msgstr ""
-
-msgid "metadata/creators/nameType.hint"
-msgstr ""
-
-msgid "metadata/creators/nameType.enum.Personal"
-msgstr ""
-
-msgid "metadata/creators/authorityIdentifiers/scheme.enum.ROR"
-msgstr ""
-
-msgid "metadata/creators/authorityIdentifiers/scheme.enum.ICO"
-msgstr ""
-
-msgid "metadata/creators/authorityIdentifiers/scheme.enum.DOI"
-msgstr ""
-
-msgid "metadata/creators/nameType.enum.Organizational"
+msgid "metadata/creators/orcid.hint"
 msgstr ""
 
 msgid "metadata/description.label"
@@ -269,78 +89,40 @@ msgstr ""
 msgid "metadata/description.hint"
 msgstr ""
 
-msgid "metadata/fundingReference.label"
-msgstr "Funding reference"
-
 msgid "metadata/fundingReference.help"
+msgstr ""
+
+msgid "metadata/fundingReference.label"
 msgstr ""
 
 msgid "metadata/fundingReference.hint"
 msgstr ""
 
-msgid "metadata/fundingReference/funder.label"
-msgstr "Funder"
+msgid "metadata/fundingReference/awardNumber.label"
+msgstr "Award Number"
 
-msgid "metadata/fundingReference/funder.hint"
-msgstr ""
-"Start typing the name of the funder, then select the funder from the menu."
-
-msgid "metadata/fundingReference/funder.help"
+msgid "metadata/fundingReference/awardNumber.help"
 msgstr ""
 
-msgid "metadata/fundingReference/funder/id.help"
+msgid "metadata/fundingReference/awardNumber.hint"
 msgstr ""
 
-msgid "metadata/fundingReference/funder/id.label"
+msgid "metadata/fundingReference/funderIdentifier.label"
+msgstr "Funder Identifier"
+
+msgid "metadata/fundingReference/funderIdentifier.help"
 msgstr ""
 
-msgid "metadata/fundingReference/funder/id.hint"
+msgid "metadata/fundingReference/funderIdentifier.hint"
 msgstr ""
 
-msgid "metadata/fundingReference/funder/title.help"
+msgid "metadata/fundingReference/funderName.label"
+msgstr "Funder Name"
+
+msgid "metadata/fundingReference/funderName.help"
 msgstr ""
 
-msgid "metadata/fundingReference/funder/title.label"
-msgstr ""
-
-msgid "metadata/fundingReference/funder/title.hint"
-msgstr ""
-
-msgid "metadata/fundingReference/funder/@v.help"
-msgstr ""
-
-msgid "metadata/fundingReference/funder/@v.label"
-msgstr ""
-
-msgid "metadata/fundingReference/funder/@v.hint"
-msgstr ""
-
-msgid "metadata/fundingReference/fundingProgram.label"
-msgstr "Funding program"
-
-msgid "metadata/fundingReference/fundingProgram.hint"
-msgstr ""
-"Fill in the name of the research program under which the award was funded."
-
-msgid "metadata/fundingReference/fundingProgram.help"
-msgstr ""
-
-msgid "metadata/fundingReference/projectID.label"
-msgstr "Award number"
-
-msgid "metadata/fundingReference/projectID.hint"
-msgstr "Fill in the award number."
-
-msgid "metadata/fundingReference/projectID.help"
-msgstr ""
-
-msgid "metadata/fundingReference/projectName.label"
-msgstr "Award Title"
-
-msgid "metadata/fundingReference/projectName.hint"
-msgstr "Fill in the award title."
-
-msgid "metadata/fundingReference/projectName.help"
+msgid "metadata/fundingReference/funderName.hint"
 msgstr ""
 
 msgid "metadata/name.label"
@@ -352,49 +134,31 @@ msgstr ""
 msgid "metadata/name.hint"
 msgstr ""
 
-msgid "metadata/objectIdentifiers.label"
-msgstr "Object identifiers"
-
 msgid "metadata/objectIdentifiers.help"
+msgstr ""
+
+msgid "metadata/objectIdentifiers.label"
 msgstr ""
 
 msgid "metadata/objectIdentifiers.hint"
 msgstr ""
 
 msgid "metadata/objectIdentifiers/identifier.label"
-msgstr "Object identifier"
-
-msgid "metadata/objectIdentifiers/identifier.hint"
-msgstr "e.g. 10.1086/679716 for DOI."
+msgstr "Identifier"
 
 msgid "metadata/objectIdentifiers/identifier.help"
 msgstr ""
 
-msgid "metadata/objectIdentifiers/scheme.label"
-msgstr "Identifier type"
-
-msgid "metadata/objectIdentifiers/scheme.hint"
-msgstr "e.g. DOI, HANDLE or ISBN."
-
-msgid "metadata/objectIdentifiers/scheme.help"
+msgid "metadata/objectIdentifiers/identifier.hint"
 msgstr ""
 
-msgid "metadata/objectIdentifiers/scheme.enum.DOI"
+msgid "metadata/objectIdentifiers/identifierType.label"
+msgstr "Identifier Type"
+
+msgid "metadata/objectIdentifiers/identifierType.help"
 msgstr ""
 
-msgid "metadata/objectIdentifiers/scheme.enum.Handle"
-msgstr ""
-
-msgid "metadata/objectIdentifiers/scheme.enum.ISBN"
-msgstr ""
-
-msgid "metadata/objectIdentifiers/scheme.enum.ISSN"
-msgstr ""
-
-msgid "metadata/objectIdentifiers/scheme.enum.RIV"
-msgstr ""
-
-msgid "metadata/objectIdentifiers/scheme.enum.IGSN"
+msgid "metadata/objectIdentifiers/identifierType.hint"
 msgstr ""
 
 msgid "metadata/publisher.label"
@@ -1147,14 +911,14 @@ msgstr "User specified name of file"
 msgid "metadata/simulations/file_identification/name.help"
 msgstr ""
 
+msgid "metadata/simulations/file_identification/related_files.help"
+msgstr ""
+
 msgid "metadata/simulations/file_identification/related_files.label"
 msgstr "Related files [gro, pdb, trr, xtc]"
 
 msgid "metadata/simulations/file_identification/related_files.hint"
 msgstr "Related configuration/trajectory files"
-
-msgid "metadata/simulations/file_identification/related_files.help"
-msgstr ""
 
 msgid "metadata/simulations/file_identification/simulation_year.label"
 msgstr "Simulation year"
@@ -1415,6 +1179,15 @@ msgid "state.label"
 msgstr ""
 
 msgid "state.hint"
+msgstr ""
+
+msgid "state_timestamp.help"
+msgstr ""
+
+msgid "state_timestamp.label"
+msgstr ""
+
+msgid "state_timestamp.hint"
 msgstr ""
 
 msgid "updated.help"
