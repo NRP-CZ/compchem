@@ -63,10 +63,11 @@ invenio users create -a -c test@test.com
 '
 
 : '
-# start from scratch
+# clean the environment
 
 rm -rf .nrp .pdm-build .venv
 find . -name "__pycache__" -type d -exec rm -rf {} +
+docker compose -f docker/docker-compose.yml down
 '
 
 
