@@ -2,13 +2,13 @@
     "simulations": [
         {
             "file_identification": {
-                "name": "SCP",
+                "name": "SPC.tpr",
                 "description": "Test file.",
                 "simulation_year": "1984",
                 "doi": "69",
-                "related_files": "SCP.pdb",
+                "related_files": [],
                 "authors": [
-                    "69690-6969-6969-6969"
+                    "6969-6969-6969-6969"
                 ]
             },
             "main_information": {
