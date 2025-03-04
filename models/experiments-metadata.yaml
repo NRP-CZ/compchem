@@ -6,21 +6,45 @@ description:
   type: fulltext
   label.en: Description
 
-creators[]:
-  use: nr-datatypes#NRCreator
-  ^label.en: Creators
-
 publisher:
   type: keyword
   label.en: Publisher
 
-fundingReference:
-  use: nr-datatypes#NRFundingReference
-  label.en: Funding reference
+creators[]:
+  type: object
+  properties:
+    name:
+      type: keyword
+      label.en: Creator Name
+    affiliation:
+      type: keyword
+      label.en: Affiliation
+    orcid:
+      type: keyword
+      label.en: ORCID
+
+fundingReference[]:
+  type: object
+  properties:
+    funderName:
+      type: keyword
+      label.en: Funder Name
+    funderIdentifier:
+      type: keyword
+      label.en: Funder Identifier
+    awardNumber:
+      type: keyword
+      label.en: Award Number
 
 objectIdentifiers[]:
-  use: 'nr-datatypes#NRObjectPID'
-  ^label.en: Object identifiers
+  type: object
+  properties:
+    identifier:
+      type: keyword
+      label.en: Identifier
+    identifierType:
+      type: keyword
+      label.en: Identifier Type
 
 simulations[]:
   # This section of the schema is created automatically after a TPR/zip file
@@ -40,8 +64,8 @@ simulations[]:
           hint.en: User specified description of file
           type: fulltext
         authors[]:
-          label.en: Authors
-          hint.en: ORCIDs
+          ^label.en: Authors
+          ^hint.en: ORCIDs
           type: keyword
         simulation_year:
           label.en: Simulation year
@@ -62,9 +86,9 @@ simulations[]:
           label.en: Type of the simulation
           type: keyword
           enum:
-            - free energy simulation
-            - molecular dynamics
-            - energy minimization
+            - "free energy simulation"
+            - "molecular dynamics"
+            - "energy minimization"
         force_field:
           label.en: Force Field
           type: keyword
@@ -78,13 +102,13 @@ simulations[]:
           label.en: Statistical Ensemble
           type: keyword
           enum: 
-            - NVE (microcanonical)
-            - NVT (canonical)
-            - NpT (isothermal-isobaric)
+            - "NVE (microcanonical)"
+            - "NVT (canonical)"
+            - "NpT (isothermal-isobaric)"
         reference_temperature[]:
           label.en: Reference Temperature [K]
           type: float
-        reference_pressure[]:
+        reference_pressure:
           use: ./experiments-definitions.yaml#/Matrix
           label.en: Reference Pressure [bar]
         box_size_and_shape:
@@ -98,8 +122,8 @@ simulations[]:
           label.en: Free Energy Calculation
           type: keyword
           enum: 
-            - yes
-            - no
+            - "no"
+            - "yes"
         umbrella_sampling:
           label.en: Umbrella Sampling
           type: boolean
@@ -113,30 +137,30 @@ simulations[]:
           label.en: nstcomm [step]
           hint.en: frequency for center of mass motion removal
           type: integer
-        comm-mode:
+        comm_mode:
           label.en: comm-mode
           type: keyword
           enum: 
-            - linear
-            - angular
-            - linear-acceleration-correction
-            - none
-        lincs-iter:
+            - "none"
+            - "linear"
+            - "angular"
+            - "linear-acceleration-correction"
+        lincs_iter:
           label.en: lincs-iter
           type: integer
-        lincs-order:
+        lincs_order:
           label.en: lincs-order
           type: integer
         fourierspacing:
           label.en: fourierspacing [nm]
           type: float
-        constraint-algorithm:
+        constraint_algorithm:
           label.en: constraint-algorithm
           hint.en: Chooses which solver satisfies any non-SETTLE holonomic constraints
           type: keyword
           enum: 
-            - lincs
-            - shake
+            - "lincs"
+            - "shake"
         van_der_Waals_interactions:
           use: ./experiments-definitions.yaml#/VanDerWaalsInteractions
           label.en: van der Waals interactions
@@ -152,6 +176,9 @@ simulations[]:
         electrostatic_interactions:
           use: ./experiments-definitions.yaml#/ElectrostaticInteractions
           label.en: Electrostatic interactions
+    _protein_sequences[]:
+      type: keyword
+      label.en^: Protein sequences
     _uniprot_id:
       label.en: Uniprot ID
       hint.en: Uniprot ID of the protein
@@ -163,6 +190,10 @@ simulations[]:
     _record_file:
       label.en: Dataset Record File
       hint.en: ID of TPR file (if has ID e.g. from Zenodo or other data repository)
+      type: keyword
+    _metadump_version:
+      label.en: Metadump version
+      hint.en: Version of the extraction script at the time of processing metadata
       type: keyword
     _gromacs_version:
       label.en: Gromacs software version
@@ -180,7 +211,7 @@ simulations[]:
       label.en: Metadata creation date
       hint.en: Timestamp of when metadata were extracted
       type: datetime
-    _tpr_date:
-      label.en: TPR file creation date
-      hint.en: Timestamp of TPR file
-      type: datetime
+    _exit_code:
+      label.en: Exit code
+      hint.en: Exit code of the extraction script
+      type: integer

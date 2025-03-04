@@ -1,4 +1,4 @@
-{# def d, files #}
+{# def metadata, extra_context, record, ui, is_preview=None, d #}
 
 {% extends "oarepo_ui/detail.html" %}
 
@@ -6,20 +6,10 @@
 {{ super() }}
 {%- endblock %}
 
-{% block record_header %}
-    <h1 class="ui header" style="padding-top: 2em; padding-left: 2em;">
-        <i class="flask icon"></i>
-        <div class="content">
-            {{ d.metadata.name }}
-            <div class="sub header">{{ d.metadata.description }}</div>
-        </div>
-    </h1>
-{% endblock %}
-
 {% block record_main_content %}
-    <ExperimentsDetailRoot d={d} />
+    <ExperimentsDetailRoot md={d.metadata} />
 {% endblock %}
 
 {% block record_sidebar %}
-    <ExperimentsSideBar d={d} files={files} />
+    <MolStar />
 {% endblock record_sidebar %}

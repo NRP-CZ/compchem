@@ -1,0 +1,18 @@
+{# def d #}
+
+{% if d %}
+
+<h3>{{ d._ui_label }}</h3>
+
+<ITable>
+    <ITableField d={d.tcoupl} />
+    <ITableField d={d.tau_t} >
+        <ITableArrayValue value={d.tau_t} />
+    </ITableField>
+    <ITableField d={d.nsttcouple} />
+    <ITableSection title={d.tc_grps._ui_label} />
+    <ITableField d={d.tc_grps.name} />
+    <ITableField d={d.tc_grps.nr} />
+</ITable>
+
+{% endif %}

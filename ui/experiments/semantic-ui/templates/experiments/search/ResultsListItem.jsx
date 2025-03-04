@@ -41,8 +41,7 @@ export const ResultsListItemComponent = ({
 }) => {
   const searchAppConfig = useContext(SearchConfigurationContext);
 
-  const title = _get(result, "metadata.name", "<no title>");
-  const description = _get(result, "metadata.description", "");
+  const title = _get(result, "metadata.title", "<no title>");
 
   return (
     <Overridable
@@ -61,9 +60,7 @@ export const ResultsListItemComponent = ({
                   viewLink={result.links.self_html}
                 />
                 <ItemSubheader />
-                <Item.Description >
-                  {description}
-                </Item.Description>
+                <Item.Description />
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -122,5 +119,3 @@ ResultsListItemWithState.propTypes = {
 ResultsListItemWithState.defaultProps = {
   currentQueryState: null,
 };
-
-export default ResultsListItemWithState

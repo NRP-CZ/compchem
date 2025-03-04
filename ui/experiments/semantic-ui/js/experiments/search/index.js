@@ -16,6 +16,40 @@ import {
  */
 // const { overridableIdPrefix } = searchAppConfig
 
+/*
+export const overridableComponentIds = [
+  "ActiveFilters.element",
+  "AutocompleteSearchBar.element",
+  "BucketAggregation.element",
+  "BucketAggregationContainer.element",
+  "BucketAggregationValues.element",
+  "Count.Element",
+  "Error.element",
+  "Pagination.element",
+  "ResultsGrid.container",
+  "ResultsGrid.item",
+  "ResultsList.container",
+  "ResultsList.item",
+  "ResultsLoader.element",
+  "ResultsMultiLayout.element",
+  "ResultsPerPage.element",
+  "SearchApp.facets",
+  "SearchApp.layout",
+  "SearchApp.resultOptions",
+  "SearchApp.results",
+  "SearchApp.resultsPane",
+  "SearchApp.searchbar",
+  "SearchBar.element",
+  "SearchFilters.Toggle.element",
+  "SearchHelpLinks",
+  "Sort.element",
+  "SortBy.element",
+  "SortOrder.element",
+  "SearchApp.buttonSidebarContainer",
+];
+*/
+
+
 export const componentOverrides = {
   /** NOTE: Then you can then replace any existing search ui
    * component with your own implementation, e.g.:

@@ -3,52 +3,33 @@
 from invenio_records_resources.services.records.facets import TermsFacet
 from oarepo_runtime.i18n import lazy_gettext as _
 from oarepo_runtime.services.facets.date import DateTimeFacet
-from oarepo_vocabularies.services.facets import (
-    HierarchyVocabularyFacet,
-    VocabularyFacet,
+
+metadata_creators_affiliation = TermsFacet(
+    field="metadata.creators.affiliation",
+    label=_("metadata/creators/affiliation.label"),
 )
 
-metadata_creators_affiliations = HierarchyVocabularyFacet(
-    field="metadata.creators.affiliations",
-    label=_("metadata/creators/affiliations.label"),
-    vocabulary="institutions",
+metadata_creators_name = TermsFacet(
+    field="metadata.creators.name", label=_("metadata/creators/name.label")
 )
 
-metadata_creators_authorityIdentifiers_identifier = TermsFacet(
-    field="metadata.creators.authorityIdentifiers.identifier",
-    label=_("metadata/creators/authorityIdentifiers/identifier.label"),
+metadata_creators_orcid = TermsFacet(
+    field="metadata.creators.orcid", label=_("metadata/creators/orcid.label")
 )
 
-metadata_creators_authorityIdentifiers_scheme = TermsFacet(
-    field="metadata.creators.authorityIdentifiers.scheme",
-    label=_("metadata/creators/authorityIdentifiers/scheme.label"),
+metadata_fundingReference_awardNumber = TermsFacet(
+    field="metadata.fundingReference.awardNumber",
+    label=_("metadata/fundingReference/awardNumber.label"),
 )
 
-metadata_creators_familyName = TermsFacet(
-    field="metadata.creators.familyName", label=_("metadata/creators/familyName.label")
+metadata_fundingReference_funderIdentifier = TermsFacet(
+    field="metadata.fundingReference.funderIdentifier",
+    label=_("metadata/fundingReference/funderIdentifier.label"),
 )
 
-metadata_creators_fullName = TermsFacet(
-    field="metadata.creators.fullName", label=_("metadata/creators/fullName.label")
-)
-
-metadata_creators_givenName = TermsFacet(
-    field="metadata.creators.givenName", label=_("metadata/creators/givenName.label")
-)
-
-metadata_creators_nameType = TermsFacet(
-    field="metadata.creators.nameType", label=_("metadata/creators/nameType.label")
-)
-
-metadata_fundingReference_funder = VocabularyFacet(
-    field="metadata.fundingReference.funder",
-    label=_("metadata/fundingReference/funder.label"),
-    vocabulary="funders",
-)
-
-metadata_fundingReference_projectID = TermsFacet(
-    field="metadata.fundingReference.projectID",
-    label=_("metadata/fundingReference/projectID.label"),
+metadata_fundingReference_funderName = TermsFacet(
+    field="metadata.fundingReference.funderName",
+    label=_("metadata/fundingReference/funderName.label"),
 )
 
 metadata_objectIdentifiers_identifier = TermsFacet(
@@ -56,273 +37,350 @@ metadata_objectIdentifiers_identifier = TermsFacet(
     label=_("metadata/objectIdentifiers/identifier.label"),
 )
 
-metadata_objectIdentifiers_scheme = TermsFacet(
-    field="metadata.objectIdentifiers.scheme",
-    label=_("metadata/objectIdentifiers/scheme.label"),
+metadata_objectIdentifiers_identifierType = TermsFacet(
+    field="metadata.objectIdentifiers.identifierType",
+    label=_("metadata/objectIdentifiers/identifierType.label"),
 )
 
 metadata_publisher = TermsFacet(
     field="metadata.publisher", label=_("metadata/publisher.label")
 )
 
-metadata_simulations_detailedInformation_barostat_compressibility = TermsFacet(
-    field="metadata.simulations.detailedInformation.barostat.compressibility",
-    label=_("metadata/simulations/detailedInformation/barostat/compressibility.label"),
+metadata_simulations__dump_sw_version = TermsFacet(
+    field="metadata.simulations._dump_sw_version",
+    label=_("metadata/simulations/_dump_sw_version.label"),
 )
 
-metadata_simulations_detailedInformation_barostat_pcoupl = TermsFacet(
-    field="metadata.simulations.detailedInformation.barostat.pcoupl",
-    label=_("metadata/simulations/detailedInformation/barostat/pcoupl.label"),
+metadata_simulations__exit_code = TermsFacet(
+    field="metadata.simulations._exit_code",
+    label=_("metadata/simulations/_exit_code.label"),
 )
 
-metadata_simulations_detailedInformation_barostat_refcoordScaling = TermsFacet(
-    field="metadata.simulations.detailedInformation.barostat.refcoordScaling",
-    label=_("metadata/simulations/detailedInformation/barostat/refcoordScaling.label"),
+metadata_simulations__gromacs_version = TermsFacet(
+    field="metadata.simulations._gromacs_version",
+    label=_("metadata/simulations/_gromacs_version.label"),
 )
 
-metadata_simulations_detailedInformation_barostat_tauP = TermsFacet(
-    field="metadata.simulations.detailedInformation.barostat.tauP",
-    label=_("metadata/simulations/detailedInformation/barostat/tauP.label"),
+metadata_simulations__metadata_date = DateTimeFacet(
+    field="metadata.simulations._metadata_date",
+    label=_("metadata/simulations/_metadata_date.label"),
 )
 
-metadata_simulations_detailedInformation_commMode = TermsFacet(
-    field="metadata.simulations.detailedInformation.commMode",
-    label=_("metadata/simulations/detailedInformation/commMode.label"),
+metadata_simulations__metadump_version = TermsFacet(
+    field="metadata.simulations._metadump_version",
+    label=_("metadata/simulations/_metadump_version.label"),
 )
 
-metadata_simulations_detailedInformation_constraintAlgorithm = TermsFacet(
-    field="metadata.simulations.detailedInformation.constraintAlgorithm",
-    label=_("metadata/simulations/detailedInformation/constraintAlgorithm.label"),
+metadata_simulations__protein_sequences = TermsFacet(
+    field="metadata.simulations._protein_sequences",
+    label=_("metadata/simulations/_protein_sequences.label"),
 )
 
-metadata_simulations_detailedInformation_electrostaticInteractions_coulombModifier = TermsFacet(
-    field="metadata.simulations.detailedInformation.electrostaticInteractions.coulombModifier",
+metadata_simulations__record_file = TermsFacet(
+    field="metadata.simulations._record_file",
+    label=_("metadata/simulations/_record_file.label"),
+)
+
+metadata_simulations__record_url = TermsFacet(
+    field="metadata.simulations._record_url",
+    label=_("metadata/simulations/_record_url.label"),
+)
+
+metadata_simulations__tpx_version = TermsFacet(
+    field="metadata.simulations._tpx_version",
+    label=_("metadata/simulations/_tpx_version.label"),
+)
+
+metadata_simulations__uniprot_id = TermsFacet(
+    field="metadata.simulations._uniprot_id",
+    label=_("metadata/simulations/_uniprot_id.label"),
+)
+
+metadata_simulations_detailed_information_barostat_compressibility = TermsFacet(
+    field="metadata.simulations.detailed_information.barostat.compressibility",
+    label=_("metadata/simulations/detailed_information/barostat/compressibility.label"),
+)
+
+metadata_simulations_detailed_information_barostat_pcoupl = TermsFacet(
+    field="metadata.simulations.detailed_information.barostat.pcoupl",
+    label=_("metadata/simulations/detailed_information/barostat/pcoupl.label"),
+)
+
+metadata_simulations_detailed_information_barostat_pcoupltype = TermsFacet(
+    field="metadata.simulations.detailed_information.barostat.pcoupltype",
+    label=_("metadata/simulations/detailed_information/barostat/pcoupltype.label"),
+)
+
+metadata_simulations_detailed_information_barostat_refcoord_scaling = TermsFacet(
+    field="metadata.simulations.detailed_information.barostat.refcoord_scaling",
     label=_(
-        "metadata/simulations/detailedInformation/electrostaticInteractions/coulombModifier.label"
+        "metadata/simulations/detailed_information/barostat/refcoord_scaling.label"
     ),
 )
 
-metadata_simulations_detailedInformation_electrostaticInteractions_epsilonR = TermsFacet(
-    field="metadata.simulations.detailedInformation.electrostaticInteractions.epsilonR",
+metadata_simulations_detailed_information_barostat_tau_p = TermsFacet(
+    field="metadata.simulations.detailed_information.barostat.tau_p",
+    label=_("metadata/simulations/detailed_information/barostat/tau_p.label"),
+)
+
+metadata_simulations_detailed_information_comm_mode = TermsFacet(
+    field="metadata.simulations.detailed_information.comm_mode",
+    label=_("metadata/simulations/detailed_information/comm_mode.label"),
+)
+
+metadata_simulations_detailed_information_constraint_algorithm = TermsFacet(
+    field="metadata.simulations.detailed_information.constraint_algorithm",
+    label=_("metadata/simulations/detailed_information/constraint_algorithm.label"),
+)
+
+metadata_simulations_detailed_information_electrostatic_interactions_coulomb_modifier = TermsFacet(
+    field="metadata.simulations.detailed_information.electrostatic_interactions.coulomb_modifier",
     label=_(
-        "metadata/simulations/detailedInformation/electrostaticInteractions/epsilonR.label"
+        "metadata/simulations/detailed_information/electrostatic_interactions/coulomb_modifier.label"
     ),
 )
 
-metadata_simulations_detailedInformation_electrostaticInteractions_epsilonRF = TermsFacet(
-    field="metadata.simulations.detailedInformation.electrostaticInteractions.epsilonRF",
+metadata_simulations_detailed_information_electrostatic_interactions_coulombtype = TermsFacet(
+    field="metadata.simulations.detailed_information.electrostatic_interactions.coulombtype",
     label=_(
-        "metadata/simulations/detailedInformation/electrostaticInteractions/epsilonRF.label"
+        "metadata/simulations/detailed_information/electrostatic_interactions/coulombtype.label"
     ),
 )
 
-metadata_simulations_detailedInformation_electrostaticInteractions_rcoulomb = TermsFacet(
-    field="metadata.simulations.detailedInformation.electrostaticInteractions.rcoulomb",
+metadata_simulations_detailed_information_electrostatic_interactions_epsilon_r = TermsFacet(
+    field="metadata.simulations.detailed_information.electrostatic_interactions.epsilon_r",
     label=_(
-        "metadata/simulations/detailedInformation/electrostaticInteractions/rcoulomb.label"
+        "metadata/simulations/detailed_information/electrostatic_interactions/epsilon_r.label"
     ),
 )
 
-metadata_simulations_detailedInformation_fourierSpacing = TermsFacet(
-    field="metadata.simulations.detailedInformation.fourierSpacing",
-    label=_("metadata/simulations/detailedInformation/fourierSpacing.label"),
-)
-
-metadata_simulations_detailedInformation_lincsIter = TermsFacet(
-    field="metadata.simulations.detailedInformation.lincsIter",
-    label=_("metadata/simulations/detailedInformation/lincsIter.label"),
-)
-
-metadata_simulations_detailedInformation_lincsOrder = TermsFacet(
-    field="metadata.simulations.detailedInformation.lincsOrder",
-    label=_("metadata/simulations/detailedInformation/lincsOrder.label"),
-)
-
-metadata_simulations_detailedInformation_neighbourList_cutoffScheme = TermsFacet(
-    field="metadata.simulations.detailedInformation.neighbourList.cutoffScheme",
+metadata_simulations_detailed_information_electrostatic_interactions_epsilon_rf = TermsFacet(
+    field="metadata.simulations.detailed_information.electrostatic_interactions.epsilon_rf",
     label=_(
-        "metadata/simulations/detailedInformation/neighbourList/cutoffScheme.label"
+        "metadata/simulations/detailed_information/electrostatic_interactions/epsilon_rf.label"
     ),
 )
 
-metadata_simulations_detailedInformation_neighbourList_nstlist = TermsFacet(
-    field="metadata.simulations.detailedInformation.neighbourList.nstlist",
-    label=_("metadata/simulations/detailedInformation/neighbourList/nstlist.label"),
-)
-
-metadata_simulations_detailedInformation_neighbourList_pbc = TermsFacet(
-    field="metadata.simulations.detailedInformation.neighbourList.pbc",
-    label=_("metadata/simulations/detailedInformation/neighbourList/pbc.label"),
-)
-
-metadata_simulations_detailedInformation_neighbourList_rlist = TermsFacet(
-    field="metadata.simulations.detailedInformation.neighbourList.rlist",
-    label=_("metadata/simulations/detailedInformation/neighbourList/rlist.label"),
-)
-
-metadata_simulations_detailedInformation_nstcomm = TermsFacet(
-    field="metadata.simulations.detailedInformation.nstcomm",
-    label=_("metadata/simulations/detailedInformation/nstcomm.label"),
-)
-
-metadata_simulations_detailedInformation_thermostat_nsttcouple = TermsFacet(
-    field="metadata.simulations.detailedInformation.thermostat.nsttcouple",
-    label=_("metadata/simulations/detailedInformation/thermostat/nsttcouple.label"),
-)
-
-metadata_simulations_detailedInformation_thermostat_tauT = TermsFacet(
-    field="metadata.simulations.detailedInformation.thermostat.tauT",
-    label=_("metadata/simulations/detailedInformation/thermostat/tauT.label"),
-)
-
-metadata_simulations_detailedInformation_thermostat_tcGrps_name = TermsFacet(
-    field="metadata.simulations.detailedInformation.thermostat.tcGrps.name",
-    label=_("metadata/simulations/detailedInformation/thermostat/tcGrps/name.label"),
-)
-
-metadata_simulations_detailedInformation_thermostat_tcGrps_nr = TermsFacet(
-    field="metadata.simulations.detailedInformation.thermostat.tcGrps.nr",
-    label=_("metadata/simulations/detailedInformation/thermostat/tcGrps/nr.label"),
-)
-
-metadata_simulations_detailedInformation_thermostat_tcoupl = TermsFacet(
-    field="metadata.simulations.detailedInformation.thermostat.tcoupl",
-    label=_("metadata/simulations/detailedInformation/thermostat/tcoupl.label"),
-)
-
-metadata_simulations_detailedInformation_vanDerWaalsInteractions_dispcorr = TermsFacet(
-    field="metadata.simulations.detailedInformation.vanDerWaalsInteractions.dispcorr",
+metadata_simulations_detailed_information_electrostatic_interactions_rcoulomb = TermsFacet(
+    field="metadata.simulations.detailed_information.electrostatic_interactions.rcoulomb",
     label=_(
-        "metadata/simulations/detailedInformation/vanDerWaalsInteractions/dispcorr.label"
+        "metadata/simulations/detailed_information/electrostatic_interactions/rcoulomb.label"
     ),
 )
 
-metadata_simulations_detailedInformation_vanDerWaalsInteractions_rvdw = TermsFacet(
-    field="metadata.simulations.detailedInformation.vanDerWaalsInteractions.rvdw",
+metadata_simulations_detailed_information_fourierspacing = TermsFacet(
+    field="metadata.simulations.detailed_information.fourierspacing",
+    label=_("metadata/simulations/detailed_information/fourierspacing.label"),
+)
+
+metadata_simulations_detailed_information_lincs_iter = TermsFacet(
+    field="metadata.simulations.detailed_information.lincs_iter",
+    label=_("metadata/simulations/detailed_information/lincs_iter.label"),
+)
+
+metadata_simulations_detailed_information_lincs_order = TermsFacet(
+    field="metadata.simulations.detailed_information.lincs_order",
+    label=_("metadata/simulations/detailed_information/lincs_order.label"),
+)
+
+metadata_simulations_detailed_information_neighbour_list_cutoff_scheme = TermsFacet(
+    field="metadata.simulations.detailed_information.neighbour_list.cutoff_scheme",
     label=_(
-        "metadata/simulations/detailedInformation/vanDerWaalsInteractions/rvdw.label"
+        "metadata/simulations/detailed_information/neighbour_list/cutoff_scheme.label"
     ),
 )
 
-metadata_simulations_detailedInformation_vanDerWaalsInteractions_rvdwSwitch = TermsFacet(
-    field="metadata.simulations.detailedInformation.vanDerWaalsInteractions.rvdwSwitch",
+metadata_simulations_detailed_information_neighbour_list_nstlist = TermsFacet(
+    field="metadata.simulations.detailed_information.neighbour_list.nstlist",
+    label=_("metadata/simulations/detailed_information/neighbour_list/nstlist.label"),
+)
+
+metadata_simulations_detailed_information_neighbour_list_pbc = TermsFacet(
+    field="metadata.simulations.detailed_information.neighbour_list.pbc",
+    label=_("metadata/simulations/detailed_information/neighbour_list/pbc.label"),
+)
+
+metadata_simulations_detailed_information_neighbour_list_rlist = TermsFacet(
+    field="metadata.simulations.detailed_information.neighbour_list.rlist",
+    label=_("metadata/simulations/detailed_information/neighbour_list/rlist.label"),
+)
+
+metadata_simulations_detailed_information_nstcomm = TermsFacet(
+    field="metadata.simulations.detailed_information.nstcomm",
+    label=_("metadata/simulations/detailed_information/nstcomm.label"),
+)
+
+metadata_simulations_detailed_information_thermostat_nsttcouple = TermsFacet(
+    field="metadata.simulations.detailed_information.thermostat.nsttcouple",
+    label=_("metadata/simulations/detailed_information/thermostat/nsttcouple.label"),
+)
+
+metadata_simulations_detailed_information_thermostat_tau_t = TermsFacet(
+    field="metadata.simulations.detailed_information.thermostat.tau_t",
+    label=_("metadata/simulations/detailed_information/thermostat/tau_t.label"),
+)
+
+metadata_simulations_detailed_information_thermostat_tc_grps_name = TermsFacet(
+    field="metadata.simulations.detailed_information.thermostat.tc_grps.name",
+    label=_("metadata/simulations/detailed_information/thermostat/tc_grps/name.label"),
+)
+
+metadata_simulations_detailed_information_thermostat_tc_grps_nr = TermsFacet(
+    field="metadata.simulations.detailed_information.thermostat.tc_grps.nr",
+    label=_("metadata/simulations/detailed_information/thermostat/tc_grps/nr.label"),
+)
+
+metadata_simulations_detailed_information_thermostat_tcoupl = TermsFacet(
+    field="metadata.simulations.detailed_information.thermostat.tcoupl",
+    label=_("metadata/simulations/detailed_information/thermostat/tcoupl.label"),
+)
+
+metadata_simulations_detailed_information_van_der_Waals_interactions_dispcorr = TermsFacet(
+    field="metadata.simulations.detailed_information.van_der_Waals_interactions.dispcorr",
     label=_(
-        "metadata/simulations/detailedInformation/vanDerWaalsInteractions/rvdwSwitch.label"
+        "metadata/simulations/detailed_information/van_der_Waals_interactions/dispcorr.label"
     ),
 )
 
-metadata_simulations_detailedInformation_vanDerWaalsInteractions_vdwModifier = TermsFacet(
-    field="metadata.simulations.detailedInformation.vanDerWaalsInteractions.vdwModifier",
+metadata_simulations_detailed_information_van_der_Waals_interactions_rvdw = TermsFacet(
+    field="metadata.simulations.detailed_information.van_der_Waals_interactions.rvdw",
     label=_(
-        "metadata/simulations/detailedInformation/vanDerWaalsInteractions/vdwModifier.label"
+        "metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw.label"
     ),
 )
 
-metadata_simulations_key = TermsFacet(
-    field="metadata.simulations.key", label=_("metadata/simulations/key.label")
+metadata_simulations_detailed_information_van_der_Waals_interactions_rvdw_switch = TermsFacet(
+    field="metadata.simulations.detailed_information.van_der_Waals_interactions.rvdw_switch",
+    label=_(
+        "metadata/simulations/detailed_information/van_der_Waals_interactions/rvdw_switch.label"
+    ),
 )
 
-metadata_simulations_mainInformation_AWHAdaptiveBiasing = TermsFacet(
-    field="metadata.simulations.mainInformation.AWHAdaptiveBiasing",
-    label=_("metadata/simulations/mainInformation/AWHAdaptiveBiasing.label"),
+metadata_simulations_detailed_information_van_der_Waals_interactions_vdw_modifier = TermsFacet(
+    field="metadata.simulations.detailed_information.van_der_Waals_interactions.vdw_modifier",
+    label=_(
+        "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_modifier.label"
+    ),
 )
 
-metadata_simulations_mainInformation_boxSizeAndShape = TermsFacet(
-    field="metadata.simulations.mainInformation.boxSizeAndShape",
-    label=_("metadata/simulations/mainInformation/boxSizeAndShape.label"),
+metadata_simulations_detailed_information_van_der_Waals_interactions_vdw_type = TermsFacet(
+    field="metadata.simulations.detailed_information.van_der_Waals_interactions.vdw_type",
+    label=_(
+        "metadata/simulations/detailed_information/van_der_Waals_interactions/vdw_type.label"
+    ),
 )
 
-metadata_simulations_mainInformation_forceField = TermsFacet(
-    field="metadata.simulations.mainInformation.forceField",
-    label=_("metadata/simulations/mainInformation/forceField.label"),
+metadata_simulations_file_identification_authors = TermsFacet(
+    field="metadata.simulations.file_identification.authors",
+    label=_("metadata/simulations/file_identification/authors.label"),
 )
 
-metadata_simulations_mainInformation_freeEnergyCalculation = TermsFacet(
-    field="metadata.simulations.mainInformation.freeEnergyCalculation",
-    label=_("metadata/simulations/mainInformation/freeEnergyCalculation.label"),
+metadata_simulations_file_identification_doi = TermsFacet(
+    field="metadata.simulations.file_identification.doi",
+    label=_("metadata/simulations/file_identification/doi.label"),
 )
 
-metadata_simulations_mainInformation_molecules_count = TermsFacet(
-    field="metadata.simulations.mainInformation.molecules.count",
-    label=_("metadata/simulations/mainInformation/molecules/count.label"),
+metadata_simulations_file_identification_name = TermsFacet(
+    field="metadata.simulations.file_identification.name",
+    label=_("metadata/simulations/file_identification/name.label"),
 )
 
-metadata_simulations_mainInformation_molecules_id = TermsFacet(
-    field="metadata.simulations.mainInformation.molecules.id",
-    label=_("metadata/simulations/mainInformation/molecules/id.label"),
+metadata_simulations_file_identification_related_files = TermsFacet(
+    field="metadata.simulations.file_identification.related_files",
+    label=_("metadata/simulations/file_identification/related_files.label"),
 )
 
-metadata_simulations_mainInformation_molecules_name = TermsFacet(
-    field="metadata.simulations.mainInformation.molecules.name",
-    label=_("metadata/simulations/mainInformation/molecules/name.label"),
+metadata_simulations_file_identification_simulation_year = TermsFacet(
+    field="metadata.simulations.file_identification.simulation_year",
+    label=_("metadata/simulations/file_identification/simulation_year.label"),
 )
 
-metadata_simulations_mainInformation_referencePressure = TermsFacet(
-    field="metadata.simulations.mainInformation.referencePressure",
-    label=_("metadata/simulations/mainInformation/referencePressure.label"),
+metadata_simulations_main_information_AWH_adaptive_biasing = TermsFacet(
+    field="metadata.simulations.main_information.AWH_adaptive_biasing",
+    label=_("metadata/simulations/main_information/AWH_adaptive_biasing.label"),
 )
 
-metadata_simulations_mainInformation_referenceTemperature = TermsFacet(
-    field="metadata.simulations.mainInformation.referenceTemperature",
-    label=_("metadata/simulations/mainInformation/referenceTemperature.label"),
+metadata_simulations_main_information_box_size_and_shape = TermsFacet(
+    field="metadata.simulations.main_information.box_size_and_shape",
+    label=_("metadata/simulations/main_information/box_size_and_shape.label"),
 )
 
-metadata_simulations_mainInformation_simulationLength = TermsFacet(
-    field="metadata.simulations.mainInformation.simulationLength",
-    label=_("metadata/simulations/mainInformation/simulationLength.label"),
+metadata_simulations_main_information_force_field = TermsFacet(
+    field="metadata.simulations.main_information.force_field",
+    label=_("metadata/simulations/main_information/force_field.label"),
 )
 
-metadata_simulations_mainInformation_simulationTimeStep = TermsFacet(
-    field="metadata.simulations.mainInformation.simulationTimeStep",
-    label=_("metadata/simulations/mainInformation/simulationTimeStep.label"),
+metadata_simulations_main_information_free_energy_calculation = TermsFacet(
+    field="metadata.simulations.main_information.free_energy_calculation",
+    label=_("metadata/simulations/main_information/free_energy_calculation.label"),
 )
 
-metadata_simulations_mainInformation_simulationType = TermsFacet(
-    field="metadata.simulations.mainInformation.simulationType",
-    label=_("metadata/simulations/mainInformation/simulationType.label"),
+metadata_simulations_main_information_molecules_count = TermsFacet(
+    field="metadata.simulations.main_information.molecules.count",
+    label=_("metadata/simulations/main_information/molecules/count.label"),
 )
 
-metadata_simulations_mainInformation_statisticalEnsemble = TermsFacet(
-    field="metadata.simulations.mainInformation.statisticalEnsemble",
-    label=_("metadata/simulations/mainInformation/statisticalEnsemble.label"),
+metadata_simulations_main_information_molecules_id = TermsFacet(
+    field="metadata.simulations.main_information.molecules.id",
+    label=_("metadata/simulations/main_information/molecules/id.label"),
 )
 
-metadata_simulations_mainInformation_umbrellaSampling = TermsFacet(
-    field="metadata.simulations.mainInformation.umbrellaSampling",
-    label=_("metadata/simulations/mainInformation/umbrellaSampling.label"),
+metadata_simulations_main_information_molecules_name = TermsFacet(
+    field="metadata.simulations.main_information.molecules.name",
+    label=_("metadata/simulations/main_information/molecules/name.label"),
 )
 
-metadata_simulations_relatedFiles_key = TermsFacet(
-    field="metadata.simulations.relatedFiles.key",
-    label=_("metadata/simulations/relatedFiles/key.label"),
+metadata_simulations_main_information_molecules_residues = TermsFacet(
+    field="metadata.simulations.main_information.molecules.residues",
+    label=_("metadata/simulations/main_information/molecules/residues.label"),
 )
 
-metadata_simulations_simulationYear = TermsFacet(
-    field="metadata.simulations.simulationYear",
-    label=_("metadata/simulations/simulationYear.label"),
+metadata_simulations_main_information_reference_pressure = TermsFacet(
+    field="metadata.simulations.main_information.reference_pressure",
+    label=_("metadata/simulations/main_information/reference_pressure.label"),
 )
 
-metadata_simulations_software_extractorVersion = TermsFacet(
-    field="metadata.simulations.software.extractorVersion",
-    label=_("metadata/simulations/software/extractorVersion.label"),
+metadata_simulations_main_information_reference_temperature = TermsFacet(
+    field="metadata.simulations.main_information.reference_temperature",
+    label=_("metadata/simulations/main_information/reference_temperature.label"),
 )
 
-metadata_simulations_software_gromacsVersion = TermsFacet(
-    field="metadata.simulations.software.gromacsVersion",
-    label=_("metadata/simulations/software/gromacsVersion.label"),
+metadata_simulations_main_information_simulation_length = TermsFacet(
+    field="metadata.simulations.main_information.simulation_length",
+    label=_("metadata/simulations/main_information/simulation_length.label"),
 )
 
-metadata_simulations_software_tpxVersion = TermsFacet(
-    field="metadata.simulations.software.tpxVersion",
-    label=_("metadata/simulations/software/tpxVersion.label"),
+metadata_simulations_main_information_simulation_time_step = TermsFacet(
+    field="metadata.simulations.main_information.simulation_time_step",
+    label=_("metadata/simulations/main_information/simulation_time_step.label"),
 )
 
-metadata_simulations_timestamps_metadataExtractionTimestamp = DateTimeFacet(
-    field="metadata.simulations.timestamps.metadataExtractionTimestamp",
-    label=_("metadata/simulations/timestamps/metadataExtractionTimestamp.label"),
+metadata_simulations_main_information_simulation_type = TermsFacet(
+    field="metadata.simulations.main_information.simulation_type",
+    label=_("metadata/simulations/main_information/simulation_type.label"),
 )
 
-metadata_simulations_timestamps_tprFileTimestamp = DateTimeFacet(
-    field="metadata.simulations.timestamps.tprFileTimestamp",
-    label=_("metadata/simulations/timestamps/tprFileTimestamp.label"),
+metadata_simulations_main_information_statistical_ensamble = TermsFacet(
+    field="metadata.simulations.main_information.statistical_ensamble",
+    label=_("metadata/simulations/main_information/statistical_ensamble.label"),
 )
+
+metadata_simulations_main_information_umbrella_sampling = TermsFacet(
+    field="metadata.simulations.main_information.umbrella_sampling",
+    label=_("metadata/simulations/main_information/umbrella_sampling.label"),
+)
+
+metadata_version = TermsFacet(
+    field="metadata.version", label=_("metadata/version.label")
+)
+
+state = TermsFacet(field="state", label=_("state.label"))
+
+state_timestamp = DateTimeFacet(
+    field="state_timestamp", label=_("state_timestamp.label")
+)
+
+
+record_status = TermsFacet(field="record_status", label=_("record_status"))
+
+has_draft = TermsFacet(field="has_draft", label=_("has_draft"))

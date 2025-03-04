@@ -1,18 +1,53 @@
-{# def d, level=0 #}
-{% set md=d.metadata %}
+{# def md #}
 
-<div class="ui segment basic padded">
-<ITable>
-  <ITableField d={md.publisher} />
-  {% for item in array(md.creators) %}
-      <ExperimentsCreator d={item} level={level+1}/>
-  {% endfor %}
-  <ExperimentsFundingReference d={md.fundingReference} level={level+1}/>
-  {% for item in array(md.objectIdentifiers) %}
-      <ExperimentsNrObjectPid d={item} level={level+1}/>
-  {% endfor %}
-  {% for item in array(md.simulations) %}
-      <ExperimentsSimulation d={item} level={level+1}/>
-  {% endfor %}
-</ITable>
+<div class="ui top attached segment">
+    {% for item in array(md.simulations) %}
+        <div class="ui tab {% if loop.first %} active {% endif %}" data-tab="tab-{{ loop.index }}">
+            <ExperimentsSimulation d={item} />
+        </div>
+    {% endfor %}
+
+    {# DEBUG #}
+    <div class="ui tab" data-tab="tab-{{ array(md.simulations)|length + 1 }}">
+        <h3>Raw data (debug only):</h3>
+        <p>{{ md }}</p>
+    </div>
 </div>
+
+<div class="ui bottom attached tabular menu">
+    {% for item in array(md.simulations) %}
+        <a class="item {% if loop.first %} active {% endif %}" data-tab="tab-{{ loop.index }}">{{item.file_identification.name}}</a>
+    {% endfor %}
+
+    {# DEBUG #}
+    <a class="item" data-tab="tab-{{ array(md.simulations)|length + 1 }}">Raw data</a>
+</div>
+
+
+<script>
+// need to wait for JQuery to be loaded
+document.addEventListener('DOMContentLoaded', () => {
+    $('.tabular.menu .item').tab();
+});
+</script>
+
+<style>
+    /* Simulation selection menu */
+    .top.attached.segment {
+        background-color: #008691;
+    }
+
+    .ui.bottom.tabular.menu .item.active {
+        background: #008691;
+        color: #fff;
+    }
+
+    /* Sumulation details menu */
+    .ui.top.attached.tabular.menu .item {
+        color: #fff;
+    }
+
+    .ui.top.attached.tabular.menu .item.active {
+        color: #000;
+    }
+</style>

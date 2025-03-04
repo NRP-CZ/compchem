@@ -8,4 +8,4 @@ node_modules
 .pdm-build
 .vscode
 .env
-.pdm-python
+run.log

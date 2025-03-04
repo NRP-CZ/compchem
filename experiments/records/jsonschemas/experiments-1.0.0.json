@@ -19,79 +19,13 @@
                     "items": {
                         "type": "object",
                         "properties": {
-                            "affiliations": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "id": {
-                                            "type": "string"
-                                        },
-                                        "title": {
-                                            "type": "object"
-                                        },
-                                        "ror": {
-                                            "type": "string"
-                                        },
-                                        "hierarchy": {
-                                            "type": "object",
-                                            "properties": {
-                                                "ancestors": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string"
-                                                    }
-                                                },
-                                                "ancestors_or_self": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string"
-                                                    }
-                                                },
-                                                "level": {
-                                                    "type": "integer"
-                                                },
-                                                "parent": {
-                                                    "type": "string"
-                                                },
-                                                "title": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "object"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "@v": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            },
-                            "authorityIdentifiers": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "identifier": {
-                                            "type": "string"
-                                        },
-                                        "scheme": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            },
-                            "familyName": {
+                            "affiliation": {
                                 "type": "string"
                             },
-                            "fullName": {
+                            "name": {
                                 "type": "string"
                             },
-                            "givenName": {
-                                "type": "string"
-                            },
-                            "nameType": {
+                            "orcid": {
                                 "type": "string"
                             }
                         }
@@ -101,30 +35,19 @@
                     "type": "string"
                 },
                 "fundingReference": {
-                    "type": "object",
-                    "properties": {
-                        "funder": {
-                            "type": "object",
-                            "properties": {
-                                "id": {
-                                    "type": "string"
-                                },
-                                "title": {
-                                    "type": "object"
-                                },
-                                "@v": {
-                                    "type": "string"
-                                }
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "awardNumber": {
+                                "type": "string"
+                            },
+                            "funderIdentifier": {
+                                "type": "string"
+                            },
+                            "funderName": {
+                                "type": "string"
                             }
-                        },
-                        "fundingProgram": {
-                            "type": "string"
-                        },
-                        "projectID": {
-                            "type": "string"
-                        },
-                        "projectName": {
-                            "type": "string"
                         }
                     }
                 },
@@ -139,7 +62,7 @@
                             "identifier": {
                                 "type": "string"
                             },
-                            "scheme": {
+                            "identifierType": {
                                 "type": "string"
                             }
                         }
@@ -153,10 +76,41 @@
                     "items": {
                         "type": "object",
                         "properties": {
-                            "description": {
+                            "_dump_sw_version": {
                                 "type": "string"
                             },
-                            "detailedInformation": {
+                            "_exit_code": {
+                                "type": "integer"
+                            },
+                            "_gromacs_version": {
+                                "type": "string"
+                            },
+                            "_metadata_date": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "_metadump_version": {
+                                "type": "string"
+                            },
+                            "_protein_sequences": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "_record_file": {
+                                "type": "string"
+                            },
+                            "_record_url": {
+                                "type": "string"
+                            },
+                            "_tpx_version": {
+                                "type": "string"
+                            },
+                            "_uniprot_id": {
+                                "type": "string"
+                            },
+                            "detailed_information": {
                                 "type": "object",
                                 "properties": {
                                     "barostat": {
@@ -174,30 +128,36 @@
                                             "pcoupl": {
                                                 "type": "string"
                                             },
-                                            "refcoordScaling": {
+                                            "pcoupltype": {
                                                 "type": "string"
                                             },
-                                            "tauP": {
+                                            "refcoord_scaling": {
+                                                "type": "string"
+                                            },
+                                            "tau_p": {
                                                 "type": "number"
                                             }
                                         }
                                     },
-                                    "commMode": {
+                                    "comm_mode": {
                                         "type": "string"
                                     },
-                                    "constraintAlgorithm": {
+                                    "constraint_algorithm": {
                                         "type": "string"
                                     },
-                                    "electrostaticInteractions": {
+                                    "electrostatic_interactions": {
                                         "type": "object",
                                         "properties": {
-                                            "coulombModifier": {
+                                            "coulomb_modifier": {
                                                 "type": "string"
                                             },
-                                            "epsilonR": {
+                                            "coulombtype": {
+                                                "type": "string"
+                                            },
+                                            "epsilon_r": {
                                                 "type": "number"
                                             },
-                                            "epsilonRF": {
+                                            "epsilon_rf": {
                                                 "type": "number"
                                             },
                                             "rcoulomb": {
@@ -205,23 +165,23 @@
                                             }
                                         }
                                     },
-                                    "fourierSpacing": {
+                                    "fourierspacing": {
                                         "type": "number"
                                     },
-                                    "lincsIter": {
+                                    "lincs_iter": {
                                         "type": "integer"
                                     },
-                                    "lincsOrder": {
+                                    "lincs_order": {
                                         "type": "integer"
                                     },
-                                    "neighbourList": {
+                                    "neighbour_list": {
                                         "type": "object",
                                         "properties": {
-                                            "cutoffScheme": {
+                                            "cutoff_scheme": {
                                                 "type": "string"
                                             },
                                             "nstlist": {
-                                                "type": "number"
+                                                "type": "integer"
                                             },
                                             "pbc": {
                                                 "type": "string"
@@ -232,31 +192,28 @@
                                         }
                                     },
                                     "nstcomm": {
-                                        "type": "number"
+                                        "type": "integer"
                                     },
                                     "thermostat": {
                                         "type": "object",
                                         "properties": {
                                             "nsttcouple": {
-                                                "type": "number"
+                                                "type": "integer"
                                             },
-                                            "tauT": {
+                                            "tau_t": {
                                                 "type": "array",
                                                 "items": {
                                                     "type": "number"
                                                 }
                                             },
-                                            "tcGrps": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "name": {
-                                                            "type": "string"
-                                                        },
-                                                        "nr": {
-                                                            "type": "integer"
-                                                        }
+                                            "tc_grps": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "nr": {
+                                                        "type": "integer"
                                                     }
                                                 }
                                             },
@@ -265,7 +222,7 @@
                                             }
                                         }
                                     },
-                                    "vanDerWaalsInteractions": {
+                                    "van_der_Waals_interactions": {
                                         "type": "object",
                                         "properties": {
                                             "dispcorr": {
@@ -274,32 +231,61 @@
                                             "rvdw": {
                                                 "type": "number"
                                             },
-                                            "rvdwSwitch": {
+                                            "rvdw_switch": {
                                                 "type": "number"
                                             },
-                                            "vdwModifier": {
+                                            "vdw_modifier": {
+                                                "type": "string"
+                                            },
+                                            "vdw_type": {
                                                 "type": "string"
                                             }
                                         }
                                     }
                                 }
                             },
-                            "key": {
-                                "type": "string"
-                            },
-                            "mainInformation": {
+                            "file_identification": {
                                 "type": "object",
                                 "properties": {
-                                    "AWHAdaptiveBiasing": {
+                                    "authors": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "description": {
                                         "type": "string"
                                     },
-                                    "boxSizeAndShape": {
+                                    "doi": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "related_files": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "simulation_year": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "main_information": {
+                                "type": "object",
+                                "properties": {
+                                    "AWH_adaptive_biasing": {
+                                        "type": "boolean"
+                                    },
+                                    "box_size_and_shape": {
                                         "type": "number"
                                     },
-                                    "forceField": {
+                                    "force_field": {
                                         "type": "string"
                                     },
-                                    "freeEnergyCalculation": {
+                                    "free_energy_calculation": {
                                         "type": "string"
                                     },
                                     "molecules": {
@@ -315,11 +301,17 @@
                                                 },
                                                 "name": {
                                                     "type": "string"
+                                                },
+                                                "residues": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
                                                 }
                                             }
                                         }
                                     },
-                                    "referencePressure": {
+                                    "reference_pressure": {
                                         "type": "array",
                                         "items": {
                                             "type": "array",
@@ -328,74 +320,60 @@
                                             }
                                         }
                                     },
-                                    "referenceTemperature": {
+                                    "reference_temperature": {
                                         "type": "array",
                                         "items": {
                                             "type": "number"
                                         }
                                     },
-                                    "simulationLength": {
+                                    "simulation_length": {
                                         "type": "number"
                                     },
-                                    "simulationTimeStep": {
+                                    "simulation_time_step": {
                                         "type": "number"
                                     },
-                                    "simulationType": {
+                                    "simulation_type": {
                                         "type": "string"
                                     },
-                                    "statisticalEnsemble": {
+                                    "statistical_ensamble": {
                                         "type": "string"
                                     },
-                                    "umbrellaSampling": {
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            "relatedFiles": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "key": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            },
-                            "simulationYear": {
-                                "type": "integer"
-                            },
-                            "software": {
-                                "type": "object",
-                                "properties": {
-                                    "extractorVersion": {
-                                        "type": "string"
-                                    },
-                                    "gromacsVersion": {
-                                        "type": "string"
-                                    },
-                                    "tpxVersion": {
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            "timestamps": {
-                                "type": "object",
-                                "properties": {
-                                    "metadataExtractionTimestamp": {
-                                        "type": "string",
-                                        "format": "date-time"
-                                    },
-                                    "tprFileTimestamp": {
-                                        "type": "string",
-                                        "format": "date-time"
+                                    "umbrella_sampling": {
+                                        "type": "boolean"
                                     }
                                 }
                             }
                         }
                     }
+                },
+                "version": {
+                    "type": "string"
                 }
             }
+        },
+        "pid": {
+            "type": "object",
+            "properties": {
+                "obj_type": {
+                    "type": "string"
+                },
+                "pid_type": {
+                    "type": "string"
+                },
+                "pk": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "state": {
+            "type": "string"
+        },
+        "state_timestamp": {
+            "type": "string",
+            "format": "date-time"
         },
         "updated": {
             "type": "string",

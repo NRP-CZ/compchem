@@ -1,12 +1,29 @@
-{# def d, level=0 #}
-<ITableSection level={level} title={d._ui_label} >
-  <ITableField d={d.description} level={level} />
-  <ITableField d={d.key} level={level} />
-  <ITableField d={d.simulationYear} level={level} />
-  <ExperimentsDetailedinformation d={d.detailedInformation} level={level+1} />
-  <ExperimentsMaininformation d={d.mainInformation} level={level+1} />
-  {% for it in array(d.relatedFiles) %}
-    <ExperimentsRelatedfile d={it} level={level+1} />
-  {% endfor %}
-  <ExperimentsTimestamp d={d.timestamps} level={level+1} />
-</ITableSection>
+{# def d #}
+
+<div class="ui top attached tabular menu">
+    <a class="item active" data-tab="tab-file">File Identification</a>
+    <a class="item" data-tab="tab-main">Main Information</a>
+    <a class="item" data-tab="tab-detail">Detailed Information</a>
+    <a class="item" data-tab="tab-other">Other</a>
+</div>
+<div class="ui bottom attached segment">
+    <div class="ui tab active" data-tab="tab-file">
+        <ExperimentsFileIdentification d={d.file_identification} />
+    </div>
+    <div class="ui tab" data-tab="tab-main">
+        <ExperimentsMainInformation d={d.main_information} />
+    </div>
+    <div class="ui tab" data-tab="tab-detail">
+        <ExperimentsDetailedInformation d={d.detailed_information} />
+    </div>
+    <div class="ui tab" data-tab="tab-other">
+        <ITable>
+            <ITableField d={d._metadata_date} />
+            <ITableField d={d._dump_sw_version} />
+            <ITableField d={d._gromacs_version} />
+            <ITableField d={d._metadump_version} />
+            <ITableField d={d._tpx_version} />
+            <ITableField d={d._uniprot_id} />
+        </ITable>
+    </div>
+</div>

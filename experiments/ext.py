@@ -3,6 +3,7 @@ from functools import cached_property
 
 from oarepo_requests.proxies import current_oarepo_requests_service
 from oarepo_requests.resources.draft.config import DraftRecordRequestsResourceConfig
+from oarepo_requests.resources.draft.types.config import DraftRequestTypesResourceConfig
 
 from experiments import config
 
@@ -16,6 +17,7 @@ class ExperimentsExt:
 
     def init_app(self, app):
         """Flask application initialization."""
+        self.app = app
 
         self.init_config(app)
         if not self.is_inherited():
@@ -29,7 +31,14 @@ class ExperimentsExt:
         """Initialize configuration."""
         for identifier in dir(config):
             if re.match("^[A-Z_0-9]*$", identifier) and not identifier.startswith("_"):
-                app.config.setdefault(identifier, getattr(config, identifier))
+                if isinstance(app.config.get(identifier), list):
+                    app.config[identifier] += getattr(config, identifier)
+                elif isinstance(app.config.get(identifier), dict):
+                    for k, v in getattr(config, identifier).items():
+                        if k not in app.config[identifier]:
+                            app.config[identifier][k] = v
+                else:
+                    app.config.setdefault(identifier, getattr(config, identifier))
 
     def is_inherited(self):
         from importlib_metadata import entry_points
@@ -47,8 +56,15 @@ class ExperimentsExt:
 
     @cached_property
     def service_records(self):
+        service_config = config.EXPERIMENTS_RECORD_SERVICE_CONFIG
+        if hasattr(service_config, "build"):
+            config_class = service_config.build(self.app)
+        else:
+            config_class = service_config()
+
+        service_kwargs = {"config": config_class}
         return config.EXPERIMENTS_RECORD_SERVICE_CLASS(
-            config=config.EXPERIMENTS_RECORD_SERVICE_CONFIG(),
+            **service_kwargs,
             files_service=self.service_files,
             draft_files_service=self.service_draft_files,
         )
@@ -61,18 +77,33 @@ class ExperimentsExt:
         )
 
     @cached_property
-    def service_requests(self):
+    def service_record_requests(self):
         return config.EXPERIMENTS_REQUESTS_SERVICE_CLASS(
             record_service=self.service_records,
             oarepo_requests_service=current_oarepo_requests_service,
         )
 
     @cached_property
-    def resource_requests(self):
+    def resource_record_requests(self):
         return config.EXPERIMENTS_REQUESTS_RESOURCE_CLASS(
-            service=self.service_requests,
+            service=self.service_record_requests,
             config=config.EXPERIMENTS_RECORD_RESOURCE_CONFIG(),
             record_requests_config=DraftRecordRequestsResourceConfig(),
+        )
+
+    @cached_property
+    def service_record_request_types(self):
+        return config.EXPERIMENTS_REQUEST_TYPES_SERVICE_CLASS(
+            record_service=self.service_records,
+            oarepo_requests_service=current_oarepo_requests_service,
+        )
+
+    @cached_property
+    def resource_record_request_types(self):
+        return config.EXPERIMENTS_REQUEST_TYPES_RESOURCE_CLASS(
+            service=self.service_record_request_types,
+            config=config.EXPERIMENTS_RECORD_RESOURCE_CONFIG(),
+            record_requests_config=DraftRequestTypesResourceConfig(),
         )
 
     @cached_property
@@ -92,8 +123,15 @@ class ExperimentsExt:
 
     @cached_property
     def service_files(self):
+        service_config = config.EXPERIMENTS_FILES_SERVICE_CONFIG
+        if hasattr(service_config, "build"):
+            config_class = service_config.build(self.app)
+        else:
+            config_class = service_config()
+
+        service_kwargs = {"config": config_class}
         return config.EXPERIMENTS_FILES_SERVICE_CLASS(
-            config=config.EXPERIMENTS_FILES_SERVICE_CONFIG(),
+            **service_kwargs,
         )
 
     @cached_property
@@ -118,8 +156,15 @@ class ExperimentsExt:
 
     @cached_property
     def service_draft_files(self):
+        service_config = config.EXPERIMENTS_DRAFT_FILES_SERVICE_CONFIG
+        if hasattr(service_config, "build"):
+            config_class = service_config.build(self.app)
+        else:
+            config_class = service_config()
+
+        service_kwargs = {"config": config_class}
         return config.EXPERIMENTS_DRAFT_FILES_SERVICE_CLASS(
-            config=config.EXPERIMENTS_DRAFT_FILES_SERVICE_CONFIG(),
+            **service_kwargs,
         )
 
     @cached_property
