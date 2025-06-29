@@ -10,6 +10,12 @@
 - run `./nrp upgrade` (should fail on *webpack install*)
 - edit `.nrp/devtools/lib/python3.12/site-packages/nrp_devtools/commands/ui/assets.py`
   - in the `install_npm_packages` function, add `--legacy-peer-deps` to the `webpack install` command
+  ```sh
+  sed -i '/webpack",$/,/install",$/c\
+        "webpack",\
+        "install",\
+        "--legacy-peer-deps",' .nrp/devtools/lib/python3.12/site-packages/nrp_devtools/commands/ui/assets.py
+  ```
 - run `./nrp develop`
 - kill the develop process after it finishes
 - run:

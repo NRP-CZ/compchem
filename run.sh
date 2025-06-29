@@ -43,6 +43,10 @@ else
     ./nrp upgrade
     source .venv/bin/activate
     pip install uwsgi nrp-invenio-client
+    sed -i '/webpack",$/,/install",$/c\
+        "webpack",\
+        "install",\
+        "--legacy-peer-deps",' .nrp/devtools/lib/python3.12/site-packages/nrp_devtools/commands/ui/assets.py
     ./nrp develop
 fi
 
@@ -59,6 +63,7 @@ invenio oarepo cf init
 invenio files location create --default default s3://default
 
 invenio oarepo fixtures load
+invenio communities demo
 invenio users create -a -c test@test.com
 '
 

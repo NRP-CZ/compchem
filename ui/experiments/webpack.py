@@ -25,7 +25,7 @@ theme = WebpackThemeBundle(
                 "@mui/icons-material": "^5.15",
                 "@mui/lab": "^5.0.0-alpha.1",
                 "@mui/material": "^5.15",
-                "@mui/x-date-pickers": "",
+                "@mui/x-date-pickers": "^6.20.2",
                 "ajv": "",
             },
             devDependencies={
