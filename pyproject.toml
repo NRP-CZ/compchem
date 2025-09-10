@@ -65,6 +65,7 @@ experiments_requests = "experiments.views.requests.api:create_api_blueprint"
 experiments_file = "experiments.views.files.api:create_api_blueprint"
 experiments_file_draft = "experiments.views.draft_files.api:create_api_blueprint"
 experiments_request_types = "experiments.views.request_types.api:create_api_blueprint"
+experiments_workflows = "experiments.views.workflows.api:create_api_blueprint"
 
 [project.entry-points."invenio_search.mappings"]
 experiments = "experiments.records.mappings"

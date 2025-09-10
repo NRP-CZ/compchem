@@ -1,3 +1,4 @@
+from flask_menu import current_menu
 from oarepo_ui.resources import BabelComponent
 from oarepo_ui.resources.config import RecordsUIResourceConfig
 from oarepo_ui.resources.resource import RecordsUIResource

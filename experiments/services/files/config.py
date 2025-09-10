@@ -1,3 +1,4 @@
+from sys import stderr
 from invenio_records_resources.services import (
     FileLink,
     FileServiceConfig,
@@ -18,12 +19,18 @@ from experiments.records.api import ExperimentsDraft, ExperimentsRecord
 from experiments.services.files.schema import ExperimentsFileSchema
 from experiments.services.records.permissions import ExperimentsPermissionPolicy
 from shared.services.files import CompChemFilesServiceConfig
+from invenio_records_resources.services.files.components import (
+    FileContentComponent,
+    FileMetadataComponent,
+    FileMultipartContentComponent,
+    FileProcessorComponent,
+)
 
 
 class ExperimentsFileServiceConfig(CompChemFilesServiceConfig):
     """ExperimentsRecord service config."""
 
-    PERMISSIONS_PRESETS = ["workflow"]
+    PERMISSIONS_PRESETS = ["everyone"]
 
     url_prefix = "/experiments/<pid_value>"
 
@@ -42,7 +49,11 @@ class ExperimentsFileServiceConfig(CompChemFilesServiceConfig):
 
     @property
     def components(self):
-        components_list = []
+        components_list = [
+            FileMetadataComponent,
+            FileContentComponent,
+            FileMultipartContentComponent,
+            FileProcessorComponent]
         components_list.extend(process_service_configs(type(self).mro()[2:]))
         additional_components = [CustomFieldsComponent]
         components_list.extend(additional_components)
@@ -53,6 +64,7 @@ class ExperimentsFileServiceConfig(CompChemFilesServiceConfig):
                 unique_components.append(component)
                 seen.add(component)
 
+        print(len(unique_components), file=stderr)
         return unique_components
 
     model = "experiments"
@@ -90,7 +102,7 @@ class ExperimentsFileDraftServiceConfig(
 ):
     """ExperimentsDraft service config."""
 
-    PERMISSIONS_PRESETS = ["workflow"]
+    PERMISSIONS_PRESETS = ["everyone"]
 
     url_prefix = "/experiments/<pid_value>/draft"
 
@@ -104,18 +116,22 @@ class ExperimentsFileDraftServiceConfig(
 
     @property
     def components(self):
-        components_list = []
+        components_list = [
+            FileMetadataComponent,
+            FileContentComponent,
+            FileMultipartContentComponent,
+            FileProcessorComponent]
         components_list.extend(process_service_configs(type(self).mro()[2:]))
         additional_components = [CustomFieldsComponent]
         components_list.extend(additional_components)
-        seen = set()
-        unique_components = []
-        for component in components_list:
-            if component not in seen:
-                unique_components.append(component)
-                seen.add(component)
+        # seen = set()
+        # unique_components = []
+        # for component in components_list:
+        #     if component not in seen:
+        #         unique_components.append(component)
+        #         seen.add(component)
 
-        return unique_components
+        return components_list
 
     model = "experiments"
 

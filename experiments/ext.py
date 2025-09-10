@@ -173,3 +173,10 @@ class ExperimentsExt:
             service=self.service_draft_files,
             config=config.EXPERIMENTS_DRAFT_FILES_RESOURCE_CONFIG(),
         )
+
+    @cached_property
+    def resource_workflows(self):
+        return config.EXPERIMENTS_WORKFLOW_RESOURCE_CLASS(
+            service=None,
+            config=config.EXPERIMENTS_WORKFLOW_RESOURCE_CONFIG(),
+        )

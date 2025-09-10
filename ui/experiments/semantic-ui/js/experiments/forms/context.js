@@ -20,8 +20,9 @@ export const FormContextProvider = ({ initialRecord, children }) => {
         // merge localFiles with remoteFiles, ensuring no duplicates
         const localFileNames = Object.keys(localFiles);
         const newFiles = [...localFileNames];
+        const remoteFileNames = remoteFiles.map(({key}) => key)
 
-        for (const fileName of remoteFiles)
+        for (const fileName of remoteFileNames)
             if (!localFiles.hasOwnProperty(fileName))
                 newFiles.push(fileName);
 
@@ -32,7 +33,7 @@ export const FormContextProvider = ({ initialRecord, children }) => {
         // load remoteFiles if editing record
         if (record.id) {
             listFilesOfRecord(record.id).then(({ data: { entries = [] } = {} }) => {
-                setRemoteFiles(entries.map(({ key }) => key));
+                setRemoteFiles(entries.map(({ key, mimetype }) => ({ key, mimetype })));
             });
         }
     }, []);
@@ -47,7 +48,7 @@ export const FormContextProvider = ({ initialRecord, children }) => {
                 return prev
             }
         });
-    }, [record.metadata.simulations]);
+    }, [record.metadata?.simulations]);
 
     return (
         <FormContext.Provider value={{

@@ -7,6 +7,7 @@ import { useFormContext } from './context';
 import { publishRecord } from '../util/apiClient';
 import { deepEquals, validateMetadata } from '../util/metadataValidator';
 import { createRecord, editRecord, uploadFileToRecord, modifyFileInRecord, deleteFileFromRecord } from '../util/apiClient';
+import FormWorkflowsContainer from './FormWorkflowsContainer';
 
 
 const commitFiles = async (recordId, files, localFiles, remoteFiles, deletedFiles) => {
@@ -107,11 +108,11 @@ const FromActionsContainer = () => {
             );
             return;
         }
-    
+
         try {
             const creatingNew = !record.id || record.id === "";
             let response = null;
-    
+
             if (creatingNew)
                 response = await createRecord(getUrlParam('community'), record.metadata);
             else
@@ -195,30 +196,37 @@ const FromActionsContainer = () => {
     };
 
     return (
-        <Paper elevation={3} sx={{ p: 2 }}>
-            <Grid container spacing={2}>
-                <Grid item xs={6} display="flex" justifyContent="center">
-                    <LoadingButton loading={saving} color="primary" variant="contained" startIcon={<Save />} onClick={handleSave} sx={{ width: "128px" }}>
-                        Save
-                    </LoadingButton>
+        <Grid container spacing={2} direction="column">
+          <Grid item xs={12}>
+            <Paper elevation={3} sx={{ p: 2 }}>
+                <Grid container spacing={2}>
+                    <Grid item xs={6} display="flex" justifyContent="center">
+                        <LoadingButton loading={saving} color="primary" variant="contained" startIcon={<Save />} onClick={handleSave} sx={{ width: "128px" }}>
+                            Save
+                        </LoadingButton>
+                    </Grid>
+                    <Grid item xs={6} display="flex" justifyContent="center">
+                        <LoadingButton loading={previewing} color="secondary" variant="contained" startIcon={<Visibility />} onClick={handlePreview} sx={{ width: "128px" }}>
+                            Preview
+                        </LoadingButton>
+                    </Grid>
+                    <Grid item xs={6} display="flex" justifyContent="center">
+                        <LoadingButton loading={publishing} color="success" variant="contained" startIcon={<CloudUpload />} onClick={handlePublish} disabled={!saved} sx={{ width: "128px" }}>
+                            Publish
+                        </LoadingButton>
+                    </Grid>
+                    <Grid item xs={6} display="flex" justifyContent="center">
+                        <LoadingButton loading={deleting} color="error" variant="contained" startIcon={<Delete />} onClick={handleDelete} sx={{ width: "128px" }}>
+                            Delete
+                        </LoadingButton>
+                    </Grid>
                 </Grid>
-                <Grid item xs={6} display="flex" justifyContent="center">
-                    <LoadingButton loading={previewing} color="secondary" variant="contained" startIcon={<Visibility />} onClick={handlePreview} sx={{ width: "128px" }}>
-                        Preview
-                    </LoadingButton>
-                </Grid>
-                <Grid item xs={6} display="flex" justifyContent="center">
-                    <LoadingButton loading={publishing} color="success" variant="contained" startIcon={<CloudUpload />} onClick={handlePublish} disabled={!saved} sx={{ width: "128px" }}>
-                        Publish
-                    </LoadingButton>
-                </Grid>
-                <Grid item xs={6} display="flex" justifyContent="center">
-                    <LoadingButton loading={deleting} color="error" variant="contained" startIcon={<Delete />} onClick={handleDelete} sx={{ width: "128px" }}>
-                        Delete
-                    </LoadingButton>
-                </Grid>
-            </Grid>
-        </Paper>
+            </Paper>
+          </Grid>
+          <Grid item xs={12}>
+              <FormWorkflowsContainer/>
+          </Grid>
+        </Grid>
     );
 };
 
