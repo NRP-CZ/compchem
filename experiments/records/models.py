@@ -14,7 +14,6 @@ from sqlalchemy_utils import UUIDType
 class ExperimentsParentMetadata(
     RecordWorkflowParentModelMixin, db.Model, RecordMetadataBase
 ):
-
     __tablename__ = "experiments_parent_record_metadata"
 
 
@@ -52,3 +51,16 @@ class ExperimentsParentState(db.Model, ParentRecordStateMixin):
     __parent_record_model__ = ExperimentsParentMetadata
     __record_model__ = ExperimentsMetadata
     __draft_model__ = ExperimentsDraftMetadata
+
+
+class ExperimentsWorkflowContext(db.Model):
+    """Model for workflow context with authentication for experiments."""
+
+    __tablename__ = "experiments_workflow_context"
+
+    id = db.Column(db.Integer, primary_key=True)
+    workflow_name = db.Column(db.String(255), nullable=False, unique=True)
+    secret_key = db.Column(db.String(512), nullable=False)
+
+    # Experiment PID (not a foreign key, just storing the PID)
+    experiment_id = db.Column(db.String(255), nullable=False)

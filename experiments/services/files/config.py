@@ -1,9 +1,16 @@
 from sys import stderr
+
 from invenio_records_resources.services import (
     FileLink,
     FileServiceConfig,
     LinksTemplate,
     RecordLink,
+)
+from invenio_records_resources.services.files.components import (
+    FileContentComponent,
+    FileMetadataComponent,
+    FileMultipartContentComponent,
+    FileProcessorComponent,
 )
 from oarepo_runtime.services.components import (
     CustomFieldsComponent,
@@ -19,12 +26,6 @@ from experiments.records.api import ExperimentsDraft, ExperimentsRecord
 from experiments.services.files.schema import ExperimentsFileSchema
 from experiments.services.records.permissions import ExperimentsPermissionPolicy
 from shared.services.files import CompChemFilesServiceConfig
-from invenio_records_resources.services.files.components import (
-    FileContentComponent,
-    FileMetadataComponent,
-    FileMultipartContentComponent,
-    FileProcessorComponent,
-)
 
 
 class ExperimentsFileServiceConfig(CompChemFilesServiceConfig):
@@ -53,7 +54,8 @@ class ExperimentsFileServiceConfig(CompChemFilesServiceConfig):
             FileMetadataComponent,
             FileContentComponent,
             FileMultipartContentComponent,
-            FileProcessorComponent]
+            FileProcessorComponent,
+        ]
         components_list.extend(process_service_configs(type(self).mro()[2:]))
         additional_components = [CustomFieldsComponent]
         components_list.extend(additional_components)
@@ -120,7 +122,8 @@ class ExperimentsFileDraftServiceConfig(
             FileMetadataComponent,
             FileContentComponent,
             FileMultipartContentComponent,
-            FileProcessorComponent]
+            FileProcessorComponent,
+        ]
         components_list.extend(process_service_configs(type(self).mro()[2:]))
         additional_components = [CustomFieldsComponent]
         components_list.extend(additional_components)

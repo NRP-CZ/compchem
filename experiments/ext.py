@@ -9,9 +9,7 @@ from experiments import config
 
 
 class ExperimentsExt:
-
     def __init__(self, app=None):
-
         if app:
             self.init_app(app)
 
@@ -24,8 +22,8 @@ class ExperimentsExt:
             self.register_flask_extension(app)
 
     def register_flask_extension(self, app):
-
         app.extensions["experiments"] = self
+        app.extensions["experiments-workflows"] = self
 
     def init_config(self, app):
         """Initialize configuration."""
@@ -175,8 +173,13 @@ class ExperimentsExt:
         )
 
     @cached_property
+    def service_workflows(self):
+        return config.EXPERIMENTS_WORKFLOW_SERVICE_CLASS(
+            config=config.EXPERIMENTS_WORKFLOW_SERVICE_CONFIG(),
+        )
+
+    @cached_property
     def resource_workflows(self):
         return config.EXPERIMENTS_WORKFLOW_RESOURCE_CLASS(
-            service=None,
             config=config.EXPERIMENTS_WORKFLOW_RESOURCE_CONFIG(),
         )

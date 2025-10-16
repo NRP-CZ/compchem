@@ -36,6 +36,17 @@ class ExperimentsFileDraftResourceConfig(FileResourceConfig):
     blueprint_name = "experiments_file_draft"
     url_prefix = "/experiments/<pid_value>/draft"
 
+    routes = {
+        "list": "/files",
+        "item": "/files/<path:key>",
+        "item-content": "/files/<path:key>/content",
+        "item-content-workflow": "/files/<path:key>/workflow/content",
+        "item-multipart-content": "/files/<path:key>/content/<int:part>",
+        "item-commit": "/files/<path:key>/commit",
+        "item-commit-workflow": "/files/<path:key>/workflow/commit",
+        "list-archive": "/files-archive",
+    }
+
     @property
     def response_handlers(self):
         entrypoint_response_handlers = {}

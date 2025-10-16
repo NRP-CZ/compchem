@@ -36,6 +36,8 @@ from experiments.services.files.service import (
 )
 from experiments.services.records.config import ExperimentsServiceConfig
 from experiments.services.records.service import ExperimentsService
+from experiments.services.worfklows.config import ExperimentsWorkflowServiceConfig
+from experiments.services.worfklows.service import ExperimentsWorkflowService
 
 EXPERIMENTS_RECORD_RESOURCE_CONFIG = ExperimentsResourceConfig
 
@@ -119,3 +121,7 @@ EXPERIMENTS_DRAFT_FILES_SERVICE_CLASS = ExperimentsFileDraftService
 EXPERIMENTS_WORKFLOW_RESOURCE_CLASS = ExperimentsWorkflowResource
 
 EXPERIMENTS_WORKFLOW_RESOURCE_CONFIG = ExperimentsWorkflowResourceConfig
+
+EXPERIMENTS_WORKFLOW_SERVICE_CLASS = ExperimentsWorkflowService
+
+EXPERIMENTS_WORKFLOW_SERVICE_CONFIG = ExperimentsWorkflowServiceConfig

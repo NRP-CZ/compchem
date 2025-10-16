@@ -8,6 +8,7 @@ import { publishRecord } from '../util/apiClient';
 import { deepEquals, validateMetadata } from '../util/metadataValidator';
 import { createRecord, editRecord, uploadFileToRecord, modifyFileInRecord, deleteFileFromRecord } from '../util/apiClient';
 import FormWorkflowsContainer from './FormWorkflowsContainer';
+import { runAllWorkflows } from '../util/workflowsClient';
 
 
 const commitFiles = async (recordId, files, localFiles, remoteFiles, deletedFiles) => {
@@ -36,7 +37,16 @@ const commitFiles = async (recordId, files, localFiles, remoteFiles, deletedFile
         .filter(result => !result.success)
         .map(result => result.fileName);
 
+    const successfulFiles = results
+        .filter(result => result.success);
+
+    await runAllWorkflows(recordId, successfulFiles);
+
     return failedFiles;
+}
+
+const runWorkflowsForFiles = async (recordId, files) => {
+  runAllWorkflows(recordId, files);
 }
 
 const updateLocalState = (failedFiles, localFiles, setLocalFiles, remoteFiles, setRemoteFiles, deletedFiles, setDeletedFiles, files) => {

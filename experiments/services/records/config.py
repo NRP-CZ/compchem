@@ -49,7 +49,7 @@ class ExperimentsServiceConfig(
 
     result_list_cls = ExperimentsRecordList
 
-    PERMISSIONS_PRESETS = ["everyone"]
+    PERMISSIONS_PRESETS = []
 
     url_prefix = "/experiments/"
 
